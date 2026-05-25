@@ -976,6 +976,7 @@ _CYRILLIC_MAP: list[tuple[str, str]] = [
     ("а", "a"), ("е", "e"), ("и", "i"), ("о", "o"),
     ("у", "u"), ("ы", "i"), ("э", "e"),
     ("ѣ", "e"),   # yat (Old East Slavic / early Russian)
+    ("ꙑ", "i"),   # yeru with back yer (Old East Slavic / OCS) — same [ɨ] as ы, map to i for consistency
     # Yers and soft sign — drop (palatalization not tracked)
     ("ъ", ""), ("ь", ""),
     # Scholarly Latin transliterations of Cyrillic (kaikki's tr field uses
@@ -1421,7 +1422,7 @@ def word_from_sharedsource(src: SharedSource) -> Word:
             if src.romanization:
                 return ArabicWord.from_romanization(src.romanization)
             raise MissingRomanizationError("arabic")
-        case "he":
+        case "he" | "hbo":
             if ipa:
                 return HebrewWord.from_ipa(ipa)
             if src.romanization:
@@ -1501,10 +1502,26 @@ def word_from_sharedsource(src: SharedSource) -> Word:
             raise MissingRomanizationError("old-persian")
         case "ru" | "orv" | "sla-pro":
             return CyrillicWord.from_cyrillic(src.word)
+        # Phoenician and Old/Epigraphic South Arabian: West Semitic
+        # sister scripts to Aramaic; their kaikki romanizations follow
+        # the same Latin-with-diacritics conventions, so dispatch to
+        # AramaicWord which knows that alphabet.
+        case "phn" | "xhd" | "xsa":
+            if ipa:
+                return AramaicWord.from_ipa(ipa)
+            if src.romanization:
+                return AramaicWord.from_romanization(src.romanization)
+            raise MissingRomanizationError(src.lang)
+        # Default: GenericWord with the source's own lang tag. Falls
+        # back from IPA → romanization, so any unsupported language
+        # whose kaikki entry provides either form gets processed
+        # instead of dropping the whole pair as
+        # UnsupportedLanguageError.
         case _:
             if ipa:
                 return GenericWord.from_ipa(ipa, lang=src.lang)
-            print(src.lang, src.word)
+            if src.romanization:
+                return GenericWord.from_romanization(src.romanization, lang=src.lang)
             raise UnsupportedLanguageError(src.lang)
 
 

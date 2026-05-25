@@ -5,11 +5,27 @@ Direct Semitic Cognate Finder
 Finds Arabic-Hebrew cognate pairs directly from Wiktionary etymology data,
 without using English as a bridge language.
 
-Three matching layers:
-  Layer 1: Explicit cognate references in Arabic/Hebrew etymology templates
-  Layer 2: Shared Proto-Semitic root matching
-  Layer 3: Shared borrowing source — direct or via transitive chain through
-           a global etymology graph (e.g. Arabic←French←Latin→Hebrew)
+Matching layers:
+  Layer 1: Explicit cognate references in Arabic/Hebrew etymology templates.
+  Layer 2: Shared etymology source via the global borrow graph. Edges
+           come from two sources, merged into one graph and traversed
+           uniformly:
+             * citation templates {bor, inh, der, …} or {{etymon}} on
+               individual lexeme pages, and
+             * named parent → named child relationships in any kaikki
+               entry's `descendants` tree (any depth).
+           Standard LCA selection over each pair's shared sources picks
+           the closest common ancestor — so e.g. when one side is
+           nested under the other in a proto's descendants tree (Arabic
+           هَدَس borrowed from Hebrew הֲדַס which borrowed from
+           Akkadian *asum-*), the LCA is the closer Hebrew lexeme, not
+           the deeper Akkadian one.
+
+After matching, a lemma-promotion pass also pairs the canonical lemma
+of each side: e.g. given (ar X) ↔ (he Y) where Y is "form_of" Y', we
+also emit (ar X) ↔ (he Y'), which surfaces canonical-form pairs whose
+direct match was missed because the matched form's gloss was a "form
+of …" redirection rather than a content gloss.
 """
 
 from __future__ import annotations
@@ -26,7 +42,7 @@ import time
 from collections import defaultdict
 from concurrent.futures import ProcessPoolExecutor, as_completed
 from pathlib import Path
-from typing import Any, Self
+from typing import Any, Iterator, Self
 
 import numpy as np
 import orjson
@@ -69,6 +85,17 @@ ETYMOLOGY_TEMPLATES = {"bor", "der", "lbor", "ubor", "slbor", "borrowed",
 ETYMON_RELATIONS = {":bor", ":der", ":inh", ":from", ":lbor"}
 
 
+# Wiktionary editors interchangeably use U+02BF/U+02BB for ayin and U+02BE for
+# alif in romanized citations; collapse to the project's convention (U+0295,
+# U+0294) — matching reconstruction.py — so string-keyed source matching
+# doesn't split otherwise-identical Proto-Semitic forms.
+def _normalize_citation_word(word: str) -> str:
+    return (word
+            .replace("ʿ", "ʕ")
+            .replace("ʻ", "ʕ")
+            .replace("ʾ", "ʔ"))
+
+
 _AR = b'"ar"'
 _HE = b'"he"'
 _ETYM = b'"etymology_templates"'
@@ -109,6 +136,37 @@ class ScanCounts:
 
 
 @dataclass
+class DescendantIndex:
+    """For each named descendant lexeme appearing in any kaikki entry's
+    `descendants` tree, the set of *immediate* named ancestors that
+    contain it.
+
+    The full multi-level tree shape is contributed to the global borrow
+    graph as edges (see _collect_entry_descendants), so the standard
+    transitive-LCA pipeline handles descendant-derived ancestry
+    uniformly with citation-derived ancestry. This per-lexeme index
+    exists to seed the immediate parent into each Arabic/Hebrew
+    lexeme's borrow_sources, giving the transitive walk a starting
+    point even when the lexeme page itself has no etymology citation.
+    """
+    immediate_parents: dict[tuple[str, str], set[tuple[str, str]]] = field(
+        default_factory=lambda: defaultdict(set)
+    )
+
+    def add_edge(self, child_lang: str, child_word: str,
+                 parent_lang: str, parent_word: str) -> None:
+        self.immediate_parents[(child_lang, child_word)].add(
+            (parent_lang, parent_word))
+
+    def parents_of(self, lang: str, word: str) -> set[tuple[str, str]]:
+        return self.immediate_parents.get((lang, word), set())
+
+    def merge(self, other: Self) -> None:
+        for key, parents in other.immediate_parents.items():
+            self.immediate_parents[key] |= parents
+
+
+@dataclass
 class KaikkiScanResult:
     """All indexes built from one (or merged across many) kaikki scans."""
     semitic_words: dict[str, dict[str, WordData]] = field(
@@ -119,6 +177,7 @@ class KaikkiScanResult:
     )
     template_tr_index: dict[tuple[str, str], str] = field(default_factory=dict)
     kaikki_partials: dict[tuple[str, str], PartialSource] = field(default_factory=dict)
+    descendant_index: DescendantIndex = field(default_factory=DescendantIndex)
     counts: ScanCounts = field(default_factory=ScanCounts)
 
     @property
@@ -135,6 +194,7 @@ class KaikkiScanResult:
         self._merge_setvalued(self.borrow_graph, other.borrow_graph)
         self._merge_first_wins(self.template_tr_index, other.template_tr_index)
         self._merge_first_wins(self.kaikki_partials, other.kaikki_partials)
+        self.descendant_index.merge(other.descendant_index)
         self.counts.add(other.counts)
 
     @staticmethod
@@ -286,14 +346,20 @@ def _process_semitic_entry(
                     raw = arg3
                 wd.cognates.add((normalize_target(cog_word), raw))
 
-        if normalize_target is not None and name == "etymon":
+        if name == "etymon":
             for v in args.values():
                 if not isinstance(v, str):
                     continue
                 for m in ETYMON_LANG_WORD.finditer(ETYMON_METADATA.sub("", v)):
-                    if m.group(1) == target_lang:
-                        raw = m.group(2)
-                        wd.cognates.add((normalize_target(raw), raw))
+                    m_lang, m_word = m.group(1), m.group(2)
+                    if (normalize_target is not None
+                            and m_lang == target_lang):
+                        wd.cognates.add((normalize_target(m_word), m_word))
+                    if (m_lang != lang_code
+                            and m_word not in ("-", "?", "", "*")
+                            and len(m_word) > 1):
+                        wd.borrow_sources.add(
+                            (m_lang, _normalize_citation_word(m_word)))
 
         if name in ETYMOLOGY_TEMPLATES:
             src_lang = args.get("2", "")
@@ -301,7 +367,8 @@ def _process_semitic_entry(
             if (src_lang and src_word
                     and src_word not in ("-", "?", "")
                     and len(src_word) > 1):
-                wd.borrow_sources.add((src_lang, src_word))
+                wd.borrow_sources.add(
+                    (src_lang, _normalize_citation_word(src_word)))
 
     for sense in entry.get("senses", []):
         for fof in sense.get("form_of", []):
@@ -351,7 +418,7 @@ def _extract_borrowing(entry, lang_code, borrow_graph, template_tr_index):
             if (src_lang and src_word
                     and src_word not in ("-", "?", "")
                     and len(src_word) > 1):
-                src_key = (src_lang, src_word)
+                src_key = (src_lang, _normalize_citation_word(src_word))
                 for key in node_keys:
                     borrow_graph[key].add(src_key)
                 tr = args.get("tr", "")
@@ -376,9 +443,69 @@ def _extract_borrowing(entry, lang_code, borrow_graph, template_tr_index):
                     if (src_word not in ("-", "?", "", "*")
                             and len(src_word) > 1
                             and src_lang != lang_code):
-                        src_key = (src_lang, src_word)
+                        src_key = (src_lang, _normalize_citation_word(src_word))
                         for key in node_keys:
                             borrow_graph[key].add(src_key)
+
+
+def _walk_descendant_edges(
+    nodes: list[dict[str, Any]],
+    parent_key: tuple[str, str],
+) -> Iterator[tuple[tuple[str, str], tuple[str, str]]]:
+    """Walk a descendants tree at every depth, yielding
+    (parent_key, child_key) for every named-parent → named-child
+    relationship.
+
+    Grouping nodes (lang_code='unknown') are passed through
+    transparently — the effective parent_key remains the closest
+    named ancestor above them. When the walker enters a named node,
+    parent_key updates to that node's key for the rest of its
+    subtree, so nested chains like Akkadian *asum-* → Hebrew הֲדַס →
+    Arabic هَدَס yield separate edges (asum, הֲדַס) and (הֲדַס,
+    هَדَס) rather than collapsing the Arabic node into a spurious
+    direct child of Akkadian — the standard LCA step then picks the
+    closer Hebrew ancestor when both ar and he forms share asum
+    transitively.
+    """
+    for node in nodes:
+        lang_code = node.get("lang_code", "")
+        word = node.get("word", "")
+        nested = node.get("descendants") or []
+        if lang_code and lang_code != "unknown" and word:
+            child_key = (lang_code, word)
+            yield (parent_key, child_key)
+            yield from _walk_descendant_edges(nested, child_key)
+        else:
+            yield from _walk_descendant_edges(nested, parent_key)
+
+
+def _collect_entry_descendants(
+    entry: dict[str, Any],
+    descendant_index: DescendantIndex,
+    borrow_graph: dict[tuple[str, str], set[tuple[str, str]]],
+) -> None:
+    """Walk *entry*'s descendants tree, contributing edges to both the
+    global borrow graph (child → parent for every named pair at every
+    depth) and the per-lexeme immediate-parents index. No-op for
+    entries lacking a `descendants` tree.
+
+    Each tree edge becomes a borrow-graph edge so the standard
+    transitive-LCA pipeline can reach descendant-derived ancestors,
+    and each child's immediate parent is recorded so a Semitic lexeme
+    with no etymology citation can still be seeded into the
+    borrow_sources walk in main()."""
+    descendants = entry.get("descendants")
+    if not descendants:
+        return
+    root_lang = entry.get("lang_code", "")
+    root_word = canonical_from_entry(entry) or entry.get("word", "")
+    if not root_lang or not root_word:
+        return
+    root_key = (root_lang, root_word)
+    for parent_key, child_key in _walk_descendant_edges(descendants, root_key):
+        descendant_index.add_edge(
+            child_key[0], child_key[1], parent_key[0], parent_key[1])
+        borrow_graph[child_key].add(parent_key)
 
 
 def _resolve_unpointed_semitic(
@@ -594,9 +721,13 @@ def _process_chunk(
                     result.kaikki_partials.setdefault(key, partial)
 
             _extract_borrowing(entry, lc, result.borrow_graph, result.template_tr_index)
+            _collect_entry_descendants(
+                entry, result.descendant_index, result.borrow_graph)
 
     # defaultdict → plain dict for cross-process pickling cleanliness.
     result.borrow_graph = dict(result.borrow_graph)
+    result.descendant_index.immediate_parents = dict(
+        result.descendant_index.immediate_parents)
     return result
 
 
@@ -690,6 +821,24 @@ def _make_borrow_index(
         if sources:
             out[canonical] = sources
     return out
+
+
+def _seed_borrow_sources_from_descendants(
+    words: dict[str, WordData],
+    lang: str,
+    descendant_index: DescendantIndex,
+) -> None:
+    """Mutate each WordData to add its immediate descendants-tree
+    parent(s) as borrow_sources, so the standard transitive-LCA
+    pipeline picks up tree-derived ancestry alongside citation-derived
+    ancestry. Looks up by both canonical and unpointed-normalized
+    form since trees occasionally cite the unpointed spelling."""
+    for canonical, wd in words.items():
+        parents = set(descendant_index.parents_of(lang, canonical))
+        if wd.norm and wd.norm != canonical:
+            parents |= descendant_index.parents_of(lang, wd.norm)
+        if parents:
+            wd.borrow_sources |= parents
 
 
 def _find_lcas(
@@ -807,6 +956,16 @@ def main():
     borrow_graph = scan.borrow_graph
     template_tr_index = scan.template_tr_index
     kaikki_partials = scan.kaikki_partials
+    # Fold descendants-tree immediate parents into Arabic/Hebrew
+    # borrow_sources, so a lexeme appearing in some proto entry's
+    # `descendants` tree gets that proto into its ancestry walk even
+    # when its own page has no etymology citation. Tree edges were
+    # already contributed to borrow_graph during the scan, so the
+    # transitive expansion in _expand_borrow_transitive then walks
+    # the full chain (e.g. he עֶשֶׂר → hbo עֶשֶׂר → und *ʕaśrum →
+    # sem-pro *ʕaśar-).
+    _seed_borrow_sources_from_descendants(ar_words, "ar", scan.descendant_index)
+    _seed_borrow_sources_from_descendants(he_words, "he", scan.descendant_index)
     scan_time = time.monotonic() - t0
 
     # Build standalone cognate/borrow indexes keyed by canonical form
@@ -933,8 +1092,49 @@ def main():
                 if prev is None or (ar_depth, he_depth) < prev:
                     pair.sources[source] = (ar_depth, he_depth)
 
+    # Lemma promotion: for any pair where one side's matched form has a
+    # `form_of` lemma in our index, also emit pairs against that lemma.
+    # Surfaces canonical-form pairs like (ar عَشَرَة) ↔ (he עֲשָׂרָה)
+    # — both glossed "ten" — that no direct mechanism finds because
+    # neither side cites a matching proto string and עֲשָׂרָה appears
+    # in no descendants tree; the matched form (he עֶשֶׂר) has the
+    # tree presence, and its gloss "feminine of עֲשָׂרָה" gives us
+    # the lemma pointer needed to promote to the canonical pair.
+    def _resolve_lemmas(wd: WordData | None,
+                        norm_to_canonicals: dict[str, list[str]]) -> set[str]:
+        if wd is None:
+            return set()
+        out: set[str] = set()
+        for norm in wd.lemma_of:
+            out.update(norm_to_canonicals.get(norm, []))
+        return out
+
+    promoted = 0
+    for (ar_c, he_c), pair in list(pair_data.items()):
+        ar_lemmas = _resolve_lemmas(ar_words.get(ar_c), ar_norm_to_canonicals)
+        he_lemmas = _resolve_lemmas(he_words.get(he_c), he_norm_to_canonicals)
+        if not ar_lemmas and not he_lemmas:
+            continue
+        ar_candidates = ar_lemmas | {ar_c}
+        he_candidates = he_lemmas | {he_c}
+        for new_ar in ar_candidates:
+            for new_he in he_candidates:
+                if new_ar == ar_c and new_he == he_c:
+                    continue
+                new_pair = _ensure_pair(new_ar, new_he)
+                if new_pair is None:
+                    continue
+                if "lemma_promoted" not in new_pair.layers:
+                    new_pair.layers.append("lemma_promoted")
+                    promoted += 1
+                for src, depths in pair.sources.items():
+                    prev = new_pair.sources.get(src)
+                    if prev is None or depths < prev:
+                        new_pair.sources[src] = depths
+
     match_elapsed = time.monotonic() - t0
-    print(f"\n  {len(pair_data)} cognate pairs found")
+    print(f"\n  {len(pair_data)} cognate pairs found "
+          f"({promoted} via lemma promotion)")
     print(f"  ⏱ {match_elapsed:.1f}s")
 
     # ── Load sense embeddings ───────────────────────────────────
@@ -1000,6 +1200,7 @@ def main():
     consonant_mismatches = 0
     missing_romanizations = 0
     empty_ancestors = 0
+    unknown_phonemes: dict[str, int] = defaultdict(int)
     romanization_tier_obs: dict[tuple[str, str], RomanizationTierObservation] = {}
     results: list[CognateEntry] = []
     for (ar_canonical, he_canonical), pair in sorted(pair_data.items()):
@@ -1085,11 +1286,19 @@ def main():
             if pansemitic:
                 entry.pansemitic_form = pansemitic
                 if ar_ipa and he_ipa:
-                    entry.loss = triplet_loss_breakdown(
-                        pansemitic_word.to_ipa(),
-                        ar_ipa,
-                        he_ipa,
-                    )
+                    try:
+                        entry.loss = triplet_loss_breakdown(
+                            pansemitic_word.to_ipa(),
+                            ar_ipa,
+                            he_ipa,
+                        )
+                    except ValueError as e:
+                        # IPA contains a phoneme not in loss.py's
+                        # inventory; the pair still emits, just
+                        # without a loss score. Tracked so the
+                        # offending phonemes can be added to the
+                        # inventory over time.
+                        unknown_phonemes[str(e)] += 1
             else:
                 entry.pansemitic_failure = "empty_pansemitic"
         except UnsupportedLanguageError as e:
@@ -1188,6 +1397,13 @@ def main():
             print(f"      {lang:20s} {count}")
     print(f"    Missing romanization:          {missing_romanizations}")
     print(f"    Empty ancestor:                {empty_ancestors}")
+    if unknown_phonemes:
+        total_unknown = sum(unknown_phonemes.values())
+        print(f"\n  Loss unscorable — unknown IPA phonemes "
+              f"({total_unknown} pairs across "
+              f"{len(unknown_phonemes)} distinct phonemes):")
+        for msg, count in sorted(unknown_phonemes.items(), key=lambda x: -x[1]):
+            print(f"    {count:>5}  {msg}")
     _print_loss_statistics(results)
 
 

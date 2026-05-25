@@ -87,6 +87,7 @@ _CONSONANT_FEATURES: dict[str, ConsonantFeatures] = {
     "θˤ":  ConsonantFeatures(place=0.15, manner=_MANNER_FRICATIVE,   voicing=0, pharyng=1, lateral=0, aspirated=0, rhotic=0, long=0),
     "ʃ":   ConsonantFeatures(place=0.45, manner=_MANNER_FRICATIVE,   voicing=0, pharyng=0, lateral=0, aspirated=0, rhotic=0, long=0),
     "ʒ":   ConsonantFeatures(place=0.45, manner=_MANNER_FRICATIVE,   voicing=1, pharyng=0, lateral=0, aspirated=0, rhotic=0, long=0),
+    "ʂ":   ConsonantFeatures(place=0.50, manner=_MANNER_FRICATIVE,   voicing=0, pharyng=0, lateral=0, aspirated=0, rhotic=0, long=0),  # Polish sz, Russian ш in some romanizations
     "x":   ConsonantFeatures(place=0.70, manner=_MANNER_FRICATIVE,   voicing=0, pharyng=0, lateral=0, aspirated=0, rhotic=0, long=0),
     "ɣ":   ConsonantFeatures(place=0.70, manner=_MANNER_FRICATIVE,   voicing=1, pharyng=0, lateral=0, aspirated=0, rhotic=0, long=0),
     "χ":   ConsonantFeatures(place=0.80, manner=_MANNER_FRICATIVE,   voicing=0, pharyng=0, lateral=0, aspirated=0, rhotic=0, long=0),
@@ -163,7 +164,9 @@ _VOWEL_FEATURES: dict[str, VowelFeatures] = {
     "e": VowelFeatures(height=0.33, backness=0.00, rounded=0, long=0),
     "o": VowelFeatures(height=0.33, backness=1.00, rounded=1, long=0),
     "ə": VowelFeatures(height=0.50, backness=0.50, rounded=0, long=0),
+    "ₔ": VowelFeatures(height=0.50, backness=0.50, rounded=0, long=0),
     "ɛ": VowelFeatures(height=0.67, backness=0.00, rounded=0, long=0),
+    "ɜ": VowelFeatures(height=0.67, backness=0.50, rounded=0, long=0),
     "ɔ": VowelFeatures(height=0.67, backness=1.00, rounded=1, long=0),
     "æ": VowelFeatures(height=0.83, backness=0.00, rounded=0, long=0),
     # "a" is treated as central-open (≈ ä) — Semitic /a/ is typically central.
