@@ -253,18 +253,11 @@ class ArabicWord(Word):
         return _ARABIC_DIACRITICS.sub("", text).strip()
 
     @classmethod
-    def from_ipa(cls, ipa: str) -> Self:
-        """Wrap a pre-existing IPA string, normalizing combining marks."""
-        # if the definite is marked in ipa by a . or -
-        ipa = re.sub(r"^ʔ?a(?:sˤ|tˤ|dˤ|ðˤ|[tθdðrzsʃln])[\.\-]", "", ipa)
-        # if the definite is marked in ipa by a ː
-        ipa = re.sub(r"^ʔ?a(sˤ|tˤ|dˤ|ðˤ|[tθdðrzsʃln])ː", r"\1", ipa)
-        
-        return super().from_ipa(ipa)
-
-    @classmethod
     def from_romanization(cls, text: str) -> Self:
-        """Arabic romanization → IPA (lossless: preserves length + gemination)."""
+        """Arabic romanization → IPA (lossless: preserves length + gemination).
+
+        Definite articles are NOT stripped here — that is morphology, owned
+        by morphology.plan_merge before romanizations reach reconstruction."""
         if not text:
             return cls(word=text)
         form = text.lower()
@@ -1283,6 +1276,7 @@ _IPA_TO_PANSEMITIC_IPA: list[tuple[str, str]] = [
     ("kʼ", "q"),
     ("qʼ", "q"),
     ("pʼ", "p"),
+    ("ʂ", "s"),
     # Non-a/i/u IPA vowels collapse toward the nearest e/o/a/i/u base.
     ("ɪ", "i"), ("ʏ", "i"), ("ɨ", "i"),
     ("ʊ", "u"), ("ɯ", "u"),

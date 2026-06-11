@@ -1,0 +1,529 @@
+"""Morphological analysis & merge-time promotion for Arabic/Hebrew surfaces.
+
+Wraps the surface forms of a cognate pair with just enough morphological
+structure that reconstruction compares like with like:
+
+  - Compounds are split on whitespace and merged word-by-word, so the
+    aligner never smears one word's segments into its neighbour.
+  - Definite articles (ar al-/aC-, he ha-) are functional morphemes, never
+    cognate material; this module owns their stripping (ArabicWord no longer
+    strips them during IPA conversion).  Arabic articles are stripped
+    wherever detected (script ال + hyphenated romanization is unambiguous);
+    Hebrew articles are stripped in multi-word phrases, and on single words
+    only when the Arabic side is also definite — the pair-level symmetry is
+    the corroborating evidence that ha- is an article rather than a
+    word-initial pattern like hifʕil-derived הַצָּלָה.  When BOTH sides are
+    definite, definiteness is preserved in the merged ancestor as the
+    space-separated compromise particle "hal" (al-/ha- blend).
+  - A feminine ending present on only ONE side (ar tāʔ marbūṭa, he qamats-he)
+    is stripped; present on both sides it is shared morphology and kept —
+    the aligner naturally merges ar -a with he -á into the shared -a.
+  - A nisba adjectivizer (ar -iyy, he -i; adjective POS required) present
+    on one side is stripped (de-adjectivization); present on both sides,
+    the stems are merged and the suffix re-attached as the compromise -i.
+  - A verb paired with a nominal is de-causativized / de-verbalized:
+    preferring substitution of the base lexeme kaikki cites (form_of with
+    the noun-from-verb tag), falling back to per-language template synthesis
+    (Arabic form II: degeminate C2; form IV: strip ʔa- prefix).
+
+Detection is evidence-gated: every strip needs BOTH the script-side signal
+(pointing/letters) and a matching romanization shape, and must leave at
+least two letters behind, otherwise the word passes through untouched.
+
+Language knowledge lives in one LangMorphology subclass per language,
+mirroring reconstruction.py's one-Word-class-per-language pattern.  To
+extend coverage (e.g. Aramaic), subclass LangMorphology, override the
+script-evidence hooks / strip patterns / synthesis methods, and register
+the class in MORPHOLOGY_CONFIG.
+
+`plan_merge` returns aligned (ar_roman, he_roman) word pairs plus
+human-readable notes describing exactly what was normalized; the notes are
+surfaced in the output so pansemitic forms stay auditable.
+"""
+
+from __future__ import annotations
+
+import re
+import unicodedata
+from dataclasses import dataclass, field
+from enum import Enum
+from typing import Callable, ClassVar, Iterable
+
+from reconstruction import ArabicWord
+
+
+class Layer(Enum):
+    """Strippable surface morphology detectable from script + romanization."""
+    DEFINITE = "definite"
+    FEMININE = "feminine"
+    NISBA = "nisba"
+
+
+@dataclass
+class AnalyzedWord:
+    """One orthographic word with its detected strippable layers."""
+    script: str
+    roman: str
+    layers: set[Layer] = field(default_factory=set)
+
+
+@dataclass
+class AnalyzedPhrase:
+    """A headword split into words, plus lexeme-level kaikki metadata."""
+    lang: str
+    roman: str                       # full original romanization
+    words: list[AnalyzedWord]
+    pos: frozenset[str] = frozenset()
+    verb_forms: frozenset[str] = frozenset()   # ar form (I..X) / he binyan
+    derived_from: frozenset[str] = frozenset() # normalized derivational bases
+
+
+@dataclass
+class PlannedPair:
+    """One aligned word pair, morphology-normalized, ready to merge.
+
+    prefix/suffix carry shared morphology that was stripped from both sides
+    for a clean stem merge and should be re-attached to the merged ancestor
+    (e.g. shared definiteness as "hal ", shared nisba as "i")."""
+    ar_roman: str
+    he_roman: str
+    prefix: str = ""
+    suffix: str = ""
+
+
+@dataclass
+class MergePlan:
+    """Aligned per-word pairs ready for reconstruction."""
+    word_pairs: list[PlannedPair]
+    notes: list[str]
+
+
+# Looks up the (canonical, romanization) of a derivational base lexeme in
+# the caller's word index, given (lang, normalized base candidates).
+BaseLookup = Callable[[str, frozenset[str]], tuple[str, str] | None]
+
+
+def _letters(text: str) -> int:
+    return sum(1 for c in text if c.isalpha())
+
+
+class LangMorphology:
+    """Per-language morphological knowledge.
+
+    One subclass per language, registered in MORPHOLOGY_CONFIG.  The base
+    class implements the generic detect/strip machinery; subclasses supply
+    the script-evidence hooks, the romanization strip shapes, and (where
+    the language has them) template-level de-causativization and the
+    article shape in already-converted IPA."""
+
+    lang: ClassVar[str]
+    # Romanization-side strip shape per layer; a missing entry means the
+    # language does not support that layer.
+    strip_patterns: ClassVar[dict[Layer, re.Pattern[str]]] = {}
+    # Verb forms regarded as the underived base stem, used to rank homograph
+    # candidates during base substitution (ar "I", he "pa").
+    base_verb_forms: ClassVar[frozenset[str]] = frozenset()
+    # Whether a single-word article strip needs the other side of the pair
+    # to also be definite (script evidence alone too weak — Hebrew).
+    article_needs_corroboration: ClassVar[bool] = False
+
+    # ── script-side evidence hooks ──────────────────────────────────
+    @classmethod
+    def script_definite(cls, script: str) -> bool:
+        return False
+
+    @classmethod
+    def script_feminine(cls, script: str) -> bool:
+        return False
+
+    @classmethod
+    def script_nisba(cls, script: str) -> bool:
+        return False
+
+    # ── generic machinery ───────────────────────────────────────────
+    @classmethod
+    def _roman_matches(cls, layer: Layer, roman: str) -> bool:
+        pattern = cls.strip_patterns.get(layer)
+        return bool(pattern and pattern.search(roman))
+
+    @classmethod
+    def analyze_word(cls, script: str, roman: str, pos: frozenset[str]) -> AnalyzedWord:
+        """Detect strippable layers; each needs script AND romanization
+        evidence.  Nisba additionally needs the adjective POS gate: nouns
+        ending in -iyy (nabiyy, kursiyy …) carry a root consonant, not the
+        adjectivizer."""
+        layers: set[Layer] = set()
+        if cls.script_definite(script) and cls._roman_matches(Layer.DEFINITE, roman):
+            layers.add(Layer.DEFINITE)
+        if cls.script_feminine(script) and cls._roman_matches(Layer.FEMININE, roman):
+            layers.add(Layer.FEMININE)
+        if ("adj" in pos and cls.script_nisba(script)
+                and cls._roman_matches(Layer.NISBA, roman)):
+            layers.add(Layer.NISBA)
+        return AnalyzedWord(script=script, roman=roman, layers=layers)
+
+    @classmethod
+    def strip(cls, roman: str, layer: Layer) -> str | None:
+        """Strip *layer*'s romanization shape; None if absent or too destructive."""
+        pattern = cls.strip_patterns.get(layer)
+        if pattern is None:
+            return None
+        out = pattern.sub("", roman, count=1)
+        if out == roman or _letters(out) < 2:
+            return None
+        return out
+
+    # ── language-specific operations (override where applicable) ────
+    @classmethod
+    def synthesize_decausative(cls, roman: str, verb_forms: frozenset[str]) -> tuple[str, str] | None:
+        """Template-level de-causativization of a verb romanization.
+
+        Returns (new_roman, note) or None when the language has no usable
+        template (or the romanization doesn't fit one)."""
+        return None
+
+    @classmethod
+    def strip_article_ipa(cls, ipa: str, script: str) -> str | None:
+        """Strip a leading definite article from an already-converted IPA
+        string (used for shared-source ancestors, which never pass through
+        plan_merge).  None when unsupported or unevidenced."""
+        return None
+
+
+class ArabicMorphology(LangMorphology):
+    lang = "ar"
+    strip_patterns = {
+        # kaikki Arabic romanizations always hyphenate the article (al-, aš- …).
+        Layer.DEFINITE: re.compile(r"^[aā](?:sh|š|ṣ|ḍ|ṭ|ẓ|ḏ|ṯ|[ltdsznr])-"),
+        Layer.FEMININE: re.compile(r"(?:āh|ah|at|a)$"),
+        Layer.NISBA: re.compile(r"(?:iyy|īy|ī)$"),
+    }
+    base_verb_forms = frozenset({"I"})
+
+    # Doubled consonant in a romanization (form-II gemination); long vowels
+    # are single precomposed codepoints (ā, ī …) so excluding plain vowels
+    # suffices.
+    _DOUBLED = re.compile(r"([^\W\d_aeiou])\1")
+    _FORM_IV_PREFIX = re.compile(r"^[ʔʾˀ]?a")
+
+    # Article shapes in already-converted IPA.  Word.from_ipa strips syllable
+    # dots and stress marks, so by Word time the article shows up as either a
+    # hyphen-delimited prefix (ar-raħmaːn, romanization-built words), an
+    # assimilated geminate (ʔarːaħmaːn — the consonant is kept), or a bare
+    # ʔ?al prefix (ʔalqurʔaːn).  The bare/geminate shapes are ambiguous
+    # against root material, so they demand script-side evidence.
+    _ARTICLE_IPA_DELIM = re.compile(r"^ʔ?a(?:sˤ|tˤ|dˤ|ðˤ|[tθdðrzsʃln])[.\-]")
+    _ARTICLE_IPA_GATED: ClassVar[list[tuple[re.Pattern[str], str]]] = [
+        (re.compile(r"^ʔ?a(sˤ|tˤ|dˤ|ðˤ|[tθdðrzsʃln])ː"), r"\1"),
+        (re.compile(r"^ʔ?al(?!ː)"), ""),
+    ]
+
+    @classmethod
+    def script_definite(cls, script: str) -> bool:
+        return ArabicWord.normalize(script).startswith("ال")
+
+    @classmethod
+    def script_feminine(cls, script: str) -> bool:
+        return ArabicWord.normalize(script).endswith("ة")
+
+    @classmethod
+    def script_nisba(cls, script: str) -> bool:
+        return ArabicWord.normalize(script).endswith("ي")
+
+    @classmethod
+    def synthesize_decausative(cls, roman: str, verb_forms: frozenset[str]) -> tuple[str, str] | None:
+        if "II" in verb_forms:
+            m = cls._DOUBLED.search(roman)
+            if m:
+                out = roman[: m.start() + 1] + roman[m.end():]
+                return out, "form-II verb degeminated"
+        if "IV" in verb_forms:
+            m = cls._FORM_IV_PREFIX.match(roman)
+            if m and _letters(roman[m.end():]) >= 3:
+                return roman[m.end():], "form-IV ʔa- prefix stripped"
+        return None
+
+    @classmethod
+    def strip_article_ipa(cls, ipa: str, script: str) -> str | None:
+        """*script* is the lexeme's cited form — either Arabic script or a
+        romanized citation.  The hyphen-delimited IPA shape (ʔal-d͡ʒabr) is
+        self-evident — root material never contains a hyphen — and may come
+        from a citing template's tr even when *script* lacks the article.
+        The geminate/bare shapes additionally require the cited form to
+        start with ال (or carry the hyphenated article in a Latin citation).
+        Returns None when no article is evidenced or stripping would empty
+        the string."""
+        out = cls._ARTICLE_IPA_DELIM.sub("", ipa, count=1)
+        if out != ipa:
+            return out or None
+        if not (cls.script_definite(script)
+                or cls.strip_patterns[Layer.DEFINITE].match(script.lower())):
+            return None
+        for pattern, repl in cls._ARTICLE_IPA_GATED:
+            out = pattern.sub(repl, ipa, count=1)
+            if out != ipa:
+                return out or None
+        return None
+
+
+class HebrewMorphology(LangMorphology):
+    lang = "he"
+    strip_patterns = {
+        # Hebrew romanizations fuse the article (hamolád), so the pattern
+        # eats exactly the h + vowel.
+        Layer.DEFINITE: re.compile(r"^h[ae]-?"),
+        Layer.FEMININE: re.compile(r"[āáa]$"),
+        Layer.NISBA: re.compile(r"[íi]$"),
+    }
+    base_verb_forms = frozenset({"pa"})
+    # A he/ha-initial word is weak evidence on its own (hifʕil-derived nouns
+    # like הַצָּלָה share the shape) — single-word strips need the other
+    # side of the pair to also be definite.
+    article_needs_corroboration = True
+
+    _DAGESH = "ּ"
+    _PATACH = "ַ"
+    _QAMATS = "ָ"
+    _SEGOL = "ֶ"
+    _GUTTURALS = frozenset("אהחער")
+    _FEMININE_END = _QAMATS + "ה"
+    _NISBA_END = "ִי"  # hiriq + yod
+
+    @classmethod
+    def script_definite(cls, script: str) -> bool:
+        """Pointed-script test for the definite article: הַ + dagesh forte in
+        the next letter, or הָ/הֶ before a guttural (which cannot take dagesh)."""
+        if len(script) < 4 or script[0] != "ה":
+            return False
+        vowel = script[1]
+        if vowel == cls._PATACH:
+            i = 3
+            while i < len(script) and unicodedata.category(script[i]) == "Mn":
+                if script[i] == cls._DAGESH:
+                    return True
+                i += 1
+            return False
+        if vowel in (cls._QAMATS, cls._SEGOL):
+            return script[2] in cls._GUTTURALS
+        return False
+
+    @classmethod
+    def script_feminine(cls, script: str) -> bool:
+        return script.endswith(cls._FEMININE_END)
+
+    @classmethod
+    def script_nisba(cls, script: str) -> bool:
+        return script.endswith(cls._NISBA_END)
+
+
+MORPHOLOGY_CONFIG: dict[str, type[LangMorphology]] = {
+    "ar": ArabicMorphology,
+    "he": HebrewMorphology,
+}
+
+
+def morphology_for(lang: str) -> type[LangMorphology] | None:
+    return MORPHOLOGY_CONFIG.get(lang)
+
+
+def analyze_phrase(
+    lang: str,
+    script: str,
+    roman: str,
+    pos: Iterable[str] = (),
+    verb_forms: Iterable[str] = (),
+    derived_from: Iterable[str] = (),
+) -> AnalyzedPhrase:
+    """Split a headword into analyzed words.
+
+    Script and romanization must tokenize to the same word count to split;
+    otherwise the phrase is kept whole (no behavior change downstream).
+    """
+    morph = MORPHOLOGY_CONFIG[lang]
+    pos = frozenset(pos)
+    s_toks = script.split()
+    r_toks = roman.split()
+    if len(s_toks) == len(r_toks) and len(s_toks) > 1:
+        pairs = list(zip(s_toks, r_toks))
+    else:
+        pairs = [(script, roman)]
+    return AnalyzedPhrase(
+        lang=lang,
+        roman=roman,
+        words=[morph.analyze_word(s, r, pos) for s, r in pairs],
+        pos=pos,
+        verb_forms=frozenset(verb_forms),
+        derived_from=frozenset(derived_from),
+    )
+
+
+_CAUSATIVE_NOMINAL_POS = {"noun", "adj", "name", "num"}
+
+
+def _verb_vs_nominal(verb_side: AnalyzedPhrase, nominal_side: AnalyzedPhrase) -> bool:
+    return ("verb" in verb_side.pos
+            and "verb" not in nominal_side.pos
+            and bool(nominal_side.pos & _CAUSATIVE_NOMINAL_POS))
+
+
+def _substitute_base(
+    phrase: AnalyzedPhrase,
+    base_lookup: BaseLookup,
+    notes: list[str],
+    label: str,
+) -> str | None:
+    """Swap in the romanization of the derivational base kaikki cites."""
+    if not phrase.derived_from:
+        return None
+    hit = base_lookup(phrase.lang, phrase.derived_from)
+    if hit is None:
+        return None
+    canonical, roman = hit
+    notes.append(f"{label}: substituted cited base {canonical} ({roman})")
+    return roman
+
+
+def _decausativize(
+    phrase: AnalyzedPhrase,
+    roman: str,
+    base_lookup: BaseLookup,
+    notes: list[str],
+    label: str,
+) -> str | None:
+    """De-causativize a verb-side romanization: cited base first, then the
+    language's template synthesis."""
+    base = _substitute_base(phrase, base_lookup, notes, label)
+    if base:
+        return base
+    synth = MORPHOLOGY_CONFIG[phrase.lang].synthesize_decausative(
+        roman, phrase.verb_forms)
+    if synth is not None:
+        new_roman, note = synth
+        notes.append(f"{label}: {note}")
+        return new_roman
+    return None
+
+
+def _strip_definite(
+    morph: type[LangMorphology],
+    word: AnalyzedWord,
+    roman: str,
+    other_definite: bool,
+    multiword: bool,
+) -> str | None:
+    """Strip *word*'s article if detected and sufficiently evidenced."""
+    if Layer.DEFINITE not in word.layers:
+        return None
+    if (morph.article_needs_corroboration
+            and not multiword and not other_definite):
+        return None
+    return morph.strip(roman, Layer.DEFINITE)
+
+
+def plan_merge(
+    ar: AnalyzedPhrase,
+    he: AnalyzedPhrase,
+    base_lookup: BaseLookup,
+) -> MergePlan:
+    """Produce aligned, morphology-normalized word pairs for reconstruction.
+
+    Strips asymmetric layers only: a layer detected on both sides of an
+    aligned word pair is shared morphology — kept, or re-attached as a
+    compromise affix.  Falls back to the unsplit pair when word counts
+    differ.
+    """
+    ar_m = MORPHOLOGY_CONFIG[ar.lang]
+    he_m = MORPHOLOGY_CONFIG[he.lang]
+    notes: list[str] = []
+    if len(ar.words) != len(he.words):
+        notes.append(
+            f"word-count mismatch (ar {len(ar.words)} vs he {len(he.words)}); merged unsplit")
+        return MergePlan(word_pairs=[PlannedPair(ar.roman, he.roman)], notes=notes)
+
+    multiword = len(ar.words) > 1
+    word_pairs: list[PlannedPair] = []
+    for i, (aw, hw) in enumerate(zip(ar.words, he.words)):
+        a_r, h_r = aw.roman, hw.roman
+        prefix = suffix = ""
+        where = f" (word {i + 1})" if multiword else ""
+
+        a_stripped = _strip_definite(
+            ar_m, aw, a_r, Layer.DEFINITE in hw.layers, multiword)
+        h_stripped = _strip_definite(
+            he_m, hw, h_r, Layer.DEFINITE in aw.layers, multiword)
+        if a_stripped:
+            a_r = a_stripped
+        if h_stripped:
+            h_r = h_stripped
+        if a_stripped and h_stripped:
+            prefix = "hal "
+            notes.append(f"shared definite article → hal{where}")
+        elif a_stripped:
+            notes.append(f"ar: definite article stripped{where}")
+        elif h_stripped:
+            notes.append(f"he: definite article stripped{where}")
+
+        ar_fem = Layer.FEMININE in aw.layers
+        he_fem = Layer.FEMININE in hw.layers
+        acted = False
+        if ar_fem and not he_fem:
+            stripped = ar_m.strip(a_r, Layer.FEMININE)
+            if stripped:
+                a_r = stripped
+                acted = True
+                notes.append(f"ar: feminine ending stripped{where}")
+        elif he_fem and not ar_fem:
+            stripped = he_m.strip(h_r, Layer.FEMININE)
+            if stripped:
+                h_r = stripped
+                acted = True
+                notes.append(f"he: feminine ending stripped{where}")
+        # Symmetric feminine needs no handling: the aligner merges ar -a
+        # with he -á into the shared -a on its own.
+
+        ar_nis = Layer.NISBA in aw.layers
+        he_nis = Layer.NISBA in hw.layers
+        if ar_nis and he_nis:
+            sa = ar_m.strip(a_r, Layer.NISBA)
+            sh = he_m.strip(h_r, Layer.NISBA)
+            if sa and sh:
+                a_r, h_r = sa, sh
+                suffix = "i"
+                acted = True
+                notes.append(f"shared nisba suffix → -i{where}")
+        elif ar_nis:
+            stripped = ar_m.strip(a_r, Layer.NISBA)
+            if stripped:
+                a_r = stripped
+                acted = True
+                notes.append(f"ar: nisba suffix stripped (de-adjectivized){where}")
+        elif he_nis:
+            stripped = he_m.strip(h_r, Layer.NISBA)
+            if stripped:
+                h_r = stripped
+                acted = True
+                notes.append(f"he: nisba suffix stripped (de-adjectivized){where}")
+
+        # POS promotion uses lexeme-level metadata, so single-word only; a
+        # feminine/nisba strip already reduced one side to its stem.
+        if not multiword and not acted:
+            if _verb_vs_nominal(ar, he):
+                new_a = _decausativize(ar, a_r, base_lookup, notes, "ar")
+                if new_a:
+                    a_r = new_a
+                else:
+                    new_h = _substitute_base(he, base_lookup, notes, "he")
+                    if new_h:
+                        h_r = new_h
+            elif _verb_vs_nominal(he, ar):
+                new_h = _decausativize(he, h_r, base_lookup, notes, "he")
+                if new_h:
+                    h_r = new_h
+                else:
+                    new_a = _substitute_base(ar, base_lookup, notes, "ar")
+                    if new_a:
+                        a_r = new_a
+
+        word_pairs.append(PlannedPair(a_r, h_r, prefix=prefix, suffix=suffix))
+
+    return MergePlan(word_pairs=word_pairs, notes=notes)

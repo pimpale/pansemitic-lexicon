@@ -48,13 +48,16 @@ import numpy as np
 import orjson
 
 from loss import LossBreakdown, ipa_distance, triplet_loss_breakdown
-from kaikki import PartialSource, SharedSource, canonical_from_entry
+from kaikki import PartialSource, SharedSource, canonical_from_entry, _looks_romanized
+from morphology import Layer, analyze_phrase, morphology_for, plan_merge
 from reconstruction import (
     ArabicWord,
     AramaicWord,
     HebrewWord,
     PansemiticWord,
+    ReconstructedSemProWord,
     SyriacWord,
+    Word,
     reconstruct_ancestor,
     word_from_sharedsource,
     ReconstructionError,
@@ -112,6 +115,12 @@ class WordData:
     cognates: set[tuple[str, str]] = field(default_factory=set)  # (normalized, raw)
     lemma_of: set[str] = field(default_factory=set)
     borrow_sources: set[tuple[str, str]] = field(default_factory=set)
+    pos: set[str] = field(default_factory=set)
+    verb_forms: set[str] = field(default_factory=set)  # ar form (I..X) / he binyan
+    # Derivational form_of targets (noun-from-verb), normalized.  A subset of
+    # lemma_of: lemma_of keeps feeding lemma promotion (recall) unchanged,
+    # derived_from feeds merge-time base substitution (fairness).
+    derived_from: set[str] = field(default_factory=set)
 
     def absorb(self, other: Self) -> None:
         """Fold another partial WordData for the same canonical into self."""
@@ -121,6 +130,9 @@ class WordData:
         self.cognates |= other.cognates
         self.lemma_of |= other.lemma_of
         self.borrow_sources |= other.borrow_sources
+        self.pos |= other.pos
+        self.verb_forms |= other.verb_forms
+        self.derived_from |= other.derived_from
 
 
 @dataclass
@@ -260,6 +272,7 @@ class CognateEntry:
     match_layers: list[str]
     shared_borrowing_sources: dict[str, tuple[int, int]] | None = None
     best_sense_match: SenseMatch | None = None
+    morphology: str | None = None  # merge-time normalizations applied (audit)
     ancestor: str | None = None
     pansemitic_form: str | None = None
     loss: LossBreakdown | None = None
@@ -332,6 +345,15 @@ def _process_semitic_entry(
                 wd.romanization = fm.get("form", "")
                 break
 
+    pos = entry.get("pos", "")
+    if pos:
+        wd.pos.add(pos)
+    for ht in entry.get("head_templates", []):
+        if ht.get("name") in ("ar-verb", "he-verb"):
+            form = ht.get("args", {}).get("1", "")
+            if form:
+                wd.verb_forms.add(form)
+
     for tmpl in entry.get("etymology_templates", []):
         args = tmpl.get("args", {})
         name = tmpl.get("name", "")
@@ -371,10 +393,13 @@ def _process_semitic_entry(
                     (src_lang, _normalize_citation_word(src_word)))
 
     for sense in entry.get("senses", []):
+        tags = sense.get("tags") or []
         for fof in sense.get("form_of", []):
             base = fof.get("word", "")
             if base:
                 wd.lemma_of.add(normalize_self(base))
+                if "noun-from-verb" in tags:
+                    wd.derived_from.add(normalize_self(base))
         for gloss in sense.get("glosses", []):
             wd.glosses.add(gloss)
 
@@ -1192,6 +1217,75 @@ def main():
         except ReconstructionError:
             return None
 
+    def _base_romanization(lang: str, norms: frozenset[str]) -> tuple[str, str] | None:
+        """Resolve a derivational base citation to (canonical, romanization).
+
+        The unpointed norm fans out to homograph canonicals; rank them so
+        real lemma pages win: derived_from targets are noun-from-verb bases,
+        so prefer verb POS, then entries that aren't themselves form-of
+        redirects, then the most-glossed page.  '#'-containing canonicals
+        are kaikki headword artifacts (inflection-table rows) — skip them."""
+        words, n2c = (
+            (ar_words, ar_norm_to_canonicals) if lang == "ar"
+            else (he_words, he_norm_to_canonicals)
+        )
+        morph = morphology_for(lang)
+        base_forms = morph.base_verb_forms if morph else frozenset()
+        candidates: list[tuple[tuple[int, int, int, int, str], str, str]] = []
+        for norm in norms:
+            for canonical in n2c.get(norm, []):
+                wd = words[canonical]
+                # '#'-containing canonicals are kaikki inflection-table
+                # artifacts; non-romanized romanization fields are data junk
+                # that would crash the IPA parser downstream.
+                if "#" in canonical or not _looks_romanized(wd.romanization):
+                    continue
+                rank = (
+                    0 if "verb" in wd.pos else 1,
+                    # Among verb homographs prefer the language's underived
+                    # base stem over derived stems sharing the same norm.
+                    0 if wd.verb_forms & base_forms else 1,
+                    1 if wd.lemma_of else 0,
+                    -len(wd.glosses),
+                    canonical,
+                )
+                candidates.append((rank, canonical, wd.romanization))
+        if not candidates:
+            return None
+        _, canonical, roman = min(candidates)
+        return canonical, roman
+
+    def _morph_reconstruct(
+        ar_canonical: str, ar_roman: str, ar_wd: WordData | None,
+        he_canonical: str, he_roman: str, he_wd: WordData | None,
+        notes: list[str],
+    ) -> "Word":
+        """Morphology-aware surface merge (the no-shared-source path).
+
+        Splits compounds, strips asymmetric morphology per plan_merge, then
+        reconstructs word-by-word; multi-word ancestors are space-joined."""
+        ar_phrase = analyze_phrase(
+            "ar", ar_canonical, ar_roman,
+            pos=ar_wd.pos if ar_wd else frozenset(),
+            verb_forms=ar_wd.verb_forms if ar_wd else frozenset(),
+            derived_from=ar_wd.derived_from if ar_wd else frozenset(),
+        )
+        he_phrase = analyze_phrase(
+            "he", he_canonical, he_roman,
+            pos=he_wd.pos if he_wd else frozenset(),
+            verb_forms=he_wd.verb_forms if he_wd else frozenset(),
+            derived_from=he_wd.derived_from if he_wd else frozenset(),
+        )
+        plan = plan_merge(ar_phrase, he_phrase, _base_romanization)
+        notes.extend(plan.notes)
+        parts: list[str] = []
+        for pair in plan.word_pairs:
+            merged = reconstruct_ancestor(pair.ar_roman, pair.he_roman)
+            # Re-attach shared morphology stripped for the stem merge
+            # (shared definiteness as hal-, shared nisba as -i).
+            parts.append(pair.prefix + merged.word + pair.suffix)
+        return ReconstructedSemProWord(word=" ".join(parts))
+
     # ── Build output ─────────────────────────────────────────────
     print(f"\nWriting {OUTPUT_FILE} …")
     _WIKT = "https://en.wiktionary.org/wiki/"
@@ -1272,20 +1366,47 @@ def main():
             else:
                 romanization_tier_obs[key].uses += 1
             lca_sources.append(src)
+        morph_notes: list[str] = []
         try:
-            ancestor_word = (
-                word_from_sharedsource(lca_sources[0]) if lca_sources else None
-            )
-            ancestor = reconstruct_ancestor(
-                entry.arabic.roman, entry.hebrew.roman,
-                ancestor=ancestor_word,
-            )
+            if lca_sources:
+                ancestor = reconstruct_ancestor(
+                    entry.arabic.roman, entry.hebrew.roman,
+                    ancestor=word_from_sharedsource(lca_sources[0]),
+                )
+                # Ancestors that ARE Semitic surface lexemes bypass
+                # plan_merge, so apply the article morphology here: strip,
+                # or preserve shared definiteness as "hal " when the Hebrew
+                # surface is also definite.
+                src_lang = lca_sources[0].lang
+                src_morph = morphology_for(src_lang)
+                if src_morph is not None:
+                    stripped = src_morph.strip_article_ipa(
+                        ancestor.word, lca_sources[0].word)
+                    if stripped:
+                        he_surface = analyze_phrase("he", he_canonical, he_roman)
+                        if all(Layer.DEFINITE in w.layers for w in he_surface.words):
+                            ancestor = type(ancestor)(word="hal " + stripped)
+                            morph_notes.append("shared definite article → hal (shared-source ancestor)")
+                        else:
+                            ancestor = type(ancestor)(word=stripped)
+                            morph_notes.append(
+                                f"{src_lang}: definite article stripped (shared-source ancestor)")
+            else:
+                ancestor = _morph_reconstruct(
+                    ar_canonical, ar_roman, ar_wd,
+                    he_canonical, he_roman, he_wd,
+                    morph_notes,
+                )
             entry.ancestor = str(ancestor)
+            if morph_notes:
+                entry.morphology = "; ".join(morph_notes)
             pansemitic_word = PansemiticWord.from_word(ancestor)
             pansemitic = pansemitic_word.to_protosemitic_convention()
             if pansemitic:
                 entry.pansemitic_form = pansemitic
-                if ar_ipa and he_ipa:
+                # Multi-word ancestors keep their space separator; the loss
+                # phoneme inventory has no segment for it, so skip scoring.
+                if ar_ipa and he_ipa and " " not in pansemitic_word.word:
                     try:
                         entry.loss = triplet_loss_breakdown(
                             pansemitic_word.to_ipa(),
@@ -1325,7 +1446,7 @@ def main():
     print(f"Writing {CSV_FILE} …")
     with open(CSV_FILE, "w", encoding="utf-8", newline="") as f:
         writer = csv.writer(f)
-        writer.writerow(["arabic", "arabic_romanization", "hebrew", "hebrew_romanization", "pansemitic", "layers"])
+        writer.writerow(["arabic", "arabic_romanization", "hebrew", "hebrew_romanization", "pansemitic", "layers", "morphology"])
         for entry in results:
             writer.writerow([
                 entry.arabic.canonical,
@@ -1334,6 +1455,7 @@ def main():
                 entry.hebrew.roman,
                 entry.pansemitic_form or "",
                 ";".join(entry.match_layers),
+                entry.morphology or "",
             ])
 
     good_results = [
@@ -1350,7 +1472,7 @@ def main():
     print(f"Writing {GOOD_CSV_FILE} …")
     with open(GOOD_CSV_FILE, "w", encoding="utf-8", newline="") as f:
         writer = csv.writer(f)
-        writer.writerow(["arabic", "arabic_romanization", "hebrew", "hebrew_romanization", "pansemitic", "arabic_meaning", "hebrew_meaning"])
+        writer.writerow(["arabic", "arabic_romanization", "hebrew", "hebrew_romanization", "pansemitic", "arabic_meaning", "hebrew_meaning", "morphology"])
         for entry in good_results:
             writer.writerow([
                 entry.arabic.canonical,
@@ -1360,6 +1482,7 @@ def main():
                 entry.pansemitic_form or "",
                 entry.best_sense_match.arabic_sense if entry.best_sense_match else "",
                 entry.best_sense_match.hebrew_sense if entry.best_sense_match else "",
+                entry.morphology or "",
             ])
 
     tier1_available = sum(1 for obs in romanization_tier_obs.values() if obs.tier1)
@@ -1375,9 +1498,11 @@ def main():
 
     pansemitic_count = sum(1 for e in results if e.pansemitic_form)
     total_failures = sum(unsupported_langs.values()) + consonant_mismatches + missing_romanizations + empty_ancestors
+    morph_adjusted = sum(1 for e in results if e.morphology)
     print(f"\nDone in {time.monotonic() - t_total:.1f}s total.")
     print(f"  {len(results)} cognate pairs written ({skipped} skipped, no senses)")
     print(f"  {pansemitic_count} pansemitic forms generated")
+    print(f"  {morph_adjusted} pairs morphologically normalized before merge")
     print("\n  Romanization tier inspection:")
     print(f"    {len(romanization_tier_obs)} unique shared-source words "
           f"({sum(obs.uses for obs in romanization_tier_obs.values())} total lookups)")
