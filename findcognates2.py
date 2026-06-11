@@ -87,6 +87,20 @@ ETYMOLOGY_TEMPLATES = {"bor", "der", "lbor", "ubor", "slbor", "borrowed",
                        "inh", "inh+", "bor+", "der+"}
 ETYMON_RELATIONS = {":bor", ":der", ":inh", ":from", ":lbor"}
 
+# Head-template arg carrying gender/number tokens per template name
+# (he-noun g="m-p", ar-numeral 2="m-d", ar-head 3="p", …).  Values are
+# parsed as ","/"-"-separated tokens and filtered to the known set, so
+# unrelated arg contents are harmless.
+_HEAD_GENDER_NUMBER_ARGS = {
+    "he-noun": "g",
+    "he-proper noun": "g",
+    "ar-noun": "2",
+    "ar-numeral": "2",
+    "ar-proper noun": "2",
+    "ar-head": "3",
+}
+_GENDER_NUMBER_TOKENS = frozenset({"m", "f", "p", "d"})
+
 
 # Wiktionary editors interchangeably use U+02BF/U+02BB for ayin and U+02BE for
 # alif in romanized citations; collapse to the project's convention (U+0295,
@@ -117,6 +131,8 @@ class WordData:
     borrow_sources: set[tuple[str, str]] = field(default_factory=set)
     pos: set[str] = field(default_factory=set)
     verb_forms: set[str] = field(default_factory=set)  # ar form (I..X) / he binyan
+    number: set[str] = field(default_factory=set)  # ⊆ {"p", "d"} (plural/dual lemma)
+    gender: set[str] = field(default_factory=set)  # ⊆ {"m", "f"}
     # Derivational form_of targets (noun-from-verb), normalized.  A subset of
     # lemma_of: lemma_of keeps feeding lemma promotion (recall) unchanged,
     # derived_from feeds merge-time base substitution (fairness).
@@ -132,6 +148,8 @@ class WordData:
         self.borrow_sources |= other.borrow_sources
         self.pos |= other.pos
         self.verb_forms |= other.verb_forms
+        self.number |= other.number
+        self.gender |= other.gender
         self.derived_from |= other.derived_from
 
 
@@ -349,10 +367,20 @@ def _process_semitic_entry(
     if pos:
         wd.pos.add(pos)
     for ht in entry.get("head_templates", []):
-        if ht.get("name") in ("ar-verb", "he-verb"):
-            form = ht.get("args", {}).get("1", "")
+        name = ht.get("name", "")
+        args = ht.get("args", {})
+        if name in ("ar-verb", "he-verb"):
+            form = args.get("1", "")
             if form:
                 wd.verb_forms.add(form)
+        gn_arg = _HEAD_GENDER_NUMBER_ARGS.get(name)
+        if gn_arg:
+            value = args.get(gn_arg, "")
+            if isinstance(value, str) and value:
+                tokens = {t for part in value.split(",")
+                          for t in part.split("-")} & _GENDER_NUMBER_TOKENS
+                wd.number |= tokens & {"p", "d"}
+                wd.gender |= tokens & {"m", "f"}
 
     for tmpl in entry.get("etymology_templates", []):
         args = tmpl.get("args", {})
@@ -394,6 +422,10 @@ def _process_semitic_entry(
 
     for sense in entry.get("senses", []):
         tags = sense.get("tags") or []
+        if "plural" in tags or "plural-only" in tags:
+            wd.number.add("p")
+        if "dual" in tags:
+            wd.number.add("d")
         for fof in sense.get("form_of", []):
             base = fof.get("word", "")
             if base:
@@ -1268,12 +1300,16 @@ def main():
             "ar", ar_canonical, ar_roman,
             pos=ar_wd.pos if ar_wd else frozenset(),
             verb_forms=ar_wd.verb_forms if ar_wd else frozenset(),
+            number=ar_wd.number if ar_wd else frozenset(),
+            gender=ar_wd.gender if ar_wd else frozenset(),
             derived_from=ar_wd.derived_from if ar_wd else frozenset(),
         )
         he_phrase = analyze_phrase(
             "he", he_canonical, he_roman,
             pos=he_wd.pos if he_wd else frozenset(),
             verb_forms=he_wd.verb_forms if he_wd else frozenset(),
+            number=he_wd.number if he_wd else frozenset(),
+            gender=he_wd.gender if he_wd else frozenset(),
             derived_from=he_wd.derived_from if he_wd else frozenset(),
         )
         plan = plan_merge(ar_phrase, he_phrase, _base_romanization)

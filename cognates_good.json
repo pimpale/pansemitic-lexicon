@@ -82,15 +82,15 @@
         0,
         0
       ],
+      "sem-pro:*dam-": [
+        1,
+        0
+      ],
       "sem-pro:*ʔadam-": [
         1,
         0
       ],
       "sem-pro:ʔadam-": [
-        1,
-        0
-      ],
-      "sem-pro:*dam-": [
         1,
         0
       ]
@@ -1704,11 +1704,11 @@
         1,
         1
       ],
-      "arc-imp:𐡀𐡓𐡆𐡀": [
+      "arc:רָזָ֥א": [
         1,
         1
       ],
-      "arc:רָזָ֥א": [
+      "arc-imp:𐡀𐡓𐡆𐡀": [
         1,
         1
       ]
@@ -1811,6 +1811,10 @@
         1,
         0
       ],
+      "oc:artichaut": [
+        1,
+        0
+      ],
       "osp:alcarchofa": [
         1,
         0
@@ -1819,15 +1823,11 @@
         1,
         0
       ],
-      "oc:artichaut": [
-        1,
-        0
-      ],
-      "lmo:articioch": [
+      "xaa:الْخَرْشُوف": [
         1,
         1
       ],
-      "xaa:الْخَرْشُوف": [
+      "lmo:articioch": [
         1,
         1
       ],
@@ -1835,11 +1835,11 @@
         2,
         0
       ],
-      "akk:𒅈𒋢𒌒𒁍": [
+      "xaa:الخرشوف": [
         2,
         1
       ],
-      "xaa:الخرشوف": [
+      "akk:𒅈𒋢𒌒𒁍": [
         2,
         1
       ]
@@ -4911,7 +4911,6 @@
       "hebrew_pos": "noun",
       "similarity": 0.9627
     },
-    "morphology": "ar: feminine ending stripped",
     "ancestor": "recon-sem-pro:ʔumːa",
     "pansemitic_form": "ʔuma",
     "loss": {
@@ -5437,7 +5436,7 @@
         1,
         1
       ],
-      "fro:lonce": [
+      "grc:λύγξ": [
         1,
         2
       ],
@@ -5445,15 +5444,15 @@
         1,
         2
       ],
-      "frm:once": [
-        1,
-        2
-      ],
       "la:lynx": [
         1,
         2
       ],
-      "la-vul:*luncea": [
+      "fro:lonce": [
+        1,
+        2
+      ],
+      "frm:once": [
         1,
         2
       ],
@@ -5461,7 +5460,7 @@
         1,
         2
       ],
-      "grc:λύγξ": [
+      "la-vul:*luncea": [
         1,
         2
       ],
@@ -5533,7 +5532,7 @@
         1,
         1
       ],
-      "fro:lonce": [
+      "grc:λύγξ": [
         1,
         2
       ],
@@ -5541,15 +5540,15 @@
         1,
         2
       ],
-      "frm:once": [
-        1,
-        2
-      ],
       "la:lynx": [
         1,
         2
       ],
-      "la-vul:*luncea": [
+      "fro:lonce": [
+        1,
+        2
+      ],
+      "frm:once": [
         1,
         2
       ],
@@ -5557,7 +5556,7 @@
         1,
         2
       ],
-      "grc:λύγξ": [
+      "la-vul:*luncea": [
         1,
         2
       ],
@@ -6310,11 +6309,11 @@
         1,
         0
       ],
-      "ine-pro:*kleh₂u-": [
+      "grk-pro:*klāwī́ds": [
         2,
         1
       ],
-      "grk-pro:*klāwī́ds": [
+      "ine-pro:*kleh₂u-": [
         2,
         1
       ]
@@ -8295,7 +8294,7 @@
         0,
         0
       ],
-      "sa:सिन्धु॑": [
+      "sa:सिन्धु॑ stem or": [
         1,
         1
       ],
@@ -8303,11 +8302,11 @@
         1,
         1
       ],
-      "inc-pro:*síndʰuṣ": [
+      "sa:सिन्धु॑": [
         1,
         1
       ],
-      "sa:सिन्धु॑ stem or": [
+      "inc-pro:*síndʰuṣ": [
         1,
         1
       ]
@@ -8354,23 +8353,23 @@
         0,
         0
       ],
+      "nan-hbl:日本": [
+        0,
+        0
+      ],
       "ms:Jepang": [
         0,
         0
       ],
-      "nan-hbl:日本": [
-        0,
-        0
+      "nan-hbl:日本//Ji̍t-pún": [
+        1,
+        1
       ],
       "ltc:日本": [
         1,
         1
       ],
       "zh:日本": [
-        1,
-        1
-      ],
-      "nan-hbl:日本//Ji̍t-pún": [
         1,
         1
       ]
@@ -9497,6 +9496,10 @@
         1,
         1
       ],
+      "it:ballone": [
+        2,
+        2
+      ],
       "it:pallone": [
         2,
         2
@@ -9505,23 +9508,11 @@
         2,
         2
       ],
-      "it:ballone": [
-        2,
-        2
-      ],
       "it:balla": [
         3,
         3
       ],
-      "lng:*palla": [
-        4,
-        4
-      ],
       "la-med:balla": [
-        4,
-        4
-      ],
-      "fro:balle": [
         4,
         4
       ],
@@ -9529,15 +9520,23 @@
         4,
         4
       ],
+      "fro:balle": [
+        4,
+        4
+      ],
       "gem-pro:*ballô": [
         4,
         4
       ],
-      "la:bala": [
+      "lng:*palla": [
+        4,
+        4
+      ],
+      "la:palla": [
         5,
         5
       ],
-      "la:palla": [
+      "la:bala": [
         5,
         5
       ],
@@ -9557,19 +9556,19 @@
         6,
         6
       ],
-      "ine-pro:*pel-": [
-        6,
-        6
-      ],
       "itc-pro:*palasā": [
         6,
         6
       ],
-      "ine-pro:pĺ̥h₂seh₂": [
+      "ine-pro:*pel-": [
+        6,
+        6
+      ],
+      "gmw-pro:*ballu": [
         7,
         7
       ],
-      "gmw-pro:*ballu": [
+      "ine-pro:pĺ̥h₂seh₂": [
         7,
         7
       ],
@@ -9843,27 +9842,7 @@
         0,
         0
       ],
-      "enm:barre": [
-        1,
-        1
-      ],
-      "enm:barren": [
-        1,
-        1
-      ],
       "enm:bar": [
-        1,
-        1
-      ],
-      "fro:barrer": [
-        1,
-        1
-      ],
-      "la-vul:*barra": [
-        1,
-        1
-      ],
-      "enm:bare": [
         1,
         1
       ],
@@ -9871,11 +9850,11 @@
         1,
         1
       ],
-      "la-med:barrare": [
+      "grc:βάρος": [
         1,
         1
       ],
-      "grc:βάρος": [
+      "enm:barren": [
         1,
         1
       ],
@@ -9883,19 +9862,31 @@
         1,
         1
       ],
+      "enm:bare": [
+        1,
+        1
+      ],
+      "la-med:barrare": [
+        1,
+        1
+      ],
+      "fro:barrer": [
+        1,
+        1
+      ],
+      "enm:barre": [
+        1,
+        1
+      ],
       "enm:barr": [
         1,
         1
       ],
-      "non:bár": [
-        2,
-        2
+      "la-vul:*barra": [
+        1,
+        1
       ],
-      "ang:bār": [
-        2,
-        2
-      ],
-      "ang:bere": [
+      "la:barra": [
         2,
         2
       ],
@@ -9903,7 +9894,15 @@
         2,
         2
       ],
-      "gmw-pro:*baʀ": [
+      "ang:bere": [
+        2,
+        2
+      ],
+      "ang:bær": [
+        2,
+        2
+      ],
+      "ang:bār": [
         2,
         2
       ],
@@ -9915,15 +9914,47 @@
         2,
         2
       ],
-      "la:barra": [
+      "non:bár": [
         2,
         2
       ],
-      "ang:bær": [
+      "gmw-pro:*baʀ": [
         2,
         2
+      ],
+      "ine-pro:*bʰosós": [
+        3,
+        3
+      ],
+      "gem-pro:bazaz": [
+        3,
+        3
+      ],
+      "cel-gau:*barros": [
+        3,
+        3
       ],
       "gmw-pro:*bair": [
+        3,
+        3
+      ],
+      "ine-pro:*bʰerH-": [
+        3,
+        3
+      ],
+      "gem-pro:*baraz": [
+        3,
+        3
+      ],
+      "gem-pro:bērō": [
+        3,
+        3
+      ],
+      "gmw-pro:bair": [
+        3,
+        3
+      ],
+      "ine-pro:*bʰer-": [
         3,
         3
       ],
@@ -9935,7 +9966,7 @@
         3,
         3
       ],
-      "gmw-pro:bair": [
+      "gmw-pro:barī": [
         3,
         3
       ],
@@ -9943,47 +9974,15 @@
         3,
         3
       ],
-      "gem-pro:bērō": [
-        3,
-        3
-      ],
-      "cel-gau:*barros": [
-        3,
-        3
-      ],
-      "gem-pro:bazaz": [
-        3,
-        3
-      ],
-      "gmw-pro:barī": [
-        3,
-        3
-      ],
-      "gem-pro:*baraz": [
-        3,
-        3
-      ],
-      "ine-pro:*bʰosós": [
-        3,
-        3
-      ],
-      "ine-pro:*bʰerH-": [
-        3,
-        3
-      ],
-      "ine-pro:*bʰer-": [
-        3,
-        3
-      ],
       "ine-pro:*bʰers-": [
         4,
         4
       ],
-      "ine-pro:bʰoréh₂": [
+      "gem-pro:*baizaz": [
         4,
         4
       ],
-      "gem-pro:*baizaz": [
+      "ine-pro:bʰoréh₂": [
         4,
         4
       ]
@@ -10031,27 +10030,7 @@
         0,
         0
       ],
-      "enm:barre": [
-        1,
-        1
-      ],
-      "enm:barren": [
-        1,
-        1
-      ],
       "enm:bar": [
-        1,
-        1
-      ],
-      "fro:barrer": [
-        1,
-        1
-      ],
-      "la-vul:*barra": [
-        1,
-        1
-      ],
-      "enm:bare": [
         1,
         1
       ],
@@ -10059,11 +10038,11 @@
         1,
         1
       ],
-      "la-med:barrare": [
+      "grc:βάρος": [
         1,
         1
       ],
-      "grc:βάρος": [
+      "enm:barren": [
         1,
         1
       ],
@@ -10071,19 +10050,31 @@
         1,
         1
       ],
+      "enm:bare": [
+        1,
+        1
+      ],
+      "la-med:barrare": [
+        1,
+        1
+      ],
+      "fro:barrer": [
+        1,
+        1
+      ],
+      "enm:barre": [
+        1,
+        1
+      ],
       "enm:barr": [
         1,
         1
       ],
-      "non:bár": [
-        2,
-        2
+      "la-vul:*barra": [
+        1,
+        1
       ],
-      "ang:bār": [
-        2,
-        2
-      ],
-      "ang:bere": [
+      "la:barra": [
         2,
         2
       ],
@@ -10091,7 +10082,15 @@
         2,
         2
       ],
-      "gmw-pro:*baʀ": [
+      "ang:bere": [
+        2,
+        2
+      ],
+      "ang:bær": [
+        2,
+        2
+      ],
+      "ang:bār": [
         2,
         2
       ],
@@ -10103,15 +10102,47 @@
         2,
         2
       ],
-      "la:barra": [
+      "non:bár": [
         2,
         2
       ],
-      "ang:bær": [
+      "gmw-pro:*baʀ": [
         2,
         2
+      ],
+      "ine-pro:*bʰosós": [
+        3,
+        3
+      ],
+      "gem-pro:bazaz": [
+        3,
+        3
+      ],
+      "cel-gau:*barros": [
+        3,
+        3
       ],
       "gmw-pro:*bair": [
+        3,
+        3
+      ],
+      "ine-pro:*bʰerH-": [
+        3,
+        3
+      ],
+      "gem-pro:*baraz": [
+        3,
+        3
+      ],
+      "gem-pro:bērō": [
+        3,
+        3
+      ],
+      "gmw-pro:bair": [
+        3,
+        3
+      ],
+      "ine-pro:*bʰer-": [
         3,
         3
       ],
@@ -10123,7 +10154,7 @@
         3,
         3
       ],
-      "gmw-pro:bair": [
+      "gmw-pro:barī": [
         3,
         3
       ],
@@ -10131,47 +10162,15 @@
         3,
         3
       ],
-      "gem-pro:bērō": [
-        3,
-        3
-      ],
-      "cel-gau:*barros": [
-        3,
-        3
-      ],
-      "gem-pro:bazaz": [
-        3,
-        3
-      ],
-      "gmw-pro:barī": [
-        3,
-        3
-      ],
-      "gem-pro:*baraz": [
-        3,
-        3
-      ],
-      "ine-pro:*bʰosós": [
-        3,
-        3
-      ],
-      "ine-pro:*bʰerH-": [
-        3,
-        3
-      ],
-      "ine-pro:*bʰer-": [
-        3,
-        3
-      ],
       "ine-pro:*bʰers-": [
         4,
         4
       ],
-      "ine-pro:bʰoréh₂": [
+      "gem-pro:*baizaz": [
         4,
         4
       ],
-      "gem-pro:*baizaz": [
+      "ine-pro:bʰoréh₂": [
         4,
         4
       ]
@@ -11678,6 +11677,7 @@
       "hebrew_pos": "verb",
       "similarity": 0.8604
     },
+    "morphology": "he: feminine ending stripped",
     "ancestor": "recon-sem-pro:bakaː",
     "pansemitic_form": "baka",
     "loss": {
@@ -11922,6 +11922,7 @@
       "hebrew_pos": "verb",
       "similarity": 0.8329
     },
+    "morphology": "he: feminine ending stripped",
     "ancestor": "recon-sem-pro:balija",
     "pansemitic_form": "baliya",
     "loss": {
@@ -12057,13 +12058,13 @@
         0,
         1
       ],
-      "wo:banaana": [
-        2,
-        0
-      ],
       "fr:banane": [
         0,
         2
+      ],
+      "wo:banaana": [
+        2,
+        0
       ],
       "pt:banana": [
         1,
@@ -12309,19 +12310,19 @@
         0,
         0
       ],
-      "gem-pro:*bankiz": [
-        1,
-        0
-      ],
       "lng:bank": [
         1,
         0
       ],
-      "gmw-pro:*banki": [
+      "gem-pro:*bankiz": [
+        1,
+        0
+      ],
+      "goh:bank": [
         1,
         1
       ],
-      "it:banca": [
+      "gmw-pro:*banki": [
         1,
         1
       ],
@@ -12329,15 +12330,15 @@
         1,
         1
       ],
-      "goh:bank": [
+      "it:banca": [
         1,
         1
       ],
-      "ine-pro:*bʰeg-": [
+      "gmw-pro:banki": [
         2,
         2
       ],
-      "gmw-pro:banki": [
+      "ine-pro:*bʰeg-": [
         2,
         2
       ],
@@ -12546,14 +12547,9 @@
       "hebrew_pos": "name",
       "similarity": 0.9925
     },
-    "morphology": "word-count mismatch (ar 2 vs he 1); merged unsplit",
-    "ancestor": "recon-sem-pro:baijthalmaqdis",
-    "pansemitic_form": "baiythalmaqdis",
-    "loss": {
-      "arabic": 0.10357142857142856,
-      "hebrew": 0.3737142857142857,
-      "joint": 0.4772857142857143
-    }
+    "morphology": "shared definite article → hal (word 2)",
+    "ancestor": "recon-sem-pro:baijt hal maqdis",
+    "pansemitic_form": "baiyt hal maqdis"
   },
   {
     "arabic": {
@@ -13093,7 +13089,15 @@
         0,
         0
       ],
+      "bo:བོད": [
+        1,
+        1
+      ],
       "sa:अन्त": [
+        1,
+        1
+      ],
+      "pra:𑀪𑁄𑀝𑁆𑀝𑀁𑀢": [
         1,
         1
       ],
@@ -13109,23 +13113,7 @@
         1,
         1
       ],
-      "bo:བོད": [
-        1,
-        1
-      ],
-      "pra:𑀪𑁄𑀝𑁆𑀝𑀁𑀢": [
-        1,
-        1
-      ],
       "iir-pro:*Hántas": [
-        2,
-        2
-      ],
-      "pra:*𑀪𑁄𑀝𑁆𑀝": [
-        2,
-        2
-      ],
-      "inc-pro:*Hántas": [
         2,
         2
       ],
@@ -13133,7 +13121,15 @@
         2,
         2
       ],
+      "pra:*𑀪𑁄𑀝𑁆𑀝": [
+        2,
+        2
+      ],
       "pra:*𑀪𑁄𑀝": [
+        2,
+        2
+      ],
+      "inc-pro:*Hántas": [
         2,
         2
       ],
@@ -13376,11 +13372,11 @@
         0,
         0
       ],
-      "grc:Βρεττανία": [
+      "cel-pro:*Kʷritanī": [
         1,
         1
       ],
-      "cel-pro:*Kʷritanī": [
+      "grc:Βρεττανία": [
         1,
         1
       ],
@@ -13476,11 +13472,11 @@
         0,
         0
       ],
-      "grc:Βρεττανία": [
+      "cel-pro:*Kʷritanī": [
         1,
         1
       ],
-      "cel-pro:*Kʷritanī": [
+      "grc:Βρεττανία": [
         1,
         1
       ],
@@ -13867,14 +13863,6 @@
         0,
         0
       ],
-      "lng:bizza": [
-        1,
-        1
-      ],
-      "nap:pizza": [
-        1,
-        1
-      ],
       "goh:bizza": [
         1,
         1
@@ -13883,21 +13871,21 @@
         1,
         1
       ],
-      "grc:πίτα": [
-        2,
-        2
+      "lng:bizza": [
+        1,
+        1
+      ],
+      "nap:pizza": [
+        1,
+        1
       ],
       "gmw-pro:*bitā": [
         2,
         2
       ],
-      "arc:פִיתָּא": [
-        3,
-        3
-      ],
-      "sq:pite": [
-        3,
-        3
+      "grc:πίτα": [
+        2,
+        2
       ],
       "sq:pitë": [
         3,
@@ -13907,11 +13895,19 @@
         3,
         3
       ],
-      "la-vul:*picta": [
+      "sq:pite": [
+        3,
+        3
+      ],
+      "arc:פִיתָּא": [
+        3,
+        3
+      ],
+      "sqj-pro:*pītu-": [
         4,
         4
       ],
-      "sqj-pro:*pītu-": [
+      "la-vul:*picta": [
         4,
         4
       ]
@@ -13962,14 +13958,6 @@
         2,
         1
       ],
-      "arc:פִיתָּא": [
-        3,
-        2
-      ],
-      "sq:pite": [
-        3,
-        2
-      ],
       "sq:pitë": [
         3,
         2
@@ -13978,11 +13966,19 @@
         3,
         2
       ],
-      "la-vul:*picta": [
+      "sq:pite": [
+        3,
+        2
+      ],
+      "arc:פִיתָּא": [
+        3,
+        2
+      ],
+      "sqj-pro:*pītu-": [
         4,
         3
       ],
-      "sqj-pro:*pītu-": [
+      "la-vul:*picta": [
         4,
         3
       ]
@@ -14030,19 +14026,19 @@
         0,
         0
       ],
-      "ur:پائِجامَہ": [
-        1,
-        1
-      ],
-      "hi:पाजामा": [
-        1,
-        1
-      ],
       "fa-cls:پایجامه": [
         1,
         1
       ],
       "hi:पैजामा": [
+        1,
+        1
+      ],
+      "ur:پائِجامَہ": [
+        1,
+        1
+      ],
+      "hi:पाजामा": [
         1,
         1
       ],
@@ -14102,15 +14098,15 @@
         1,
         1
       ],
-      "gem-pro:*beuzą": [
-        2,
-        1
-      ],
       "gmw-pro:*beuʀ": [
         2,
         1
       ],
       "gmh:bier": [
+        2,
+        1
+      ],
+      "gem-pro:*beuzą": [
         2,
         1
       ],
@@ -14122,11 +14118,11 @@
         2,
         2
       ],
-      "goh:pior": [
+      "gem-pro:beuzą": [
         3,
         2
       ],
-      "gem-pro:beuzą": [
+      "goh:pior": [
         3,
         2
       ]
@@ -14407,23 +14403,19 @@
         0,
         0
       ],
-      "grc:Πλούτων": [
-        0,
-        0
-      ],
       "la:Pluto": [
         0,
         0
       ],
+      "grc:Πλούτων": [
+        0,
+        0
+      ],
+      "grc:Πλούτων<t:god of the underworld>": [
+        1,
+        1
+      ],
       "la:Plūtō": [
-        1,
-        1
-      ],
-      "enm:Pluto": [
-        1,
-        1
-      ],
-      "la:Plūtōn": [
         1,
         1
       ],
@@ -14431,7 +14423,11 @@
         1,
         1
       ],
-      "grc:Πλούτων<t:god of the underworld>": [
+      "la:Plūtōn": [
+        1,
+        1
+      ],
+      "enm:Pluto": [
         1,
         1
       ]
@@ -15349,11 +15345,11 @@
         0,
         0
       ],
-      "sem-pro:*ṯamar-": [
+      "sem-pro:ṯamar-": [
         1,
         1
       ],
-      "sem-pro:ṯamar-": [
+      "sem-pro:*ṯamar-": [
         1,
         1
       ]
@@ -15746,11 +15742,11 @@
         0,
         1
       ],
-      "grc:θύννος": [
+      "la:thunnus": [
         0,
         1
       ],
-      "la:thunnus": [
+      "grc:θύννος": [
         0,
         1
       ],
@@ -16313,7 +16309,7 @@
         0,
         0
       ],
-      "fro:tenez": [
+      "fro:tenir": [
         1,
         1
       ],
@@ -16321,7 +16317,7 @@
         1,
         1
       ],
-      "fro:tenir": [
+      "fro:tenez": [
         1,
         1
       ],
@@ -16511,11 +16507,11 @@
         0,
         0
       ],
-      "la:Caesar": [
+      "sla-pro:*cěsařь": [
         1,
         1
       ],
-      "orv:цесарь": [
+      "gem-pro:*kaisaraz": [
         1,
         1
       ],
@@ -16527,11 +16523,11 @@
         1,
         1
       ],
-      "gem-pro:*kaisaraz": [
+      "orv:цесарь": [
         1,
         1
       ],
-      "sla-pro:*cěsařь": [
+      "la:Caesar": [
         1,
         1
       ],
@@ -16682,7 +16678,6 @@
       "hebrew_pos": "adj",
       "similarity": 0.8895
     },
-    "morphology": "ar: feminine ending stripped",
     "ancestor": "recon-sem-pro:θaːnija",
     "pansemitic_form": "saniya",
     "loss": {
@@ -16721,7 +16716,7 @@
       "hebrew_pos": "adj",
       "similarity": 0.8321
     },
-    "morphology": "ar: feminine ending stripped",
+    "morphology": "ar: feminine ending stripped; he: nisba suffix stripped (de-adjectivized)",
     "ancestor": "recon-sem-pro:θaːnij",
     "pansemitic_form": "saniy",
     "loss": {
@@ -17360,6 +17355,7 @@
       "hebrew_pos": "adv",
       "similarity": 0.9968
     },
+    "morphology": "he: feminine ending stripped",
     "ancestor": "recon-sem-pro:θamːa",
     "pansemitic_form": "sama",
     "loss": {
@@ -17860,7 +17856,6 @@
       "hebrew_pos": "noun",
       "similarity": 0.8976
     },
-    "morphology": "ar: feminine ending stripped",
     "ancestor": "recon-sem-pro:gabha",
     "pansemitic_form": "gabha",
     "loss": {
@@ -19184,11 +19179,7 @@
         0,
         0
       ],
-      "dum:colve": [
-        1,
-        1
-      ],
-      "sco:gowf": [
+      "gem-pro:*kulbaz": [
         1,
         1
       ],
@@ -19196,7 +19187,11 @@
         1,
         1
       ],
-      "gem-pro:*kulbaz": [
+      "sco:gowf": [
+        1,
+        1
+      ],
+      "dum:colve": [
         1,
         1
       ],
@@ -19204,15 +19199,15 @@
         1,
         1
       ],
+      "odt:*kolbo": [
+        2,
+        2
+      ],
       "gmw-pro:*kolbō": [
         2,
         2
       ],
       "ine-pro:*gel-": [
-        2,
-        2
-      ],
-      "odt:*kolbo": [
         2,
         2
       ],
@@ -19555,11 +19550,11 @@
         0,
         0
       ],
-      "fro:general": [
+      "la:generālis": [
         1,
         1
       ],
-      "la:generālis": [
+      "fro:general": [
         1,
         1
       ]
@@ -19893,10 +19888,6 @@
         0,
         0
       ],
-      "enm:fustian": [
-        1,
-        1
-      ],
       "enm:Geayne": [
         1,
         1
@@ -19905,11 +19896,23 @@
         1,
         1
       ],
+      "enm:fustian": [
+        1,
+        1
+      ],
       "fro:fustaingne": [
         2,
         2
       ],
+      "la-med:fūstāneum": [
+        2,
+        2
+      ],
       "fro:fustaine oblique singular or": [
+        2,
+        2
+      ],
+      "frm:jean": [
         2,
         2
       ],
@@ -19921,19 +19924,11 @@
         2,
         2
       ],
-      "fro:fustaine": [
-        2,
-        2
-      ],
       "fro:fustane": [
         2,
         2
       ],
-      "la-med:fūstāneum": [
-        2,
-        2
-      ],
-      "frm:jean": [
+      "frm:fustian": [
         2,
         2
       ],
@@ -19941,7 +19936,7 @@
         2,
         2
       ],
-      "frm:fustian": [
+      "fro:fustaine": [
         2,
         2
       ],
@@ -20738,12 +20733,13 @@
       "hebrew_pos": "noun",
       "similarity": 0.9146
     },
-    "ancestor": "recon-sem-pro:ħadiːθot",
-    "pansemitic_form": "xadisat",
+    "morphology": "he: plural suffix stripped",
+    "ancestor": "recon-sem-pro:ħadiːθ",
+    "pansemitic_form": "xadis",
     "loss": {
-      "arabic": 0.40714285714285714,
-      "hebrew": 0.2025714285714286,
-      "joint": 0.6097142857142858
+      "arabic": 0.13,
+      "hebrew": 0.4321428571428571,
+      "joint": 0.562142857142857
     }
   },
   {
@@ -21555,6 +21551,7 @@
       "hebrew_pos": "verb",
       "similarity": 0.9104
     },
+    "morphology": "he: feminine ending stripped",
     "ancestor": "recon-sem-pro:ħakaː",
     "pansemitic_form": "xaka",
     "loss": {
@@ -22428,13 +22425,13 @@
       "hebrew_pos": "noun",
       "similarity": 0.9378
     },
-    "morphology": "ar: feminine ending stripped",
-    "ancestor": "recon-sem-pro:ħajim",
-    "pansemitic_form": "xayim",
+    "morphology": "ar: feminine ending stripped; he: plural suffix stripped",
+    "ancestor": "recon-sem-pro:ħaj",
+    "pansemitic_form": "xay",
     "loss": {
-      "arabic": 0.655,
-      "hebrew": 0.16,
-      "joint": 0.8150000000000001
+      "arabic": 0.32999999999999996,
+      "hebrew": 0.54,
+      "joint": 0.87
     }
   },
   {
@@ -22473,13 +22470,13 @@
       "hebrew_pos": "noun",
       "similarity": 0.8763
     },
-    "morphology": "ar: substituted cited base حَيَّ (ḥayya)",
-    "ancestor": "recon-sem-pro:ħajːa",
-    "pansemitic_form": "xaya",
+    "morphology": "he: feminine ending stripped",
+    "ancestor": "recon-sem-pro:ħajawaːn",
+    "pansemitic_form": "xayawan",
     "loss": {
-      "arabic": 0.5571428571428572,
-      "hebrew": 0.2,
-      "joint": 0.7571428571428571
+      "arabic": 0.07142857142857142,
+      "hebrew": 0.6428571428571429,
+      "joint": 0.7142857142857143
     }
   },
   {
@@ -22567,6 +22564,7 @@
       "hebrew_pos": "noun",
       "similarity": 0.8766
     },
+    "morphology": "he: plural suffix stripped",
     "ancestor": "recon-sem-pro:ħajija",
     "pansemitic_form": "xayiya",
     "loss": {
@@ -22710,13 +22708,13 @@
       "hebrew_pos": "noun",
       "similarity": 0.905
     },
-    "morphology": "ar: substituted cited base حَوَى (ḥawā)",
-    "ancestor": "recon-sem-pro:ħawaː",
-    "pansemitic_form": "xawa",
+    "morphology": "he: feminine ending stripped",
+    "ancestor": "recon-sem-pro:ħajː",
+    "pansemitic_form": "xay",
     "loss": {
-      "arabic": 0.4375,
-      "hebrew": 0.3375,
-      "joint": 0.775
+      "arabic": 0.16666666666666666,
+      "hebrew": 0.3,
+      "joint": 0.4666666666666667
     }
   },
   {
@@ -22874,7 +22872,6 @@
       "hebrew_pos": "noun",
       "similarity": 1.0022
     },
-    "morphology": "ar: feminine ending stripped",
     "ancestor": "recon-sem-pro:ħulba",
     "pansemitic_form": "xulba",
     "loss": {
@@ -23291,11 +23288,11 @@
         0,
         0
       ],
-      "sem-pro:*ḥimār-": [
+      "sem-pro:ḥimār-": [
         0,
         1
       ],
-      "sem-pro:ḥimār-": [
+      "sem-pro:*ḥimār-": [
         0,
         1
       ]
@@ -23529,7 +23526,6 @@
       "hebrew_pos": "noun",
       "similarity": 1.0018
     },
-    "morphology": "ar: feminine ending stripped",
     "ancestor": "recon-sem-pro:ħintˤa",
     "pansemitic_form": "xinṭa",
     "loss": {
@@ -23988,11 +23984,11 @@
         1,
         0
       ],
-      "ine-pro:*ǵʰer-": [
+      "phn:𐤇𐤓𐤈𐤉𐤕<t:that which has been written>": [
         1,
         1
       ],
-      "phn:𐤇𐤓𐤈𐤉𐤕<t:that which has been written>": [
+      "ine-pro:*ǵʰer-": [
         1,
         1
       ]
@@ -24124,11 +24120,11 @@
         2,
         0
       ],
-      "ine-pro:*ǵʰer-": [
+      "phn:𐤇𐤓𐤈𐤉𐤕<t:that which has been written>": [
         2,
         1
       ],
-      "phn:𐤇𐤓𐤈𐤉𐤕<t:that which has been written>": [
+      "ine-pro:*ǵʰer-": [
         2,
         1
       ]
@@ -26192,13 +26188,12 @@
       "hebrew_pos": "noun",
       "similarity": 0.9688
     },
-    "morphology": "ar: feminine ending stripped",
-    "ancestor": "recon-sem-pro:daqiːq",
-    "pansemitic_form": "daqiq",
+    "ancestor": "recon-sem-pro:daqiːqa",
+    "pansemitic_form": "daqiqa",
     "loss": {
-      "arabic": 0.16666666666666666,
-      "hebrew": 0.43499999999999994,
-      "joint": 0.6016666666666666
+      "arabic": 0.049999999999999996,
+      "hebrew": 0.3833333333333333,
+      "joint": 0.4333333333333333
     }
   },
   {
@@ -26939,15 +26934,11 @@
         1,
         0
       ],
-      "nl:daelder": [
-        1,
-        1
-      ],
       "nl:daalder": [
         1,
         1
       ],
-      "nl:daeler": [
+      "nl:daelder": [
         1,
         1
       ],
@@ -26955,11 +26946,15 @@
         1,
         1
       ],
-      "gml:dāler": [
+      "nl:daeler": [
+        1,
+        1
+      ],
+      "gml:daler": [
         2,
         2
       ],
-      "gml:daler": [
+      "gml:dāler": [
         2,
         2
       ]
@@ -27193,6 +27188,10 @@
         0,
         0
       ],
+      "mn:Дэлхий": [
+        1,
+        1
+      ],
       "ur:دہلی": [
         1,
         1
@@ -27201,19 +27200,15 @@
         1,
         1
       ],
-      "mn:Дэлхий": [
-        1,
-        1
+      "fa-cls:دهلی": [
+        2,
+        2
       ],
       "sa:देहली": [
         2,
         2
       ],
       "fa:دِهْلِی": [
-        2,
-        2
-      ],
-      "fa-cls:دهلی": [
         2,
         2
       ]
@@ -27307,11 +27302,11 @@
         0,
         1
       ],
-      "fa:دِهْلِی": [
+      "fa-cls:دهلی": [
         0,
         2
       ],
-      "fa-cls:دهلی": [
+      "fa:دِهْلِی": [
         0,
         2
       ],
@@ -28694,12 +28689,13 @@
       "hebrew_pos": "noun",
       "similarity": 0.8778
     },
-    "ancestor": "recon-sem-pro:raħːamam",
-    "pansemitic_form": "raxamam",
+    "morphology": "he: plural suffix stripped",
+    "ancestor": "recon-sem-pro:raħːama",
+    "pansemitic_form": "raxama",
     "loss": {
-      "arabic": 0.2857142857142857,
-      "hebrew": 0.09642857142857143,
-      "joint": 0.3821428571428571
+      "arabic": 0.08333333333333333,
+      "hebrew": 0.31071428571428567,
+      "joint": 0.394047619047619
     }
   },
   {
@@ -28815,12 +28811,13 @@
       "hebrew_pos": "noun",
       "similarity": 0.9266
     },
-    "ancestor": "recon-sem-pro:raħimam",
-    "pansemitic_form": "raximam",
+    "morphology": "he: plural suffix stripped",
+    "ancestor": "recon-sem-pro:raħima",
+    "pansemitic_form": "raxima",
     "loss": {
-      "arabic": 0.24285714285714288,
-      "hebrew": 0.17857142857142858,
-      "joint": 0.4214285714285715
+      "arabic": 0.03333333333333335,
+      "hebrew": 0.39285714285714285,
+      "joint": 0.4261904761904762
     }
   },
   {
@@ -29023,13 +29020,13 @@
       "hebrew_pos": "noun",
       "similarity": 0.931
     },
-    "morphology": "ar: feminine ending stripped",
-    "ancestor": "recon-sem-pro:raħamim",
-    "pansemitic_form": "raxamim",
+    "morphology": "ar: feminine ending stripped; he: plural suffix stripped",
+    "ancestor": "recon-sem-pro:raħam",
+    "pansemitic_form": "raxam",
     "loss": {
-      "arabic": 0.425,
-      "hebrew": 0.0142857142857143,
-      "joint": 0.4392857142857143
+      "arabic": 0.2,
+      "hebrew": 0.32857142857142857,
+      "joint": 0.5285714285714286
     }
   },
   {
@@ -29196,6 +29193,7 @@
       "hebrew_pos": "verb",
       "similarity": 0.909
     },
+    "morphology": "he: feminine ending stripped",
     "ancestor": "recon-sem-pro:radˤija",
     "pansemitic_form": "raṣiya",
     "loss": {
@@ -29963,12 +29961,13 @@
       "hebrew_pos": "noun",
       "similarity": 0.9358
     },
-    "ancestor": "recon-sem-pro:ruħamim",
-    "pansemitic_form": "ruxamim",
+    "morphology": "he: plural suffix stripped",
+    "ancestor": "recon-sem-pro:ruħam",
+    "pansemitic_form": "ruxam",
     "loss": {
-      "arabic": 0.4428571428571429,
-      "hebrew": 0.11785714285714287,
-      "joint": 0.5607142857142857
+      "arabic": 0.18,
+      "hebrew": 0.4321428571428571,
+      "joint": 0.6121428571428571
     }
   },
   {
@@ -31102,15 +31101,15 @@
         0,
         1
       ],
+      "syc:ܙܪܢܦܐ": [
+        0,
+        1
+      ],
       "fa-cls:زُرنَاپَا": [
         0,
         1
       ],
       "syc:ܙܪܝܦܐ": [
-        0,
-        1
-      ],
-      "syc:ܙܪܢܦܐ": [
         0,
         1
       ],
@@ -31122,11 +31121,11 @@
         1,
         2
       ],
-      "fa-cls:سرنا": [
+      "fa-cls:پَا": [
         2,
         3
       ],
-      "fa-cls:پَا": [
+      "fa-cls:سرنا": [
         2,
         3
       ]
@@ -31620,23 +31619,7 @@
         0,
         0
       ],
-      "arc:זַנְגְּבִילָא": [
-        1,
-        0
-      ],
       "pra-sau:𑀲𑀺𑀁𑀕𑀺𑀯𑁂𑀭": [
-        0,
-        1
-      ],
-      "syc:ܙܢܓܒܝܪ": [
-        0,
-        1
-      ],
-      "syc:ܙܝܢܓܒܝܪ": [
-        0,
-        1
-      ],
-      "syc:ܙܝܢܓܒܪ": [
         0,
         1
       ],
@@ -31644,11 +31627,27 @@
         0,
         1
       ],
+      "syc:ܙܢܓܒܠܐ": [
+        0,
+        1
+      ],
       "oty:𑀇𑀜𑁆𑀘𑀺𑀯𑁂𑀭𑁆": [
         0,
         1
       ],
-      "syc:ܙܢܓܒܠܐ": [
+      "syc:ܙܢܓܒܝܪ": [
+        0,
+        1
+      ],
+      "arc:זַנְגְּבִילָא": [
+        1,
+        0
+      ],
+      "syc:ܙܝܢܓܒܝܪ": [
+        0,
+        1
+      ],
+      "syc:ܙܝܢܓܒܪ": [
         0,
         1
       ],
@@ -31710,11 +31709,11 @@
         0,
         0
       ],
-      "ine-pro:*yéwgos": [
+      "grk-pro:*dzéugos": [
         1,
         1
       ],
-      "grk-pro:*dzéugos": [
+      "ine-pro:*yéwgos": [
         1,
         1
       ],
@@ -32835,6 +32834,7 @@
       "hebrew_pos": "noun",
       "similarity": 0.9103
     },
+    "morphology": "he: feminine ending stripped",
     "ancestor": "recon-sem-pro:sabab",
     "pansemitic_form": "sabab",
     "loss": {
@@ -34033,7 +34033,7 @@
         3,
         4
       ],
-      "iir-pro:*ćárkaraH": [
+      "sa:शर्कर": [
         3,
         4
       ],
@@ -34041,7 +34041,7 @@
         3,
         4
       ],
-      "sa:शर्कर": [
+      "iir-pro:*ćárkaraH": [
         3,
         4
       ]
@@ -34999,6 +34999,7 @@
       "hebrew_pos": "noun",
       "similarity": 0.8673
     },
+    "morphology": "he: feminine ending stripped",
     "ancestor": "recon-sem-pro:sanaː",
     "pansemitic_form": "sana",
     "loss": {
@@ -35130,11 +35131,11 @@
         1,
         1
       ],
-      "fro:cent": [
+      "ine-pro:*ḱm̥tóm": [
         1,
         1
       ],
-      "ine-pro:*ḱm̥tóm": [
+      "fro:cent": [
         1,
         1
       ],
@@ -35249,12 +35250,13 @@
       "hebrew_pos": "noun",
       "similarity": 0.8832
     },
-    "ancestor": "recon-sem-pro:santˤa",
-    "pansemitic_form": "sanṭa",
+    "morphology": "he: feminine ending stripped",
+    "ancestor": "recon-sem-pro:santˤ",
+    "pansemitic_form": "sanṭ",
     "loss": {
-      "arabic": 0.13999999999999999,
-      "hebrew": 0.545,
-      "joint": 0.685
+      "arabic": 0.0,
+      "hebrew": 0.85625,
+      "joint": 0.85625
     }
   },
   {
@@ -35710,7 +35712,7 @@
         3,
         4
       ],
-      "iir-pro:*ćárkaraH": [
+      "sa:शर्कर": [
         3,
         4
       ],
@@ -35718,7 +35720,7 @@
         3,
         4
       ],
-      "sa:शर्कर": [
+      "iir-pro:*ćárkaraH": [
         3,
         4
       ]
@@ -37904,11 +37906,11 @@
         0,
         0
       ],
-      "la:campus": [
+      "la-lat:campānia": [
         1,
         0
       ],
-      "la-lat:campānia": [
+      "la:campus": [
         1,
         0
       ],
@@ -38431,13 +38433,13 @@
         2,
         0
       ],
-      "pal:*gōrab": [
-        2,
-        2
-      ],
       "arc:גְּרָב / גְּרַב": [
         3,
         1
+      ],
+      "pal:*gōrab": [
+        2,
+        2
       ]
     },
     "best_sense_match": {
@@ -38486,13 +38488,13 @@
         2,
         0
       ],
-      "pal:*gōrab": [
-        2,
-        2
-      ],
       "arc:גְּרָב / גְּרַב": [
         3,
         1
+      ],
+      "pal:*gōrab": [
+        2,
+        2
       ]
     },
     "best_sense_match": {
@@ -38584,11 +38586,11 @@
         1,
         2
       ],
-      "nci:chocolatl": [
+      "yua:chocol": [
         1,
         3
       ],
-      "yua:chocol": [
+      "nci:chocolatl": [
         1,
         3
       ]
@@ -38874,39 +38876,7 @@
         1,
         1
       ],
-      "ar:شَاه": [
-        2,
-        1
-      ],
-      "iir-pro:*kšáyati": [
-        2,
-        1
-      ],
-      "fro:eschequier": [
-        2,
-        1
-      ],
-      "fa-cls:شَاه": [
-        2,
-        1
-      ],
-      "ine-pro:*tek-": [
-        2,
-        1
-      ],
       "la-med:scaccarium": [
-        2,
-        1
-      ],
-      "fro:eschek": [
-        2,
-        1
-      ],
-      "pal:𐭬𐭫𐭪𐭠": [
-        2,
-        1
-      ],
-      "la-med:scaccus": [
         2,
         1
       ],
@@ -38914,9 +38884,37 @@
         2,
         1
       ],
-      "fro:eschec oblique singular or": [
+      "fa-cls:شَاه": [
         2,
-        2
+        1
+      ],
+      "pal:𐭬𐭫𐭪𐭠": [
+        2,
+        1
+      ],
+      "fro:eschequier": [
+        2,
+        1
+      ],
+      "ine-pro:*tek-": [
+        2,
+        1
+      ],
+      "fro:eschek": [
+        2,
+        1
+      ],
+      "la-med:scaccus": [
+        2,
+        1
+      ],
+      "iir-pro:*kšáyati": [
+        2,
+        1
+      ],
+      "ar:شَاه": [
+        2,
+        1
       ],
       "fa:شاه": [
         2,
@@ -38926,12 +38924,8 @@
         2,
         2
       ],
-      "la:scaccārium": [
-        3,
-        2
-      ],
-      "peo:𐏋": [
-        3,
+      "fro:eschec oblique singular or": [
+        2,
         2
       ],
       "la:scaccarium": [
@@ -38942,6 +38936,26 @@
         3,
         2
       ],
+      "la:scaccārium": [
+        3,
+        2
+      ],
+      "peo:𐏋": [
+        3,
+        2
+      ],
+      "ira-pro:*xšáyati": [
+        3,
+        3
+      ],
+      "frk:*skāk": [
+        3,
+        3
+      ],
+      "la:scaccus": [
+        3,
+        3
+      ],
       "la:scacchum": [
         3,
         3
@@ -38950,19 +38964,7 @@
         3,
         3
       ],
-      "la:scaccus": [
-        3,
-        3
-      ],
-      "ira-pro:*xšáyati": [
-        3,
-        3
-      ],
       "la:*scaccus": [
-        3,
-        3
-      ],
-      "frk:*skāk": [
         3,
         3
       ],
@@ -39201,10 +39203,6 @@
         0,
         2
       ],
-      "ine-pro:*sel-": [
-        2,
-        1
-      ],
       "gem-pro:*salą": [
         2,
         1
@@ -39213,11 +39211,11 @@
         1,
         2
       ],
-      "goh:sal": [
-        1,
-        3
+      "ine-pro:*sel-": [
+        2,
+        1
       ],
-      "la:asse": [
+      "goh:sal": [
         1,
         3
       ],
@@ -39225,11 +39223,15 @@
         1,
         3
       ],
-      "gmw-pro:sali": [
-        2,
+      "la:asse": [
+        1,
         3
       ],
       "gmw-pro:*salr": [
+        2,
+        3
+      ],
+      "gmw-pro:sali": [
         2,
         3
       ],
@@ -39237,15 +39239,11 @@
         2,
         3
       ],
-      "frm:salle": [
-        2,
-        4
-      ],
       "fro:sale oblique singular or": [
         2,
         4
       ],
-      "fro:sale": [
+      "frm:salle": [
         2,
         4
       ],
@@ -39253,12 +39251,12 @@
         2,
         4
       ],
-      "gem-pro:salą": [
+      "fro:sale": [
         2,
         4
       ],
-      "gem-pro:*saliz": [
-        3,
+      "gem-pro:salą": [
+        2,
         4
       ],
       "gem-pro:salją": [
@@ -39269,11 +39267,15 @@
         3,
         4
       ],
-      "la:*sala": [
+      "gem-pro:*saliz": [
+        3,
+        4
+      ],
+      "frk:*sali": [
         3,
         5
       ],
-      "frk:*sali": [
+      "la:*sala": [
         3,
         5
       ],
@@ -39348,11 +39350,11 @@
         0,
         0
       ],
-      "frm:salon": [
+      "gem-pro:*salą": [
         1,
         1
       ],
-      "lng:sala": [
+      "frm:salon": [
         1,
         1
       ],
@@ -39360,19 +39362,19 @@
         1,
         1
       ],
-      "gem-pro:*salą": [
-        1,
-        1
-      ],
       "it:salone": [
         1,
         1
       ],
-      "goh:sali": [
+      "lng:sala": [
+        1,
+        1
+      ],
+      "it:sala": [
         2,
         2
       ],
-      "it:sala": [
+      "goh:sali": [
         2,
         2
       ],
@@ -39380,7 +39382,7 @@
         3,
         3
       ],
-      "gmw-pro:sali": [
+      "fr:salle": [
         3,
         3
       ],
@@ -39392,19 +39394,15 @@
         3,
         3
       ],
+      "gmw-pro:sali": [
+        3,
+        3
+      ],
       "gmw-pro:*sali": [
         3,
         3
       ],
-      "fr:salle": [
-        3,
-        3
-      ],
-      "frm:salle": [
-        4,
-        4
-      ],
-      "gem-pro:*saliz": [
+      "fro:sale oblique singular or": [
         4,
         4
       ],
@@ -39416,11 +39414,11 @@
         4,
         4
       ],
-      "fro:sale oblique singular or": [
+      "gem-pro:*saliz": [
         4,
         4
       ],
-      "fro:sale": [
+      "frm:salle": [
         4,
         4
       ],
@@ -39428,19 +39426,23 @@
         4,
         4
       ],
-      "gem-pro:salą": [
+      "fro:sale": [
         4,
         4
       ],
-      "la:*sala": [
-        5,
-        5
+      "gem-pro:salą": [
+        4,
+        4
       ],
       "ine-pro:*sol-": [
         5,
         5
       ],
       "frk:*sali": [
+        5,
+        5
+      ],
+      "la:*sala": [
         5,
         5
       ],
@@ -41543,19 +41545,19 @@
         0,
         1
       ],
-      "itc-pro:taθlā": [
-        1,
-        2
-      ],
-      "ine-pro:*th₂-dʰleh₂": [
-        1,
-        2
-      ],
       "itc-pro:*taθlā": [
         1,
         2
       ],
       "ine-pro:*tal-dʰleh₂": [
+        1,
+        2
+      ],
+      "itc-pro:taθlā": [
+        1,
+        2
+      ],
+      "ine-pro:*th₂-dʰleh₂": [
         1,
         2
       ]
@@ -42190,11 +42192,11 @@
         0,
         0
       ],
-      "grc:τᾰ́ξῐς": [
+      "grc:τάξις": [
         0,
         0
       ],
-      "grc:τάξις": [
+      "grc:τᾰ́ξῐς": [
         0,
         0
       ],
@@ -42950,12 +42952,13 @@
       "hebrew_pos": "noun",
       "similarity": 0.9514
     },
-    "ancestor": "recon-sem-pro:ðˤuhorajim",
-    "pansemitic_form": "ṣuharayim",
+    "morphology": "he: dual suffix stripped",
+    "ancestor": "recon-sem-pro:ðˤuhor",
+    "pansemitic_form": "ṣuhar",
     "loss": {
-      "arabic": 0.6388888888888888,
-      "hebrew": 0.20277777777777778,
-      "joint": 0.8416666666666666
+      "arabic": 0.27,
+      "hebrew": 0.6702222222222223,
+      "joint": 0.9402222222222223
     }
   },
   {
@@ -45275,17 +45278,13 @@
         0,
         0
       ],
-      "fa:انبار": [
-        0,
-        1
-      ],
       "fa:اَنْبار": [
         0,
         1
       ],
-      "ira-pro:*hambāráh": [
-        1,
-        2
+      "fa:انبار": [
+        0,
+        1
       ],
       "iir-pro:*sambʰārás": [
         1,
@@ -45296,6 +45295,10 @@
         2
       ],
       "peo:*𐏃𐎶𐎲𐎠𐎼": [
+        1,
+        2
+      ],
+      "ira-pro:*hambāráh": [
         1,
         2
       ],
@@ -46414,11 +46417,11 @@
         0,
         0
       ],
-      "gmh:gazze": [
+      "dum:gasse": [
         1,
         1
       ],
-      "grc:χᾰ́ος": [
+      "gmh:gazze": [
         1,
         1
       ],
@@ -46426,7 +46429,11 @@
         1,
         1
       ],
-      "dum:gasse": [
+      "gem-pro:*gatwǭ": [
+        1,
+        1
+      ],
+      "grc:χᾰ́ος": [
         1,
         1
       ],
@@ -46434,15 +46441,11 @@
         1,
         1
       ],
-      "gem-pro:*gatwǭ": [
-        1,
-        1
-      ],
-      "ine-pro:*ǵʰeh₂-": [
+      "gmw-pro:*gatwā": [
         2,
         2
       ],
-      "gmw-pro:*gatwā": [
+      "ine-pro:*ǵʰeh₂-": [
         2,
         2
       ],
@@ -46539,7 +46542,6 @@
       "hebrew_pos": "name",
       "similarity": 0.865
     },
-    "morphology": "ar: feminine ending stripped",
     "ancestor": "recon-sem-pro:ɣazːa",
     "pansemitic_form": "gaza",
     "loss": {
@@ -46996,11 +46998,11 @@
         0,
         0
       ],
-      "grk-pro:*pʰawehnós": [
+      "ine-pro:*bʰh₂wesnós": [
         1,
         1
       ],
-      "ine-pro:*bʰh₂wesnós": [
+      "grk-pro:*pʰawehnós": [
         1,
         1
       ]
@@ -47576,19 +47578,19 @@
         2,
         0
       ],
-      "xme-old:*aspāstiš": [
-        0,
-        0
-      ],
       "ira-pro:*HacwaHastiš": [
         0,
         0
       ],
-      "ira-pro:HacwaHastiš": [
+      "xme-old:*aspāstiš": [
+        0,
+        0
+      ],
+      "xme-old:aspāstiš": [
         1,
         1
       ],
-      "xme-old:aspāstiš": [
+      "ira-pro:HacwaHastiš": [
         1,
         1
       ],
@@ -48156,7 +48158,6 @@
       "hebrew_pos": "noun",
       "similarity": 0.9439
     },
-    "morphology": "ar: feminine ending stripped",
     "ancestor": "recon-sem-pro:putˤrija",
     "pansemitic_form": "puṭriya",
     "loss": {
@@ -48452,19 +48453,19 @@
         0,
         0
       ],
-      "arc:פּרְסִיקָא ,פּרְסְקָא": [
-        0,
-        1
-      ],
-      "arc:פּרְסְקָא": [
-        0,
-        1
-      ],
       "grc:μῆλον περσικόν": [
         0,
         1
       ],
       "arc:פּרְסִיקָא": [
+        0,
+        1
+      ],
+      "arc:פּרְסִיקָא ,פּרְסְקָא": [
+        0,
+        1
+      ],
+      "arc:פּרְסְקָא": [
         0,
         1
       ],
@@ -48818,15 +48819,15 @@
         1,
         2
       ],
-      "akk:𒆳𒉺𒆷𒊍𒌓": [
-        1,
-        2
-      ],
       "egy:pwrꜣsꜣtj": [
         1,
         2
       ],
       "he:יִשְׂרָאֵל": [
+        1,
+        2
+      ],
+      "akk:𒆳𒉺𒆷𒊍𒌓": [
         1,
         2
       ]
@@ -48877,15 +48878,11 @@
         0,
         0
       ],
-      "akk:𒉺𒆷𒀸𒌓": [
-        1,
-        1
-      ],
-      "akk:𒆳𒉺𒆷𒊍𒌓": [
-        1,
-        1
-      ],
       "he:פְּלֶשֶׁת": [
+        1,
+        1
+      ],
+      "akk:𒉺𒆷𒀸𒌓": [
         1,
         1
       ],
@@ -48893,11 +48890,15 @@
         1,
         1
       ],
+      "he:יִשְׂרָאֵל": [
+        1,
+        1
+      ],
       "grc:Παλαιστῑ́νη": [
         0,
         2
       ],
-      "he:יִשְׂרָאֵל": [
+      "akk:𒆳𒉺𒆷𒊍𒌓": [
         1,
         1
       ],
@@ -51729,7 +51730,11 @@
         0,
         1
       ],
-      "orv:цесарь": [
+      "sla-pro:*cěsařь": [
+        1,
+        1
+      ],
+      "gem-pro:*kaisaraz": [
         1,
         1
       ],
@@ -51741,11 +51746,7 @@
         1,
         1
       ],
-      "gem-pro:*kaisaraz": [
-        1,
-        1
-      ],
-      "sla-pro:*cěsařь": [
+      "orv:цесарь": [
         1,
         1
       ],
@@ -52101,25 +52102,13 @@
         2,
         1
       ],
-      "ine-pro:*gewt-": [
-        1,
-        3
-      ],
-      "ang:cwidu": [
-        2,
-        2
-      ],
-      "ang:cudu": [
+      "ang:cweodu": [
         2,
         2
       ],
       "gem-pro:*kuddô": [
         1,
         3
-      ],
-      "ang:codd": [
-        2,
-        2
       ],
       "gmw-pro:*kwidu": [
         2,
@@ -52129,7 +52118,19 @@
         2,
         2
       ],
-      "ang:cweodu": [
+      "ang:codd": [
+        2,
+        2
+      ],
+      "ang:cwidu": [
+        2,
+        2
+      ],
+      "ine-pro:*gewt-": [
+        1,
+        3
+      ],
+      "ang:cudu": [
         2,
         2
       ],
@@ -52137,11 +52138,11 @@
         2,
         3
       ],
-      "gmw-pro:*kodd": [
+      "gem-pro:kuddô": [
         3,
         3
       ],
-      "gem-pro:kuddô": [
+      "gmw-pro:*kodd": [
         3,
         3
       ],
@@ -52149,19 +52150,19 @@
         3,
         3
       ],
-      "gem-pro:*kuddaz": [
-        3,
-        3
-      ],
       "gem-pro:kweduz": [
         3,
         3
       ],
-      "ine-pro:*gʷet-": [
+      "gem-pro:*kuddaz": [
+        3,
+        3
+      ],
+      "gem-pro:*kweduz": [
         4,
         4
       ],
-      "gem-pro:*kweduz": [
+      "ine-pro:*gʷet-": [
         4,
         4
       ],
@@ -54011,7 +54012,6 @@
       "hebrew_pos": "noun",
       "similarity": 0.8845
     },
-    "morphology": "ar: feminine ending stripped",
     "ancestor": "recon-sem-pro:kanːa",
     "pansemitic_form": "kana",
     "loss": {
@@ -54091,7 +54091,6 @@
       "hebrew_pos": "noun",
       "similarity": 0.9397
     },
-    "morphology": "ar: feminine ending stripped",
     "ancestor": "recon-sem-pro:kaniːsija",
     "pansemitic_form": "kanisiya",
     "loss": {
@@ -54501,15 +54500,11 @@
         0,
         0
       ],
-      "ar:كَحِل": [
-        1,
-        0
-      ],
-      "ar:كَحَل": [
-        1,
-        0
-      ],
       "ar:كَحَلَ": [
+        1,
+        0
+      ],
+      "ar:كَحِل": [
         1,
         0
       ],
@@ -54521,11 +54516,15 @@
         1,
         0
       ],
-      "arc:כוחלא": [
+      "ar:كَحَل": [
+        1,
+        0
+      ],
+      "akk:guḫlum": [
         1,
         1
       ],
-      "akk:guḫlum": [
+      "arc:כוחלא": [
         1,
         1
       ],
@@ -54717,11 +54716,11 @@
         0,
         0
       ],
-      "akk:𒊺𒇽": [
+      "arc:כסברה": [
         0,
         1
       ],
-      "arc:כסברה": [
+      "akk:𒊺𒇽": [
         0,
         1
       ]
@@ -54859,11 +54858,15 @@
         0,
         0
       ],
+      "ota:քիուֆթէ": [
+        0,
+        1
+      ],
       "ota:քիւֆթէ": [
         0,
         1
       ],
-      "ota:كوفته": [
+      "ota:քէօֆթէ": [
         0,
         1
       ],
@@ -54875,15 +54878,11 @@
         1,
         0
       ],
-      "ota:քէօֆթէ": [
+      "ota:كوفته": [
         0,
         1
       ],
       "ota:کوفته": [
-        0,
-        1
-      ],
-      "ota:քիուֆթէ": [
         0,
         1
       ]
@@ -54938,7 +54937,7 @@
         0,
         0
       ],
-      "grk-pro:kʰlōrós": [
+      "ine-pro:*ǵʰelh₃-": [
         1,
         1
       ],
@@ -54946,7 +54945,7 @@
         1,
         1
       ],
-      "ine-pro:*ǵʰelh₃-": [
+      "grk-pro:kʰlōrós": [
         1,
         1
       ],
@@ -55782,11 +55781,11 @@
         0,
         0
       ],
-      "grc:χρῶμα": [
+      "grc:χρῶμᾰ": [
         1,
         1
       ],
-      "grc:χρῶμᾰ": [
+      "grc:χρῶμα": [
         1,
         1
       ],
@@ -55838,7 +55837,7 @@
         0,
         0
       ],
-      "la-lat:crama": [
+      "frm:chresme": [
         1,
         1
       ],
@@ -55850,27 +55849,15 @@
         1,
         1
       ],
+      "la-lat:crama": [
+        1,
+        1
+      ],
       "fro:cresme": [
         1,
         1
       ],
-      "frm:chresme": [
-        1,
-        1
-      ],
-      "la-lat:crāmum": [
-        2,
-        2
-      ],
-      "la-ecc:chrisma": [
-        2,
-        2
-      ],
       "fro:cresme oblique singular or": [
-        2,
-        2
-      ],
-      "grc:χρῖσμᾰ": [
         2,
         2
       ],
@@ -55882,11 +55869,23 @@
         2,
         2
       ],
-      "cel-gau:*crama": [
+      "grc:χρῖσμᾰ": [
+        2,
+        2
+      ],
+      "la-ecc:chrisma": [
+        2,
+        2
+      ],
+      "la-lat:crāmum": [
+        2,
+        2
+      ],
+      "cel-pro:*krammen": [
         3,
         3
       ],
-      "cel-pro:*krammen": [
+      "cel-gau:*crama": [
         3,
         3
       ],
@@ -56498,7 +56497,7 @@
         0,
         0
       ],
-      "la:lībra": [
+      "la:lyra": [
         1,
         1
       ],
@@ -56506,19 +56505,19 @@
         1,
         1
       ],
-      "la:lyra": [
+      "la:lībra": [
         1,
         1
+      ],
+      "grc:λῠ́ρᾱ": [
+        2,
+        2
       ],
       "itc-pro:līðrā": [
         2,
         2
       ],
       "itc-pro:*līðrā": [
-        2,
-        2
-      ],
-      "grc:λῠ́ρᾱ": [
         2,
         2
       ],
@@ -57031,19 +57030,7 @@
         1,
         1
       ],
-      "cel-pro:*Londinyom": [
-        2,
-        2
-      ],
       "enm:Londene": [
-        2,
-        2
-      ],
-      "la-vul:*Lundeinju": [
-        2,
-        2
-      ],
-      "ine-pro:*plew-": [
         2,
         2
       ],
@@ -57051,7 +57038,19 @@
         2,
         2
       ],
+      "ine-pro:*plew-": [
+        2,
+        2
+      ],
+      "la-vul:*Lundeinju": [
+        2,
+        2
+      ],
       "ine-pro:*lendʰ-": [
+        2,
+        2
+      ],
+      "cel-pro:*Londinyom": [
         2,
         2
       ]
@@ -57180,6 +57179,10 @@
         0,
         0
       ],
+      "la:litra": [
+        1,
+        1
+      ],
       "la-med:litra": [
         1,
         1
@@ -57188,19 +57191,15 @@
         1,
         1
       ],
-      "la:litra": [
-        1,
-        1
+      "grc:λῑ́τρᾱ": [
+        2,
+        2
       ],
       "scx:*lītrā": [
         2,
         2
       ],
       "itc-pro:*līðrā": [
-        2,
-        2
-      ],
-      "grc:λῑ́τρᾱ": [
         2,
         2
       ],
@@ -57304,13 +57303,13 @@
         0,
         1
       ],
-      "la:Olisīpō": [
-        1,
-        1
-      ],
       "la:Olisipona": [
         0,
         2
+      ],
+      "la:Olisīpō": [
+        1,
+        1
       ]
     },
     "best_sense_match": {
@@ -57455,6 +57454,7 @@
       "hebrew_pos": "adv",
       "similarity": 0.9392
     },
+    "morphology": "he: feminine ending stripped",
     "ancestor": "recon-sem-pro:limaː",
     "pansemitic_form": "lima",
     "loss": {
@@ -57881,23 +57881,19 @@
         0,
         1
       ],
-      "la:Malaca": [
-        0,
-        1
-      ],
       "phn:𐤌𐤋𐤊": [
         0,
         1
       ],
-      "sem-wes-pro:milḥ-": [
-        1,
-        2
+      "la:Malaca": [
+        0,
+        1
       ],
       "sem-pro:malk-": [
         1,
         2
       ],
-      "sem-pro:*malk-": [
+      "sem-wes-pro:milḥ-": [
         1,
         2
       ],
@@ -57906,6 +57902,10 @@
         2
       ],
       "grc:Μαλάκη": [
+        1,
+        2
+      ],
+      "sem-pro:*malk-": [
         1,
         2
       ]
@@ -58365,7 +58365,6 @@
       "hebrew_pos": "noun",
       "similarity": 0.8916
     },
-    "morphology": "ar: feminine ending stripped",
     "ancestor": "recon-sem-pro:magalːa",
     "pansemitic_form": "magala",
     "loss": {
@@ -60315,31 +60314,11 @@
         0,
         0
       ],
-      "enm:mault": [
-        1,
-        1
-      ],
-      "enm:malte": [
-        1,
-        1
-      ],
-      "ine-pro:*meld-": [
-        1,
-        1
-      ],
       "enm:malt": [
         1,
         1
       ],
-      "gmw-pro:*malt": [
-        1,
-        1
-      ],
-      "enm:maltt": [
-        1,
-        1
-      ],
-      "ang:mealt": [
+      "enm:mault": [
         1,
         1
       ],
@@ -60347,9 +60326,41 @@
         1,
         1
       ],
+      "enm:malte": [
+        1,
+        1
+      ],
+      "enm:maltt": [
+        1,
+        1
+      ],
+      "ine-pro:*meld-": [
+        1,
+        1
+      ],
       "gem-pro:*maltą": [
         1,
         1
+      ],
+      "ang:mealt": [
+        1,
+        1
+      ],
+      "gmw-pro:*malt": [
+        1,
+        1
+      ],
+      "gmw-pro:malt": [
+        2,
+        2
+      ],
+      "gem-pro:maltą": [
+        2,
+        2
+      ],
+      "ang:meltan": [
+        2,
+        2
       ],
       "ang:malt": [
         2,
@@ -60359,31 +60370,7 @@
         2,
         2
       ],
-      "gmw-pro:malt": [
-        2,
-        2
-      ],
-      "ang:meltan": [
-        2,
-        2
-      ],
-      "gem-pro:maltą": [
-        2,
-        2
-      ],
-      "ine-pro:*(s)mel-": [
-        3,
-        3
-      ],
       "gmw-pro:meltan": [
-        3,
-        3
-      ],
-      "gem-pro:*meltaną": [
-        3,
-        3
-      ],
-      "gmw-pro:*meltan": [
         3,
         3
       ],
@@ -60391,15 +60378,27 @@
         3,
         3
       ],
+      "gmw-pro:*meltan": [
+        3,
+        3
+      ],
+      "gem-pro:*meltaną": [
+        3,
+        3
+      ],
+      "ine-pro:*(s)mel-": [
+        3,
+        3
+      ],
       "ine-pro:*mold-o-s": [
         3,
         3
       ],
-      "gem-pro:meltaną": [
+      "ine-pro:(s)meld-": [
         4,
         4
       ],
-      "ine-pro:(s)meld-": [
+      "gem-pro:meltaną": [
         4,
         4
       ],
@@ -61051,7 +61050,7 @@
         1,
         1
       ],
-      "ga:An Mhaing": [
+      "fro:Cemaine": [
         1,
         1
       ],
@@ -61059,19 +61058,19 @@
         1,
         1
       ],
-      "sga:Maine": [
-        1,
-        1
-      ],
-      "fro:Cemaine": [
-        1,
-        1
-      ],
       "fr:Maine": [
         1,
         1
       ],
+      "sga:Maine": [
+        1,
+        1
+      ],
       "la:Meduāna": [
+        1,
+        1
+      ],
+      "ga:An Mhaing": [
         1,
         1
       ],
@@ -63423,15 +63422,15 @@
         0,
         0
       ],
-      "fr:mémé": [
-        1,
-        1
-      ],
       "grc:μῑμέομαι": [
         1,
         1
       ],
       "grc:μῖμος": [
+        1,
+        1
+      ],
+      "fr:mémé": [
         1,
         1
       ]
@@ -63717,15 +63716,15 @@
         0,
         3
       ],
-      "fa:نارنگ": [
-        0,
-        4
-      ],
       "sa:नारङ्ग": [
         0,
         4
       ],
       "fa-cls:نَارَنْگ": [
+        0,
+        4
+      ],
+      "fa:نارنگ": [
         0,
         4
       ],
@@ -65552,11 +65551,11 @@
         0,
         0
       ],
-      "arc:נוקניק": [
+      "arc:לוקניק": [
         0,
         0
       ],
-      "arc:לוקניק": [
+      "arc:נוקניק": [
         0,
         0
       ],
@@ -66193,7 +66192,6 @@
       "hebrew_pos": "noun",
       "similarity": 0.9665
     },
-    "morphology": "ar: feminine ending stripped",
     "ancestor": "recon-sem-pro:nuqutˤa",
     "pansemitic_form": "nuquṭa",
     "loss": {
@@ -66661,11 +66659,11 @@
         1,
         1
       ],
-      "grc:Νῑ́καια": [
+      "grc:Νῑ́καιᾰ": [
         2,
         2
       ],
-      "grc:Νῑ́καιᾰ": [
+      "grc:Νῑ́καια": [
         2,
         2
       ]
@@ -67334,19 +67332,19 @@
         0,
         0
       ],
-      "fa:هیل": [
-        0,
-        1
-      ],
       "fa:هل": [
         0,
         1
       ],
-      "dra-pro:*ēla": [
+      "sa:एला": [
         0,
         1
       ],
-      "sa:एला": [
+      "fa:هیل": [
+        0,
+        1
+      ],
+      "dra-pro:*ēla": [
         0,
         1
       ],
@@ -67457,6 +67455,7 @@
       "hebrew_pos": "adv",
       "similarity": 0.9173
     },
+    "morphology": "he: feminine ending stripped",
     "ancestor": "recon-sem-pro:hunaː",
     "pansemitic_form": "huna",
     "loss": {
@@ -67606,15 +67605,15 @@
         1,
         0
       ],
+      "sa:सिन्धु॑ stem or": [
+        1,
+        1
+      ],
       "sa:सिन्धु॑": [
         1,
         1
       ],
       "inc-pro:*síndʰuṣ": [
-        1,
-        1
-      ],
-      "sa:सिन्धु॑ stem or": [
         1,
         1
       ],
@@ -68365,6 +68364,7 @@
       "hebrew_pos": "verb",
       "similarity": 0.9081
     },
+    "morphology": "he: feminine ending stripped",
     "ancestor": "recon-sem-pro:wasˤːaː",
     "pansemitic_form": "waṣa",
     "loss": {
@@ -68880,11 +68880,11 @@
         0,
         0
       ],
-      "mga:uisce betha": [
+      "ga:uisce": [
         1,
         1
       ],
-      "ga:uisge": [
+      "la-med:aqua vītae": [
         1,
         1
       ],
@@ -68892,11 +68892,11 @@
         1,
         1
       ],
-      "ga:uisce": [
+      "mga:uisce betha": [
         1,
         1
       ],
-      "la-med:aqua vītae": [
+      "ga:uisge": [
         1,
         1
       ],
@@ -68912,19 +68912,19 @@
         2,
         2
       ],
-      "ine-pro:*wódr̥": [
-        2,
-        2
-      ],
       "sga:uisce": [
         2,
         2
       ],
-      "ine-pro:wódr̥": [
+      "ine-pro:*wódr̥": [
+        2,
+        2
+      ],
+      "cel-pro:udenskyos": [
         3,
         3
       ],
-      "cel-pro:udenskyos": [
+      "ine-pro:wódr̥": [
         3,
         3
       ]
@@ -69444,15 +69444,15 @@
         0,
         1
       ],
+      "dum:jacht": [
+        1,
+        1
+      ],
       "odt:*jagot": [
         1,
         1
       ],
       "dum:jaget": [
-        1,
-        1
-      ],
-      "dum:jacht": [
         1,
         1
       ],
@@ -70621,11 +70621,11 @@
         1,
         1
       ],
-      "phn:*𐤉𐤋": [
+      "ine-pro:*welH-": [
         2,
         2
       ],
-      "ine-pro:*welH-": [
+      "phn:*𐤉𐤋": [
         2,
         2
       ],
@@ -70683,11 +70683,11 @@
         0,
         0
       ],
-      "sem-wes-pro:*hawmān-": [
+      "sem-pro:*šawmān-": [
         1,
         0
       ],
-      "sem-pro:*šawmān-": [
+      "sem-wes-pro:*hawmān-": [
         1,
         0
       ],
@@ -70744,11 +70744,11 @@
         0,
         0
       ],
-      "sem-wes-pro:*hawmān-": [
+      "sem-pro:*šawmān-": [
         1,
         0
       ],
-      "sem-pro:*šawmān-": [
+      "sem-wes-pro:*hawmān-": [
         1,
         0
       ],

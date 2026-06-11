@@ -76,7 +76,7 @@ arabic,arabic_romanization,hebrew,hebrew_romanization,pansemitic,layers,morpholo
 أَجَرَ,ʔajara,אָגַר,agár,ʔagara,direct_cognate_ar→he,
 أَجَمَة,ʔajama,אֲגַם,agám,ʔagamum,direct_cognate_ar→he;direct_cognate_he→ar;shared_borrowing_source,
 أَجْوَف,ʔajwaf,גּוּף,guf,ʔagwaf,lemma_promoted,
-أَحَادِيث,ʔaḥādīṯ,חֲדָשׁוֹת,khadashót,ʔaxadis,direct_cognate_he→ar,
+أَحَادِيث,ʔaḥādīṯ,חֲדָשׁוֹת,khadashót,ʔaxadis,direct_cognate_he→ar,he: plural suffix stripped
 أَحَادِيث,ʔaḥādīṯ,חִדֵּשׁ,khidésh,ʔaxadis,lemma_promoted,
 أَحَادِيث,ʔaḥādīṯ,חַדֵּשׁ,khadésh,ʔaxadis,lemma_promoted,
 أَحَادِيث,ʔaḥādīṯ,חָדָשׁ,khadásh,ʔaxadis,lemma_promoted,
@@ -157,7 +157,7 @@ arabic,arabic_romanization,hebrew,hebrew_romanization,pansemitic,layers,morpholo
 أَطَرَ,ʔaṭara,אָטַר,atár,ʔaṭara,direct_cognate_he→ar,
 أَغُسْطُس,ʔaḡusṭus,אוֹגוּסְט,ogúst,ʔaugustus,shared_borrowing_source,
 أَغُسْطُس,ʔaḡusṭus,סֶפְּטֶמְבֶּר,septémber,ʔaugustus,shared_borrowing_source,
-أَغْوَى,ʔaḡwā,עִוָּה,ʿiva,ʔagiwa,direct_cognate_he→ar,
+أَغْوَى,ʔaḡwā,עִוָּה,ʿiva,ʔagiwa,direct_cognate_he→ar,he: feminine ending stripped
 أَفَقَ,ʔafaqa,אֹפֶק,ófek,ʔupuq,lemma_promoted,
 أَفُوكَادُو,ʔafūkādū,אָבוֹקָדוֹ,avokádo,ʔawaka,shared_borrowing_source,
 أَفْعًى,ʔafʕan,אֶפְעֶה,ef'é,ʔapʕaw,direct_cognate_he→ar;shared_borrowing_source,
@@ -315,7 +315,7 @@ arabic,arabic_romanization,hebrew,hebrew_romanization,pansemitic,layers,morpholo
 أُكْلَة,ʔukla,אׇכְלָה,okhlá,ʔukla,direct_cognate_he→ar,
 أُلُوف,ʔulūf,אִלּוּף,ilúf,ʔuluf,direct_cognate_he→ar,
 أُلُوف,ʔulūf,אַלּוּף,alúf,ʔuluf,direct_cognate_he→ar,
-أُمَّة,ʔumma,אֻמָּה,'umá,ʔuma,direct_cognate_he→ar,ar: feminine ending stripped
+أُمَّة,ʔumma,אֻמָּה,'umá,ʔuma,direct_cognate_he→ar,
 أُمّ,ʔumm,אִם,im,ʔum,direct_cognate_ar→he,
 أُمّ,ʔumm,אִמָּא,'íma,ʔim,shared_borrowing_source,
 أُمّ,ʔumm,אֵם,em,ʔim,direct_cognate_ar→he;shared_borrowing_source,
@@ -397,7 +397,7 @@ arabic,arabic_romanization,hebrew,hebrew_romanization,pansemitic,layers,morpholo
 إِمَام,ʔimām,אִימָאם,imám,ʔimam,shared_borrowing_source,
 إِمَّر,ʔimmar,אִמֵּר,imér,ʔimirum,shared_borrowing_source,
 إِن,ʔin,אִם,im,šim,shared_borrowing_source,
-إِنَاء,ʔināʔ,אֳנִיָּה,oniyá,ʔinaʔa,direct_cognate_ar→he;direct_cognate_he→ar,
+إِنَاء,ʔināʔ,אֳנִיָּה,oniyá,ʔinaʔ,direct_cognate_ar→he;direct_cognate_he→ar,he: feminine ending stripped
 إِنَاس,ʔinās,אֱנוֹשׁ,enósh,ʔinaš,shared_borrowing_source,
 إِنَّ,ʔinna,הִנֵּה,hiné,ʔina,direct_cognate_ar→he;direct_cognate_he→ar,
 إِنْ,ʔin,אֵין,en,ʔin,direct_cognate_ar→he;direct_cognate_he→ar,
@@ -673,7 +673,7 @@ arabic,arabic_romanization,hebrew,hebrew_romanization,pansemitic,layers,morpholo
 بَقَّ,baqqa,יַבּוֹק,Yabók,yabaqa,direct_cognate_he→ar,
 بَكَرَ,bakara,בְּכוֹר,b'khór,bakara,direct_cognate_ar→he,
 بَكَرَة,bakara,בְּכוֹר,b'khór,bakar,lemma_promoted,ar: feminine ending stripped
-بَكَى,bakā,בִּכָּה,biká,baka,direct_cognate_he→ar,
+بَكَى,bakā,בִּכָּה,biká,baka,direct_cognate_he→ar,he: feminine ending stripped
 بَكَى,bakā,בֶּכִי,békhi,baka,lemma_promoted,
 بَكَى,bakā,בָּכָה,bakhá,baka,direct_cognate_ar→he;direct_cognate_he→ar;lemma_promoted,he: feminine ending stripped
 بَكَّاء,bakkāʔ,בֶּכִי,békhi,bakaʔ,direct_cognate_he→ar,
@@ -683,7 +683,7 @@ arabic,arabic_romanization,hebrew,hebrew_romanization,pansemitic,layers,morpholo
 بَلَعَ,balaʕa,בִּלֵּעַ,biléa',balaʕa,direct_cognate_he→ar,
 بَلَعَ,balaʕa,בָּלַע,balá,balaʕa,direct_cognate_ar→he;direct_cognate_he→ar,
 بَلُّوط,ballūṭ,בַּלּוּט,balút,baluṭ,direct_cognate_he→ar,
-بَلِيَ,baliya,בִּלָּה,bilá,baliya,direct_cognate_he→ar,
+بَلِيَ,baliya,בִּלָּה,bilá,baliya,direct_cognate_he→ar,he: feminine ending stripped
 بَلِيَ,baliya,בָּלָה,balá,baliya,direct_cognate_ar→he;direct_cognate_he→ar,he: feminine ending stripped
 بَلْسَم,balsam,אֲפַרְסְמוֹן,afarsemón,basam,shared_borrowing_source,
 بَلْسَم,balsam,בְּרוֹשׁ,brósh,hamprsa,shared_borrowing_source,
@@ -711,7 +711,7 @@ arabic,arabic_romanization,hebrew,hebrew_romanization,pansemitic,layers,morpholo
 بَيْت,bayt,בַּיִת,báyit,bayt,direct_cognate_he→ar;shared_borrowing_source,
 بَيْت,bayt,בֻּיַּת,buyát,bayt,direct_cognate_he→ar;shared_borrowing_source,
 بَيْت,bayt,הַבַּיִת,habáyit,bayt,direct_cognate_he→ar;shared_borrowing_source,
-بَيْت الْمَقْدِس,bayt al-maqdis,בֵּית ־הַמִּקְדָּשׁ,béit-hamikdásh,baiythalmaqdis,direct_cognate_ar→he;direct_cognate_he→ar,word-count mismatch (ar 2 vs he 1); merged unsplit
+بَيْت الْمَقْدِس,bayt al-maqdis,בֵּית ־הַמִּקְדָּשׁ,béit-hamikdásh,baiyt hal maqdis,direct_cognate_ar→he;direct_cognate_he→ar,shared definite article → hal (word 2)
 بَيْت لَحْم,bayt laḥm,בֵּית לֶחֶם,bet lékhem,bit lixim,shared_borrowing_source,
 بَيْض,bayḍ,בֵּיצָה,betsá,bayṣ,direct_cognate_ar→he;direct_cognate_he→ar,he: feminine ending stripped
 بَيْلَسَان,baylasān,אֲפַרְסְמוֹן,afarsemón,balsaman,shared_borrowing_source,
@@ -923,15 +923,15 @@ arabic,arabic_romanization,hebrew,hebrew_romanization,pansemitic,layers,morpholo
 تْسَار,tsār,קֵיסָר,kesár,kaisar,shared_borrowing_source,
 ثَابَ,ṯāba,שָׁב,sháv,saba,direct_cognate_he→ar,
 ثَارَ,ṯāra,שׁוֹר,shor,sawr,lemma_promoted,
-ثَانٍ,ṯānin,שְׁנִיָּה,sh'niyá,sanina,lemma_promoted,
+ثَانٍ,ṯānin,שְׁנִיָּה,sh'niyá,sanin,lemma_promoted,he: feminine ending stripped
 ثَانٍ,ṯānin,שְׁנֵי,shnei,sanin,lemma_promoted,
-ثَانٍ,ṯānin,שִׁנִּי,shiní,sanin,lemma_promoted,
+ثَانٍ,ṯānin,שִׁנִּי,shiní,sanin,lemma_promoted,he: nisba suffix stripped (de-adjectivized)
 ثَانٍ,ṯānin,שֵׁנִי,shení,sanin,lemma_promoted,he: nisba suffix stripped (de-adjectivized)
 ثَانٍ,ṯānin,שָׁנִי,shaní,sanin,lemma_promoted,
 ثَانٍ,ṯānin,שֹׁנִי,shóni,sanin,lemma_promoted,
-ثَانِيَة,ṯāniya,שְׁנִיָּה,sh'niyá,saniya,direct_cognate_he→ar,ar: feminine ending stripped
+ثَانِيَة,ṯāniya,שְׁנִיָּה,sh'niyá,saniya,direct_cognate_he→ar,
 ثَانِيَة,ṯāniya,שְׁנֵי,shnei,saniy,lemma_promoted,ar: feminine ending stripped
-ثَانِيَة,ṯāniya,שִׁנִּי,shiní,saniy,lemma_promoted,ar: feminine ending stripped
+ثَانِيَة,ṯāniya,שִׁנִּי,shiní,saniy,lemma_promoted,ar: feminine ending stripped; he: nisba suffix stripped (de-adjectivized)
 ثَانِيَة,ṯāniya,שֵׁנִי,shení,saniy,lemma_promoted,ar: feminine ending stripped; he: nisba suffix stripped (de-adjectivized)
 ثَانِيَة,ṯāniya,שָׁנִי,shaní,saniy,lemma_promoted,ar: feminine ending stripped
 ثَانِيَة,ṯāniya,שֹׁנִי,shóni,saniy,lemma_promoted,ar: feminine ending stripped
@@ -966,7 +966,7 @@ arabic,arabic_romanization,hebrew,hebrew_romanization,pansemitic,layers,morpholo
 ثَمَلَ,ṯamala,שָׁמַר,shamár,samar,shared_borrowing_source,
 ثَمَلَ,ṯamala,תָּמָר,tamár,samar,shared_borrowing_source,
 ثَمَّ,ṯamma,שָׁם,sham,sama,direct_cognate_ar→he;direct_cognate_he→ar,
-ثَمَّ,ṯamma,שָׁמָּה,sháma,sama,direct_cognate_he→ar,
+ثَمَّ,ṯamma,שָׁמָּה,sháma,sama,direct_cognate_he→ar,he: feminine ending stripped
 ثَنَى,ṯanā,שָׁנָה,shaná,sana,direct_cognate_he→ar,he: feminine ending stripped
 ثَوْر,ṯawr,שׁוֹר,shor,sawr,direct_cognate_he→ar;shared_borrowing_source,
 ثُدَّاء,ṯuddāʔ,דֶּשֶׁא,déshe,dasʔ,shared_borrowing_source,
@@ -1014,7 +1014,7 @@ arabic,arabic_romanization,hebrew,hebrew_romanization,pansemitic,layers,morpholo
 جَبْر,jabr,אַלְגֶּבְּרָה,álgebra,jabr,shared_borrowing_source,ar: definite article stripped (shared-source ancestor)
 جَبْر,jabr,גֶּבֶר,géver,gabr,shared_borrowing_source,
 جَبْرَائِيل,jabrāʔīl,גַּבְרִיאֵל,gavri'él,gawriʔil,shared_borrowing_source,
-جَبْهَة,jabha,גַּבָּה,gabá,gabha,direct_cognate_he→ar,ar: feminine ending stripped
+جَبْهَة,jabha,גַּבָּה,gabá,gabha,direct_cognate_he→ar,
 جَحْفَل,jaḥfal,גּוּף,guf,gaxfal,direct_cognate_ar→he,
 جَحْفَلَ,jaḥfala,גּוּף,guf,gaxfala,direct_cognate_ar→he,
 جَدَّ,jadda,גַּד,gad,gada,direct_cognate_ar→he;lemma_promoted,
@@ -1218,7 +1218,7 @@ arabic,arabic_romanization,hebrew,hebrew_romanization,pansemitic,layers,morpholo
 حَدُثَ,ḥaduṯa,חִדֵּשׁ,khidésh,xadasa,shared_borrowing_source;lemma_promoted,
 حَدُثَ,ḥaduṯa,חַדֵּשׁ,khadésh,xadasa,shared_borrowing_source,
 حَدُثَ,ḥaduṯa,חָדָשׁ,khadásh,xadasa,shared_borrowing_source;lemma_promoted,
-حَدِيث,ḥadīṯ,חֲדָשׁוֹת,khadashót,xadisat,lemma_promoted,
+حَدِيث,ḥadīṯ,חֲדָשׁוֹת,khadashót,xadis,lemma_promoted,he: plural suffix stripped
 حَدِيث,ḥadīṯ,חִדֵּשׁ,khidésh,xadis,lemma_promoted,
 حَدِيث,ḥadīṯ,חַדֵּשׁ,khadésh,xadis,lemma_promoted,
 حَدِيث,ḥadīṯ,חָדָשׁ,khadásh,xadis,direct_cognate_ar→he;direct_cognate_he→ar;lemma_promoted,
@@ -1287,7 +1287,7 @@ arabic,arabic_romanization,hebrew,hebrew_romanization,pansemitic,layers,morpholo
 حَقَّ,ḥaqqa,חָקַק,khakák,xaqak,direct_cognate_he→ar,
 حَقَّ,ḥaqqa,חֹק,khók,xaqa,direct_cognate_ar→he;lemma_promoted,
 حَقّ,ḥaqq,חֹק,khók,xaq,direct_cognate_he→ar,
-حَكَا,ḥakā,חִקָּה,khiká,xaka,direct_cognate_ar→he;direct_cognate_he→ar,
+حَكَا,ḥakā,חִקָּה,khiká,xaka,direct_cognate_ar→he;direct_cognate_he→ar,he: feminine ending stripped
 حَكَمَة,ḥakama,חׇכְמָה,khokhmá,xakama,direct_cognate_he→ar,
 حَكِيم,ḥakīm,חָכַם,khakhám,xakim,direct_cognate_he→ar,
 حَكِيم,ḥakīm,חָכָם,khakhám,xakim,direct_cognate_ar→he;direct_cognate_he→ar,
@@ -1374,17 +1374,17 @@ arabic,arabic_romanization,hebrew,hebrew_romanization,pansemitic,layers,morpholo
 حَوْلَ,ḥawla,חַיָּל,khayál,xawla,direct_cognate_he→ar,
 حَيَاء,ḥayāʔ,חַי,kháy,xayiya,lemma_promoted,ar: substituted cited base حَيِيَ (ḥayiya)
 حَيَاة,ḥayāh,חַי,kháy,xay,lemma_promoted,ar: feminine ending stripped
-حَيَاة,ḥayāh,חַיִּים,khayím,xayim,direct_cognate_he→ar,ar: feminine ending stripped
+حَيَاة,ḥayāh,חַיִּים,khayím,xay,direct_cognate_he→ar,ar: feminine ending stripped; he: plural suffix stripped
 حَيَوَان,ḥayawān,חַי,kháy,xaya,lemma_promoted,ar: substituted cited base حَيَّ (ḥayya)
-حَيَوَان,ḥayawān,חַיָּה,khayá,xaya,direct_cognate_ar→he;direct_cognate_he→ar,ar: substituted cited base حَيَّ (ḥayya)
+حَيَوَان,ḥayawān,חַיָּה,khayá,xayawan,direct_cognate_ar→he;direct_cognate_he→ar,he: feminine ending stripped
 حَيَّ,ḥayya,חַי,kháy,xaya,lemma_promoted,
-حَيَّ,ḥayya,חַיָּה,khayá,xaya,lemma_promoted,
+حَيَّ,ḥayya,חַיָּה,khayá,xaya,lemma_promoted,he: feminine ending stripped
 حَيِيَ,ḥayiya,חַוָּה,khavá,xayawa,shared_borrowing_source,
 حَيِيَ,ḥayiya,חַי,kháy,xayawa,direct_cognate_ar→he;shared_borrowing_source;lemma_promoted,
-حَيِيَ,ḥayiya,חַיִּים,khayím,xayiya,lemma_promoted,
+حَيِيَ,ḥayiya,חַיִּים,khayím,xayiya,lemma_promoted,he: plural suffix stripped
 حَيِيَ,ḥayiya,חָוָה,khavá,xayawa,shared_borrowing_source,
 حَيّ,ḥayy,חַי,kháy,xawa,direct_cognate_ar→he;lemma_promoted,ar: substituted cited base حَوَى (ḥawā)
-حَيّ,ḥayy,חַיָּה,khayá,xawa,lemma_promoted,ar: substituted cited base حَوَى (ḥawā)
+حَيّ,ḥayy,חַיָּה,khayá,xay,lemma_promoted,he: feminine ending stripped
 حَيْصَل,ḥayṣal,חָצִיל,khatsíl,xayṣal,shared_borrowing_source,
 حَيْل,ḥayl,חִיֵּל,khiyél,xayil,direct_cognate_he→ar,
 حَيْل,ḥayl,חַיִל,kháyil,xayil,direct_cognate_he→ar,
@@ -1405,7 +1405,7 @@ arabic,arabic_romanization,hebrew,hebrew_romanization,pansemitic,layers,morpholo
 حُلَّب,ḥullab,חָלַב,khaláv,xulab,lemma_promoted,
 حُلَّب,ḥullab,חָלָב,khaláv,xulab,lemma_promoted,
 حُلُم,ḥulum,חֲלוֹם,khalóm,xulum,direct_cognate_ar→he;lemma_promoted,
-حُلْبَة,ḥulba,חִלְבָּה,khilbá,xulba,direct_cognate_ar→he,ar: feminine ending stripped
+حُلْبَة,ḥulba,חִלְבָּה,khilbá,xulba,direct_cognate_ar→he,
 حُلْم,ḥulm,חֲלוֹם,khalóm,xulam,direct_cognate_ar→he;direct_cognate_he→ar;lemma_promoted,
 حُمَة,ḥuma,חֵמָה,khemá,xuma,direct_cognate_he→ar,
 حُمُّص,ḥummuṣ,חִמְצָה,khimtsá,xumuṣ,direct_cognate_ar→he;direct_cognate_he→ar,he: feminine ending stripped
@@ -1438,7 +1438,7 @@ arabic,arabic_romanization,hebrew,hebrew_romanization,pansemitic,layers,morpholo
 حِمِّص,ḥimmiṣ,חוּמוּס,khúmus,xiymṣa,shared_borrowing_source,
 حِمْص,ḥimṣ,חִמְצָה,khimtsá,ximṣ,direct_cognate_he→ar,he: feminine ending stripped
 حِنَّاء,ḥinnāʔ,חִינָה,khína,xinaʔ,shared_borrowing_source,
-حِنْطَة,ḥinṭa,חִטָּה,khitá,xinṭa,direct_cognate_ar→he;direct_cognate_he→ar,ar: feminine ending stripped
+حِنْطَة,ḥinṭa,חִטָּה,khitá,xinṭa,direct_cognate_ar→he;direct_cognate_he→ar,
 خَابُور,ḵābūr,חִיבּוּר,ḥibbūr,xibur,shared_borrowing_source,
 خَابِيَة,ḵābiya,חָבִית,khavít,xabu,direct_cognate_ar→he;direct_cognate_he→ar;shared_borrowing_source,
 خَاتَم,ḵātam,טַבַּעַת,tabá'at,jibaut,shared_borrowing_source,
@@ -1642,7 +1642,7 @@ arabic,arabic_romanization,hebrew,hebrew_romanization,pansemitic,layers,morpholo
 دَقِيق,daqīq,דַּק,dak,daqiq,direct_cognate_ar→he;direct_cognate_he→ar,
 دَقِيق,daqīq,דֹּק,dok,daqiq,direct_cognate_he→ar,
 دَقِيقَة,daqīqa,דַּק,dak,daqiq,lemma_promoted,ar: feminine ending stripped
-دَقِيقَة,daqīqa,דַּקָּה,daká,daqiq,direct_cognate_ar→he;direct_cognate_he→ar,ar: feminine ending stripped
+دَقِيقَة,daqīqa,דַּקָּה,daká,daqiqa,direct_cognate_ar→he;direct_cognate_he→ar,
 دَقِيقَة,daqīqa,דֹּק,dok,daqiq,lemma_promoted,ar: feminine ending stripped
 دَكَّ,dakka,דִּכֵּא,diké,daka,direct_cognate_ar→he;lemma_promoted,
 دَكّ,dakk,דִּכֵּא,diké,daka,direct_cognate_ar→he,ar: substituted cited base دَكَّ (dakka)
@@ -1741,7 +1741,7 @@ arabic,arabic_romanization,hebrew,hebrew_romanization,pansemitic,layers,morpholo
 رَبَّ,rabba,רַב,ráv,rab,shared_borrowing_source;lemma_promoted,
 رَبَّ,rabba,רֹב,rov,rab,shared_borrowing_source;lemma_promoted,
 رَبَّ,rabba,רב,ráv-,rab,shared_borrowing_source;lemma_promoted,
-رَبَّان,rabbān,רִבּוֹן,ribón,raban,direct_cognate_ar→he,
+رَبَّان,rabbān,רִבּוֹן,ribón,raban,direct_cognate_ar→he,ar: dual suffix stripped
 رَبَّضَ,rabbaḍa,רָבַץ,raváts,rabaṣa,direct_cognate_ar→he,
 رَبّ,rabb,רַב,ráv,rab,shared_borrowing_source,
 رَبّ,rabb,רֹב,rov,rab,shared_borrowing_source,
@@ -1754,23 +1754,23 @@ arabic,arabic_romanization,hebrew,hebrew_romanization,pansemitic,layers,morpholo
 رَجْم,rajm,רָגַם,ragám,ragama,direct_cognate_ar→he,ar: substituted cited base رَجَمَ (rajama)
 رَحَضَ,raḥaḍa,רָחַץ,rakháts,raxaṣa,direct_cognate_ar→he,
 رَحَّمَ,raḥḥama,רַחְמָנוּת,rakhmanút,raxmamat,lemma_promoted,
-رَحَّمَ,raḥḥama,רַחֲמִים,rakhamím,raxamam,lemma_promoted,
+رَحَّمَ,raḥḥama,רַחֲמִים,rakhamím,raxama,lemma_promoted,he: plural suffix stripped
 رَحِبَ,raḥiba,רָחָב,rakháv,raxiba,direct_cognate_ar→he,
 رَحِبَ,raḥiba,רֹחַב,rókhav,raxiba,direct_cognate_ar→he,
 رَحِم,raḥim,רֶחֶם,rékhem,raxim,direct_cognate_he→ar,
 رَحِم,raḥim,רַחְמָנוּת,rakhmanút,raxmimut,lemma_promoted,
-رَحِم,raḥim,רַחֲמִים,rakhamím,raxamim,lemma_promoted,
+رَحِم,raḥim,רַחֲמִים,rakhamím,raxim,lemma_promoted,he: plural suffix stripped
 رَحِمَ,raḥima,רִחֵם,rikhém,raxima,direct_cognate_ar→he;direct_cognate_he→ar,
 رَحِمَ,raḥima,רֶחֶם,rékhem,raxima,direct_cognate_ar→he,
 رَحِمَ,raḥima,רַחְמָנוּת,rakhmanút,raximanut,lemma_promoted,
-رَحِمَ,raḥima,רַחֲמִים,rakhamím,raximam,lemma_promoted,
+رَحِمَ,raḥima,רַחֲמִים,rakhamím,raxima,lemma_promoted,he: plural suffix stripped
 رَحِمَ,raḥima,רָחַם,rakhám,raxima,direct_cognate_ar→he;direct_cognate_he→ar,
 رَحِمَ,raḥima,רֻחַם,rukhám,raxima,direct_cognate_ar→he;direct_cognate_he→ar,
 رَحِيم,raḥīm,רַחוּם,rakhúm,raxim,direct_cognate_he→ar,
 رَحْب,raḥb,רָחָב,rakháv,raxab,direct_cognate_ar→he;direct_cognate_he→ar,
 رَحْب,raḥb,רֹחַב,rókhav,raxab,direct_cognate_he→ar,
 رَحْمَة,raḥma,רַחְמָנוּת,rakhmanút,raxmanut,direct_cognate_he→ar,ar: feminine ending stripped
-رَحْمَة,raḥma,רַחֲמִים,rakhamím,raxamim,direct_cognate_ar→he;direct_cognate_he→ar,ar: feminine ending stripped
+رَحْمَة,raḥma,רַחֲמִים,rakhamím,raxam,direct_cognate_ar→he;direct_cognate_he→ar,ar: feminine ending stripped; he: plural suffix stripped
 رَدَفَ,radafa,רָדַף,radáf,radafa,direct_cognate_ar→he;direct_cognate_he→ar,
 رَسَمَ,rasama,רָשַׁם,rashám,rasama,direct_cognate_ar→he;direct_cognate_he→ar;lemma_promoted,
 رَسَمَ,rasama,רֹשֶׁם,róshem,rasama,direct_cognate_he→ar,
@@ -1781,7 +1781,7 @@ arabic,arabic_romanization,hebrew,hebrew_romanization,pansemitic,layers,morpholo
 رَصَّفَ,raṣṣafa,רֶצֶף,rétsef,raṣafa,direct_cognate_ar→he;lemma_promoted,ar: form-II verb degeminated
 رَصِيف,raṣīf,רֶצֶף,rétsef,raṣif,lemma_promoted,
 رَصْف,raṣf,רֶצֶף,rétsef,raṣif,direct_cognate_ar→he,
-رَضِيَ,raḍiya,רִצָּה,ritsá,raṣiya,direct_cognate_he→ar,
+رَضِيَ,raḍiya,רִצָּה,ritsá,raṣiya,direct_cognate_he→ar,he: feminine ending stripped
 رَضِيَ,raḍiya,רָצָה,ratsá,raṣiya,direct_cognate_ar→he;direct_cognate_he→ar,he: feminine ending stripped
 رَطْب,raṭb,רָטֹב,ratóv,raṭab,direct_cognate_he→ar,
 رَطْب,raṭb,רָטוּב,ratúv,raṭub,direct_cognate_he→ar,
@@ -1826,7 +1826,7 @@ arabic,arabic_romanization,hebrew,hebrew_romanization,pansemitic,layers,morpholo
 رُبْوَة,rubwa,רַבְּוַה,rabváh,rubwa,shared_borrowing_source,
 رُجُم,rujum,רָגַם,ragám,rugum,direct_cognate_ar→he;lemma_promoted,
 رُحْم,ruḥm,רַחְמָנוּת,rakhmanút,ruxmanut,lemma_promoted,
-رُحْم,ruḥm,רַחֲמִים,rakhamím,ruxamim,lemma_promoted,
+رُحْم,ruḥm,רַחֲמִים,rakhamím,ruxam,lemma_promoted,he: plural suffix stripped
 رُزّ,ruzz,אֶרֶז,érez,ʔaryzda,lemma_promoted,
 رُزّ,ruzz,אָרַז,aráz,ʔaryzda,lemma_promoted,
 رُزّ,ruzz,אֹרֶז,órez,ʔaryzda,shared_borrowing_source,
@@ -2008,7 +2008,7 @@ arabic,arabic_romanization,hebrew,hebrew_romanization,pansemitic,layers,morpholo
 سَاو بَاوْلُو,sāw bāwlō,סָאוּ פָּאוּלוּ,sau paulu,saw pawlu,shared_borrowing_source,
 سَبَانِخ,sabāniḵ,פִּין,pin,spiy,shared_borrowing_source,
 سَبَانِخ,sabāniḵ,שְׁפִּיץ,shpits,spiy,shared_borrowing_source,
-سَبَب,sabab,סִבָּה,sibá,sabab,direct_cognate_ar→he;direct_cognate_he→ar,
+سَبَب,sabab,סִבָּה,sibá,sabab,direct_cognate_ar→he;direct_cognate_he→ar,he: feminine ending stripped
 سَبَحَ,sabaḥa,שִׁבֵּחַ,shibéakh,sabiaxa,lemma_promoted,
 سَبَحَ,sabaḥa,שֶׁבַח,shévakh,sabaxa,lemma_promoted,
 سَبَحَ,sabaḥa,שֻׁבַּח,shubákh,sabaxa,lemma_promoted,
@@ -2196,7 +2196,7 @@ arabic,arabic_romanization,hebrew,hebrew_romanization,pansemitic,layers,morpholo
 سَمْن,samn,שֶׁמֶן,shémen,šamn,shared_borrowing_source,
 سَمْن,samn,שַׁמֶּנֶת,shaménet,saminit,direct_cognate_he→ar,
 سَنَا,sanā,סְנֶה,s'ne,sana,direct_cognate_ar→he;direct_cognate_he→ar,
-سَنَا,sanā,סֻנָּה,suná,sana,direct_cognate_ar→he,
+سَنَا,sanā,סֻנָּה,suná,sana,direct_cognate_ar→he,he: feminine ending stripped
 سَنَا,sanā,שֵׁן,shen,šin,shared_borrowing_source,
 سَنَا,sanā,שָׁנִי,shaní,sana,direct_cognate_ar→he,
 سَنَة,sana,שָׁנָה,shaná,šanat,shared_borrowing_source,
@@ -2207,7 +2207,7 @@ arabic,arabic_romanization,hebrew,hebrew_romanization,pansemitic,layers,morpholo
 سَنْدَان,sandān,סַדְנָה,sadná,sandan,shared_borrowing_source,
 سَنْدَان,sandān,סַדָּן,sadán,sandan,direct_cognate_ar→he;direct_cognate_he→ar;shared_borrowing_source,
 سَنْدَان,sandān,סָדָן,sadán,sandan,direct_cognate_he→ar;shared_borrowing_source,
-سَنْط,sanṭ,שִׁטָּה,shitá,sanṭa,direct_cognate_he→ar,
+سَنْط,sanṭ,שִׁטָּה,shitá,sanṭ,direct_cognate_he→ar,he: feminine ending stripped
 سَوَاكِن,sawākin,שִׁוֵּק,shivék,suqum,shared_borrowing_source,
 سَوَاكِن,sawākin,שׁוּק,shuk,suqum,shared_borrowing_source,
 سَوَّفَ,sawwafa,סוֹף,sóf,sapa,shared_borrowing_source,
@@ -2327,7 +2327,7 @@ arabic,arabic_romanization,hebrew,hebrew_romanization,pansemitic,layers,morpholo
 شَبْر,šabr,שֶׁבֶר,shéver,šibir,shared_borrowing_source,
 شَبْر,šabr,שָׁבַר,shavár,sabar,shared_borrowing_source,
 شَبْر,šabr,שֻׁבַּר,shubár,sabar,shared_borrowing_source,
-شَتَّانَ,šattāna,הִשְׁתַּנָּה,hishtaná,hišatana,direct_cognate_he→ar,
+شَتَّانَ,šattāna,הִשְׁתַּנָּה,hishtaná,hišatana,direct_cognate_he→ar,he: feminine ending stripped
 شَحَطَ,šaḥaṭa,שָׁחַט,shakhát,šaxaṭa,direct_cognate_ar→he;lemma_promoted,
 شَحَّطَ,šaḥḥaṭa,שָׁחַט,shakhát,šaxaṭa,direct_cognate_ar→he;lemma_promoted,
 شَحْط,šaḥṭ,שָׁחַט,shakhát,šaxaṭa,direct_cognate_ar→he,ar: substituted cited base شَحَطَ (šaḥaṭa)
@@ -2653,7 +2653,7 @@ arabic,arabic_romanization,hebrew,hebrew_romanization,pansemitic,layers,morpholo
 ظُبِيّ,ẓubiyy,צְבִי,tsví,ṣubiy,direct_cognate_ar→he,
 ظُفْر,ẓufr,טֹפֶר,tofer,ṣupr,shared_borrowing_source,
 ظُفْر,ẓufr,צִפֹּרֶן,tsipóren,ṣupr,direct_cognate_he→ar;shared_borrowing_source,
-ظُهْر,ẓuhr,צׇהֳרַיִם,tsohoráyim,ṣuharayim,direct_cognate_ar→he;direct_cognate_he→ar,
+ظُهْر,ẓuhr,צׇהֳרַיִם,tsohoráyim,ṣuhar,direct_cognate_ar→he;direct_cognate_he→ar,he: dual suffix stripped
 ظِلّ,ẓill,צֵל,tsél,ṣil,direct_cognate_he→ar;shared_borrowing_source,
 عَاصِفَة,ʕāṣifa,סוּפָה,sufá,ʕaṣifa,direct_cognate_he→ar,
 عَاقَبَ,ʕāqaba,עֵקֶב,ékev,ʕaqaba,direct_cognate_he→ar,
@@ -2760,7 +2760,7 @@ arabic,arabic_romanization,hebrew,hebrew_romanization,pansemitic,layers,morpholo
 عَلَى,ʕalā,עֹלָה,óla,ʕal,shared_borrowing_source,
 عَلِيَ,ʕaliya,עֲלֵי,alé,ʕaliya,direct_cognate_ar→he,
 عَلِيَ,ʕaliya,עֲלֵי־,alé,ʕaliya,direct_cognate_ar→he,
-عَلِيَ,ʕaliya,עִלִּי,ilí,ʕaliya,direct_cognate_ar→he,
+عَلِيَ,ʕaliya,עִלִּי,ilí,ʕaliya,direct_cognate_ar→he,he: nisba suffix stripped (de-adjectivized)
 عَلِيَ,ʕaliya,עֵלִי,eli,ʕal,direct_cognate_ar→he;shared_borrowing_source,
 عَلِيَ,ʕaliya,עָלֶה,alé,ʕal,direct_cognate_he→ar;shared_borrowing_source;lemma_promoted,
 عَلِيَ,ʕaliya,עָלַי,aláy,ʕaliya,direct_cognate_ar→he,
@@ -2782,8 +2782,8 @@ arabic,arabic_romanization,hebrew,hebrew_romanization,pansemitic,layers,morpholo
 عَنَان,ʕanān,עָנָן,'anán,ʕanan,direct_cognate_ar→he;direct_cognate_he→ar,
 عَنِيَ,ʕaniya,עָנִי,aní,ʕaniya,direct_cognate_he→ar,he: nisba suffix stripped (de-adjectivized)
 عَنِيَ,ʕaniya,עֹנִי,óni,ʕaniya,direct_cognate_he→ar,
-عَنْبَا,ʕanbā,עַמְבָּה,'ámba,ʕanba,shared_borrowing_source,
-عَنْبَة,ʕanba,עַמְבָּה,'ámba,ʕanba,shared_borrowing_source,ar: feminine ending stripped
+عَنْبَا,ʕanbā,עַמְבָּה,'ámba,ʕanba,shared_borrowing_source,he: feminine ending stripped
+عَنْبَة,ʕanba,עַמְבָּה,'ámba,ʕanba,shared_borrowing_source,
 عَنْبَر,ʕanbar,עִנְבָּר,inbár,ʕanbar,shared_borrowing_source,
 عَنْبَر,ʕanbar,עַנְבָּר,anbár,ʕanbar,shared_borrowing_source,
 عَنْز,ʕanz,עֵז,éz,ʕanz,direct_cognate_ar→he;direct_cognate_he→ar;shared_borrowing_source,
@@ -2841,7 +2841,7 @@ arabic,arabic_romanization,hebrew,hebrew_romanization,pansemitic,layers,morpholo
 عِضّ,ʕiḍḍ,עֵץ,ʿēṣ,ʕiṣ,shared_borrowing_source,
 عِفْرِيت,ʕifrīt,עִפְרִית,ʿifrīt,ʕiprit,shared_borrowing_source,
 عِقْد,ʕiqd,עֲקֵדָה,ʿaqedá,ʕiqid,lemma_promoted,he: feminine ending stripped
-عِلِّيَّة,ʕilliyya,עֲלִיָּה,aliyá,ʕiliya,direct_cognate_ar→he,ar: feminine ending stripped
+عِلِّيَّة,ʕilliyya,עֲלִיָּה,aliyá,ʕiliya,direct_cognate_ar→he,
 عِلِّيُّون,ʕilliyyūn,עֶלְיוֹן,'elyón,ʕilyan,shared_borrowing_source,
 عِمَاد,ʕimād,עַמּוּד,amúd,ʕimad,direct_cognate_ar→he,
 عِنَب,ʕinab,עֲנָבָה,,,direct_cognate_ar→he,
@@ -2856,7 +2856,7 @@ arabic,arabic_romanization,hebrew,hebrew_romanization,pansemitic,layers,morpholo
 غَبَرَة,ḡabara,עָפָר,afár,gabar,direct_cognate_he→ar,ar: feminine ending stripped
 غَبَرَة,ḡabara,עָפֹר,afór,gabar,direct_cognate_he→ar,ar: feminine ending stripped
 غَبَرَة,ḡabara,עֹפֶר,ófer,gabar,direct_cognate_he→ar,ar: feminine ending stripped
-غَزَّة,ḡazza,עַזָּה,áza,gaza,direct_cognate_he→ar,ar: feminine ending stripped
+غَزَّة,ḡazza,עַזָּה,áza,gaza,direct_cognate_he→ar,
 غَطَا,ḡaṭā,עָטָה,ʿatá,gaṭa,direct_cognate_ar→he;direct_cognate_he→ar,he: feminine ending stripped
 غَطَّى,ḡaṭṭā,עָטָה,ʿatá,gaṭa,direct_cognate_ar→he,he: feminine ending stripped
 غَلَّ,ḡalla,עֹל,ol,gala,lemma_promoted,
@@ -2932,9 +2932,9 @@ arabic,arabic_romanization,hebrew,hebrew_romanization,pansemitic,layers,morpholo
 فَشَّلَ,faššala,פַשְׁלָה,fáshla,pašal,lemma_promoted,
 فَشِل,fašil,פַשְׁלָה,fáshla,pašal,lemma_promoted,
 فَشِلَ,fašila,פַשְׁלָה,fáshla,pašal,lemma_promoted,
-فَصُحَ,faṣuḥa,פִּצָּה,pitsá,paṣuxa,direct_cognate_he→ar,
+فَصُحَ,faṣuḥa,פִּצָּה,pitsá,paṣuxa,direct_cognate_he→ar,he: feminine ending stripped
 فَصُحَ,faṣuḥa,פָּצָה,patsá,paṣuxa,direct_cognate_ar→he;direct_cognate_he→ar,he: feminine ending stripped
-فَصُحَ,faṣuḥa,פֻּצָּה,putsá,paṣuxa,direct_cognate_he→ar,
+فَصُحَ,faṣuḥa,פֻּצָּה,putsá,paṣuxa,direct_cognate_he→ar,he: feminine ending stripped
 فَصْفَص,faṣfaṣ,אַסְפֶּסֶת,aspéset,ʔaspastu,shared_borrowing_source;lemma_promoted,
 فَصْفَص,faṣfaṣ,הִיפּוֹפּוֹטָם,hipopotám,hikwas,shared_borrowing_source,
 فَصْفَصَة,faṣfaṣa,אַסְפֶּסֶת,aspéset,ʔaspast,shared_borrowing_source,
@@ -2985,7 +2985,7 @@ arabic,arabic_romanization,hebrew,hebrew_romanization,pansemitic,layers,morpholo
 فُطْر,fuṭr,פֶּטֶר,péter,puṭir,direct_cognate_ar→he;lemma_promoted,
 فُطْر,fuṭr,פָּטַר,patár,puṭar,direct_cognate_ar→he;lemma_promoted,
 فُطْرَة,fuṭra,הִפְטִיר,hiftír,hifuṭir,lemma_promoted,ar: feminine ending stripped
-فُطْرَة,fuṭra,פִּטְרִיָּה,pitriyá,puṭriya,direct_cognate_ar→he;direct_cognate_he→ar,ar: feminine ending stripped
+فُطْرَة,fuṭra,פִּטְרִיָּה,pitriyá,puṭriya,direct_cognate_ar→he;direct_cognate_he→ar,
 فُلَان,fulān,פלוני,plóni,pulani,direct_cognate_he→ar,
 فُلْك,fulk,פֶּלֶךְ,pélekh,pulik,direct_cognate_ar→he,
 فُلْكْلُور,folklōr,פוֹלְקְלוֹר,folklór,faukla,shared_borrowing_source,
@@ -3227,7 +3227,7 @@ arabic,arabic_romanization,hebrew,hebrew_romanization,pansemitic,layers,morpholo
 قِرْش,qirš,כָּרִישׁ,karísh,qiriš,direct_cognate_he→ar,
 قِرْطَاس,qirṭās,כַּרְטִיס,kartís,kartis,shared_borrowing_source,
 قِرْفَة,qirfa,קְלִיפָה,k'lifá,qirifa,direct_cognate_he→ar,
-قِرْفَة,qirfa,קְלִפָּה,k'lipá,qiripa,direct_cognate_he→ar,ar: feminine ending stripped
+قِرْفَة,qirfa,קְלִפָּה,k'lipá,qiripa,direct_cognate_he→ar,
 قِطَار,qiṭār,קִטֵּר,qitér,qiṭar,direct_cognate_he→ar,
 قِطَار,qiṭār,קַטָּר,katár,qiṭar,direct_cognate_he→ar,
 قِطَار,qiṭār,קָטָר,Qatar,qiṭar,direct_cognate_he→ar,
@@ -3363,13 +3363,13 @@ arabic,arabic_romanization,hebrew,hebrew_romanization,pansemitic,layers,morpholo
 كَمِرَة,kamira,קַמְפֵּיְן,kampéin,kxim,shared_borrowing_source;lemma_promoted,
 كَمِرَة,kamira,קַמְפּוּס,kampus,kxim,shared_borrowing_source;lemma_promoted,
 كَمِرَة,kamira,שַׁמְפַּנְיָה,shampánya,kxim,shared_borrowing_source;lemma_promoted,
-كَمْ,kam,כַּמָּה,káma,kama,direct_cognate_he→ar,
+كَمْ,kam,כַּמָּה,káma,kam,direct_cognate_he→ar,he: feminine ending stripped
 كَنَزَ,kanaza,גָּנַז,ganáz,kanaza,direct_cognate_he→ar,
 كَنَف,kanaf,כָּנָף,kanáf,kanap,direct_cognate_ar→he;direct_cognate_he→ar;shared_borrowing_source,
-كَنَّة,kanna,כַּלָּה,kalá,kana,direct_cognate_ar→he,ar: feminine ending stripped
+كَنَّة,kanna,כַּלָּה,kalá,kana,direct_cognate_ar→he,
 كَنِز,kaniz,גָּנַז,ganáz,kaniz,direct_cognate_he→ar,
 كَنِيس,kanīs,כְּנֶסֶת,knéset,kanisit,direct_cognate_ar→he,
-كَنِيسَة,kanīsa,כְּנֵסִיָּה,knesiyá,kanisiya,direct_cognate_he→ar,ar: feminine ending stripped
+كَنِيسَة,kanīsa,כְּנֵסִיָּה,knesiyá,kanisiya,direct_cognate_he→ar,
 كَنِيسَة,kanīsa,כְּנֶסֶת,knéset,kanisit,direct_cognate_ar→he,ar: feminine ending stripped
 كَنْدُوج,kandūj,כַּד,kad,kanda,shared_borrowing_source,
 كَنْز,kanz,גְּנִיזָה,g'nizá,ganjam,shared_borrowing_source,
@@ -3496,8 +3496,8 @@ arabic,arabic_romanization,hebrew,hebrew_romanization,pansemitic,layers,morpholo
 لَكِدَ,lakida,לִיכּוּד,likúd,lakida,lemma_promoted,
 لَكْد,lakd,הַלִּיכּוּד,ha-likúd,halakud,lemma_promoted,
 لَكْد,lakd,לִיכּוּד,likúd,lakud,lemma_promoted,
-لَمَا,lamā,לָ֫מָּה,láma,lama,direct_cognate_he→ar,
-لَمَّا,lammā,לָ֫מָּה,láma,lama,direct_cognate_he→ar,
+لَمَا,lamā,לָ֫מָּה,láma,lama,direct_cognate_he→ar,he: feminine ending stripped
+لَمَّا,lammā,לָ֫מָּה,láma,lama,direct_cognate_he→ar,he: feminine ending stripped
 لَهَب,lahab,לֶהָבָה,lehavá,lahab,shared_borrowing_source,
 لَهَّبَ,lahhaba,לֶהָבָה,lehavá,lahab,lemma_promoted,
 لَهِبَ,lahiba,לֶהָבָה,lehavá,lahab,lemma_promoted,
@@ -3544,7 +3544,7 @@ arabic,arabic_romanization,hebrew,hebrew_romanization,pansemitic,layers,morpholo
 لِشْبُونَة,Lišbūna,לִיסְבּוֹן,lísbon,lišbuna,shared_borrowing_source,
 لِصّ,liṣṣ,לִסְטִים,listím,listis,shared_borrowing_source;lemma_promoted,
 لِفْت,lift,לֶפֶת,léfet,lapt,direct_cognate_ar→he;shared_borrowing_source,
-لِمَا,limā,לָ֫מָּה,láma,lima,direct_cognate_he→ar,
+لِمَا,limā,לָ֫מָּה,láma,lima,direct_cognate_he→ar,he: feminine ending stripped
 لِمَاذَا,li-māḏā,לָמָּה זֶה,láma zé,limaza,direct_cognate_he→ar,word-count mismatch (ar 1 vs he 2); merged unsplit
 ميشال,mīšāl,מִיכָאֵל,mikha'él,mikaʔil,shared_borrowing_source,
 مَا,mā,מָה,ma,ma,direct_cognate_ar→he;direct_cognate_he→ar,
@@ -3599,7 +3599,7 @@ arabic,arabic_romanization,hebrew,hebrew_romanization,pansemitic,layers,morpholo
 مَثَّلَ,maṯṯala,מָשָׁל,mashál,masala,direct_cognate_ar→he,
 مَجَدَ,majada,מֶגֶד,méged,magada,direct_cognate_ar→he;direct_cognate_he→ar;lemma_promoted,
 مَجَدَ,majada,מֻגָּד,mugád,magada,direct_cognate_ar→he,
-مَجَلَّة,majalla,מְגִלָּה,m'gilá,magala,direct_cognate_he→ar,ar: feminine ending stripped
+مَجَلَّة,majalla,מְגִלָּה,m'gilá,magala,direct_cognate_he→ar,
 مَجَّدَ,majjada,מֶגֶד,méged,majada,direct_cognate_he→ar;lemma_promoted,
 مَجُوس,majūs,מָג,mag,,shared_borrowing_source,
 مَجْد,majd,מֶגֶד,méged,magid,direct_cognate_he→ar,
@@ -3722,10 +3722,10 @@ arabic,arabic_romanization,hebrew,hebrew_romanization,pansemitic,layers,morpholo
 مَنَارَة,manāra,מְנוֹרָה,m'norá,manara,direct_cognate_ar→he;direct_cognate_he→ar,
 مَنَعَ,manaʕa,מָנַע,maná',manaʕa,direct_cognate_ar→he;direct_cognate_he→ar;lemma_promoted,
 مَنَّ,manna,מָנֶה,mané,mana,lemma_promoted,
-مَنَّى,mannā,מִנָּה,miná,mana,direct_cognate_he→ar,
+مَنَّى,mannā,מִנָּה,miná,mana,direct_cognate_he→ar,he: feminine ending stripped
 مَنَّى,mannā,מָנֶה,mané,mana,direct_cognate_he→ar,
 مَنَّى,mannā,מָנָה,maná,mana,direct_cognate_he→ar,he: feminine ending stripped
-مَنِيَّة,maniyya,מִנָּה,miná,maniy,direct_cognate_he→ar;lemma_promoted,ar: feminine ending stripped
+مَنِيَّة,maniyya,מִנָּה,miná,maniya,direct_cognate_he→ar;lemma_promoted,
 مَنِيَّة,maniyya,מָנֶה,mané,maniy,direct_cognate_he→ar;lemma_promoted,ar: feminine ending stripped
 مَنِيَّة,maniyya,מָנָה,maná,maniya,direct_cognate_he→ar;lemma_promoted,
 مَنّ,mann,מָנֶה,mané,mani,direct_cognate_ar→he,
@@ -3782,13 +3782,13 @@ arabic,arabic_romanization,hebrew,hebrew_romanization,pansemitic,layers,morpholo
 مُلَحِّن,mulaḥḥin,מַלְחִין,malkhín,mulaxin,direct_cognate_ar→he,
 مُلَّاح,mullāḥ,מַלּוּחַ,malúakh,muluax,direct_cognate_he→ar,
 مُمَثِّل,mumaṯṯil,מֶמְשָׁלָה,memshalá,mumasil,direct_cognate_he→ar,he: feminine ending stripped
-مُنًى,munan,מִנָּה,miná,munan,direct_cognate_he→ar,
+مُنًى,munan,מִנָּה,miná,munan,direct_cognate_he→ar,he: feminine ending stripped
 مُنًى,munan,מָנֶה,mané,munan,direct_cognate_he→ar,
 مُنًى,munan,מָנָה,maná,munan,direct_cognate_he→ar,he: feminine ending stripped
-مُنَى,munā,מִנָּה,miná,muna,direct_cognate_he→ar,
+مُنَى,munā,מִנָּה,miná,muna,direct_cognate_he→ar,he: feminine ending stripped
 مُنَى,munā,מָנֶה,mané,muna,direct_cognate_he→ar,
 مُنَى,munā,מָנָה,maná,muna,direct_cognate_he→ar,he: feminine ending stripped
-مُنْيَة,munya,מִנָּה,miná,munay,direct_cognate_he→ar;lemma_promoted,ar: feminine ending stripped
+مُنْيَة,munya,מִנָּה,miná,munya,direct_cognate_he→ar;lemma_promoted,
 مُنْيَة,munya,מָנֶה,mané,muniy,direct_cognate_he→ar;lemma_promoted,ar: feminine ending stripped
 مُنْيَة,munya,מָנָה,maná,munya,direct_cognate_he→ar;lemma_promoted,
 مُهَاجِر,muhājir,מְהַגֵּר,m'hagér,muhajir,shared_borrowing_source,
@@ -3840,7 +3840,7 @@ arabic,arabic_romanization,hebrew,hebrew_romanization,pansemitic,layers,morpholo
 مِلْح,milḥ,מֶלַח,mélaḥ,milx,direct_cognate_he→ar;shared_borrowing_source,
 مِلْح,milḥ,מָלָגָה,Malága,milx,shared_borrowing_source,
 مِلْيار,milyār,מִילְיַארְד,milyárd,milyar,shared_borrowing_source,
-مِنًى,minan,מִנָּה,miná,minan,direct_cognate_he→ar,
+مِنًى,minan,מִנָּה,miná,minan,direct_cognate_he→ar,he: feminine ending stripped
 مِنًى,minan,מָנֶה,mané,minan,direct_cognate_he→ar,
 مِنًى,minan,מָנָה,maná,minan,direct_cognate_he→ar,he: feminine ending stripped
 مِنْ,min,מִן,min,min,direct_cognate_ar→he;direct_cognate_he→ar,
@@ -4030,7 +4030,7 @@ arabic,arabic_romanization,hebrew,hebrew_romanization,pansemitic,layers,morpholo
 نُحَاس,nuḥās,נְחֹשֶׁת,n'khóshet,nxuxas,direct_cognate_ar→he;direct_cognate_he→ar,
 نُحَاس,nuḥās,נָחָשׁ,nakhásh,naxaš,shared_borrowing_source,
 نُسْخَة,nusḵa,נוּסָח,nusákh,nusax,direct_cognate_ar→he;direct_cognate_he→ar,ar: feminine ending stripped
-نُقْطَة,nuqṭa,נְקֻדָּה,n'kudá,nuquṭa,direct_cognate_ar→he;direct_cognate_he→ar,ar: feminine ending stripped
+نُقْطَة,nuqṭa,נְקֻדָּה,n'kudá,nuquṭa,direct_cognate_ar→he;direct_cognate_he→ar,
 نُقْطَة,nuqṭa,נְקוּדָה,n'kudá,nuquṭa,direct_cognate_he→ar,
 نُقْطَة,nuqṭa,נָקוּד,nakúd,nuquṭ,lemma_promoted,ar: feminine ending stripped
 نُوتِيّ,nūtiyy,נַוָּט,navát,nautis,shared_borrowing_source,
@@ -4133,7 +4133,7 @@ arabic,arabic_romanization,hebrew,hebrew_romanization,pansemitic,layers,morpholo
 هُلْك,hulk,הָלַךְ,halákh,halak,direct_cognate_ar→he;shared_borrowing_source;lemma_promoted,
 هُمْ,hum,הֵם,hem,hum,direct_cognate_he→ar;shared_borrowing_source;lemma_promoted,
 هُنَا,hunā,הִנֵּה,hiné,huna,direct_cognate_ar→he,
-هُنَا,hunā,הֵנָּה,héna,huna,direct_cognate_he→ar,
+هُنَا,hunā,הֵנָּה,héna,huna,direct_cognate_he→ar,he: feminine ending stripped
 هُنَّ,hunna,הֵן,hen,šin,direct_cognate_he→ar;shared_borrowing_source,
 هُوًى,huwan,הֱוֵה,hĕwē,huwan,direct_cognate_he→ar,
 هُوًى,huwan,הֹוֶה,hōwe,huwan,direct_cognate_he→ar,
@@ -4156,7 +4156,7 @@ arabic,arabic_romanization,hebrew,hebrew_romanization,pansemitic,layers,morpholo
 هِنْدُوس,hindūs,הוֹדוּ,hodú,hiduš,shared_borrowing_source,
 هِيَ,hiya,הִיא,hi,šiʔa,shared_borrowing_source,
 هِيَهْ,hiyah,הִיא,hi,šiʔa,shared_borrowing_source,
-هٰذَا,hāḏā,הִזָּה,hizá,haza,direct_cognate_ar→he,
+هٰذَا,hāḏā,הִזָּה,hizá,haza,direct_cognate_ar→he,he: feminine ending stripped
 هٰذَا,hāḏā,הַזֶּה,hazé,haza,direct_cognate_ar→he;direct_cognate_he→ar,
 هٰذَا,hāḏā,הָזָה,hazá,haza,direct_cognate_ar→he,he: feminine ending stripped
 هٰذَا,hāḏā,זֶה,ze,haza,direct_cognate_he→ar;lemma_promoted,
@@ -4213,14 +4213,14 @@ arabic,arabic_romanization,hebrew,hebrew_romanization,pansemitic,layers,morpholo
 وَرْد,ward,וֶרֶד,véred,wrdah,direct_cognate_ar→he;direct_cognate_he→ar;shared_borrowing_source,
 وَرْد,ward,וָרֹד,varód,warad,direct_cognate_he→ar,
 وَرْد,ward,ורד,,,direct_cognate_he→ar,
-وَزَنَ,wazana,מֹאזְנַיִם,moz'náyim,wazanyam,direct_cognate_he→ar,
+وَزَنَ,wazana,מֹאזְנַיִם,moz'náyim,wazana,direct_cognate_he→ar,he: dual suffix stripped
 وَصَفَ,waṣafa,סַפָּה,sapá,sip-pu,lemma_promoted,
 وَصَفَ,waṣafa,פְּסֵיפָס,psefás,psipas,lemma_promoted,
 وَصَّفَ,waṣṣafa,סַפָּה,sapá,sip-pu,lemma_promoted,
 وَصَّفَ,waṣṣafa,פְּסֵיפָס,psefás,psipas,lemma_promoted,
-وَصَّى,waṣṣā,צִוָּה,tsivá,waṣa,direct_cognate_he→ar,
+وَصَّى,waṣṣā,צִוָּה,tsivá,waṣa,direct_cognate_he→ar,he: feminine ending stripped
 وَصِيَّة,waṣiyya,מְצַוֶּה,m'tsave,waṣiyi,direct_cognate_he→ar,ar: feminine ending stripped
-وَصِيَّة,waṣiyya,מְצַוָּה,m'tsava,waṣiya,direct_cognate_he→ar,ar: feminine ending stripped
+وَصِيَّة,waṣiyya,מְצַוָּה,m'tsava,waṣiya,direct_cognate_he→ar,
 وَصِيَّة,waṣiyya,מִצְוָה,mitsvá,waṣiya,direct_cognate_he→ar,
 وَصْف,waṣf,סַפָּה,sapá,sip-pu,lemma_promoted,
 وَصْف,waṣf,פְּסֵיפָס,psefás,psipas,lemma_promoted,
@@ -4330,7 +4330,7 @@ arabic,arabic_romanization,hebrew,hebrew_romanization,pansemitic,layers,morpholo
 يَوْم,yawm,יוֹם,yom,yawm,direct_cognate_he→ar;shared_borrowing_source,
 يَوْم الْغُفْرَان,yawm al-ḡufrān,יוֹם כִּפּוּר,yom kippúr,yam kipur,shared_borrowing_source,
 يَوْم الْكَفَّارَة,yawm al-kaffāra,יוֹם כִּפּוּר,yom kippúr,yam kipur,shared_borrowing_source,
-يُؤْيُؤ,yuʔyuʔ,אַיָּה,ayá,yuʔayuʔ,direct_cognate_ar→he,
+يُؤْيُؤ,yuʔyuʔ,אַיָּה,ayá,yuʔayuʔ,direct_cognate_ar→he,he: feminine ending stripped
 يُوحَنَّا,yūḥannā,יוֹחָנָן,yokhanán,yaxanan,shared_borrowing_source,
 يُود,yūd,יוֹד,yod,yad,shared_borrowing_source,
 يُورانيُوم,yurānyum,אוּרַנְיוּם,urányum,yuriniam,shared_borrowing_source,

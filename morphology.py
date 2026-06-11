@@ -57,6 +57,8 @@ class Layer(Enum):
     DEFINITE = "definite"
     FEMININE = "feminine"
     NISBA = "nisba"
+    DUAL = "dual"
+    PLURAL = "plural"
 
 
 @dataclass
@@ -75,6 +77,8 @@ class AnalyzedPhrase:
     words: list[AnalyzedWord]
     pos: frozenset[str] = frozenset()
     verb_forms: frozenset[str] = frozenset()   # ar form (I..X) / he binyan
+    number: frozenset[str] = frozenset()       # ⊆ {"p", "d"} (plural/dual lemma)
+    gender: frozenset[str] = frozenset()       # ⊆ {"m", "f"}
     derived_from: frozenset[str] = frozenset() # normalized derivational bases
 
 
@@ -140,6 +144,36 @@ class LangMorphology:
     def script_nisba(cls, script: str) -> bool:
         return False
 
+    @classmethod
+    def script_dual(cls, script: str) -> bool:
+        return False
+
+    @classmethod
+    def script_plural(cls, script: str) -> bool:
+        return False
+
+    # ── tokenization ────────────────────────────────────────────────
+    @classmethod
+    def script_tokens(cls, script: str) -> list[str]:
+        return script.split()
+
+    @classmethod
+    def roman_tokens(cls, roman: str) -> list[str]:
+        return roman.split()
+
+    @classmethod
+    def tokenize(cls, script: str, roman: str) -> list[tuple[str, str]]:
+        """Aligned (script, roman) word tokens.
+
+        Script and romanization must tokenize to the same word count to
+        split; otherwise the phrase is kept whole (so a failed alignment
+        degrades to whole-string merging, never to misaligned words)."""
+        s_toks = cls.script_tokens(script)
+        r_toks = cls.roman_tokens(roman)
+        if len(s_toks) == len(r_toks) and len(s_toks) > 1:
+            return list(zip(s_toks, r_toks))
+        return [(script, roman)]
+
     # ── generic machinery ───────────────────────────────────────────
     @classmethod
     def _roman_matches(cls, layer: Layer, roman: str) -> bool:
@@ -147,11 +181,21 @@ class LangMorphology:
         return bool(pattern and pattern.search(roman))
 
     @classmethod
-    def analyze_word(cls, script: str, roman: str, pos: frozenset[str]) -> AnalyzedWord:
+    def analyze_word(
+        cls,
+        script: str,
+        roman: str,
+        pos: frozenset[str],
+        number: frozenset[str] = frozenset(),
+    ) -> AnalyzedWord:
         """Detect strippable layers; each needs script AND romanization
         evidence.  Nisba additionally needs the adjective POS gate: nouns
         ending in -iyy (nabiyy, kursiyy …) carry a root consonant, not the
-        adjectivizer."""
+        adjectivizer.  Dual/plural additionally need the kaikki number
+        metadata gate (singulars like תָּמִים / אָחוֹת share the surface
+        shapes); within marked lemmas the surface shape disambiguates dual
+        vs plural — kaikki's g=m-p on מַיִם notwithstanding, its ־ַיִם
+        ending is the dual template."""
         layers: set[Layer] = set()
         if cls.script_definite(script) and cls._roman_matches(Layer.DEFINITE, roman):
             layers.add(Layer.DEFINITE)
@@ -160,6 +204,11 @@ class LangMorphology:
         if ("adj" in pos and cls.script_nisba(script)
                 and cls._roman_matches(Layer.NISBA, roman)):
             layers.add(Layer.NISBA)
+        if number & {"p", "d"}:
+            if cls.script_dual(script) and cls._roman_matches(Layer.DUAL, roman):
+                layers.add(Layer.DUAL)
+            elif cls.script_plural(script) and cls._roman_matches(Layer.PLURAL, roman):
+                layers.add(Layer.PLURAL)
         return AnalyzedWord(script=script, roman=roman, layers=layers)
 
     @classmethod
@@ -197,6 +246,8 @@ class ArabicMorphology(LangMorphology):
         Layer.DEFINITE: re.compile(r"^[aā](?:sh|š|ṣ|ḍ|ṭ|ẓ|ḏ|ṯ|[ltdsznr])-"),
         Layer.FEMININE: re.compile(r"(?:āh|ah|at|a)$"),
         Layer.NISBA: re.compile(r"(?:iyy|īy|ī)$"),
+        Layer.DUAL: re.compile(r"(?:āni|ayni|ān|ayn)$"),
+        Layer.PLURAL: re.compile(r"(?:āt|ūna|īna|ūn|īn)$"),
     }
     base_verb_forms = frozenset({"I"})
 
@@ -229,6 +280,16 @@ class ArabicMorphology(LangMorphology):
     @classmethod
     def script_nisba(cls, script: str) -> bool:
         return ArabicWord.normalize(script).endswith("ي")
+
+    @classmethod
+    def script_dual(cls, script: str) -> bool:
+        return ArabicWord.normalize(script).endswith("ان")
+
+    @classmethod
+    def script_plural(cls, script: str) -> bool:
+        # Sound plurals only; broken plurals have no suffix to detect and
+        # are reachable solely via their plural-of form_of link.
+        return ArabicWord.normalize(script).endswith(("ات", "ون", "ين"))
 
     @classmethod
     def synthesize_decausative(cls, roman: str, verb_forms: frozenset[str]) -> tuple[str, str] | None:
@@ -274,6 +335,8 @@ class HebrewMorphology(LangMorphology):
         Layer.DEFINITE: re.compile(r"^h[ae]-?"),
         Layer.FEMININE: re.compile(r"[āáa]$"),
         Layer.NISBA: re.compile(r"[íi]$"),
+        Layer.DUAL: re.compile(r"[áa]yim$"),
+        Layer.PLURAL: re.compile(r"(?:[íi]m|[óo]t)$"),
     }
     base_verb_forms = frozenset({"pa"})
     # A he/ha-initial word is weak evidence on its own (hifʕil-derived nouns
@@ -288,6 +351,30 @@ class HebrewMorphology(LangMorphology):
     _GUTTURALS = frozenset("אהחער")
     _FEMININE_END = _QAMATS + "ה"
     _NISBA_END = "ִי"  # hiriq + yod
+    _MAQAF = "־"
+    # A hyphen splits a romanization only when every fragment keeps more
+    # than this many letters — protects particles and citation forms
+    # (al-, tel-avív) from being torn apart.
+    _MIN_HYPHEN_SPLIT_LETTERS = 4
+
+    @classmethod
+    def script_tokens(cls, script: str) -> list[str]:
+        """Hebrew compounds join words with maqaf (בֵּית־הַמִּקְדָּשׁ) as
+        often as with spaces; treat both as word boundaries."""
+        return [tok for chunk in script.split()
+                for tok in chunk.split(cls._MAQAF) if tok]
+
+    @classmethod
+    def roman_tokens(cls, roman: str) -> list[str]:
+        out: list[str] = []
+        for chunk in roman.split():
+            frags = chunk.split("-")
+            if len(frags) > 1 and all(
+                    _letters(f) >= cls._MIN_HYPHEN_SPLIT_LETTERS for f in frags):
+                out.extend(frags)
+            else:
+                out.append(chunk)
+        return out
 
     @classmethod
     def script_definite(cls, script: str) -> bool:
@@ -308,12 +395,33 @@ class HebrewMorphology(LangMorphology):
         return False
 
     @classmethod
+    def _suffix_form(cls, script: str) -> str:
+        """Prepare pointed script for suffix checks: NFC fixes the
+        free-order placement of combining marks (hiriq+dagesh vs
+        dagesh+hiriq on the same letter), and dagesh is dropped entirely
+        so gemination dots (חַיִּים, רַבָּה) can't break endswith tests."""
+        return unicodedata.normalize("NFC", script).replace(cls._DAGESH, "")
+
+    @classmethod
     def script_feminine(cls, script: str) -> bool:
-        return script.endswith(cls._FEMININE_END)
+        return cls._suffix_form(script).endswith(cls._FEMININE_END)
 
     @classmethod
     def script_nisba(cls, script: str) -> bool:
-        return script.endswith(cls._NISBA_END)
+        return cls._suffix_form(script).endswith(cls._NISBA_END)
+
+    # Dual ־ַיִם (patach-yod-hiriq-mem) vs plural ־ִים (hiriq-yod-mem):
+    # the pointing keeps them distinct even though both romanize to …im.
+    _DUAL_END = "ַיִם"
+    _PLURAL_ENDS = ("ִים", "וֹת")
+
+    @classmethod
+    def script_dual(cls, script: str) -> bool:
+        return cls._suffix_form(script).endswith(cls._DUAL_END)
+
+    @classmethod
+    def script_plural(cls, script: str) -> bool:
+        return cls._suffix_form(script).endswith(cls._PLURAL_ENDS)
 
 
 MORPHOLOGY_CONFIG: dict[str, type[LangMorphology]] = {
@@ -332,27 +440,23 @@ def analyze_phrase(
     roman: str,
     pos: Iterable[str] = (),
     verb_forms: Iterable[str] = (),
+    number: Iterable[str] = (),
+    gender: Iterable[str] = (),
     derived_from: Iterable[str] = (),
 ) -> AnalyzedPhrase:
-    """Split a headword into analyzed words.
-
-    Script and romanization must tokenize to the same word count to split;
-    otherwise the phrase is kept whole (no behavior change downstream).
-    """
+    """Split a headword into analyzed words via the language's tokenizer."""
     morph = MORPHOLOGY_CONFIG[lang]
     pos = frozenset(pos)
-    s_toks = script.split()
-    r_toks = roman.split()
-    if len(s_toks) == len(r_toks) and len(s_toks) > 1:
-        pairs = list(zip(s_toks, r_toks))
-    else:
-        pairs = [(script, roman)]
+    number = frozenset(number)
+    pairs = morph.tokenize(script, roman)
     return AnalyzedPhrase(
         lang=lang,
         roman=roman,
-        words=[morph.analyze_word(s, r, pos) for s, r in pairs],
+        words=[morph.analyze_word(s, r, pos, number) for s, r in pairs],
         pos=pos,
         verb_forms=frozenset(verb_forms),
+        number=number,
+        gender=frozenset(gender),
         derived_from=frozenset(derived_from),
     )
 
@@ -364,6 +468,12 @@ def _verb_vs_nominal(verb_side: AnalyzedPhrase, nominal_side: AnalyzedPhrase) ->
     return ("verb" in verb_side.pos
             and "verb" not in nominal_side.pos
             and bool(nominal_side.pos & _CAUSATIVE_NOMINAL_POS))
+
+
+def _strictly_feminine(phrase: AnalyzedPhrase) -> bool:
+    """Feminine without competing masculine marking — picks the shared
+    plural compromise suffix (-at vs -im)."""
+    return "f" in phrase.gender and "m" not in phrase.gender
 
 
 def _substitute_base(
@@ -504,8 +614,40 @@ def plan_merge(
                 acted = True
                 notes.append(f"he: nisba suffix stripped (de-adjectivized){where}")
 
+        # Dual/plural normalization (lexeme-level metadata, single-word
+        # only).  Asymmetric number is stripped outright; when both sides
+        # are non-singular the stems merge and the compromise plural suffix
+        # is re-attached — duals merge into plurals in pansemitic, -im for
+        # masculine, -at for feminine.  Runs even after a feminine strip:
+        # ar ḥayāh (fem) vs he khayím (plural) needs both reductions.
+        if not multiword:
+            a_num = next(iter({Layer.DUAL, Layer.PLURAL} & aw.layers), None)
+            h_num = next(iter({Layer.DUAL, Layer.PLURAL} & hw.layers), None)
+            if a_num and h_num:
+                sa = ar_m.strip(a_r, a_num)
+                sh = he_m.strip(h_r, h_num)
+                if sa and sh:
+                    a_r, h_r = sa, sh
+                    suffix = ("at" if _strictly_feminine(ar) or _strictly_feminine(he)
+                              else "im")
+                    acted = True
+                    kind = "/".join(sorted({a_num.value, h_num.value}))
+                    notes.append(f"shared {kind} → -{suffix}")
+            elif a_num:
+                stripped = ar_m.strip(a_r, a_num)
+                if stripped:
+                    a_r = stripped
+                    acted = True
+                    notes.append(f"ar: {a_num.value} suffix stripped")
+            elif h_num:
+                stripped = he_m.strip(h_r, h_num)
+                if stripped:
+                    h_r = stripped
+                    acted = True
+                    notes.append(f"he: {h_num.value} suffix stripped")
+
         # POS promotion uses lexeme-level metadata, so single-word only; a
-        # feminine/nisba strip already reduced one side to its stem.
+        # feminine/nisba/number strip already reduced one side to its stem.
         if not multiword and not acted:
             if _verb_vs_nominal(ar, he):
                 new_a = _decausativize(ar, a_r, base_lookup, notes, "ar")
