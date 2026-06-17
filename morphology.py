@@ -80,6 +80,10 @@ class AnalyzedPhrase:
     number: frozenset[str] = frozenset()       # ⊆ {"p", "d"} (plural/dual lemma)
     gender: frozenset[str] = frozenset()       # ⊆ {"m", "f"}
     derived_from: frozenset[str] = frozenset() # normalized derivational bases
+    singular_of: frozenset[str] = frozenset()  # normalized cited singular(s) of a
+                                               # plural/dual lemma
+    masculine_of: frozenset[str] = frozenset() # normalized cited masculine base(s)
+                                               # of a derived feminine lemma
 
 
 @dataclass
@@ -102,9 +106,15 @@ class MergePlan:
     notes: list[str]
 
 
-# Looks up the (canonical, romanization) of a derivational base lexeme in
-# the caller's word index, given (lang, normalized base candidates).
-BaseLookup = Callable[[str, frozenset[str]], tuple[str, str] | None]
+# Looks up the (canonical, romanization) of a base lexeme in the caller's
+# word index, given (lang, normalized base candidates, preferred POS set —
+# so a nominal base beats a verb homograph and vice-versa).
+BaseLookup = Callable[[str, frozenset[str], frozenset[str]], tuple[str, str] | None]
+
+# POS the singular/masculine reductions expect their base to be (a noun-like
+# lexeme), used to outrank verb homographs sharing the consonantal skeleton.
+_NOMINAL_BASE_POS = frozenset({"noun", "adj", "name", "num"})
+_VERB_BASE_POS = frozenset({"verb"})
 
 
 def _letters(text: str) -> int:
@@ -130,6 +140,17 @@ class LangMorphology:
     # Whether a single-word article strip needs the other side of the pair
     # to also be definite (script evidence alone too weak — Hebrew).
     article_needs_corroboration: ClassVar[bool] = False
+
+    # Inverse of strip_patterns: the surface shape each layer re-attaches as
+    # when *producing* a word back from its analyzed stem.  Prefixal layers
+    # (the definite article) live in produce_prefixes, suffixal ones in
+    # produce_suffixes; a missing entry means the layer leaves no surface
+    # mark on this side.
+    produce_prefixes: ClassVar[dict[Layer, str]] = {}
+    produce_suffixes: ClassVar[dict[Layer, str]] = {}
+    # Order suffixal layers stack onto the stem (innermost first).
+    _PRODUCE_SUFFIX_ORDER: ClassVar[tuple[Layer, ...]] = (
+        Layer.FEMININE, Layer.NISBA, Layer.DUAL, Layer.PLURAL)
 
     # ── script-side evidence hooks ──────────────────────────────────
     @classmethod
@@ -222,6 +243,25 @@ class LangMorphology:
             return None
         return out
 
+    @classmethod
+    def produce_word(cls, word: AnalyzedWord) -> str:
+        """Re-attach *word*'s layers onto its romanized stem — the structural
+        inverse of analyze_word.
+
+        Prefixal layers (the definite article) precede the stem; suffixal
+        layers stack after it in _PRODUCE_SUFFIX_ORDER.  Producing with an
+        empty stem yields the bare affix string for a single layer, which is
+        how plan_merge sources its compromise affixes (see
+        PansemiticMorphology)."""
+        suffix = "".join(
+            cls.produce_suffixes[layer]
+            for layer in cls._PRODUCE_SUFFIX_ORDER
+            if layer in word.layers and layer in cls.produce_suffixes
+        )
+        prefix = (cls.produce_prefixes.get(Layer.DEFINITE, "")
+                  if Layer.DEFINITE in word.layers else "")
+        return prefix + word.roman + suffix
+
     # ── language-specific operations (override where applicable) ────
     @classmethod
     def synthesize_decausative(cls, roman: str, verb_forms: frozenset[str]) -> tuple[str, str] | None:
@@ -248,6 +288,15 @@ class ArabicMorphology(LangMorphology):
         Layer.NISBA: re.compile(r"(?:iyy|īy|ī)$"),
         Layer.DUAL: re.compile(r"(?:āni|ayni|ān|ayn)$"),
         Layer.PLURAL: re.compile(r"(?:āt|ūna|īna|ūn|īn)$"),
+    }
+    # Inverse shapes for produce_word: a representative surface realization of
+    # each layer (the article unassimilated, the sound-masculine endings).
+    produce_prefixes = {Layer.DEFINITE: "al-"}
+    produce_suffixes = {
+        Layer.FEMININE: "a",
+        Layer.NISBA: "iyy",
+        Layer.DUAL: "ān",
+        Layer.PLURAL: "ūn",
     }
     base_verb_forms = frozenset({"I"})
 
@@ -338,6 +387,15 @@ class HebrewMorphology(LangMorphology):
         Layer.DUAL: re.compile(r"[áa]yim$"),
         Layer.PLURAL: re.compile(r"(?:[íi]m|[óo]t)$"),
     }
+    # Inverse shapes for produce_word: ha- article, the masculine -im plural
+    # and -áyim dual; feminine/nisba take the qamats-he / hiriq-yod endings.
+    produce_prefixes = {Layer.DEFINITE: "ha"}
+    produce_suffixes = {
+        Layer.FEMININE: "á",
+        Layer.NISBA: "i",
+        Layer.DUAL: "áyim",
+        Layer.PLURAL: "im",
+    }
     base_verb_forms = frozenset({"pa"})
     # A he/ha-initial word is weak evidence on its own (hifʕil-derived nouns
     # like הַצָּלָה share the shape) — single-word strips need the other
@@ -424,9 +482,52 @@ class HebrewMorphology(LangMorphology):
         return cls._suffix_form(script).endswith(cls._PLURAL_ENDS)
 
 
+class PansemiticMorphology(LangMorphology):
+    """The merged ancestor's morphology: how shared layers re-attach to a
+    pansemitic stem.
+
+    Pansemitic only ever *produces* — it is the merge target, not a parsed
+    source — so it carries no script-evidence hooks or strip patterns, just
+    the compromise affixes that blend the Arabic and Hebrew shapes (see the
+    pansemitic-morphology-conventions memory):
+
+      - definite: the space-separated particle "hal " (al-/ha- blend);
+      - nisba: -i;
+      - dual collapses into the plural, and the plural is -at for feminine
+        stems, -im otherwise;
+      - a bare feminine ending carries no fixed affix — it is resolved
+        naturally when the aligner merges the two surface endings.
+    """
+    lang = "pansemitic"
+    produce_prefixes = {Layer.DEFINITE: "hal "}
+    produce_suffixes = {Layer.NISBA: "i", Layer.DUAL: "im", Layer.PLURAL: "im"}
+    # Feminine number marking overrides the default -im plural.
+    feminine_plural = "at"
+
+    @classmethod
+    def produce_word(cls, word: AnalyzedWord) -> str:
+        """Re-attach shared layers to a merged pansemitic stem.
+
+        Number (dual/plural) outranks nisba for the single suffix slot, and a
+        feminine stem takes -at rather than -im.  A FEMININE layer without a
+        number layer leaves no mark (resolved during the stem merge)."""
+        layers = word.layers
+        prefix = (cls.produce_prefixes[Layer.DEFINITE]
+                  if Layer.DEFINITE in layers else "")
+        if {Layer.DUAL, Layer.PLURAL} & layers:
+            suffix = (cls.feminine_plural if Layer.FEMININE in layers
+                      else cls.produce_suffixes[Layer.PLURAL])
+        elif Layer.NISBA in layers:
+            suffix = cls.produce_suffixes[Layer.NISBA]
+        else:
+            suffix = ""
+        return prefix + word.roman + suffix
+
+
 MORPHOLOGY_CONFIG: dict[str, type[LangMorphology]] = {
     "ar": ArabicMorphology,
     "he": HebrewMorphology,
+    "pansemitic": PansemiticMorphology,
 }
 
 
@@ -443,6 +544,8 @@ def analyze_phrase(
     number: Iterable[str] = (),
     gender: Iterable[str] = (),
     derived_from: Iterable[str] = (),
+    singular_of: Iterable[str] = (),
+    masculine_of: Iterable[str] = (),
 ) -> AnalyzedPhrase:
     """Split a headword into analyzed words via the language's tokenizer."""
     morph = MORPHOLOGY_CONFIG[lang]
@@ -458,6 +561,8 @@ def analyze_phrase(
         number=number,
         gender=frozenset(gender),
         derived_from=frozenset(derived_from),
+        singular_of=frozenset(singular_of),
+        masculine_of=frozenset(masculine_of),
     )
 
 
@@ -476,21 +581,62 @@ def _strictly_feminine(phrase: AnalyzedPhrase) -> bool:
     return "f" in phrase.gender and "m" not in phrase.gender
 
 
+def _lookup_base_roman(
+    lang: str,
+    norms: frozenset[str],
+    prefer_pos: frozenset[str],
+    base_lookup: BaseLookup,
+    notes: list[str],
+    label: str,
+) -> str | None:
+    """Resolve *norms* to a cited lexeme's romanization via base_lookup,
+    preferring a base of *prefer_pos* among homographs."""
+    if not norms:
+        return None
+    hit = base_lookup(lang, norms, prefer_pos)
+    if hit is None:
+        return None
+    canonical, roman = hit
+    notes.append(f"{label}: substituted cited base {canonical} ({roman})")
+    return roman
+
+
 def _substitute_base(
     phrase: AnalyzedPhrase,
     base_lookup: BaseLookup,
     notes: list[str],
     label: str,
 ) -> str | None:
-    """Swap in the romanization of the derivational base kaikki cites."""
-    if not phrase.derived_from:
-        return None
-    hit = base_lookup(phrase.lang, phrase.derived_from)
-    if hit is None:
-        return None
-    canonical, roman = hit
-    notes.append(f"{label}: substituted cited base {canonical} ({roman})")
-    return roman
+    """Swap in the romanization of the derivational (noun-from-verb) base
+    kaikki cites — a verb."""
+    return _lookup_base_roman(
+        phrase.lang, phrase.derived_from, _VERB_BASE_POS, base_lookup, notes, label)
+
+
+def _reduce_to_base(
+    phrase: AnalyzedPhrase,
+    morph: type[LangMorphology],
+    roman: str,
+    layer: Layer,
+    base_norms: frozenset[str],
+    base_kind: str,
+    base_lookup: BaseLookup,
+    notes: list[str],
+    label: str,
+) -> tuple[str | None, bool]:
+    """Reduce an inflected side to its stem.
+
+    Prefers the base lexeme Wiktionary actually cites (resolved via
+    base_lookup) — exact, and it reaches irregular forms the regex can't
+    (broken plurals, feminines with stem-vowel changes like he malká/melekh);
+    falls back to the language's romanization suffix-strip.  Returns
+    (stem, used_cited_base) so the caller can phrase its note accurately."""
+    base = _lookup_base_roman(
+        phrase.lang, base_norms, _NOMINAL_BASE_POS, base_lookup, notes,
+        f"{label}: cited {base_kind}")
+    if base:
+        return base, True
+    return morph.strip(roman, layer), False
 
 
 def _decausativize(
@@ -512,6 +658,15 @@ def _decausativize(
         notes.append(f"{label}: {note}")
         return new_roman
     return None
+
+
+def _pansemitic_affix(layers: set[Layer]) -> str:
+    """The bare compromise affix a merged stem carries for *layers*.
+
+    Produces a pansemitic word from an empty stem, so the definite/nisba/
+    number shapes come from PansemiticMorphology rather than living as
+    literals in plan_merge."""
+    return PansemiticMorphology.produce_word(AnalyzedWord("", "", set(layers)))
 
 
 def _strip_definite(
@@ -566,28 +721,41 @@ def plan_merge(
         if h_stripped:
             h_r = h_stripped
         if a_stripped and h_stripped:
-            prefix = "hal "
-            notes.append(f"shared definite article → hal{where}")
+            prefix = _pansemitic_affix({Layer.DEFINITE})
+            notes.append(f"shared definite article → {prefix.strip()}{where}")
         elif a_stripped:
             notes.append(f"ar: definite article stripped{where}")
         elif h_stripped:
             notes.append(f"he: definite article stripped{where}")
 
+        # Asymmetric feminine is reduced to the masculine stem: the masculine
+        # base Wiktionary cites (he-noun m=, "feminine of X") where available
+        # — exact, and it handles stem-vowel changes like he malká/melekh that
+        # suffix-stripping can't — else the romanization strip.  masculine_of
+        # is lexeme-level, so it only applies to single-word lemmas.
         ar_fem = Layer.FEMININE in aw.layers
         he_fem = Layer.FEMININE in hw.layers
+        ar_masc = frozenset() if multiword else ar.masculine_of
+        he_masc = frozenset() if multiword else he.masculine_of
         acted = False
         if ar_fem and not he_fem:
-            stripped = ar_m.strip(a_r, Layer.FEMININE)
+            stripped, used = _reduce_to_base(
+                ar, ar_m, a_r, Layer.FEMININE, ar_masc, "masculine base",
+                base_lookup, notes, "ar")
             if stripped:
                 a_r = stripped
                 acted = True
-                notes.append(f"ar: feminine ending stripped{where}")
+                if not used:
+                    notes.append(f"ar: feminine ending stripped{where}")
         elif he_fem and not ar_fem:
-            stripped = he_m.strip(h_r, Layer.FEMININE)
+            stripped, used = _reduce_to_base(
+                he, he_m, h_r, Layer.FEMININE, he_masc, "masculine base",
+                base_lookup, notes, "he")
             if stripped:
                 h_r = stripped
                 acted = True
-                notes.append(f"he: feminine ending stripped{where}")
+                if not used:
+                    notes.append(f"he: feminine ending stripped{where}")
         # Symmetric feminine needs no handling: the aligner merges ar -a
         # with he -á into the shared -a on its own.
 
@@ -598,9 +766,9 @@ def plan_merge(
             sh = he_m.strip(h_r, Layer.NISBA)
             if sa and sh:
                 a_r, h_r = sa, sh
-                suffix = "i"
+                suffix = _pansemitic_affix({Layer.NISBA})
                 acted = True
-                notes.append(f"shared nisba suffix → -i{where}")
+                notes.append(f"shared nisba suffix → -{suffix}{where}")
         elif ar_nis:
             stripped = ar_m.strip(a_r, Layer.NISBA)
             if stripped:
@@ -615,36 +783,49 @@ def plan_merge(
                 notes.append(f"he: nisba suffix stripped (de-adjectivized){where}")
 
         # Dual/plural normalization (lexeme-level metadata, single-word
-        # only).  Asymmetric number is stripped outright; when both sides
-        # are non-singular the stems merge and the compromise plural suffix
-        # is re-attached — duals merge into plurals in pansemitic, -im for
-        # masculine, -at for feminine.  Runs even after a feminine strip:
-        # ar ḥayāh (fem) vs he khayím (plural) needs both reductions.
+        # only).  The singular stem comes from the singular Wiktionary cites
+        # (exact, and handles broken plurals) where available, else the
+        # romanization suffix-strip.  Asymmetric number is reduced outright;
+        # when both sides are non-singular the stems merge and the compromise
+        # plural suffix is re-attached — duals merge into plurals in
+        # pansemitic, -im for masculine, -at for feminine.  Runs even after a
+        # feminine strip: ar ḥayāh (fem) vs he khayím (plural) needs both.
         if not multiword:
             a_num = next(iter({Layer.DUAL, Layer.PLURAL} & aw.layers), None)
             h_num = next(iter({Layer.DUAL, Layer.PLURAL} & hw.layers), None)
             if a_num and h_num:
-                sa = ar_m.strip(a_r, a_num)
-                sh = he_m.strip(h_r, h_num)
+                sa, _ = _reduce_to_base(
+                    ar, ar_m, a_r, a_num, ar.singular_of, "singular base",
+                    base_lookup, notes, "ar")
+                sh, _ = _reduce_to_base(
+                    he, he_m, h_r, h_num, he.singular_of, "singular base",
+                    base_lookup, notes, "he")
                 if sa and sh:
                     a_r, h_r = sa, sh
-                    suffix = ("at" if _strictly_feminine(ar) or _strictly_feminine(he)
-                              else "im")
+                    fem = _strictly_feminine(ar) or _strictly_feminine(he)
+                    suffix = _pansemitic_affix(
+                        {Layer.PLURAL} | ({Layer.FEMININE} if fem else set()))
                     acted = True
                     kind = "/".join(sorted({a_num.value, h_num.value}))
                     notes.append(f"shared {kind} → -{suffix}")
             elif a_num:
-                stripped = ar_m.strip(a_r, a_num)
+                stripped, used = _reduce_to_base(
+                    ar, ar_m, a_r, a_num, ar.singular_of, "singular base",
+                    base_lookup, notes, "ar")
                 if stripped:
                     a_r = stripped
                     acted = True
-                    notes.append(f"ar: {a_num.value} suffix stripped")
+                    if not used:
+                        notes.append(f"ar: {a_num.value} suffix stripped")
             elif h_num:
-                stripped = he_m.strip(h_r, h_num)
+                stripped, used = _reduce_to_base(
+                    he, he_m, h_r, h_num, he.singular_of, "singular base",
+                    base_lookup, notes, "he")
                 if stripped:
                     h_r = stripped
                     acted = True
-                    notes.append(f"he: {h_num.value} suffix stripped")
+                    if not used:
+                        notes.append(f"he: {h_num.value} suffix stripped")
 
         # POS promotion uses lexeme-level metadata, so single-word only; a
         # feminine/nisba/number strip already reduced one side to its stem.

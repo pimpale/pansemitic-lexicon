@@ -82,15 +82,15 @@
         0,
         0
       ],
-      "sem-pro:*dam-": [
-        1,
-        0
-      ],
       "sem-pro:*ʔadam-": [
         1,
         0
       ],
       "sem-pro:ʔadam-": [
+        1,
+        0
+      ],
+      "sem-pro:*dam-": [
         1,
         0
       ]
@@ -1700,15 +1700,15 @@
         0,
         0
       ],
-      "peo:*𐎼𐎠𐏀": [
-        1,
-        1
-      ],
       "arc:רָזָ֥א": [
         1,
         1
       ],
       "arc-imp:𐡀𐡓𐡆𐡀": [
+        1,
+        1
+      ],
+      "peo:*𐎼𐎠𐏀": [
         1,
         1
       ]
@@ -1823,6 +1823,10 @@
         1,
         0
       ],
+      "xaa:خرشوف": [
+        2,
+        0
+      ],
       "xaa:الْخَرْشُوف": [
         1,
         1
@@ -1831,15 +1835,11 @@
         1,
         1
       ],
-      "xaa:خرشوف": [
-        2,
-        0
-      ],
-      "xaa:الخرشوف": [
+      "akk:𒅈𒋢𒌒𒁍": [
         2,
         1
       ],
-      "akk:𒅈𒋢𒌒𒁍": [
+      "xaa:الخرشوف": [
         2,
         1
       ]
@@ -1873,8 +1873,7 @@
       "canonical": "חֻרְשָׁף",
       "roman": "khursháf",
       "glosses": [
-        "artichoke",
-        "defective spelling of חורשף"
+        "artichoke"
       ],
       "wiktionary": "https://en.wiktionary.org/wiki/%D7%97%D7%A8%D7%A9%D7%A3#Hebrew",
       "ipa": "χurʃaf"
@@ -2395,7 +2394,6 @@
       "canonical": "צָהֹב",
       "roman": "tsahóv",
       "glosses": [
-        "defective spelling of צהוב",
         "yellow (color)"
       ],
       "wiktionary": "https://en.wiktionary.org/wiki/%D7%A6%D7%94%D7%95%D7%91#Hebrew",
@@ -2722,7 +2720,6 @@
       "canonical": "אִכֵּל",
       "roman": "ikél",
       "glosses": [
-        "defective spelling of איכל",
         "to consume",
         "to corrode"
       ],
@@ -2833,6 +2830,16 @@
       "direct_cognate_he→ar",
       "lemma_promoted"
     ],
+    "shared_borrowing_sources": {
+      "sem-pro:*ʔakal-": [
+        0,
+        0
+      ],
+      "sem-pro:ʔakal-": [
+        0,
+        0
+      ]
+    },
     "best_sense_match": {
       "arabic_sense": "to eat, to consume (food)",
       "arabic_pos": "verb",
@@ -2840,12 +2847,12 @@
       "hebrew_pos": "noun",
       "similarity": 0.874
     },
-    "ancestor": "recon-sem-pro:ʔakala",
-    "pansemitic_form": "ʔakala",
+    "ancestor": "sem-pro:ʔakal",
+    "pansemitic_form": "ʔakal",
     "loss": {
-      "arabic": 0.0,
-      "hebrew": 0.38749999999999996,
-      "joint": 0.38749999999999996
+      "arabic": 0.11666666666666665,
+      "hebrew": 0.325,
+      "joint": 0.44166666666666665
     }
   },
   {
@@ -2864,7 +2871,6 @@
       "canonical": "אֻכַּל",
       "roman": "ukál",
       "glosses": [
-        "defective spelling of אוכל",
         "to corrode, be consumed, be devoured"
       ],
       "wiktionary": "https://en.wiktionary.org/wiki/%D7%90%D7%9B%D7%9C#Hebrew",
@@ -2910,7 +2916,6 @@
       "canonical": "אִכָּר",
       "roman": "ikár",
       "glosses": [
-        "defective spelling of איכר",
         "farmer, husbandman",
         "peasant"
       ],
@@ -3013,6 +3018,12 @@
       "direct_cognate_he→ar",
       "lemma_promoted"
     ],
+    "shared_borrowing_sources": {
+      "sem-pro:ʔakal-": [
+        0,
+        0
+      ]
+    },
     "best_sense_match": {
       "arabic_sense": "to give (something) to eat, to feed",
       "arabic_pos": "verb",
@@ -3020,13 +3031,12 @@
       "hebrew_pos": "noun",
       "similarity": 0.8373
     },
-    "morphology": "ar: form-II verb degeminated",
-    "ancestor": "recon-sem-pro:ʔakala",
-    "pansemitic_form": "ʔakala",
+    "ancestor": "sem-pro:ʔakal",
+    "pansemitic_form": "ʔakal",
     "loss": {
-      "arabic": 0.049999999999999996,
-      "hebrew": 0.38749999999999996,
-      "joint": 0.43749999999999994
+      "arabic": 0.16666666666666666,
+      "hebrew": 0.325,
+      "joint": 0.4916666666666667
     }
   },
   {
@@ -3052,8 +3062,15 @@
       "ipa": "ʔukʰl"
     },
     "match_layers": [
-      "direct_cognate_he→ar"
+      "direct_cognate_he→ar",
+      "lemma_promoted"
     ],
+    "shared_borrowing_sources": {
+      "sem-pro:ʔakal-": [
+        0,
+        0
+      ]
+    },
     "best_sense_match": {
       "arabic_sense": "food, fodder, feed",
       "arabic_pos": "noun",
@@ -3061,8 +3078,8 @@
       "hebrew_pos": "noun",
       "similarity": 0.9165
     },
-    "ancestor": "recon-sem-pro:ʔakel",
-    "pansemitic_form": "ʔakil",
+    "ancestor": "sem-pro:ʔakal",
+    "pansemitic_form": "ʔakal",
     "loss": {
       "arabic": 0.13999999999999999,
       "hebrew": 0.325,
@@ -3096,11 +3113,11 @@
         0,
         0
       ],
-      "ale:alaxsxaq": [
+      "ru:Аля́ска": [
         1,
         1
       ],
-      "ru:Аля́ска": [
+      "ale:alaxsxaq": [
         1,
         1
       ]
@@ -3614,8 +3631,7 @@
       "canonical": "אָנֹכִי",
       "roman": "anokhí",
       "glosses": [
-        "I (first-person singular nominative pronoun).",
-        "defective spelling of אנוכי"
+        "I (first-person singular nominative pronoun)."
       ],
       "wiktionary": "https://en.wiktionary.org/wiki/%D7%90%D7%A0%D7%95%D7%9B%D7%99#Hebrew",
       "ipa": "ʔanoːkʰiː"
@@ -3730,11 +3746,11 @@
         1,
         0
       ],
-      "la:animātiō": [
+      "la:animatio": [
         2,
         1
       ],
-      "la:animatio": [
+      "la:animātiō": [
         2,
         1
       ]
@@ -4189,8 +4205,7 @@
       "canonical": "אַיָּל",
       "roman": "ayál",
       "glosses": [
-        "deer, stag",
-        "defective spelling of אייל"
+        "deer, stag"
       ],
       "wiktionary": "https://en.wiktionary.org/wiki/%D7%90%D7%99%D7%9C#Hebrew",
       "ipa": "ʔajal"
@@ -4421,7 +4436,8 @@
       "ipa": "ʔuzn"
     },
     "match_layers": [
-      "shared_borrowing_source"
+      "shared_borrowing_source",
+      "lemma_promoted"
     ],
     "shared_borrowing_sources": {
       "sem-pro:*ʔuḏn-": [
@@ -4640,7 +4656,6 @@
       "canonical": "אֻכָּף",
       "roman": "ukáf",
       "glosses": [
-        "defective spelling of אוכף",
         "saddle"
       ],
       "wiktionary": "https://en.wiktionary.org/wiki/%D7%90%D7%95%D7%9B%D7%A3#Hebrew",
@@ -4735,6 +4750,12 @@
       "direct_cognate_he→ar",
       "lemma_promoted"
     ],
+    "shared_borrowing_sources": {
+      "sem-pro:ʔakal-": [
+        0,
+        0
+      ]
+    },
     "best_sense_match": {
       "arabic_sense": "food",
       "arabic_pos": "noun",
@@ -4742,12 +4763,12 @@
       "hebrew_pos": "noun",
       "similarity": 0.9997
     },
-    "ancestor": "recon-sem-pro:ʔukul",
-    "pansemitic_form": "ʔukul",
+    "ancestor": "sem-pro:ʔakal",
+    "pansemitic_form": "ʔakal",
     "loss": {
-      "arabic": 0.0,
-      "hebrew": 0.18,
-      "joint": 0.18
+      "arabic": 0.29,
+      "hebrew": 0.325,
+      "joint": 0.615
     }
   },
   {
@@ -4895,7 +4916,6 @@
       "canonical": "אֻמָּה",
       "roman": "'umá",
       "glosses": [
-        "defective spelling of אומה",
         "nation, people"
       ],
       "wiktionary": "https://en.wiktionary.org/wiki/%D7%90%D7%95%D7%9E%D7%94#Hebrew",
@@ -5333,7 +5353,8 @@
       "ipa": "ʔokjanus"
     },
     "match_layers": [
-      "shared_borrowing_source"
+      "shared_borrowing_source",
+      "lemma_promoted"
     ],
     "shared_borrowing_sources": {
       "grc:ὠκεᾰνός": [
@@ -5436,7 +5457,19 @@
         1,
         1
       ],
+      "frm:once": [
+        1,
+        2
+      ],
+      "fro:lonce": [
+        1,
+        2
+      ],
       "grc:λύγξ": [
+        1,
+        2
+      ],
+      "la-vul:*luncea": [
         1,
         2
       ],
@@ -5448,19 +5481,7 @@
         1,
         2
       ],
-      "fro:lonce": [
-        1,
-        2
-      ],
-      "frm:once": [
-        1,
-        2
-      ],
       "it:lonza": [
-        1,
-        2
-      ],
-      "la-vul:*luncea": [
         1,
         2
       ],
@@ -5476,11 +5497,11 @@
         2,
         3
       ],
-      "la:ū̆ncia": [
+      "ine-pro:*lewǵ-": [
         2,
         3
       ],
-      "ine-pro:*lewǵ-": [
+      "la:ū̆ncia": [
         2,
         3
       ]
@@ -5532,7 +5553,19 @@
         1,
         1
       ],
+      "frm:once": [
+        1,
+        2
+      ],
+      "fro:lonce": [
+        1,
+        2
+      ],
       "grc:λύγξ": [
+        1,
+        2
+      ],
+      "la-vul:*luncea": [
         1,
         2
       ],
@@ -5544,19 +5577,7 @@
         1,
         2
       ],
-      "fro:lonce": [
-        1,
-        2
-      ],
-      "frm:once": [
-        1,
-        2
-      ],
       "it:lonza": [
-        1,
-        2
-      ],
-      "la-vul:*luncea": [
         1,
         2
       ],
@@ -5572,11 +5593,11 @@
         2,
         3
       ],
-      "la:ū̆ncia": [
+      "ine-pro:*lewǵ-": [
         2,
         3
       ],
-      "ine-pro:*lewǵ-": [
+      "la:ū̆ncia": [
         2,
         3
       ]
@@ -5705,7 +5726,6 @@
       "canonical": "בֹּהֶן",
       "roman": "bóhen",
       "glosses": [
-        "defective spelling of בוהן",
         "thumb, big toe"
       ],
       "wiktionary": "https://en.wiktionary.org/wiki/%D7%91%D7%95%D7%94%D7%9F#Hebrew",
@@ -6502,7 +6522,6 @@
         "God",
         "a god",
         "a godlike figure, someone with godlike power or authority (like rulers or judges)",
-        "defective spelling of אלוהים.",
         "plural indefinite form of אֱלוֹהַּ (elóah)"
       ],
       "wiktionary": "https://en.wiktionary.org/wiki/%D7%90%D7%9C%D7%95%D7%94%D7%99%D7%9D#Hebrew",
@@ -6605,7 +6624,6 @@
       "glosses": [
         "El, the chief deity in Canaanite religion",
         "God, the God of Israel.",
-        "defective spelling of אֵיל: singular construct state form of אַיִל (“pillar of an archway”) (Ezekiel 40:48).",
         "god (a deity or supreme being; a supernatural, typically immortal, being with superior powers, to which personhood is attributed)",
         "strength; (only in the phrase יש לאל ידי (“it is in my power”))."
       ],
@@ -6621,11 +6639,11 @@
         0,
         0
       ],
-      "sem-pro:ʔil-": [
+      "sem-pro:*ʔil-": [
         0,
         0
       ],
-      "sem-pro:*ʔil-": [
+      "sem-pro:ʔil-": [
         0,
         0
       ]
@@ -6707,7 +6725,6 @@
       "glosses": [
         "El, the chief deity in Canaanite religion",
         "God, the God of Israel.",
-        "defective spelling of אֵיל: singular construct state form of אַיִל (“pillar of an archway”) (Ezekiel 40:48).",
         "god (a deity or supreme being; a supernatural, typically immortal, being with superior powers, to which personhood is attributed)",
         "strength; (only in the phrase יש לאל ידי (“it is in my power”))."
       ],
@@ -7442,7 +7459,6 @@
         "God",
         "a god",
         "a godlike figure, someone with godlike power or authority (like rulers or judges)",
-        "defective spelling of אלוהים.",
         "plural indefinite form of אֱלוֹהַּ (elóah)"
       ],
       "wiktionary": "https://en.wiktionary.org/wiki/%D7%90%D7%9C%D7%95%D7%94%D7%99%D7%9D#Hebrew",
@@ -8123,8 +8139,7 @@
       "canonical": "קֻרְאָן",
       "roman": "kur'án",
       "glosses": [
-        "Qur'an",
-        "defective spelling of קוראן"
+        "Qur'an"
       ],
       "wiktionary": "https://en.wiktionary.org/wiki/%D7%A7%D7%95%D7%A8%D7%90%D7%9F#Hebrew",
       "ipa": "kuʁʔan"
@@ -8181,11 +8196,11 @@
         0,
         0
       ],
-      "grc:κρημνοί": [
+      "la:Cimmerium": [
         1,
         1
       ],
-      "la:Cimmerium": [
+      "grc:κρημνοί": [
         1,
         1
       ]
@@ -8286,11 +8301,11 @@
         0,
         0
       ],
-      "iir-pro:*síndʰuš": [
+      "ira-pro:*hínduš": [
         0,
         0
       ],
-      "ira-pro:*hínduš": [
+      "iir-pro:*síndʰuš": [
         0,
         0
       ],
@@ -8302,11 +8317,11 @@
         1,
         1
       ],
-      "sa:सिन्धु॑": [
+      "inc-pro:*síndʰuṣ": [
         1,
         1
       ],
-      "inc-pro:*síndʰuṣ": [
+      "sa:सिन्धु॑": [
         1,
         1
       ]
@@ -8353,23 +8368,23 @@
         0,
         0
       ],
+      "ms:Jepang": [
+        0,
+        0
+      ],
       "nan-hbl:日本": [
         0,
         0
       ],
-      "ms:Jepang": [
-        0,
-        0
+      "zh:日本": [
+        1,
+        1
       ],
       "nan-hbl:日本//Ji̍t-pún": [
         1,
         1
       ],
       "ltc:日本": [
-        1,
-        1
-      ],
-      "zh:日本": [
         1,
         1
       ]
@@ -8655,7 +8670,6 @@
       "glosses": [
         "Greece (a country in Southeast Europe)",
         "Javan (the fourth son of Japheth)",
-        "defective spelling of יוון",
         "the nation descended from Javan, identified with the Ionians, and more generally the Greeks"
       ],
       "wiktionary": "https://en.wiktionary.org/wiki/%D7%99%D7%95%D7%9F#Hebrew",
@@ -8913,49 +8927,6 @@
       "ipa": "ʔiθnaːn"
     },
     "hebrew": {
-      "canonical": "שְׁנַיִם",
-      "roman": "sh'náyim",
-      "glosses": [
-        "defective spelling of שניים: two"
-      ],
-      "wiktionary": "https://en.wiktionary.org/wiki/%D7%A9%D7%A0%D7%99%D7%9D#Hebrew",
-      "ipa": "ʃnajim"
-    },
-    "match_layers": [
-      "lemma_promoted"
-    ],
-    "shared_borrowing_sources": {
-      "sem-pro:ṯin-": [
-        1,
-        1
-      ]
-    },
-    "best_sense_match": {
-      "arabic_sense": "two",
-      "arabic_pos": "num",
-      "hebrew_sense": "defective spelling of שניים: two",
-      "hebrew_pos": "num",
-      "similarity": 0.865
-    },
-    "ancestor": "sem-pro:θin",
-    "pansemitic_form": "sin",
-    "loss": {
-      "arabic": 0.6625,
-      "hebrew": 0.6916666666666668,
-      "joint": 1.3541666666666667
-    }
-  },
-  {
-    "arabic": {
-      "canonical": "اِثْنَان",
-      "roman": "iṯnān",
-      "glosses": [
-        "two"
-      ],
-      "wiktionary": "https://en.wiktionary.org/wiki/%D8%A7%D8%AB%D9%86%D8%A7%D9%86#Arabic",
-      "ipa": "ʔiθnaːn"
-    },
-    "hebrew": {
       "canonical": "שְׁנַייִם",
       "roman": "sh'náyim",
       "glosses": [
@@ -8965,12 +8936,17 @@
       "ipa": "ʃinajm"
     },
     "match_layers": [
-      "shared_borrowing_source"
+      "shared_borrowing_source",
+      "lemma_promoted"
     ],
     "shared_borrowing_sources": {
       "sem-pro:*ṯin-": [
         0,
         0
+      ],
+      "sem-pro:ṯin-": [
+        1,
+        1
       ]
     },
     "best_sense_match": {
@@ -8987,49 +8963,6 @@
       "hebrew": 0.6416666666666667,
       "joint": 1.3041666666666667
     }
-  },
-  {
-    "arabic": {
-      "canonical": "اِثْنَان",
-      "roman": "iṯnān",
-      "glosses": [
-        "two"
-      ],
-      "wiktionary": "https://en.wiktionary.org/wiki/%D8%A7%D8%AB%D9%86%D8%A7%D9%86#Arabic",
-      "ipa": "ʔiθnaːn"
-    },
-    "hebrew": {
-      "canonical": "שְׁתַּיִם",
-      "roman": "shtáyim",
-      "glosses": [
-        "defective spelling of שתיים.",
-        "feminine of שניים \\ שְׁנַיִם"
-      ],
-      "wiktionary": "https://en.wiktionary.org/wiki/%D7%A9%D7%AA%D7%99%D7%99%D7%9D#Hebrew",
-      "ipa": "ʃitːajm"
-    },
-    "match_layers": [
-      "lemma_promoted"
-    ],
-    "shared_borrowing_sources": {
-      "sem-pro:*ṯin-t-āni ~ *(i)ṯn-at-āni": [
-        0,
-        0
-      ],
-      "sem-pro:ṯin-": [
-        1,
-        1
-      ]
-    },
-    "best_sense_match": {
-      "arabic_sense": "two",
-      "arabic_pos": "num",
-      "hebrew_sense": "defective spelling of שתיים.",
-      "hebrew_pos": "num",
-      "similarity": 0.8426
-    },
-    "ancestor": "sem-pro:θin-t-aːni ~ *iθn-at-aːni",
-    "pansemitic_form": "sin-t-ani ~ *isn-at-ani"
   },
   {
     "arabic": {
@@ -9496,10 +9429,6 @@
         1,
         1
       ],
-      "it:ballone": [
-        2,
-        2
-      ],
       "it:pallone": [
         2,
         2
@@ -9508,9 +9437,25 @@
         2,
         2
       ],
+      "it:ballone": [
+        2,
+        2
+      ],
       "it:balla": [
         3,
         3
+      ],
+      "lng:*palla": [
+        4,
+        4
+      ],
+      "gem-pro:*ballô": [
+        4,
+        4
+      ],
+      "fro:balle": [
+        4,
+        4
       ],
       "la-med:balla": [
         4,
@@ -9520,27 +9465,15 @@
         4,
         4
       ],
-      "fro:balle": [
-        4,
-        4
-      ],
-      "gem-pro:*ballô": [
-        4,
-        4
-      ],
-      "lng:*palla": [
-        4,
-        4
-      ],
       "la:palla": [
         5,
         5
       ],
-      "la:bala": [
+      "la:balla": [
         5,
         5
       ],
-      "la:balla": [
+      "la:bala": [
         5,
         5
       ],
@@ -9842,6 +9775,30 @@
         0,
         0
       ],
+      "fro:barre": [
+        1,
+        1
+      ],
+      "grc:βάρος": [
+        1,
+        1
+      ],
+      "enm:barr": [
+        1,
+        1
+      ],
+      "enm:bare": [
+        1,
+        1
+      ],
+      "la-vul:*barra": [
+        1,
+        1
+      ],
+      "fro:barrer": [
+        1,
+        1
+      ],
       "enm:bar": [
         1,
         1
@@ -9850,27 +9807,7 @@
         1,
         1
       ],
-      "grc:βάρος": [
-        1,
-        1
-      ],
-      "enm:barren": [
-        1,
-        1
-      ],
-      "fro:barre": [
-        1,
-        1
-      ],
-      "enm:bare": [
-        1,
-        1
-      ],
       "la-med:barrare": [
-        1,
-        1
-      ],
-      "fro:barrer": [
         1,
         1
       ],
@@ -9878,11 +9815,7 @@
         1,
         1
       ],
-      "enm:barr": [
-        1,
-        1
-      ],
-      "la-vul:*barra": [
+      "enm:barren": [
         1,
         1
       ],
@@ -9890,7 +9823,15 @@
         2,
         2
       ],
-      "fro:barre oblique singular or": [
+      "gmw-pro:*baʀ": [
+        2,
+        2
+      ],
+      "non:bár": [
+        2,
+        2
+      ],
+      "non:bára": [
         2,
         2
       ],
@@ -9902,31 +9843,19 @@
         2,
         2
       ],
-      "ang:bār": [
-        2,
-        2
-      ],
-      "non:bára": [
-        2,
-        2
-      ],
       "gem-pro:*bazaz": [
         2,
         2
       ],
-      "non:bár": [
+      "ang:bār": [
         2,
         2
       ],
-      "gmw-pro:*baʀ": [
+      "fro:barre oblique singular or": [
         2,
         2
       ],
-      "ine-pro:*bʰosós": [
-        3,
-        3
-      ],
-      "gem-pro:bazaz": [
+      "gmw-pro:bair": [
         3,
         3
       ],
@@ -9934,7 +9863,31 @@
         3,
         3
       ],
+      "gem-pro:bērō": [
+        3,
+        3
+      ],
+      "ine-pro:*bʰer-": [
+        3,
+        3
+      ],
+      "gem-pro:bazaz": [
+        3,
+        3
+      ],
       "gmw-pro:*bair": [
+        3,
+        3
+      ],
+      "gmw-pro:*barī": [
+        3,
+        3
+      ],
+      "gmw-pro:barī": [
+        3,
+        3
+      ],
+      "gmw-pro:baʀ": [
         3,
         3
       ],
@@ -9946,43 +9899,23 @@
         3,
         3
       ],
-      "gem-pro:bērō": [
-        3,
-        3
-      ],
-      "gmw-pro:bair": [
-        3,
-        3
-      ],
-      "ine-pro:*bʰer-": [
-        3,
-        3
-      ],
-      "gmw-pro:*barī": [
-        3,
-        3
-      ],
-      "gmw-pro:baʀ": [
-        3,
-        3
-      ],
-      "gmw-pro:barī": [
-        3,
-        3
-      ],
       "gem-pro:*barō": [
         3,
         3
       ],
-      "ine-pro:*bʰers-": [
-        4,
-        4
+      "ine-pro:*bʰosós": [
+        3,
+        3
       ],
       "gem-pro:*baizaz": [
         4,
         4
       ],
       "ine-pro:bʰoréh₂": [
+        4,
+        4
+      ],
+      "ine-pro:*bʰers-": [
         4,
         4
       ]
@@ -10030,6 +9963,30 @@
         0,
         0
       ],
+      "fro:barre": [
+        1,
+        1
+      ],
+      "grc:βάρος": [
+        1,
+        1
+      ],
+      "enm:barr": [
+        1,
+        1
+      ],
+      "enm:bare": [
+        1,
+        1
+      ],
+      "la-vul:*barra": [
+        1,
+        1
+      ],
+      "fro:barrer": [
+        1,
+        1
+      ],
       "enm:bar": [
         1,
         1
@@ -10038,27 +9995,7 @@
         1,
         1
       ],
-      "grc:βάρος": [
-        1,
-        1
-      ],
-      "enm:barren": [
-        1,
-        1
-      ],
-      "fro:barre": [
-        1,
-        1
-      ],
-      "enm:bare": [
-        1,
-        1
-      ],
       "la-med:barrare": [
-        1,
-        1
-      ],
-      "fro:barrer": [
         1,
         1
       ],
@@ -10066,11 +10003,7 @@
         1,
         1
       ],
-      "enm:barr": [
-        1,
-        1
-      ],
-      "la-vul:*barra": [
+      "enm:barren": [
         1,
         1
       ],
@@ -10078,7 +10011,15 @@
         2,
         2
       ],
-      "fro:barre oblique singular or": [
+      "gmw-pro:*baʀ": [
+        2,
+        2
+      ],
+      "non:bár": [
+        2,
+        2
+      ],
+      "non:bára": [
         2,
         2
       ],
@@ -10090,31 +10031,19 @@
         2,
         2
       ],
-      "ang:bār": [
-        2,
-        2
-      ],
-      "non:bára": [
-        2,
-        2
-      ],
       "gem-pro:*bazaz": [
         2,
         2
       ],
-      "non:bár": [
+      "ang:bār": [
         2,
         2
       ],
-      "gmw-pro:*baʀ": [
+      "fro:barre oblique singular or": [
         2,
         2
       ],
-      "ine-pro:*bʰosós": [
-        3,
-        3
-      ],
-      "gem-pro:bazaz": [
+      "gmw-pro:bair": [
         3,
         3
       ],
@@ -10122,7 +10051,31 @@
         3,
         3
       ],
+      "gem-pro:bērō": [
+        3,
+        3
+      ],
+      "ine-pro:*bʰer-": [
+        3,
+        3
+      ],
+      "gem-pro:bazaz": [
+        3,
+        3
+      ],
       "gmw-pro:*bair": [
+        3,
+        3
+      ],
+      "gmw-pro:*barī": [
+        3,
+        3
+      ],
+      "gmw-pro:barī": [
+        3,
+        3
+      ],
+      "gmw-pro:baʀ": [
         3,
         3
       ],
@@ -10134,43 +10087,23 @@
         3,
         3
       ],
-      "gem-pro:bērō": [
-        3,
-        3
-      ],
-      "gmw-pro:bair": [
-        3,
-        3
-      ],
-      "ine-pro:*bʰer-": [
-        3,
-        3
-      ],
-      "gmw-pro:*barī": [
-        3,
-        3
-      ],
-      "gmw-pro:baʀ": [
-        3,
-        3
-      ],
-      "gmw-pro:barī": [
-        3,
-        3
-      ],
       "gem-pro:*barō": [
         3,
         3
       ],
-      "ine-pro:*bʰers-": [
-        4,
-        4
+      "ine-pro:*bʰosós": [
+        3,
+        3
       ],
       "gem-pro:*baizaz": [
         4,
         4
       ],
       "ine-pro:bʰoréh₂": [
+        4,
+        4
+      ],
+      "ine-pro:*bʰers-": [
         4,
         4
       ]
@@ -10205,7 +10138,6 @@
       "canonical": "בֵּרֵךְ",
       "roman": "berékh",
       "glosses": [
-        "defective spelling of בירך",
         "to bless",
         "to curse"
       ],
@@ -11125,7 +11057,6 @@
       "canonical": "בִּשֵּׂר",
       "roman": "bisér",
       "glosses": [
-        "defective spelling of בישר",
         "to bring good news"
       ],
       "wiktionary": "https://en.wiktionary.org/wiki/%D7%91%D7%A9%D7%A8#Hebrew",
@@ -11395,7 +11326,6 @@
       "canonical": "בִּטֵּל",
       "roman": "bitél",
       "glosses": [
-        "defective spelling of ביטל",
         "to cancel (plans, a schedule, an event, or the like)",
         "to cancel, annul (a decision, a decree, or the like)"
       ],
@@ -11661,7 +11591,6 @@
       "canonical": "בִּכָּה",
       "roman": "biká",
       "glosses": [
-        "defective spelling of ביכה",
         "to lament; to mourn (for)"
       ],
       "wiktionary": "https://en.wiktionary.org/wiki/%D7%91%D7%9B%D7%94#Hebrew",
@@ -11906,7 +11835,6 @@
       "canonical": "בִּלָּה",
       "roman": "bilá",
       "glosses": [
-        "defective spelling of בילה",
         "to hang out, to spend time"
       ],
       "wiktionary": "https://en.wiktionary.org/wiki/%D7%91%D7%99%D7%9C%D7%94#Hebrew",
@@ -12158,8 +12086,7 @@
       "glosses": [
         "a conjugation pattern, a construction",
         "building",
-        "building, construction",
-        "defective spelling of בניין."
+        "building, construction"
       ],
       "wiktionary": "https://en.wiktionary.org/wiki/%D7%91%D7%A0%D7%99%D7%99%D7%9F#Hebrew",
       "ipa": "binjan"
@@ -12318,10 +12245,6 @@
         1,
         0
       ],
-      "goh:bank": [
-        1,
-        1
-      ],
       "gmw-pro:*banki": [
         1,
         1
@@ -12331,6 +12254,10 @@
         1
       ],
       "it:banca": [
+        1,
+        1
+      ],
+      "goh:bank": [
         1,
         1
       ],
@@ -12841,8 +12768,7 @@
       "canonical": "בֹּרֶג",
       "roman": "bóreg",
       "glosses": [
-        "A screw, a bolt: a threaded fastener.",
-        "defective spelling of בורג"
+        "A screw, a bolt: a threaded fastener."
       ],
       "wiktionary": "https://en.wiktionary.org/wiki/%D7%91%D7%95%D7%A8%D7%92#Hebrew",
       "ipa": "boreg"
@@ -13038,8 +12964,7 @@
       "glosses": [
         "a conjugation pattern, a construction",
         "building",
-        "building, construction",
-        "defective spelling of בניין."
+        "building, construction"
       ],
       "wiktionary": "https://en.wiktionary.org/wiki/%D7%91%D7%A0%D7%99%D7%99%D7%9F#Hebrew",
       "ipa": "binjan"
@@ -13089,11 +13014,11 @@
         0,
         0
       ],
-      "bo:བོད": [
+      "sa:अन्त": [
         1,
         1
       ],
-      "sa:अन्त": [
+      "fr:Bhoutan": [
         1,
         1
       ],
@@ -13105,15 +13030,15 @@
         1,
         1
       ],
+      "bo:བོད": [
+        1,
+        1
+      ],
       "ne:भुटान": [
         1,
         1
       ],
-      "fr:Bhoutan": [
-        1,
-        1
-      ],
-      "iir-pro:*Hántas": [
+      "pra:*𑀪𑁄𑀝": [
         2,
         2
       ],
@@ -13121,15 +13046,15 @@
         2,
         2
       ],
-      "pra:*𑀪𑁄𑀝𑁆𑀝": [
-        2,
-        2
-      ],
-      "pra:*𑀪𑁄𑀝": [
-        2,
-        2
-      ],
       "inc-pro:*Hántas": [
+        2,
+        2
+      ],
+      "iir-pro:*Hántas": [
+        2,
+        2
+      ],
+      "pra:*𑀪𑁄𑀝𑁆𑀝": [
         2,
         2
       ],
@@ -13372,15 +13297,15 @@
         0,
         0
       ],
+      "ine-pro:*kʷer-": [
+        1,
+        1
+      ],
       "cel-pro:*Kʷritanī": [
         1,
         1
       ],
       "grc:Βρεττανία": [
-        1,
-        1
-      ],
-      "ine-pro:*kʷer-": [
         1,
         1
       ]
@@ -13414,7 +13339,6 @@
       "canonical": "אֹרֶז",
       "roman": "órez",
       "glosses": [
-        "defective spelling of אורז.",
         "rice"
       ],
       "wiktionary": "https://en.wiktionary.org/wiki/%D7%90%D7%95%D7%A8%D7%96#Hebrew",
@@ -13472,15 +13396,15 @@
         0,
         0
       ],
+      "ine-pro:*kʷer-": [
+        1,
+        1
+      ],
       "cel-pro:*Kʷritanī": [
         1,
         1
       ],
       "grc:Βρεττανία": [
-        1,
-        1
-      ],
-      "ine-pro:*kʷer-": [
         1,
         1
       ]
@@ -13674,7 +13598,6 @@
       "canonical": "בִּכּוּר",
       "roman": "bikúr",
       "glosses": [
-        "defective spelling of ביכור (bikúr).",
         "first fruits, early crops",
         "preference, favoritism",
         "ripening (of fruit)"
@@ -13863,11 +13786,11 @@
         0,
         0
       ],
-      "goh:bizza": [
+      "gkm:πίτα": [
         1,
         1
       ],
-      "gkm:πίτα": [
+      "goh:bizza": [
         1,
         1
       ],
@@ -13879,15 +13802,15 @@
         1,
         1
       ],
-      "gmw-pro:*bitā": [
-        2,
-        2
-      ],
       "grc:πίτα": [
         2,
         2
       ],
-      "sq:pitë": [
+      "gmw-pro:*bitā": [
+        2,
+        2
+      ],
+      "sq:pite": [
         3,
         3
       ],
@@ -13895,11 +13818,11 @@
         3,
         3
       ],
-      "sq:pite": [
+      "arc:פִיתָּא": [
         3,
         3
       ],
-      "arc:פִיתָּא": [
+      "sq:pitë": [
         3,
         3
       ],
@@ -13958,7 +13881,7 @@
         2,
         1
       ],
-      "sq:pitë": [
+      "sq:pite": [
         3,
         2
       ],
@@ -13966,11 +13889,11 @@
         3,
         2
       ],
-      "sq:pite": [
+      "arc:פִיתָּא": [
         3,
         2
       ],
-      "arc:פִיתָּא": [
+      "sq:pitë": [
         3,
         2
       ],
@@ -14030,11 +13953,11 @@
         1,
         1
       ],
-      "hi:पैजामा": [
+      "ur:پائِجامَہ": [
         1,
         1
       ],
-      "ur:پائِجامَہ": [
+      "hi:पैजामा": [
         1,
         1
       ],
@@ -14098,19 +14021,19 @@
         1,
         1
       ],
-      "gmw-pro:*beuʀ": [
-        2,
-        1
-      ],
       "gmh:bier": [
         2,
         1
       ],
-      "gem-pro:*beuzą": [
+      "ine-pro:*bʰews-": [
         2,
         1
       ],
-      "ine-pro:*bʰews-": [
+      "gmw-pro:*beuʀ": [
+        2,
+        1
+      ],
+      "gem-pro:*beuzą": [
         2,
         1
       ],
@@ -14286,8 +14209,7 @@
       "canonical": "פְּרָג",
       "roman": "prag",
       "glosses": [
-        "Prague (the capital city of the Czech Republic; the former capital of Czechoslovakia; the former capital of the Kingdom of Bohemia)",
-        "defective spelling of פראג"
+        "Prague (the capital city of the Czech Republic; the former capital of Czechoslovakia; the former capital of the Kingdom of Bohemia)"
       ],
       "wiktionary": "https://en.wiktionary.org/wiki/%D7%A4%D7%A8%D7%92#Hebrew",
       "ipa": "prag"
@@ -14403,23 +14325,23 @@
         0,
         0
       ],
-      "la:Pluto": [
-        0,
-        0
-      ],
       "grc:Πλούτων": [
         0,
         0
       ],
-      "grc:Πλούτων<t:god of the underworld>": [
-        1,
-        1
+      "la:Pluto": [
+        0,
+        0
       ],
       "la:Plūtō": [
         1,
         1
       ],
-      "enm:Pluto,Pluton": [
+      "enm:Pluto": [
+        1,
+        1
+      ],
+      "grc:Πλούτων<t:god of the underworld>": [
         1,
         1
       ],
@@ -14427,7 +14349,7 @@
         1,
         1
       ],
-      "enm:Pluto": [
+      "enm:Pluto,Pluton": [
         1,
         1
       ]
@@ -15282,7 +15204,6 @@
       "canonical": "תֹּם",
       "roman": "tóm",
       "glosses": [
-        "defective spelling of תום",
         "end, completion",
         "innocence, simplicity"
       ],
@@ -15345,11 +15266,11 @@
         0,
         0
       ],
-      "sem-pro:ṯamar-": [
+      "sem-pro:*ṯamar-": [
         1,
         1
       ],
-      "sem-pro:*ṯamar-": [
+      "sem-pro:ṯamar-": [
         1,
         1
       ]
@@ -15601,7 +15522,6 @@
       "canonical": "תֻּרְגְּמָן",
       "roman": "turg'mán",
       "glosses": [
-        "defective spelling of תורגמן",
         "interpreter",
         "translator"
       ],
@@ -15742,11 +15662,11 @@
         0,
         1
       ],
-      "la:thunnus": [
+      "grc:θύννος": [
         0,
         1
       ],
-      "grc:θύννος": [
+      "la:thunnus": [
         0,
         1
       ],
@@ -15913,7 +15833,6 @@
       "canonical": "תִּקֵּן",
       "roman": "tikén",
       "glosses": [
-        "defective spelling of תיקן",
         "to amend (legislation)",
         "to correct",
         "to improve, rehabilitate",
@@ -15959,7 +15878,6 @@
       "roman": "tikún",
       "glosses": [
         "correction; amendment",
-        "defective spelling of תיקון.",
         "improvement; repair"
       ],
       "wiktionary": "https://en.wiktionary.org/wiki/%D7%AA%D7%99%D7%A7%D7%95%D7%9F#Hebrew",
@@ -16084,7 +16002,6 @@
       "canonical": "טֶלֶוִיזְיָה",
       "roman": "televízya",
       "glosses": [
-        "Defective spelling of טלוויזיה.",
         "television (an electronic home entertainment device equipped with a screen and a speaker for receiving television signals and displaying them in audio-visual form)"
       ],
       "wiktionary": "https://en.wiktionary.org/wiki/%D7%98%D7%9C%D7%95%D7%95%D7%99%D7%96%D7%99%D7%94#Hebrew",
@@ -16132,7 +16049,6 @@
       "canonical": "טֶלֶוִיזְיָה",
       "roman": "televízya",
       "glosses": [
-        "Defective spelling of טלוויזיה.",
         "television (an electronic home entertainment device equipped with a screen and a speaker for receiving television signals and displaying them in audio-visual form)"
       ],
       "wiktionary": "https://en.wiktionary.org/wiki/%D7%98%D7%9C%D7%95%D7%95%D7%99%D7%96%D7%99%D7%94#Hebrew",
@@ -16309,15 +16225,15 @@
         0,
         0
       ],
-      "fro:tenir": [
-        1,
-        1
-      ],
       "enm:tennys": [
         1,
         1
       ],
       "fro:tenez": [
+        1,
+        1
+      ],
+      "fro:tenir": [
         1,
         1
       ],
@@ -16507,18 +16423,6 @@
         0,
         0
       ],
-      "sla-pro:*cěsařь": [
-        1,
-        1
-      ],
-      "gem-pro:*kaisaraz": [
-        1,
-        1
-      ],
-      "orv:цѣсарь": [
-        1,
-        1
-      ],
       "orv:цьсарь": [
         1,
         1
@@ -16527,13 +16431,21 @@
         1,
         1
       ],
+      "gem-pro:*kaisaraz": [
+        1,
+        1
+      ],
       "la:Caesar": [
         1,
         1
       ],
-      "sla-pro:cěsãřь": [
-        2,
-        2
+      "sla-pro:*cěsařь": [
+        1,
+        1
+      ],
+      "orv:цѣсарь": [
+        1,
+        1
       ],
       "got:𐌺𐌰𐌹𐍃𐌰𐍂": [
         2,
@@ -16543,11 +16455,15 @@
         2,
         2
       ],
-      "grc:Καῖσαρ": [
+      "sla-pro:cěsãřь": [
+        2,
+        2
+      ],
+      "grc:Καῖσᾰρ": [
         3,
         3
       ],
-      "grc:Καῖσᾰρ": [
+      "grc:Καῖσαρ": [
         3,
         3
       ]
@@ -16700,9 +16616,7 @@
     "hebrew": {
       "canonical": "שִׁנִּי",
       "roman": "shiní",
-      "glosses": [
-        "defective spelling of שיני"
-      ],
+      "glosses": [],
       "wiktionary": "https://en.wiktionary.org/wiki/%D7%A9%D7%A0%D7%99#Hebrew",
       "ipa": "ʃini"
     },
@@ -16716,13 +16630,13 @@
       "hebrew_pos": "adj",
       "similarity": 0.8321
     },
-    "morphology": "ar: feminine ending stripped; he: nisba suffix stripped (de-adjectivized)",
-    "ancestor": "recon-sem-pro:θaːnij",
-    "pansemitic_form": "saniy",
+    "morphology": "ar: cited masculine base: substituted cited base ثَانٍ (ṯānin); he: nisba suffix stripped (de-adjectivized)",
+    "ancestor": "recon-sem-pro:θaːnin",
+    "pansemitic_form": "sanin",
     "loss": {
-      "arabic": 0.19166666666666665,
+      "arabic": 0.35000000000000003,
       "hebrew": 0.445,
-      "joint": 0.6366666666666667
+      "joint": 0.795
     }
   },
   {
@@ -16741,7 +16655,6 @@
       "canonical": "שִׁבֵּר",
       "roman": "shibér",
       "glosses": [
-        "defective spelling of שיבר",
         "to shatter (break violently)"
       ],
       "wiktionary": "https://en.wiktionary.org/wiki/%D7%A9%D7%91%D7%A8#Hebrew",
@@ -18609,7 +18522,6 @@
       "canonical": "כִּנּוֹר",
       "roman": "kinór",
       "glosses": [
-        "defective spelling of כינור",
         "harp",
         "lyre",
         "violin"
@@ -18940,7 +18852,6 @@
       "canonical": "גֹּרֶן",
       "roman": "góren",
       "glosses": [
-        "defective spelling of גורן",
         "threshing floor"
       ],
       "wiktionary": "https://en.wiktionary.org/wiki/%D7%92%D7%95%D7%A8%D7%9F#Hebrew",
@@ -19083,7 +18994,6 @@
       "canonical": "גֻּלְגֹּלֶת",
       "roman": "gulgólet",
       "glosses": [
-        "defective spelling of גולגולת",
         "head (single individual when counting)",
         "skull"
       ],
@@ -19179,10 +19089,6 @@
         0,
         0
       ],
-      "gem-pro:*kulbaz": [
-        1,
-        1
-      ],
       "gmw-msc:golf": [
         1,
         1
@@ -19191,15 +19097,19 @@
         1,
         1
       ],
-      "dum:colve": [
-        1,
-        1
-      ],
       "gmw-msc:gouff": [
         1,
         1
       ],
-      "odt:*kolbo": [
+      "dum:colve": [
+        1,
+        1
+      ],
+      "gem-pro:*kulbaz": [
+        1,
+        1
+      ],
+      "ine-pro:*gel-": [
         2,
         2
       ],
@@ -19207,7 +19117,7 @@
         2,
         2
       ],
-      "ine-pro:*gel-": [
+      "odt:*kolbo": [
         2,
         2
       ],
@@ -19550,11 +19460,11 @@
         0,
         0
       ],
-      "la:generālis": [
+      "fro:general": [
         1,
         1
       ],
-      "fro:general": [
+      "la:generālis": [
         1,
         1
       ]
@@ -19892,39 +19802,15 @@
         1,
         1
       ],
-      "enm:Gene": [
-        1,
-        1
-      ],
       "enm:fustian": [
         1,
         1
       ],
-      "fro:fustaingne": [
-        2,
-        2
-      ],
-      "la-med:fūstāneum": [
-        2,
-        2
-      ],
-      "fro:fustaine oblique singular or": [
-        2,
-        2
-      ],
-      "frm:jean": [
-        2,
-        2
-      ],
-      "fro:fustagne": [
-        2,
-        2
+      "enm:Gene": [
+        1,
+        1
       ],
       "fro:fustaigne": [
-        2,
-        2
-      ],
-      "fro:fustane": [
         2,
         2
       ],
@@ -19932,7 +19818,27 @@
         2,
         2
       ],
+      "frm:jean": [
+        2,
+        2
+      ],
+      "fro:fustane": [
+        2,
+        2
+      ],
+      "la-med:fūstāneum": [
+        2,
+        2
+      ],
+      "fro:fustagne": [
+        2,
+        2
+      ],
       "fro:fusteine": [
+        2,
+        2
+      ],
+      "fro:fustaine oblique singular or": [
         2,
         2
       ],
@@ -19940,11 +19846,15 @@
         2,
         2
       ],
-      "la:fūstāneum": [
+      "fro:fustaingne": [
+        2,
+        2
+      ],
+      "fro:Jannes": [
         3,
         3
       ],
-      "fro:Jannes": [
+      "la:fūstāneum": [
         3,
         3
       ],
@@ -20238,7 +20148,6 @@
       "canonical": "חֹמֶץ",
       "roman": "khómets",
       "glosses": [
-        "defective spelling of חומץ (vinegar)",
         "vinegar"
       ],
       "wiktionary": "https://en.wiktionary.org/wiki/%D7%97%D7%9E%D7%A5#Hebrew",
@@ -20733,7 +20642,7 @@
       "hebrew_pos": "noun",
       "similarity": 0.9146
     },
-    "morphology": "he: plural suffix stripped",
+    "morphology": "he: cited singular base: substituted cited base חָדָשׁ (khadásh)",
     "ancestor": "recon-sem-pro:ħadiːθ",
     "pansemitic_form": "xadis",
     "loss": {
@@ -21124,7 +21033,6 @@
       "canonical": "חִשֵּׁב",
       "roman": "khishév",
       "glosses": [
-        "defective spelling of חישב: to compute.",
         "to calculate"
       ],
       "wiktionary": "https://en.wiktionary.org/wiki/%D7%97%D7%A9%D7%91#Hebrew",
@@ -21167,7 +21075,6 @@
       "canonical": "חֻשַּׁב",
       "roman": "khusháv",
       "glosses": [
-        "defective spelling of חושב: to be calculate.",
         "to be calculated"
       ],
       "wiktionary": "https://en.wiktionary.org/wiki/%D7%97%D7%A9%D7%91#Hebrew",
@@ -21225,7 +21132,7 @@
       "hebrew_pos": "noun",
       "similarity": 0.8439
     },
-    "morphology": "ar: feminine ending stripped",
+    "morphology": "ar: cited masculine base: substituted cited base حَسَن (ḥasan)",
     "ancestor": "recon-sem-pro:ħasan",
     "pansemitic_form": "xasan",
     "loss": {
@@ -21411,6 +21318,50 @@
   },
   {
     "arabic": {
+      "canonical": "حَضْرَمَوْت",
+      "roman": "ḥaḍramawt",
+      "glosses": [
+        "Hadhramaut (region in southern Arabia)"
+      ],
+      "wiktionary": "https://en.wiktionary.org/wiki/%D8%AD%D8%B6%D8%B1%D9%85%D9%88%D8%AA#Arabic",
+      "ipa": "ħadˤramawt"
+    },
+    "hebrew": {
+      "canonical": "חֲצַרְמָוֶת",
+      "roman": "ḥăṣarmāweṯ",
+      "glosses": [
+        "Hazarmaveth (a Biblical character associated with southern Arabia)"
+      ],
+      "wiktionary": "https://en.wiktionary.org/wiki/%D7%97%D7%A6%D7%A8%D7%9E%D7%95%D7%AA#Hebrew",
+      "ipa": "ħasarmaːwet"
+    },
+    "match_layers": [
+      "direct_cognate_he→ar",
+      "shared_borrowing_source"
+    ],
+    "shared_borrowing_sources": {
+      "xhd:𐩢𐩳𐩧𐩣𐩩": [
+        0,
+        0
+      ]
+    },
+    "best_sense_match": {
+      "arabic_sense": "Hadhramaut (region in southern Arabia)",
+      "arabic_pos": "name",
+      "hebrew_sense": "Hazarmaveth (a Biblical character associated with southern Arabia)",
+      "hebrew_pos": "name",
+      "similarity": 0.8874
+    },
+    "ancestor": "arc:ħdrmt",
+    "pansemitic_form": "xdrmt",
+    "loss": {
+      "arabic": 0.47777777777777775,
+      "hebrew": 0.54,
+      "joint": 1.017777777777778
+    }
+  },
+  {
+    "arabic": {
       "canonical": "حَفَرَ",
       "roman": "ḥafara",
       "glosses": [
@@ -21493,7 +21444,6 @@
       "roman": "khók",
       "glosses": [
         "chok, a Jewish religious rule which doesn't have a rational explanation",
-        "defective spelling of חוק",
         "law, statute",
         "rule"
       ],
@@ -21632,15 +21582,10 @@
       "ipa": "χalab"
     },
     "match_layers": [
-      "shared_borrowing_source",
-      "lemma_promoted"
+      "shared_borrowing_source"
     ],
     "shared_borrowing_sources": {
       "ar:حَلَب": [
-        0,
-        0
-      ],
-      "ar:حَلْب": [
         0,
         0
       ]
@@ -22105,7 +22050,6 @@
         "Heat, warmth: the property of being hot.",
         "Heat: energy transferred by thermal interaction.",
         "Warmth, fever, feverishness.",
-        "defective spelling of חום",
         "singular construct state form of חום / חֹם."
       ],
       "wiktionary": "https://en.wiktionary.org/wiki/%D7%97%D7%95%D7%9D#Hebrew",
@@ -22224,7 +22168,6 @@
       "glosses": [
         "Eve (the first woman and mother of the human race; Adam's wife)",
         "a female given name, Chava",
-        "defective spelling of חווה.",
         "farm"
       ],
       "wiktionary": "https://en.wiktionary.org/wiki/%D7%97%D7%95%D7%94#Hebrew",
@@ -22322,7 +22265,6 @@
       "canonical": "חַיָּל",
       "roman": "khayál",
       "glosses": [
-        "defective spelling of חייל",
         "pawn",
         "soldier"
       ],
@@ -22425,7 +22367,7 @@
       "hebrew_pos": "noun",
       "similarity": 0.9378
     },
-    "morphology": "ar: feminine ending stripped; he: plural suffix stripped",
+    "morphology": "ar: feminine ending stripped; he: cited singular base: substituted cited base חַי (kháy)",
     "ancestor": "recon-sem-pro:ħaj",
     "pansemitic_form": "xay",
     "loss": {
@@ -22470,7 +22412,7 @@
       "hebrew_pos": "noun",
       "similarity": 0.8763
     },
-    "morphology": "he: feminine ending stripped",
+    "morphology": "he: cited masculine base: substituted cited base חַי (kháy)",
     "ancestor": "recon-sem-pro:ħajawaːn",
     "pansemitic_form": "xayawan",
     "loss": {
@@ -22564,7 +22506,7 @@
       "hebrew_pos": "noun",
       "similarity": 0.8766
     },
-    "morphology": "he: plural suffix stripped",
+    "morphology": "he: cited singular base: substituted cited base חַי (kháy)",
     "ancestor": "recon-sem-pro:ħajija",
     "pansemitic_form": "xayiya",
     "loss": {
@@ -22588,7 +22530,6 @@
       "canonical": "חָוָה",
       "roman": "khavá",
       "glosses": [
-        "defective spelling of חווה",
         "to experience"
       ],
       "wiktionary": "https://en.wiktionary.org/wiki/%D7%97%D7%95%D7%94#Hebrew",
@@ -22708,7 +22649,7 @@
       "hebrew_pos": "noun",
       "similarity": 0.905
     },
-    "morphology": "he: feminine ending stripped",
+    "morphology": "he: cited masculine base: substituted cited base חַי (kháy)",
     "ancestor": "recon-sem-pro:ħajː",
     "pansemitic_form": "xay",
     "loss": {
@@ -22801,6 +22742,48 @@
   },
   {
     "arabic": {
+      "canonical": "حُرّ",
+      "roman": "ḥurr",
+      "glosses": [
+        "born free and noble",
+        "free",
+        "set free, freedman",
+        "unimpeded",
+        "unmixed",
+        "virtuous, genuine, true, pure, good"
+      ],
+      "wiktionary": "https://en.wiktionary.org/wiki/%D8%AD%D8%B1#Arabic",
+      "ipa": "ħurː"
+    },
+    "hebrew": {
+      "canonical": "חִוֵּר",
+      "roman": "khivér",
+      "glosses": [
+        "pale"
+      ],
+      "wiktionary": "https://en.wiktionary.org/wiki/%D7%97%D7%95%D7%A8#Hebrew",
+      "ipa": "χiver"
+    },
+    "match_layers": [
+      "lemma_promoted"
+    ],
+    "best_sense_match": {
+      "arabic_sense": "free",
+      "arabic_pos": "adj",
+      "hebrew_sense": "pale",
+      "hebrew_pos": "adj",
+      "similarity": 0.8562
+    },
+    "ancestor": "recon-sem-pro:ħuverː",
+    "pansemitic_form": "xuwir",
+    "loss": {
+      "arabic": 0.54,
+      "hebrew": 0.24640000000000004,
+      "joint": 0.7864000000000001
+    }
+  },
+  {
+    "arabic": {
       "canonical": "حُسْبَان",
       "roman": "ḥusbān",
       "glosses": [
@@ -22856,7 +22839,6 @@
       "canonical": "חִלְבָּה",
       "roman": "khilbá",
       "glosses": [
-        "defective spelling of חילבה",
         "fenugreek"
       ],
       "wiktionary": "https://en.wiktionary.org/wiki/%D7%97%D7%99%D7%9C%D7%91%D7%94#Hebrew",
@@ -22941,8 +22923,7 @@
       "canonical": "חִגָ׳אבּ",
       "roman": "khijáb",
       "glosses": [
-        "A hijab, a headscarf: a traditional headscarf worn by Muslim women, covering the hair and neck.",
-        "defective spelling of חיג׳אב."
+        "A hijab, a headscarf: a traditional headscarf worn by Muslim women, covering the hair and neck."
       ],
       "wiktionary": "https://en.wiktionary.org/wiki/%D7%97%D7%99%D7%92%D7%B3%D7%90%D7%91#Hebrew",
       "ipa": "χijab"
@@ -23237,7 +23218,6 @@
       "canonical": "חׇכְמָה",
       "roman": "khokhmá",
       "glosses": [
-        "defective spelling of חוכמה.",
         "wisdom"
       ],
       "wiktionary": "https://en.wiktionary.org/wiki/%D7%97%D7%95%D7%9B%D7%9E%D7%94#Hebrew",
@@ -23288,11 +23268,11 @@
         0,
         0
       ],
-      "sem-pro:ḥimār-": [
+      "sem-pro:*ḥimār-": [
         0,
         1
       ],
-      "sem-pro:*ḥimār-": [
+      "sem-pro:ḥimār-": [
         0,
         1
       ]
@@ -23376,8 +23356,7 @@
       "canonical": "חִמְצָה",
       "roman": "khimtsá",
       "glosses": [
-        "chickpea",
-        "defective spelling of חימצה"
+        "chickpea"
       ],
       "wiktionary": "https://en.wiktionary.org/wiki/%D7%97%D7%9E%D7%A6%D7%94#Hebrew",
       "ipa": "χimt͡sa"
@@ -23509,7 +23488,6 @@
       "canonical": "חִטָּה",
       "roman": "khitá",
       "glosses": [
-        "defective spelling of חיטה",
         "wheat"
       ],
       "wiktionary": "https://en.wiktionary.org/wiki/%D7%97%D7%99%D7%98%D7%94#Hebrew",
@@ -23710,6 +23688,43 @@
       "arabic": 0.0,
       "hebrew": 0.020000000000000018,
       "joint": 0.020000000000000018
+    }
+  },
+  {
+    "arabic": {
+      "canonical": "خَتَن",
+      "roman": "ḵatan",
+      "glosses": [
+        "a man being related through marriage (son-in-law or brother-in-law or father-in-law or bridegroom)"
+      ],
+      "wiktionary": "https://en.wiktionary.org/wiki/%D8%AE%D8%AA%D9%86#Arabic",
+      "ipa": "xatan"
+    },
+    "hebrew": {
+      "canonical": "חוֹתֵן",
+      "roman": "khotén",
+      "glosses": [
+        "father-in-law, in relation to the groom"
+      ],
+      "wiktionary": "https://en.wiktionary.org/wiki/%D7%97%D7%95%D7%AA%D7%9F#Hebrew",
+      "ipa": "χoten"
+    },
+    "match_layers": [
+      "lemma_promoted"
+    ],
+    "best_sense_match": {
+      "arabic_sense": "a man being related through marriage (son-in-law or brother-in-law or father-in-law or bridegroom)",
+      "arabic_pos": "noun",
+      "hebrew_sense": "father-in-law, in relation to the groom",
+      "hebrew_pos": "noun",
+      "similarity": 0.8758
+    },
+    "ancestor": "recon-sem-pro:xatan",
+    "pansemitic_form": "xatan",
+    "loss": {
+      "arabic": 0.0,
+      "hebrew": 0.2272,
+      "joint": 0.2272
     }
   },
   {
@@ -23984,11 +23999,11 @@
         1,
         0
       ],
-      "phn:𐤇𐤓𐤈𐤉𐤕<t:that which has been written>": [
+      "ine-pro:*ǵʰer-": [
         1,
         1
       ],
-      "ine-pro:*ǵʰer-": [
+      "phn:𐤇𐤓𐤈𐤉𐤕<t:that which has been written>": [
         1,
         1
       ]
@@ -24025,7 +24040,6 @@
       "canonical": "חֹרֶף",
       "roman": "khóref",
       "glosses": [
-        "defective spelling of חורף (“winter”).",
         "winter"
       ],
       "wiktionary": "https://en.wiktionary.org/wiki/%D7%97%D7%95%D7%A8%D7%A3#Hebrew",
@@ -24120,11 +24134,11 @@
         2,
         0
       ],
-      "phn:𐤇𐤓𐤈𐤉𐤕<t:that which has been written>": [
+      "ine-pro:*ǵʰer-": [
         2,
         1
       ],
-      "ine-pro:*ǵʰer-": [
+      "phn:𐤇𐤓𐤈𐤉𐤕<t:that which has been written>": [
         2,
         1
       ]
@@ -24290,7 +24304,6 @@
       "canonical": "חִסָּרוֹן",
       "roman": "khisarón",
       "glosses": [
-        "defective spelling of חיסרון.",
         "disadvantage, shortcoming, drawback"
       ],
       "wiktionary": "https://en.wiktionary.org/wiki/%D7%97%D7%A1%D7%A8%D7%95%D7%9F#Hebrew",
@@ -25078,8 +25091,7 @@
       "canonical": "חֻרְשָׁף",
       "roman": "khursháf",
       "glosses": [
-        "artichoke",
-        "defective spelling of חורשף"
+        "artichoke"
       ],
       "wiktionary": "https://en.wiktionary.org/wiki/%D7%97%D7%A8%D7%A9%D7%A3#Hebrew",
       "ipa": "χurʃaf"
@@ -25215,7 +25227,6 @@
       "canonical": "חֹלֶד",
       "roman": "khóled",
       "glosses": [
-        "defective spelling of חולד",
         "mole-rat"
       ],
       "wiktionary": "https://en.wiktionary.org/wiki/%D7%97%D7%9C%D7%93#Hebrew",
@@ -25630,7 +25641,6 @@
       "canonical": "דַּיָּן",
       "roman": "dayán",
       "glosses": [
-        "defective spelling of דיין.",
         "judge, jurist"
       ],
       "wiktionary": "https://en.wiktionary.org/wiki/%D7%93%D7%99%D7%9F#Hebrew",
@@ -26495,7 +26505,6 @@
       "canonical": "דַּיָּן",
       "roman": "dayán",
       "glosses": [
-        "defective spelling of דיין.",
         "judge, jurist"
       ],
       "wiktionary": "https://en.wiktionary.org/wiki/%D7%93%D7%99%D7%9F#Hebrew",
@@ -26533,8 +26542,7 @@
       "canonical": "דֹּב",
       "roman": "dov",
       "glosses": [
-        "bear",
-        "defective spelling of דוב"
+        "bear"
       ],
       "wiktionary": "https://en.wiktionary.org/wiki/%D7%93%D7%95%D7%91#Hebrew",
       "ipa": "dob"
@@ -26623,7 +26631,6 @@
       "canonical": "דֹּחַן",
       "roman": "dóchan",
       "glosses": [
-        "defective spelling of דוחן",
         "millet"
       ],
       "wiktionary": "https://en.wiktionary.org/wiki/%D7%93%D7%95%D7%97%D7%9F#Hebrew",
@@ -26777,7 +26784,6 @@
       "roman": "dólev",
       "glosses": [
         "a tree of the genus Platanus",
-        "defective spelling of דולב",
         "plane tree (chiefly Platanus orientalis)"
       ],
       "wiktionary": "https://en.wiktionary.org/wiki/%D7%93%D7%95%D7%9C%D7%91#Hebrew",
@@ -26934,7 +26940,7 @@
         1,
         0
       ],
-      "nl:daalder": [
+      "nl:daler": [
         1,
         1
       ],
@@ -26942,7 +26948,7 @@
         1,
         1
       ],
-      "nl:daler": [
+      "nl:daalder": [
         1,
         1
       ],
@@ -26950,11 +26956,11 @@
         1,
         1
       ],
-      "gml:daler": [
+      "gml:dāler": [
         2,
         2
       ],
-      "gml:dāler": [
+      "gml:daler": [
         2,
         2
       ]
@@ -27077,8 +27083,7 @@
       "canonical": "חִדֶּקֶל",
       "roman": "khidékel",
       "glosses": [
-        "Tigris (a river in West Asia flowing 1,150 miles east-southeast from the Armenian Highland in Turkey through Iraq)",
-        "defective spelling of חידקל"
+        "Tigris (a river in West Asia flowing 1,150 miles east-southeast from the Armenian Highland in Turkey through Iraq)"
       ],
       "wiktionary": "https://en.wiktionary.org/wiki/%D7%97%D7%99%D7%93%D7%A7%D7%9C#Hebrew",
       "ipa": "χidekel"
@@ -27192,11 +27197,11 @@
         1,
         1
       ],
-      "ur:دہلی": [
+      "ur:دِہْلی": [
         1,
         1
       ],
-      "ur:دِہْلی": [
+      "ur:دہلی": [
         1,
         1
       ],
@@ -27204,11 +27209,11 @@
         2,
         2
       ],
-      "sa:देहली": [
+      "fa:دِهْلِی": [
         2,
         2
       ],
-      "fa:دِهْلِی": [
+      "sa:देहली": [
         2,
         2
       ]
@@ -27489,7 +27494,6 @@
       "canonical": "דַּיָּן",
       "roman": "dayán",
       "glosses": [
-        "defective spelling of דיין.",
         "judge, jurist"
       ],
       "wiktionary": "https://en.wiktionary.org/wiki/%D7%93%D7%99%D7%9F#Hebrew",
@@ -28367,7 +28371,6 @@
       "canonical": "רֹעֶה",
       "roman": "ro'é",
       "glosses": [
-        "defective spelling of רוֹעֶה (“shepherd”)",
         "shepherd"
       ],
       "wiktionary": "https://en.wiktionary.org/wiki/%D7%A8%D7%A2%D7%94#Hebrew",
@@ -29177,7 +29180,6 @@
       "canonical": "רִצָּה",
       "roman": "ritsá",
       "glosses": [
-        "defective spelling of ריצה",
         "to satisfy, to please, to placate"
       ],
       "wiktionary": "https://en.wiktionary.org/wiki/%D7%A8%D7%A6%D7%94#Hebrew",
@@ -29266,7 +29268,6 @@
       "canonical": "רָטֹב",
       "roman": "ratóv",
       "glosses": [
-        "defective spelling of רטוב",
         "wet (of an object: covered with or impregnated with liquid), moist, sapful (sap of plants)"
       ],
       "wiktionary": "https://en.wiktionary.org/wiki/%D7%A8%D7%98%D7%91#Hebrew",
@@ -29827,11 +29828,11 @@
         0,
         0
       ],
-      "afa-pro:*ruub-": [
+      "afa-pro:ruub-": [
         1,
         1
       ],
-      "afa-pro:ruub-": [
+      "afa-pro:*ruub-": [
         1,
         1
       ]
@@ -29866,7 +29867,6 @@
       "canonical": "רֹבַע",
       "roman": "róva",
       "glosses": [
-        "defective spelling of רובע",
         "quarter (a division or section of a town or city, especially having a particular character of its own, or associated with a particular group etc)"
       ],
       "wiktionary": "https://en.wiktionary.org/wiki/%D7%A8%D7%91%D7%A2#Hebrew",
@@ -29984,7 +29984,6 @@
       "canonical": "אֹרֶז",
       "roman": "órez",
       "glosses": [
-        "defective spelling of אורז.",
         "rice"
       ],
       "wiktionary": "https://en.wiktionary.org/wiki/%D7%90%D7%95%D7%A8%D7%96#Hebrew",
@@ -30125,7 +30124,6 @@
       "canonical": "רִמּוֹן",
       "roman": "rimón",
       "glosses": [
-        "defective spelling of רימון",
         "grenade (a small explosive device, designed to be thrown by hand or launched using a rifle, grenade launcher, or rocket)",
         "pomegranate (the fruit of the Punica granatum, about the size of an orange with a thick, hard, reddish skin enclosing many seeds, each with an edible pink or red pulp tasting both sweet and tart)",
         "pomegranate-shaped decoration on the priestly robe"
@@ -30165,7 +30163,6 @@
       "canonical": "רֹמַח",
       "roman": "rómakh",
       "glosses": [
-        "defective spelling of רומח",
         "spear"
       ],
       "wiktionary": "https://en.wiktionary.org/wiki/%D7%A8%D7%95%D7%9E%D7%97#Hebrew",
@@ -30585,7 +30582,6 @@
       "canonical": "רֵאָה",
       "roman": "re'á",
       "glosses": [
-        "defective spelling of ריאה.",
         "lung",
         "lungs, collectively as a single organ"
       ],
@@ -30627,7 +30623,6 @@
       "canonical": "רִבִּית",
       "roman": "ribít",
       "glosses": [
-        "defective spelling of ריבית",
         "interest (price of credit)"
       ],
       "wiktionary": "https://en.wiktionary.org/wiki/%D7%A8%D7%99%D7%91%D7%99%D7%AA#Hebrew",
@@ -30762,7 +30757,6 @@
       "canonical": "רֹק",
       "roman": "roq",
       "glosses": [
-        "defective spelling of רוק",
         "saliva"
       ],
       "wiktionary": "https://en.wiktionary.org/wiki/%D7%A8%D7%95%D7%A7#Hebrew",
@@ -30897,7 +30891,7 @@
       "hebrew_pos": "noun",
       "similarity": 0.8314
     },
-    "morphology": "he: feminine ending stripped",
+    "morphology": "he: cited masculine base: substituted cited base זוֹנָה (zoná)",
     "ancestor": "recon-sem-pro:zaːnin",
     "pansemitic_form": "zanin",
     "loss": {
@@ -30924,7 +30918,6 @@
       "roman": "zavít",
       "glosses": [
         "angle",
-        "defective spelling of זווית",
         "point of view"
       ],
       "wiktionary": "https://en.wiktionary.org/wiki/%D7%96%D7%95%D7%95%D7%99%D7%AA#Hebrew",
@@ -31097,7 +31090,7 @@
         0,
         0
       ],
-      "syc:ܙܪܐܦܗ": [
+      "fa-cls:زُرنَاپَا": [
         0,
         1
       ],
@@ -31105,11 +31098,11 @@
         0,
         1
       ],
-      "fa-cls:زُرنَاپَا": [
+      "syc:ܙܪܝܦܐ": [
         0,
         1
       ],
-      "syc:ܙܪܝܦܐ": [
+      "syc:ܙܪܐܦܗ": [
         0,
         1
       ],
@@ -31619,11 +31612,15 @@
         0,
         0
       ],
-      "pra-sau:𑀲𑀺𑀁𑀕𑀺𑀯𑁂𑀭": [
+      "syc:ܙܝܢܓܒܪ": [
         0,
         1
       ],
-      "syc:ܙܢܓܒܝܠ": [
+      "syc:ܙܝܢܓܒܝܪ": [
+        0,
+        1
+      ],
+      "syc:ܙܢܓܝܒܪ": [
         0,
         1
       ],
@@ -31643,15 +31640,11 @@
         1,
         0
       ],
-      "syc:ܙܝܢܓܒܝܪ": [
+      "pra-sau:𑀲𑀺𑀁𑀕𑀺𑀯𑁂𑀭": [
         0,
         1
       ],
-      "syc:ܙܝܢܓܒܪ": [
-        0,
-        1
-      ],
-      "syc:ܙܢܓܝܒܪ": [
+      "syc:ܙܢܓܒܝܠ": [
         0,
         1
       ],
@@ -31709,11 +31702,11 @@
         0,
         0
       ],
-      "grk-pro:*dzéugos": [
+      "ine-pro:*yéwgos": [
         1,
         1
       ],
-      "ine-pro:*yéwgos": [
+      "grk-pro:*dzéugos": [
         1,
         1
       ],
@@ -32574,6 +32567,50 @@
   },
   {
     "arabic": {
+      "canonical": "سَافِر",
+      "roman": "sāfir",
+      "glosses": [
+        "writer"
+      ],
+      "wiktionary": "https://en.wiktionary.org/wiki/%D8%B3%D8%A7%D9%81%D8%B1#Arabic",
+      "ipa": "saːfir"
+    },
+    "hebrew": {
+      "canonical": "סוֹפֵר",
+      "roman": "sofér",
+      "glosses": [
+        "Masculine singular present participle and present tense of סָפַר (safár).",
+        "Writer, author, scribe."
+      ],
+      "wiktionary": "https://en.wiktionary.org/wiki/%D7%A1%D7%95%D7%A4%D7%A8#Hebrew",
+      "ipa": "sofer"
+    },
+    "match_layers": [
+      "lemma_promoted"
+    ],
+    "shared_borrowing_sources": {
+      "akk:šiprum": [
+        1,
+        1
+      ]
+    },
+    "best_sense_match": {
+      "arabic_sense": "writer",
+      "arabic_pos": "noun",
+      "hebrew_sense": "Writer, author, scribe.",
+      "hebrew_pos": "noun",
+      "similarity": 0.8931
+    },
+    "ancestor": "akk:ʃiprum",
+    "pansemitic_form": "šiprum",
+    "loss": {
+      "arabic": 0.7208333333333333,
+      "hebrew": 0.6803333333333333,
+      "joint": 1.4011666666666667
+    }
+  },
+  {
+    "arabic": {
       "canonical": "سَاق",
       "roman": "sāq",
       "glosses": [
@@ -32817,8 +32854,7 @@
       "canonical": "סִבָּה",
       "roman": "sibá",
       "glosses": [
-        "cause (source or reason of an event or action)",
-        "defective spelling of סיבה."
+        "cause (source or reason of an event or action)"
       ],
       "wiktionary": "https://en.wiktionary.org/wiki/%D7%A1%D7%99%D7%91%D7%94#Hebrew",
       "ipa": "sibːaː"
@@ -32933,7 +32969,6 @@
       "canonical": "שִׁבֵּחַ",
       "roman": "shibéakh",
       "glosses": [
-        "defective spelling of שיבח",
         "to praise (a person, an organization, an action, etc.)",
         "to soothe"
       ],
@@ -33096,7 +33131,6 @@
       "canonical": "שִׁבֵּחַ",
       "roman": "shibéakh",
       "glosses": [
-        "defective spelling of שיבח",
         "to praise (a person, an organization, an action, etc.)",
         "to soothe"
       ],
@@ -33637,6 +33671,52 @@
   },
   {
     "arabic": {
+      "canonical": "سَفَرَ",
+      "roman": "safara",
+      "glosses": [
+        "to copy, to scribe, to write",
+        "to strip, to remove, to sweep away, to carry off in every direction",
+        "to unveil, to put away one's shroud"
+      ],
+      "wiktionary": "https://en.wiktionary.org/wiki/%D8%B3%D9%81%D8%B1#Arabic",
+      "ipa": "safara"
+    },
+    "hebrew": {
+      "canonical": "סוֹפֵר",
+      "roman": "sofér",
+      "glosses": [
+        "Masculine singular present participle and present tense of סָפַר (safár).",
+        "Writer, author, scribe."
+      ],
+      "wiktionary": "https://en.wiktionary.org/wiki/%D7%A1%D7%95%D7%A4%D7%A8#Hebrew",
+      "ipa": "sofer"
+    },
+    "match_layers": [
+      "lemma_promoted"
+    ],
+    "shared_borrowing_sources": {
+      "akk:šiprum": [
+        0,
+        1
+      ]
+    },
+    "best_sense_match": {
+      "arabic_sense": "to copy, to scribe, to write",
+      "arabic_pos": "verb",
+      "hebrew_sense": "Writer, author, scribe.",
+      "hebrew_pos": "noun",
+      "similarity": 0.8304
+    },
+    "ancestor": "akk:ʃiprum",
+    "pansemitic_form": "šiprum",
+    "loss": {
+      "arabic": 0.6749999999999999,
+      "hebrew": 0.6803333333333333,
+      "joint": 1.3553333333333333
+    }
+  },
+  {
+    "arabic": {
       "canonical": "سَفُّود",
       "roman": "saffūd",
       "glosses": [
@@ -33862,7 +33942,6 @@
       "canonical": "שִׁכֵּר",
       "roman": "shikér",
       "glosses": [
-        "defective spelling of שיכר",
         "to inebriate"
       ],
       "wiktionary": "https://en.wiktionary.org/wiki/%D7%A9%D7%9B%D7%A8#Hebrew",
@@ -34003,7 +34082,6 @@
       "canonical": "סֻכָּר",
       "roman": "sukár",
       "glosses": [
-        "defective spelling of סוכר",
         "sugar"
       ],
       "wiktionary": "https://en.wiktionary.org/wiki/%D7%A1%D7%95%D7%9B%D7%A8#Hebrew",
@@ -34021,23 +34099,23 @@
         1,
         2
       ],
-      "sa:शर्करा": [
-        2,
-        3
-      ],
       "sa:शर्क॑रा stem or": [
         2,
         3
       ],
-      "ine-pro:*ḱorkeh₂": [
-        3,
-        4
+      "sa:शर्करा": [
+        2,
+        3
       ],
       "sa:शर्कर": [
         3,
         4
       ],
       "inc-pro:*śárkaraH": [
+        3,
+        4
+      ],
+      "ine-pro:*ḱorkeh₂": [
         3,
         4
       ],
@@ -34076,7 +34154,6 @@
       "canonical": "שִׁכֵּר",
       "roman": "shikér",
       "glosses": [
-        "defective spelling of שיכר",
         "to inebriate"
       ],
       "wiktionary": "https://en.wiktionary.org/wiki/%D7%A9%D7%9B%D7%A8#Hebrew",
@@ -34523,8 +34600,7 @@
       "canonical": "שַׁלְוָה",
       "roman": "šalwɔ̂",
       "glosses": [
-        "calm, peace, serenity",
-        "defective spelling of שלווה (“calm, peace, serenity”)"
+        "calm, peace, serenity"
       ],
       "wiktionary": "https://en.wiktionary.org/wiki/%D7%A9%D7%9C%D7%95%D7%95%D7%94#Hebrew",
       "ipa": "ʃalwɔ"
@@ -34855,7 +34931,6 @@
       "canonical": "שֻׁמָּן",
       "roman": "shumán",
       "glosses": [
-        "defective spelling of שומן",
         "fat"
       ],
       "wiktionary": "https://en.wiktionary.org/wiki/%D7%A9%D7%9E%D7%9F#Hebrew",
@@ -35131,21 +35206,21 @@
         1,
         1
       ],
-      "ine-pro:*ḱm̥tóm": [
-        1,
-        1
-      ],
       "fro:cent": [
         1,
         1
       ],
-      "enm:cent": [
-        2,
+      "ine-pro:*ḱm̥tóm": [
+        1,
         1
       ],
       "itc-pro:*kentom": [
         1,
         2
+      ],
+      "enm:cent": [
+        2,
+        1
       ],
       "fro:cent oblique singular or": [
         2,
@@ -35387,11 +35462,11 @@
         0,
         0
       ],
-      "ccs-gzn-pro:*šol-": [
+      "ccs-gzn-pro:šol-": [
         1,
         1
       ],
-      "ccs-gzn-pro:šol-": [
+      "ccs-gzn-pro:*šol-": [
         1,
         1
       ]
@@ -35677,7 +35752,6 @@
       "canonical": "סֻכָּר",
       "roman": "sukár",
       "glosses": [
-        "defective spelling of סוכר",
         "sugar"
       ],
       "wiktionary": "https://en.wiktionary.org/wiki/%D7%A1%D7%95%D7%9B%D7%A8#Hebrew",
@@ -35700,23 +35774,23 @@
         1,
         2
       ],
-      "sa:शर्करा": [
-        2,
-        3
-      ],
       "sa:शर्क॑रा stem or": [
         2,
         3
       ],
-      "ine-pro:*ḱorkeh₂": [
-        3,
-        4
+      "sa:शर्करा": [
+        2,
+        3
       ],
       "sa:शर्कर": [
         3,
         4
       ],
       "inc-pro:*śárkaraH": [
+        3,
+        4
+      ],
+      "ine-pro:*ḱorkeh₂": [
         3,
         4
       ],
@@ -35755,7 +35829,6 @@
       "canonical": "שִׁכֵּר",
       "roman": "shikér",
       "glosses": [
-        "defective spelling of שיכר",
         "to inebriate"
       ],
       "wiktionary": "https://en.wiktionary.org/wiki/%D7%A9%D7%9B%D7%A8#Hebrew",
@@ -35944,7 +36017,6 @@
       "canonical": "סֻלָּם",
       "roman": "sulám",
       "glosses": [
-        "defective spelling of סולם",
         "ladder",
         "scale"
       ],
@@ -36178,8 +36250,6 @@
         "a stalk of grain",
         "a vortex, a flowing stream, a waterflood",
         "an ear of wheat",
-        "defective spelling of שִׁיבּוֹלֶת (shibólet, šibbōlet).",
-        "defective spelling of שִׁיבּוֹלֶת (shibólet, šibbṓleṯ).",
         "shibboleth"
       ],
       "wiktionary": "https://en.wiktionary.org/wiki/%D7%A9%D7%99%D7%91%D7%95%D7%9C%D7%AA#Hebrew",
@@ -36273,7 +36343,6 @@
       "canonical": "שִׁוֵּק",
       "roman": "shivék",
       "glosses": [
-        "defective spelling of שיווק",
         "to market"
       ],
       "wiktionary": "https://en.wiktionary.org/wiki/%D7%A9%D7%95%D7%A7#Hebrew",
@@ -36302,6 +36371,50 @@
       "arabic": 0.5,
       "hebrew": 0.49000000000000005,
       "joint": 0.99
+    }
+  },
+  {
+    "arabic": {
+      "canonical": "سُوق",
+      "roman": "sūq",
+      "glosses": [
+        "market",
+        "plural of سَاق (sāq)"
+      ],
+      "wiktionary": "https://en.wiktionary.org/wiki/%D8%B3%D9%88%D9%82#Arabic",
+      "ipa": "suːq"
+    },
+    "hebrew": {
+      "canonical": "שִׁוּוּק",
+      "roman": "shivúk",
+      "glosses": [
+        "marketing"
+      ],
+      "wiktionary": "https://en.wiktionary.org/wiki/%D7%A9%D7%99%D7%95%D7%95%D7%A7#Hebrew",
+      "ipa": "ʃivuk"
+    },
+    "match_layers": [
+      "lemma_promoted"
+    ],
+    "shared_borrowing_sources": {
+      "akk:sūqum": [
+        0,
+        0
+      ]
+    },
+    "best_sense_match": {
+      "arabic_sense": "market",
+      "arabic_pos": "noun",
+      "hebrew_sense": "marketing",
+      "hebrew_pos": "noun",
+      "similarity": 0.922
+    },
+    "ancestor": "akk:suːqum",
+    "pansemitic_form": "suqum",
+    "loss": {
+      "arabic": 0.5,
+      "hebrew": 0.8300000000000001,
+      "joint": 1.33
     }
   },
   {
@@ -36930,7 +37043,6 @@
       "canonical": "שֵׁנָה",
       "roman": "sheiná",
       "glosses": [
-        "defective spelling of שינה",
         "sleep: a state or period of being asleep"
       ],
       "wiktionary": "https://en.wiktionary.org/wiki/%D7%A9%D7%A0%D7%94#Hebrew",
@@ -37260,7 +37372,6 @@
       "canonical": "שֹׂבַע",
       "roman": "sóva'",
       "glosses": [
-        "defective spelling of שובע",
         "satiation"
       ],
       "wiktionary": "https://en.wiktionary.org/wiki/%D7%A9%D7%91%D7%A2#Hebrew",
@@ -37368,7 +37479,7 @@
       "hebrew_pos": "verb",
       "similarity": 0.9259
     },
-    "morphology": "he: feminine ending stripped",
+    "morphology": "he: cited masculine base: substituted cited base שַׂר (sár)",
     "ancestor": "recon-sem-pro:ɬaraː",
     "pansemitic_form": "sara",
     "loss": {
@@ -37392,7 +37503,6 @@
       "canonical": "שֹׁרֶשׁ",
       "roman": "šóreš",
       "glosses": [
-        "defective spelling of שורש",
         "root (e.g., a triliteral root) of a Semitic word",
         "root (e.g., square root)",
         "root (i.e. source, basis)",
@@ -37402,7 +37512,8 @@
       "ipa": "ʃoʁeʃ"
     },
     "match_layers": [
-      "shared_borrowing_source"
+      "shared_borrowing_source",
+      "lemma_promoted"
     ],
     "shared_borrowing_sources": {
       "sem-pro:*šurš-": [
@@ -37440,14 +37551,14 @@
       "canonical": "שֹׁרַשׁ",
       "roman": "šoráš",
       "glosses": [
-        "defective spelling of שורש",
         "to be rooted out"
       ],
       "wiktionary": "https://en.wiktionary.org/wiki/%D7%A9%D7%95%D7%A8%D7%A9#Hebrew",
       "ipa": "ʃoʁeʃ"
     },
     "match_layers": [
-      "shared_borrowing_source"
+      "shared_borrowing_source",
+      "lemma_promoted"
     ],
     "shared_borrowing_sources": {
       "sem-pro:*šurš-": [
@@ -37847,7 +37958,6 @@
       "canonical": "שֻׁמָּר",
       "roman": "šumár",
       "glosses": [
-        "defective spelling of שומר",
         "fennel"
       ],
       "wiktionary": "https://en.wiktionary.org/wiki/%D7%A9%D7%9E%D7%A8#Hebrew",
@@ -38586,11 +38696,11 @@
         1,
         2
       ],
-      "yua:chocol": [
+      "nci:chocolatl": [
         1,
         3
       ],
-      "nci:chocolatl": [
+      "yua:chocol": [
         1,
         3
       ]
@@ -38627,7 +38737,6 @@
       "glosses": [
         "a male or female given name, Stav",
         "autumn",
-        "defective spelling of סתיו.",
         "winter"
       ],
       "wiktionary": "https://en.wiktionary.org/wiki/%D7%A1%D7%AA%D7%99%D7%95#Hebrew",
@@ -38667,7 +38776,6 @@
       "canonical": "שֹׁרֶשׁ",
       "roman": "šóreš",
       "glosses": [
-        "defective spelling of שורש",
         "root (e.g., a triliteral root) of a Semitic word",
         "root (e.g., square root)",
         "root (i.e. source, basis)",
@@ -38677,7 +38785,8 @@
       "ipa": "ʃoʁeʃ"
     },
     "match_layers": [
-      "shared_borrowing_source"
+      "shared_borrowing_source",
+      "lemma_promoted"
     ],
     "shared_borrowing_sources": {
       "sem-pro:*šurš-": [
@@ -38868,23 +38977,27 @@
         1,
         0
       ],
+      "enm:chek": [
+        1,
+        1
+      ],
       "enm:chekke": [
         1,
         1
       ],
-      "enm:chek": [
-        1,
+      "iir-pro:*kšáyati": [
+        2,
         1
       ],
       "la-med:scaccarium": [
         2,
         1
       ],
-      "enm:chekken": [
+      "fro:eschek": [
         2,
         1
       ],
-      "fa-cls:شَاه": [
+      "ar:شَاه": [
         2,
         1
       ],
@@ -38896,23 +39009,19 @@
         2,
         1
       ],
-      "ine-pro:*tek-": [
-        2,
-        1
-      ],
-      "fro:eschek": [
-        2,
-        1
-      ],
       "la-med:scaccus": [
         2,
         1
       ],
-      "iir-pro:*kšáyati": [
+      "fa-cls:شَاه": [
         2,
         1
       ],
-      "ar:شَاه": [
+      "ine-pro:*tek-": [
+        2,
+        1
+      ],
+      "enm:chekken": [
         2,
         1
       ],
@@ -38920,19 +39029,19 @@
         2,
         2
       ],
-      "fro:eschec": [
-        2,
-        2
-      ],
       "fro:eschec oblique singular or": [
         2,
         2
       ],
-      "la:scaccarium": [
-        3,
+      "fro:eschec": [
+        2,
         2
       ],
       "fa-cls:شاه": [
+        3,
+        2
+      ],
+      "la:scaccarium": [
         3,
         2
       ],
@@ -38944,11 +39053,11 @@
         3,
         2
       ],
-      "ira-pro:*xšáyati": [
+      "la:scacchum": [
         3,
         3
       ],
-      "frk:*skāk": [
+      "ira-pro:*xšáyati": [
         3,
         3
       ],
@@ -38956,7 +39065,11 @@
         3,
         3
       ],
-      "la:scacchum": [
+      "la:*scaccus": [
+        3,
+        3
+      ],
+      "frk:*skāk": [
         3,
         3
       ],
@@ -38964,15 +39077,11 @@
         3,
         3
       ],
-      "la:*scaccus": [
-        3,
-        3
-      ],
-      "gmw-pro:skāk": [
+      "gem-pro:skēkaz": [
         4,
         4
       ],
-      "gem-pro:skēkaz": [
+      "gmw-pro:skāk": [
         4,
         4
       ],
@@ -39203,6 +39312,10 @@
         0,
         2
       ],
+      "ine-pro:*sel-": [
+        2,
+        1
+      ],
       "gem-pro:*salą": [
         2,
         1
@@ -39211,11 +39324,7 @@
         1,
         2
       ],
-      "ine-pro:*sel-": [
-        2,
-        1
-      ],
-      "goh:sal": [
+      "la:asse": [
         1,
         3
       ],
@@ -39223,7 +39332,7 @@
         1,
         3
       ],
-      "la:asse": [
+      "goh:sal": [
         1,
         3
       ],
@@ -39231,11 +39340,11 @@
         2,
         3
       ],
-      "gmw-pro:sali": [
+      "gmw-pro:*sali": [
         2,
         3
       ],
-      "gmw-pro:*sali": [
+      "gmw-pro:sali": [
         2,
         3
       ],
@@ -39243,7 +39352,7 @@
         2,
         4
       ],
-      "frm:salle": [
+      "fro:sale": [
         2,
         4
       ],
@@ -39251,11 +39360,11 @@
         2,
         4
       ],
-      "fro:sale": [
+      "gem-pro:salą": [
         2,
         4
       ],
-      "gem-pro:salą": [
+      "frm:salle": [
         2,
         4
       ],
@@ -39263,11 +39372,11 @@
         3,
         4
       ],
-      "gem-pro:saliz": [
+      "gem-pro:*saliz": [
         3,
         4
       ],
-      "gem-pro:*saliz": [
+      "gem-pro:saliz": [
         3,
         4
       ],
@@ -39350,15 +39459,15 @@
         0,
         0
       ],
+      "ine-pro:*sel-": [
+        1,
+        1
+      ],
       "gem-pro:*salą": [
         1,
         1
       ],
       "frm:salon": [
-        1,
-        1
-      ],
-      "ine-pro:*sel-": [
         1,
         1
       ],
@@ -39378,11 +39487,7 @@
         2,
         2
       ],
-      "goh:sal": [
-        3,
-        3
-      ],
-      "fr:salle": [
+      "gmw-pro:*salr": [
         3,
         3
       ],
@@ -39390,7 +39495,7 @@
         3,
         3
       ],
-      "gmw-pro:*salr": [
+      "gmw-pro:*sali": [
         3,
         3
       ],
@@ -39398,7 +39503,11 @@
         3,
         3
       ],
-      "gmw-pro:*sali": [
+      "fr:salle": [
+        3,
+        3
+      ],
+      "goh:sal": [
         3,
         3
       ],
@@ -39410,19 +39519,11 @@
         4,
         4
       ],
-      "gem-pro:saliz": [
-        4,
-        4
-      ],
       "gem-pro:*saliz": [
         4,
         4
       ],
-      "frm:salle": [
-        4,
-        4
-      ],
-      "frk:*sal": [
+      "gem-pro:saliz": [
         4,
         4
       ],
@@ -39430,19 +39531,27 @@
         4,
         4
       ],
+      "frk:*sal": [
+        4,
+        4
+      ],
       "gem-pro:salą": [
         4,
         4
       ],
-      "ine-pro:*sol-": [
-        5,
-        5
+      "frm:salle": [
+        4,
+        4
       ],
       "frk:*sali": [
         5,
         5
       ],
       "la:*sala": [
+        5,
+        5
+      ],
+      "ine-pro:*sol-": [
         5,
         5
       ],
@@ -40455,7 +40564,6 @@
       "canonical": "כִּנּוֹר",
       "roman": "kinór",
       "glosses": [
-        "defective spelling of כינור",
         "harp",
         "lyre",
         "violin"
@@ -40592,7 +40700,6 @@
       "canonical": "צַיָּד",
       "roman": "tsayád",
       "glosses": [
-        "defective spelling of צייד",
         "hunter"
       ],
       "wiktionary": "https://en.wiktionary.org/wiki/%D7%A6%D7%99%D7%93#Hebrew",
@@ -40675,7 +40782,6 @@
       "canonical": "צַיָּד",
       "roman": "tsayád",
       "glosses": [
-        "defective spelling of צייד",
         "hunter"
       ],
       "wiktionary": "https://en.wiktionary.org/wiki/%D7%A6%D7%99%D7%93#Hebrew",
@@ -40698,6 +40804,119 @@
       "arabic": 0.13999999999999999,
       "hebrew": 0.275,
       "joint": 0.41500000000000004
+    }
+  },
+  {
+    "arabic": {
+      "canonical": "صَيْدَا",
+      "roman": "Ṣaydā",
+      "glosses": [
+        "Saïda (a city in Lebanon), the ancient Sidon (a former city-state in Phoenicia)"
+      ],
+      "wiktionary": "https://en.wiktionary.org/wiki/%D8%B5%D9%8A%D8%AF%D8%A7#Arabic",
+      "ipa": "sˤajdaː"
+    },
+    "hebrew": {
+      "canonical": "צִידוֹן",
+      "roman": "tsidón",
+      "glosses": [
+        "Sidon"
+      ],
+      "wiktionary": "https://en.wiktionary.org/wiki/%D7%A6%D7%99%D7%93%D7%95%D7%9F#Hebrew",
+      "ipa": "t͡sidon"
+    },
+    "match_layers": [
+      "direct_cognate_ar→he",
+      "shared_borrowing_source"
+    ],
+    "shared_borrowing_sources": {
+      "phn:𐤑𐤉𐤃𐤅𐤍": [
+        0,
+        0
+      ],
+      "arc:ܨܝܕܘܢ": [
+        1,
+        0
+      ],
+      "hbo:צִידוֹן": [
+        1,
+        0
+      ],
+      "phn:𐤑𐤉𐤃𐤍": [
+        0,
+        0
+      ]
+    },
+    "best_sense_match": {
+      "arabic_sense": "Saïda (a city in Lebanon), the ancient Sidon (a former city-state in Phoenicia)",
+      "arabic_pos": "name",
+      "hebrew_sense": "Sidon",
+      "hebrew_pos": "name",
+      "similarity": 0.8317
+    },
+    "ancestor": "arc:sjdwn",
+    "pansemitic_form": "sydwn",
+    "loss": {
+      "arabic": 0.9800000000000001,
+      "hebrew": 0.9400000000000001,
+      "joint": 1.9200000000000002
+    }
+  },
+  {
+    "arabic": {
+      "canonical": "صَيْدُون",
+      "roman": "ṣaydūn",
+      "glosses": [
+        "Ancient Phoenician port city of Sidon.",
+        "archaic form of صَيْدَا (ṣaydā)"
+      ],
+      "wiktionary": "https://en.wiktionary.org/wiki/%D8%B5%D9%8A%D8%AF%D9%88%D9%86#Arabic",
+      "ipa": "sˤajduːn"
+    },
+    "hebrew": {
+      "canonical": "צִידוֹן",
+      "roman": "tsidón",
+      "glosses": [
+        "Sidon"
+      ],
+      "wiktionary": "https://en.wiktionary.org/wiki/%D7%A6%D7%99%D7%93%D7%95%D7%9F#Hebrew",
+      "ipa": "t͡sidon"
+    },
+    "match_layers": [
+      "direct_cognate_ar→he",
+      "shared_borrowing_source"
+    ],
+    "shared_borrowing_sources": {
+      "phn:𐤑𐤉𐤃𐤅𐤍": [
+        0,
+        0
+      ],
+      "arc:ܨܝܕܘܢ": [
+        1,
+        0
+      ],
+      "hbo:צִידוֹן": [
+        1,
+        0
+      ],
+      "phn:𐤑𐤉𐤃𐤍": [
+        0,
+        0
+      ]
+    },
+    "best_sense_match": {
+      "arabic_sense": "Ancient Phoenician port city of Sidon.",
+      "arabic_pos": "name",
+      "hebrew_sense": "Sidon",
+      "hebrew_pos": "name",
+      "similarity": 0.8395
+    },
+    "ancestor": "arc:sjdwn",
+    "pansemitic_form": "sydwn",
+    "loss": {
+      "arabic": 0.5666666666666667,
+      "hebrew": 0.9400000000000001,
+      "joint": 1.5066666666666668
     }
   },
   {
@@ -40732,15 +40951,15 @@
         0,
         0
       ],
+      "akk:𒈨𒁍": [
+        0,
+        1
+      ],
       "arc:צִפָּא": [
         0,
         1
       ],
       "akk:𒍦𒉺𒀀𒌅": [
-        0,
-        1
-      ],
-      "akk:𒈨𒁍": [
         0,
         1
       ]
@@ -41549,15 +41768,15 @@
         1,
         2
       ],
+      "ine-pro:*th₂-dʰleh₂": [
+        1,
+        2
+      ],
       "ine-pro:*tal-dʰleh₂": [
         1,
         2
       ],
       "itc-pro:taθlā": [
-        1,
-        2
-      ],
-      "ine-pro:*th₂-dʰleh₂": [
         1,
         2
       ]
@@ -42428,7 +42647,8 @@
       "ipa": "t͡suʁ"
     },
     "match_layers": [
-      "shared_borrowing_source"
+      "shared_borrowing_source",
+      "lemma_promoted"
     ],
     "shared_borrowing_sources": {
       "sem-pro:ṯ̣urr-": [
@@ -42836,8 +43056,7 @@
       "canonical": "טֹפֶר",
       "roman": "tofer",
       "glosses": [
-        "claw",
-        "defective spelling of טופר"
+        "claw"
       ],
       "wiktionary": "https://en.wiktionary.org/wiki/%D7%98%D7%A4%D7%A8#Hebrew",
       "ipa": "tofer"
@@ -42883,7 +43102,6 @@
       "glosses": [
         "claw, nail (fingernail or toenail)",
         "clove",
-        "defective spelling of ציפורן",
         "dianthus, carnation",
         "stylus"
       ],
@@ -43222,7 +43440,6 @@
       "canonical": "עִבֵּר",
       "roman": "ibér",
       "glosses": [
-        "defective spelling of עיבר",
         "to Hebraize",
         "to cause to cross over or go across",
         "to impregnate"
@@ -43368,7 +43585,6 @@
       "canonical": "עִבֵּר",
       "roman": "ibér",
       "glosses": [
-        "defective spelling of עיבר",
         "to Hebraize",
         "to cause to cross over or go across",
         "to impregnate"
@@ -44007,7 +44223,6 @@
       "canonical": "עֹז",
       "roman": "óz",
       "glosses": [
-        "Defective spelling of עוז",
         "a surname: Oz",
         "might, strength"
       ],
@@ -45140,8 +45355,7 @@
       "canonical": "עָמֹק",
       "roman": "amók",
       "glosses": [
-        "deep",
-        "defective spelling of עמוק"
+        "deep"
       ],
       "wiktionary": "https://en.wiktionary.org/wiki/%D7%A2%D7%9E%D7%A7#Hebrew",
       "ipa": "ʕemæq"
@@ -45179,7 +45393,6 @@
       "canonical": "עֹמֶק",
       "roman": "ómek",
       "glosses": [
-        "defective spelling of עומק",
         "depth"
       ],
       "wiktionary": "https://en.wiktionary.org/wiki/%D7%A2%D7%9E%D7%A7#Hebrew",
@@ -45278,27 +45491,27 @@
         0,
         0
       ],
-      "fa:اَنْبار": [
-        0,
-        1
-      ],
       "fa:انبار": [
         0,
         1
       ],
-      "iir-pro:*sambʰārás": [
-        1,
-        2
+      "fa:اَنْبار": [
+        0,
+        1
       ],
       "peo:*hambārah": [
         1,
         2
       ],
-      "peo:*𐏃𐎶𐎲𐎠𐎼": [
+      "iir-pro:*sambʰārás": [
         1,
         2
       ],
       "ira-pro:*hambāráh": [
+        1,
+        2
+      ],
+      "peo:*𐏃𐎶𐎲𐎠𐎼": [
         1,
         2
       ],
@@ -45523,7 +45736,6 @@
       "glosses": [
         "Someone blind (without sight).",
         "blind",
-        "defective spelling of עיוור",
         "to blind (to make temporarily or permanently blind)."
       ],
       "wiktionary": "https://en.wiktionary.org/wiki/%D7%A2%D7%95%D7%A8#Hebrew",
@@ -45568,7 +45780,6 @@
       "glosses": [
         "Someone blind (without sight).",
         "blind",
-        "defective spelling of עיוור",
         "to blind (to make temporarily or permanently blind)."
       ],
       "wiktionary": "https://en.wiktionary.org/wiki/%D7%A2%D7%95%D7%A8#Hebrew",
@@ -45787,6 +45998,44 @@
   },
   {
     "arabic": {
+      "canonical": "عُرْي",
+      "roman": "ʕury",
+      "glosses": [
+        "bareness, nakedness, nudity",
+        "verbal noun of عَرِيَ (ʕariya) (form I)"
+      ],
+      "wiktionary": "https://en.wiktionary.org/wiki/%D8%B9%D8%B1%D9%8A#Arabic",
+      "ipa": "ʕurj"
+    },
+    "hebrew": {
+      "canonical": "עֵירֹם",
+      "roman": "eróm",
+      "glosses": [
+        "nudity"
+      ],
+      "wiktionary": "https://en.wiktionary.org/wiki/%D7%A2%D7%99%D7%A8%D7%95%D7%9D#Hebrew",
+      "ipa": "ʔerom"
+    },
+    "match_layers": [
+      "lemma_promoted"
+    ],
+    "best_sense_match": {
+      "arabic_sense": "bareness, nakedness, nudity",
+      "arabic_pos": "noun",
+      "hebrew_sense": "nudity",
+      "hebrew_pos": "noun",
+      "similarity": 0.8836
+    },
+    "ancestor": "recon-sem-pro:ʕuroj",
+    "pansemitic_form": "ʕuray",
+    "loss": {
+      "arabic": 0.13999999999999999,
+      "hebrew": 0.6950000000000001,
+      "joint": 0.8350000000000001
+    }
+  },
+  {
+    "arabic": {
       "canonical": "عُرْيَان",
       "roman": "ʕuryān",
       "glosses": [
@@ -45799,7 +46048,6 @@
       "canonical": "עָרֹם",
       "roman": "aróm",
       "glosses": [
-        "defective spelling of ערום",
         "naked, nude, unclothed"
       ],
       "wiktionary": "https://en.wiktionary.org/wiki/%D7%A2%D7%A8%D7%9D#Hebrew",
@@ -46157,7 +46405,6 @@
       "canonical": "עֹז",
       "roman": "óz",
       "glosses": [
-        "Defective spelling of עוז",
         "a surname: Oz",
         "might, strength"
       ],
@@ -46417,7 +46664,11 @@
         0,
         0
       ],
-      "dum:gasse": [
+      "grc:χᾰ́ος": [
+        1,
+        1
+      ],
+      "gem-pro:*gatwǭ": [
         1,
         1
       ],
@@ -46429,23 +46680,19 @@
         1,
         1
       ],
-      "gem-pro:*gatwǭ": [
-        1,
-        1
-      ],
-      "grc:χᾰ́ος": [
-        1,
-        1
-      ],
       "grc:χάος": [
         1,
         1
       ],
-      "gmw-pro:*gatwā": [
+      "dum:gasse": [
+        1,
+        1
+      ],
+      "ine-pro:*ǵʰeh₂-": [
         2,
         2
       ],
-      "ine-pro:*ǵʰeh₂-": [
+      "gmw-pro:*gatwā": [
         2,
         2
       ],
@@ -46739,7 +46986,6 @@
       "canonical": "עָרְלָה",
       "roman": "orlá",
       "glosses": [
-        "defective spelling of עורלה",
         "foreskin (also metaphorical)",
         "fruit that grows within three years of the transplanting of its tree"
       ],
@@ -46998,11 +47244,11 @@
         0,
         0
       ],
-      "ine-pro:*bʰh₂wesnós": [
+      "grk-pro:*pʰawehnós": [
         1,
         1
       ],
-      "grk-pro:*pʰawehnós": [
+      "ine-pro:*bʰh₂wesnós": [
         1,
         1
       ]
@@ -47578,23 +47824,23 @@
         2,
         0
       ],
-      "ira-pro:*HacwaHastiš": [
-        0,
-        0
-      ],
       "xme-old:*aspāstiš": [
         0,
         0
       ],
-      "xme-old:aspāstiš": [
-        1,
-        1
+      "ira-pro:*HacwaHastiš": [
+        0,
+        0
       ],
       "ira-pro:HacwaHastiš": [
         1,
         1
       ],
       "iir-pro:Háćwas": [
+        1,
+        1
+      ],
+      "xme-old:aspāstiš": [
         1,
         1
       ],
@@ -47681,7 +47927,6 @@
       "roman": "pó'al",
       "glosses": [
         "deed; act",
-        "defective spelling of פועל",
         "verb"
       ],
       "wiktionary": "https://en.wiktionary.org/wiki/%D7%A4%D7%95%D7%A2%D7%9C#Hebrew",
@@ -48268,7 +48513,8 @@
       "ipa": "pundak"
     },
     "match_layers": [
-      "shared_borrowing_source"
+      "shared_borrowing_source",
+      "lemma_promoted"
     ],
     "shared_borrowing_sources": {
       "grc:πανδοκεῖον": [
@@ -48453,7 +48699,7 @@
         0,
         0
       ],
-      "grc:μῆλον περσικόν": [
+      "arc:פּרְסְקָא": [
         0,
         1
       ],
@@ -48465,7 +48711,7 @@
         0,
         1
       ],
-      "arc:פּרְסְקָא": [
+      "grc:μῆλον περσικόν": [
         0,
         1
       ],
@@ -48519,11 +48765,11 @@
         1,
         0
       ],
-      "egy:pr-ꜥꜣ": [
+      "egy:pr:aA": [
         2,
         0
       ],
-      "egy:pr:aA": [
+      "egy:pr-ꜥꜣ": [
         2,
         0
       ]
@@ -48712,7 +48958,6 @@
       "roman": "pó'al",
       "glosses": [
         "deed; act",
-        "defective spelling of פועל",
         "verb"
       ],
       "wiktionary": "https://en.wiktionary.org/wiki/%D7%A4%D7%95%D7%A2%D7%9C#Hebrew",
@@ -48735,6 +48980,51 @@
       "arabic": 0.22000000000000003,
       "hebrew": 0.3264,
       "joint": 0.5464
+    }
+  },
+  {
+    "arabic": {
+      "canonical": "فِعْل",
+      "roman": "fiʕl",
+      "glosses": [
+        "activity, action, work",
+        "deed, act, action",
+        "effect, impact, influence",
+        "exploit, great deed, feat",
+        "function",
+        "performance, acting",
+        "verb",
+        "verbal noun of فَعَلَ (faʕala) (form I)",
+        "vocation, employment"
+      ],
+      "wiktionary": "https://en.wiktionary.org/wiki/%D9%81%D8%B9%D9%84#Arabic",
+      "ipa": "fiʕl"
+    },
+    "hebrew": {
+      "canonical": "פּוֹעֵל",
+      "roman": "po'él",
+      "glosses": [
+        "a worker"
+      ],
+      "wiktionary": "https://en.wiktionary.org/wiki/%D7%A4%D7%95%D7%A2%D7%9C#Hebrew",
+      "ipa": "poʔel"
+    },
+    "match_layers": [
+      "lemma_promoted"
+    ],
+    "best_sense_match": {
+      "arabic_sense": "activity, action, work",
+      "arabic_pos": "noun",
+      "hebrew_sense": "a worker",
+      "hebrew_pos": "noun",
+      "similarity": 0.877
+    },
+    "ancestor": "recon-sem-pro:piʕel",
+    "pansemitic_form": "piʕil",
+    "loss": {
+      "arabic": 0.22000000000000003,
+      "hebrew": 0.3528,
+      "joint": 0.5728
     }
   },
   {
@@ -48815,7 +49105,7 @@
         1,
         1
       ],
-      "akk:𒉺𒆷𒀸𒌓": [
+      "he:יִשְׂרָאֵל": [
         1,
         2
       ],
@@ -48823,11 +49113,11 @@
         1,
         2
       ],
-      "he:יִשְׂרָאֵל": [
+      "akk:𒆳𒉺𒆷𒊍𒌓": [
         1,
         2
       ],
-      "akk:𒆳𒉺𒆷𒊍𒌓": [
+      "akk:𒉺𒆷𒀸𒌓": [
         1,
         2
       ]
@@ -48878,11 +49168,7 @@
         0,
         0
       ],
-      "he:פְּלֶשֶׁת": [
-        1,
-        1
-      ],
-      "akk:𒉺𒆷𒀸𒌓": [
+      "he:יִשְׂרָאֵל": [
         1,
         1
       ],
@@ -48890,7 +49176,7 @@
         1,
         1
       ],
-      "he:יִשְׂרָאֵל": [
+      "akk:𒆳𒉺𒆷𒊍𒌓": [
         1,
         1
       ],
@@ -48898,7 +49184,11 @@
         0,
         2
       ],
-      "akk:𒆳𒉺𒆷𒊍𒌓": [
+      "he:פְּלֶשֶׁת": [
+        1,
+        1
+      ],
+      "akk:𒉺𒆷𒀸𒌓": [
         1,
         1
       ],
@@ -49196,11 +49486,11 @@
         0,
         0
       ],
-      "enm:flashe": [
+      "enm:flasshen": [
         1,
         1
       ],
-      "enm:flasshen": [
+      "enm:flashe": [
         1,
         1
       ]
@@ -49502,7 +49792,8 @@
       "ipa": "ʔokjanus"
     },
     "match_layers": [
-      "shared_borrowing_source"
+      "shared_borrowing_source",
+      "lemma_promoted"
     ],
     "shared_borrowing_sources": {
       "grc:ὠκεανός": [
@@ -49678,7 +49969,6 @@
       "canonical": "קִבֵּץ",
       "roman": "kibéts",
       "glosses": [
-        "defective spelling of קיבץ",
         "to pack"
       ],
       "wiktionary": "https://en.wiktionary.org/wiki/%D7%A7%D7%91%D7%A5#Hebrew",
@@ -49725,7 +50015,6 @@
       "canonical": "קִבּוּץ",
       "roman": "kibútz",
       "glosses": [
-        "Defective spelling of קיבוץ.",
         "The meaning of this term is uncertain. Possibilities include",
         "The meaning of this term is uncertain. Possibilities include:",
         "a 'kibbutz' - a collective settlement in Israel",
@@ -49993,7 +50282,6 @@
       "canonical": "קִדֵּם",
       "roman": "kidém",
       "glosses": [
-        "defective spelling of קידם.",
         "to advance"
       ],
       "wiktionary": "https://en.wiktionary.org/wiki/%D7%A7%D7%93%D7%9D#Hebrew",
@@ -50085,8 +50373,7 @@
       "roman": "kódem",
       "glosses": [
         "before, earlier",
-        "before, prior to",
-        "defective spelling of קודם."
+        "before, prior to"
       ],
       "wiktionary": "https://en.wiktionary.org/wiki/%D7%A7%D7%93%D7%9D#Hebrew",
       "ipa": "qɛðɛm"
@@ -50136,7 +50423,6 @@
       "canonical": "קִדּוּשׁ",
       "roman": "kidúsh",
       "glosses": [
-        "defective spelling of קידוש",
         "kiddush",
         "sanctification"
       ],
@@ -50183,7 +50469,6 @@
       "canonical": "קִדּוּשׁ",
       "roman": "kidúsh",
       "glosses": [
-        "defective spelling of קידוש",
         "kiddush",
         "sanctification"
       ],
@@ -50374,8 +50659,7 @@
       "canonical": "קֹר",
       "roman": "kór",
       "glosses": [
-        "cold, coldness",
-        "defective spelling of קור"
+        "cold, coldness"
       ],
       "wiktionary": "https://en.wiktionary.org/wiki/%D7%A7%D7%A8#Hebrew",
       "ipa": "qarːi"
@@ -50587,8 +50871,7 @@
       "canonical": "קֹר",
       "roman": "kór",
       "glosses": [
-        "cold, coldness",
-        "defective spelling of קור"
+        "cold, coldness"
       ],
       "wiktionary": "https://en.wiktionary.org/wiki/%D7%A7%D7%A8#Hebrew",
       "ipa": "qarːi"
@@ -50912,8 +51195,7 @@
       "roman": "kutsáts",
       "glosses": [
         "To be cut, chopped.",
-        "To be cut, reduced.",
-        "defective spelling of קוצץ"
+        "To be cut, reduced."
       ],
       "wiktionary": "https://en.wiktionary.org/wiki/%D7%A7%D7%A6%D7%A5#Hebrew",
       "ipa": "kat͡sat͡s"
@@ -50934,6 +51216,52 @@
       "arabic": 0.5499999999999999,
       "hebrew": 0.45,
       "joint": 1.0
+    }
+  },
+  {
+    "arabic": {
+      "canonical": "قَصَّ",
+      "roman": "qaṣṣa",
+      "glosses": [
+        "to be near death, to impend",
+        "to bring near to death",
+        "to clip off, to shear, to cut off",
+        "to cut",
+        "to cut (“to remove and place in memory in order to paste at a later time”)",
+        "to follow one's tracks",
+        "to make a speech, to lecture, to recite",
+        "to narrate, to relate, recount, to tell, to impart, to communicate (news, a story, etc.)"
+      ],
+      "wiktionary": "https://en.wiktionary.org/wiki/%D9%82%D8%B5#Arabic",
+      "ipa": "qasˤːa"
+    },
+    "hebrew": {
+      "canonical": "קוֹצֵץ",
+      "roman": "kotséts",
+      "glosses": [
+        "A cutter, a clipper, a chopper.",
+        "Masculine singular present participle and present tense of קָצַץ (katsáts).",
+        "ellipsis of קוצץ מזון (“food chopper”)"
+      ],
+      "wiktionary": "https://en.wiktionary.org/wiki/%D7%A7%D7%95%D7%A6%D7%A5#Hebrew",
+      "ipa": "kot͡set͡s"
+    },
+    "match_layers": [
+      "lemma_promoted"
+    ],
+    "best_sense_match": {
+      "arabic_sense": "to clip off, to shear, to cut off",
+      "arabic_pos": "verb",
+      "hebrew_sense": "A cutter, a clipper, a chopper.",
+      "hebrew_pos": "noun",
+      "similarity": 0.8536
+    },
+    "ancestor": "recon-sem-pro:qasˤːat͡s",
+    "pansemitic_form": "qaṣats",
+    "loss": {
+      "arabic": 0.5499999999999999,
+      "hebrew": 0.6226666666666667,
+      "joint": 1.1726666666666667
     }
   },
   {
@@ -51152,7 +51480,6 @@
       "canonical": "קֹטֶב",
       "roman": "kótev",
       "glosses": [
-        "defective spelling of קוטב",
         "magnetic pole",
         "pole",
         "puncture-vine (Tribulus spp.)",
@@ -51201,7 +51528,6 @@
       "canonical": "קִפֵּץ",
       "roman": "kipéts",
       "glosses": [
-        "defective spelling of קיפץ",
         "to spring"
       ],
       "wiktionary": "https://en.wiktionary.org/wiki/%D7%A7%D7%99%D7%A4%D7%A5#Hebrew",
@@ -51730,18 +52056,6 @@
         0,
         1
       ],
-      "sla-pro:*cěsařь": [
-        1,
-        1
-      ],
-      "gem-pro:*kaisaraz": [
-        1,
-        1
-      ],
-      "orv:цѣсарь": [
-        1,
-        1
-      ],
       "orv:цьсарь": [
         1,
         1
@@ -51750,19 +52064,31 @@
         1,
         1
       ],
+      "gem-pro:*kaisaraz": [
+        1,
+        1
+      ],
+      "sla-pro:*cěsařь": [
+        1,
+        1
+      ],
+      "orv:цѣсарь": [
+        1,
+        1
+      ],
       "grc:Καῖσαρ": [
         0,
         3
-      ],
-      "sla-pro:cěsãřь": [
-        2,
-        2
       ],
       "got:𐌺𐌰𐌹𐍃𐌰𐍂": [
         2,
         2
       ],
       "gem-pro:kaisaraz": [
+        2,
+        2
+      ],
+      "sla-pro:cěsãřь": [
         2,
         2
       ],
@@ -51985,7 +52311,6 @@
       "canonical": "קִדּוּשׁ",
       "roman": "kidúsh",
       "glosses": [
-        "defective spelling of קידוש",
         "kiddush",
         "sanctification"
       ],
@@ -52094,35 +52419,15 @@
         1,
         1
       ],
-      "la:cōdex": [
-        2,
-        1
-      ],
       "fro:code": [
         2,
         1
       ],
-      "ang:cweodu": [
+      "la:cōdex": [
         2,
-        2
-      ],
-      "gem-pro:*kuddô": [
-        1,
-        3
-      ],
-      "gmw-pro:*kwidu": [
-        2,
-        2
+        1
       ],
       "non:koddi": [
-        2,
-        2
-      ],
-      "ang:codd": [
-        2,
-        2
-      ],
-      "ang:cwidu": [
         2,
         2
       ],
@@ -52130,23 +52435,35 @@
         1,
         3
       ],
+      "ang:cwidu": [
+        2,
+        2
+      ],
+      "gmw-pro:*kwidu": [
+        2,
+        2
+      ],
       "ang:cudu": [
         2,
         2
+      ],
+      "ang:cweodu": [
+        2,
+        2
+      ],
+      "ang:codd": [
+        2,
+        2
+      ],
+      "gem-pro:*kuddô": [
+        1,
+        3
       ],
       "gmw-pro:*kuddō": [
         2,
         3
       ],
-      "gem-pro:kuddô": [
-        3,
-        3
-      ],
-      "gmw-pro:*kodd": [
-        3,
-        3
-      ],
-      "gmw-pro:kwidu": [
+      "gem-pro:*kuddaz": [
         3,
         3
       ],
@@ -52154,7 +52471,15 @@
         3,
         3
       ],
-      "gem-pro:*kuddaz": [
+      "gmw-pro:kwidu": [
+        3,
+        3
+      ],
+      "gem-pro:kuddô": [
+        3,
+        3
+      ],
+      "gmw-pro:*kodd": [
         3,
         3
       ],
@@ -52200,8 +52525,7 @@
       "canonical": "קֹר",
       "roman": "kór",
       "glosses": [
-        "cold, coldness",
-        "defective spelling of קור"
+        "cold, coldness"
       ],
       "wiktionary": "https://en.wiktionary.org/wiki/%D7%A7%D7%A8#Hebrew",
       "ipa": "qarːi"
@@ -52288,9 +52612,14 @@
       "ipa": "hakotev"
     },
     "match_layers": [
-      "shared_borrowing_source"
+      "shared_borrowing_source",
+      "lemma_promoted"
     ],
     "shared_borrowing_sources": {
+      "ar:قَطْب": [
+        0,
+        0
+      ],
       "ar:قُطْب": [
         0,
         0
@@ -52303,12 +52632,12 @@
       "hebrew_pos": "name",
       "similarity": 0.8501
     },
-    "ancestor": "ar:qutˤb",
-    "pansemitic_form": "quṭb",
+    "ancestor": "ar:qatˤb",
+    "pansemitic_form": "qaṭb",
     "loss": {
-      "arabic": 0.0,
-      "hebrew": 0.46885714285714286,
-      "joint": 0.46885714285714286
+      "arabic": 0.18125,
+      "hebrew": 0.5347142857142857,
+      "joint": 0.7159642857142857
     }
   },
   {
@@ -52328,7 +52657,6 @@
       "canonical": "קֹטֶב",
       "roman": "kótev",
       "glosses": [
-        "defective spelling of קוטב",
         "magnetic pole",
         "pole",
         "puncture-vine (Tribulus spp.)",
@@ -52428,8 +52756,7 @@
       "canonical": "כֻּתְנָה",
       "roman": "kutná",
       "glosses": [
-        "cotton",
-        "defective spelling of כותנה"
+        "cotton"
       ],
       "wiktionary": "https://en.wiktionary.org/wiki/%D7%9B%D7%95%D7%AA%D7%A0%D7%94#Hebrew",
       "ipa": "kutna"
@@ -52476,7 +52803,6 @@
       "canonical": "קִפּוֹד",
       "roman": "qippṓḏ",
       "glosses": [
-        "defective spelling of קיפוד (qippṓḏ).",
         "hedgehog",
         "short-eared owl (a species of owl, Asio flammeus)"
       ],
@@ -52728,7 +53054,6 @@
       "canonical": "כִּנּוֹר",
       "roman": "kinór",
       "glosses": [
-        "defective spelling of כינור",
         "harp",
         "lyre",
         "violin"
@@ -53226,7 +53551,6 @@
       "canonical": "כִּזֵּב",
       "roman": "kizév",
       "glosses": [
-        "defective spelling of כיזב",
         "to fail, dry up (of water originating from springs or flowing in a stream)",
         "to lie, to deceive"
       ],
@@ -53315,7 +53639,6 @@
       "canonical": "כִּזֵּב",
       "roman": "kizév",
       "glosses": [
-        "defective spelling of כיזב",
         "to fail, dry up (of water originating from springs or flowing in a stream)",
         "to lie, to deceive"
       ],
@@ -53568,7 +53891,6 @@
       "canonical": "כִּפֵּר",
       "roman": "kippér",
       "glosses": [
-        "defective spelling of כיפר (kippér, “to cover; to pardon”)",
         "to appease one who has been injured, e.g. by paying a fee",
         "to cover",
         "to expiate an offense",
@@ -53624,7 +53946,6 @@
       "canonical": "כִּפֵּר",
       "roman": "kippér",
       "glosses": [
-        "defective spelling of כיפר (kippér, “to cover; to pardon”)",
         "to appease one who has been injured, e.g. by paying a fee",
         "to cover",
         "to expiate an offense",
@@ -53681,7 +54002,6 @@
       "canonical": "כִּפֵּר",
       "roman": "kippér",
       "glosses": [
-        "defective spelling of כיפר (kippér, “to cover; to pardon”)",
         "to appease one who has been injured, e.g. by paying a fee",
         "to cover",
         "to expiate an offense",
@@ -54500,26 +54820,6 @@
         0,
         0
       ],
-      "ar:كَحَلَ": [
-        1,
-        0
-      ],
-      "ar:كَحِل": [
-        1,
-        0
-      ],
-      "ar:كَحَّلَ": [
-        1,
-        0
-      ],
-      "ar:كَحْل": [
-        1,
-        0
-      ],
-      "ar:كَحَل": [
-        1,
-        0
-      ],
       "akk:guḫlum": [
         1,
         1
@@ -54530,6 +54830,26 @@
       ],
       "xaa:كُحُول": [
         2,
+        1
+      ],
+      "ar:كَحَّلَ": [
+        3,
+        1
+      ],
+      "ar:كَحَل": [
+        3,
+        1
+      ],
+      "ar:كَحَلَ": [
+        3,
+        1
+      ],
+      "ar:كَحِل": [
+        3,
+        1
+      ],
+      "ar:كَحْل": [
+        3,
         1
       ]
     },
@@ -54562,8 +54882,7 @@
       "canonical": "כָּחֹל",
       "roman": "kaḥól",
       "glosses": [
-        "blue, a darker shade than תְּכֵלֶת (tchélet)",
-        "defective spelling of כחול"
+        "blue, a darker shade than תְּכֵלֶת (tchélet)"
       ],
       "wiktionary": "https://en.wiktionary.org/wiki/%D7%9B%D7%97%D7%95%D7%9C#Hebrew",
       "ipa": "kaːħoːl"
@@ -54574,9 +54893,9 @@
     "best_sense_match": {
       "arabic_sense": "dark blue, blue-black, navy blue",
       "arabic_pos": "adj",
-      "hebrew_sense": "defective spelling of כחול",
+      "hebrew_sense": "blue, a darker shade than תְּכֵלֶת (tchélet)",
       "hebrew_pos": "adj",
-      "similarity": 0.8806
+      "similarity": 0.8536
     },
     "morphology": "ar: nisba suffix stripped (de-adjectivized)",
     "ancestor": "recon-sem-pro:kuħol",
@@ -54858,11 +55177,11 @@
         0,
         0
       ],
-      "ota:քիուֆթէ": [
-        0,
-        1
+      "fa:کوفته": [
+        1,
+        0
       ],
-      "ota:քիւֆթէ": [
+      "ota:քիուֆթէ": [
         0,
         1
       ],
@@ -54870,15 +55189,15 @@
         0,
         1
       ],
+      "ota:كوفته": [
+        0,
+        1
+      ],
       "fa-cls:کوفْتَه": [
         0,
         1
       ],
-      "fa:کوفته": [
-        1,
-        0
-      ],
-      "ota:كوفته": [
+      "ota:քիւֆթէ": [
         0,
         1
       ],
@@ -54937,11 +55256,11 @@
         0,
         0
       ],
-      "ine-pro:*ǵʰelh₃-": [
+      "grk-pro:*kʰlōrós": [
         1,
         1
       ],
-      "grk-pro:*kʰlōrós": [
+      "ine-pro:*ǵʰelh₃-": [
         1,
         1
       ],
@@ -55435,7 +55754,6 @@
       "canonical": "כִּנּוֹר",
       "roman": "kinór",
       "glosses": [
-        "defective spelling of כינור",
         "harp",
         "lyre",
         "violin"
@@ -55493,7 +55811,6 @@
       "canonical": "קִבּוּץ",
       "roman": "kibútz",
       "glosses": [
-        "Defective spelling of קיבוץ.",
         "The meaning of this term is uncertain. Possibilities include",
         "The meaning of this term is uncertain. Possibilities include:",
         "a 'kibbutz' - a collective settlement in Israel",
@@ -55592,8 +55909,7 @@
       "canonical": "כַּיָּס",
       "roman": "kayás",
       "glosses": [
-        "a pickpocket",
-        "defective spelling of כייס"
+        "a pickpocket"
       ],
       "wiktionary": "https://en.wiktionary.org/wiki/%D7%9B%D7%99%D7%A1#Hebrew",
       "ipa": "kajas"
@@ -55683,11 +55999,11 @@
         0,
         0
       ],
-      "ltc:京都": [
+      "zh:京都": [
         1,
         1
       ],
-      "zh:京都": [
+      "ltc:京都": [
         1,
         1
       ]
@@ -55781,11 +56097,11 @@
         0,
         0
       ],
-      "grc:χρῶμᾰ": [
+      "grc:χρῶμα": [
         1,
         1
       ],
-      "grc:χρῶμα": [
+      "grc:χρῶμᾰ": [
         1,
         1
       ],
@@ -55837,7 +56153,7 @@
         0,
         0
       ],
-      "frm:chresme": [
+      "la-lat:crama": [
         1,
         1
       ],
@@ -55849,13 +56165,21 @@
         1,
         1
       ],
-      "la-lat:crama": [
+      "frm:chresme": [
         1,
         1
       ],
       "fro:cresme": [
         1,
         1
+      ],
+      "fro:creme": [
+        2,
+        2
+      ],
+      "la-lat:crāmum": [
+        2,
+        2
       ],
       "fro:cresme oblique singular or": [
         2,
@@ -55865,7 +56189,7 @@
         2,
         2
       ],
-      "fro:creme": [
+      "la-ecc:chrisma": [
         2,
         2
       ],
@@ -55873,15 +56197,7 @@
         2,
         2
       ],
-      "la-ecc:chrisma": [
-        2,
-        2
-      ],
-      "la-lat:crāmum": [
-        2,
-        2
-      ],
-      "cel-pro:*krammen": [
+      "ine-pro:*(s)krama-": [
         3,
         3
       ],
@@ -55889,7 +56205,7 @@
         3,
         3
       ],
-      "ine-pro:*(s)krama-": [
+      "cel-pro:*krammen": [
         3,
         3
       ]
@@ -56497,7 +56813,7 @@
         0,
         0
       ],
-      "la:lyra": [
+      "la:lībra": [
         1,
         1
       ],
@@ -56505,15 +56821,15 @@
         1,
         1
       ],
-      "la:lībra": [
+      "la:lyra": [
         1,
         1
       ],
-      "grc:λῠ́ρᾱ": [
+      "itc-pro:līðrā": [
         2,
         2
       ],
-      "itc-pro:līðrā": [
+      "grc:λῠ́ρᾱ": [
         2,
         2
       ],
@@ -57022,17 +57338,13 @@
         1,
         1
       ],
-      "la:Londinium": [
-        1,
-        1
-      ],
       "enm:Londoun": [
         1,
         1
       ],
-      "enm:Londene": [
-        2,
-        2
+      "la:Londinium": [
+        1,
+        1
       ],
       "enm:Lundene": [
         2,
@@ -57046,11 +57358,15 @@
         2,
         2
       ],
-      "ine-pro:*lendʰ-": [
+      "enm:Londene": [
         2,
         2
       ],
       "cel-pro:*Londinyom": [
+        2,
+        2
+      ],
+      "ine-pro:*lendʰ-": [
         2,
         2
       ]
@@ -57179,11 +57495,11 @@
         0,
         0
       ],
-      "la:litra": [
+      "la-med:litra": [
         1,
         1
       ],
-      "la-med:litra": [
+      "la:litra": [
         1,
         1
       ],
@@ -57195,11 +57511,11 @@
         2,
         2
       ],
-      "scx:*lītrā": [
+      "itc-pro:*līðrā": [
         2,
         2
       ],
-      "itc-pro:*līðrā": [
+      "scx:*lītrā": [
         2,
         2
       ],
@@ -57733,7 +58049,6 @@
       "roman": "mávet",
       "glosses": [
         "death",
-        "defective spelling of מוות",
         "singular construct state form of מוות / מָוֶת"
       ],
       "wiktionary": "https://en.wiktionary.org/wiki/%D7%9E%D7%95%D7%AA#Hebrew",
@@ -57822,8 +58137,7 @@
       "glosses": [
         "March (the third month of the Gregorian calendar, following February and preceding April, containing the northward equinox)",
         "Mars (the Roman god of war)",
-        "Mars (the fourth planet in the solar system)",
-        "defective spelling of מארס (márs)."
+        "Mars (the fourth planet in the solar system)"
       ],
       "wiktionary": "https://en.wiktionary.org/wiki/%D7%9E%D7%A8%D7%A1#Hebrew",
       "ipa": "mars"
@@ -57889,11 +58203,15 @@
         0,
         1
       ],
+      "grc:Μαλάκη": [
+        1,
+        2
+      ],
       "sem-pro:malk-": [
         1,
         2
       ],
-      "sem-wes-pro:milḥ-": [
+      "sem-pro:*malk-": [
         1,
         2
       ],
@@ -57901,11 +58219,7 @@
         1,
         2
       ],
-      "grc:Μαλάκη": [
-        1,
-        2
-      ],
-      "sem-pro:*malk-": [
+      "sem-wes-pro:milḥ-": [
         1,
         2
       ]
@@ -58348,7 +58662,6 @@
       "canonical": "מְגִלָּה",
       "roman": "m'gilá",
       "glosses": [
-        "defective spelling of מגילה",
         "megillah, the scroll of Esther",
         "scroll"
       ],
@@ -58696,11 +59009,11 @@
         0,
         0
       ],
-      "la:matrix": [
+      "ar:مَجْرًى": [
         1,
         1
       ],
-      "ar:مَجْرًى": [
+      "la:matrix": [
         1,
         1
       ]
@@ -59573,6 +59886,45 @@
   },
   {
     "arabic": {
+      "canonical": "مَعِين",
+      "roman": "maʕīn",
+      "glosses": [
+        "the state of Maʿīn in ancient Yemen",
+        "well, spring, water source"
+      ],
+      "wiktionary": "https://en.wiktionary.org/wiki/%D9%85%D8%B9%D9%8A%D9%86#Arabic",
+      "ipa": "maʕiːn"
+    },
+    "hebrew": {
+      "canonical": "מַעֲיָן",
+      "roman": "ma'ayán",
+      "glosses": [
+        "a well",
+        "spring (water source), fountain"
+      ],
+      "wiktionary": "https://en.wiktionary.org/wiki/%D7%9E%D7%A2%D7%99%D7%99%D7%9F#Hebrew",
+      "ipa": "maʔajan"
+    },
+    "match_layers": [
+      "lemma_promoted"
+    ],
+    "best_sense_match": {
+      "arabic_sense": "well, spring, water source",
+      "arabic_pos": "noun",
+      "hebrew_sense": "spring (water source), fountain",
+      "hebrew_pos": "noun",
+      "similarity": 0.9272
+    },
+    "ancestor": "recon-sem-pro:maʔaʕiːn",
+    "pansemitic_form": "maʔaʕin",
+    "loss": {
+      "arabic": 0.25,
+      "hebrew": 0.20357142857142854,
+      "joint": 0.4535714285714285
+    }
+  },
+  {
+    "arabic": {
       "canonical": "مَعْرَكَة",
       "roman": "maʕraka",
       "glosses": [
@@ -59939,8 +60291,7 @@
       "canonical": "מִלֵּא",
       "roman": "milé",
       "glosses": [
-        "To fill (something) up, to make (something) full.",
-        "defective spelling of מילא."
+        "To fill (something) up, to make (something) full."
       ],
       "wiktionary": "https://en.wiktionary.org/wiki/%D7%9E%D7%9C%D7%90#Hebrew",
       "ipa": "mile"
@@ -60024,7 +60375,6 @@
       "canonical": "מֻלָּא",
       "roman": "mulá",
       "glosses": [
-        "defective spelling of מולא.",
         "to be filled"
       ],
       "wiktionary": "https://en.wiktionary.org/wiki/%D7%9E%D7%9C%D7%90#Hebrew",
@@ -60322,15 +60672,7 @@
         1,
         1
       ],
-      "enm:maulte": [
-        1,
-        1
-      ],
-      "enm:malte": [
-        1,
-        1
-      ],
-      "enm:maltt": [
+      "gem-pro:*maltą": [
         1,
         1
       ],
@@ -60338,7 +60680,7 @@
         1,
         1
       ],
-      "gem-pro:*maltą": [
+      "gmw-pro:*malt": [
         1,
         1
       ],
@@ -60346,17 +60688,17 @@
         1,
         1
       ],
-      "gmw-pro:*malt": [
+      "enm:malte": [
         1,
         1
       ],
-      "gmw-pro:malt": [
-        2,
-        2
+      "enm:maulte": [
+        1,
+        1
       ],
-      "gem-pro:maltą": [
-        2,
-        2
+      "enm:maltt": [
+        1,
+        1
       ],
       "ang:meltan": [
         2,
@@ -60366,23 +60708,19 @@
         2,
         2
       ],
+      "gem-pro:maltą": [
+        2,
+        2
+      ],
       "gem-pro:*maltaz": [
         2,
         2
       ],
-      "gmw-pro:meltan": [
-        3,
-        3
-      ],
-      "sla-pro:*molto": [
-        3,
-        3
+      "gmw-pro:malt": [
+        2,
+        2
       ],
       "gmw-pro:*meltan": [
-        3,
-        3
-      ],
-      "gem-pro:*meltaną": [
         3,
         3
       ],
@@ -60390,7 +60728,19 @@
         3,
         3
       ],
+      "sla-pro:*molto": [
+        3,
+        3
+      ],
+      "gmw-pro:meltan": [
+        3,
+        3
+      ],
       "ine-pro:*mold-o-s": [
+        3,
+        3
+      ],
+      "gem-pro:*meltaną": [
         3,
         3
       ],
@@ -60818,7 +61168,6 @@
       "roman": "mávet",
       "glosses": [
         "death",
-        "defective spelling of מוות",
         "singular construct state form of מוות / מָוֶת"
       ],
       "wiktionary": "https://en.wiktionary.org/wiki/%D7%9E%D7%95%D7%AA#Hebrew",
@@ -60860,7 +61209,6 @@
       "roman": "mávet",
       "glosses": [
         "death",
-        "defective spelling of מוות",
         "singular construct state form of מוות / מָוֶת"
       ],
       "wiktionary": "https://en.wiktionary.org/wiki/%D7%9E%D7%95%D7%AA#Hebrew",
@@ -61046,11 +61394,23 @@
         0,
         0
       ],
+      "fro:Cemaine": [
+        1,
+        1
+      ],
+      "ga:An Mhaing": [
+        1,
+        1
+      ],
       "fr:Maine#Etymology_2_2": [
         1,
         1
       ],
-      "fro:Cemaine": [
+      "la:Meduāna": [
+        1,
+        1
+      ],
+      "sga:Maine": [
         1,
         1
       ],
@@ -61062,23 +61422,11 @@
         1,
         1
       ],
-      "sga:Maine": [
-        1,
-        1
-      ],
-      "la:Meduāna": [
-        1,
-        1
-      ],
-      "ga:An Mhaing": [
-        1,
-        1
-      ],
-      "la:Cenomānī": [
+      "ine-pro:*mey-": [
         2,
         2
       ],
-      "ine-pro:*mey-": [
+      "la:Cenomānī": [
         2,
         2
       ]
@@ -61251,13 +61599,13 @@
       "hebrew_pos": "noun",
       "similarity": 0.9018
     },
-    "morphology": "ar: feminine ending stripped",
-    "ancestor": "recon-sem-pro:muħaːfaðˤ",
-    "pansemitic_form": "muxafaṣ",
+    "morphology": "ar: cited masculine base: substituted cited base مُحَافِظ (muḥāfiẓ)",
+    "ancestor": "recon-sem-pro:muħaːfiðˤ",
+    "pansemitic_form": "muxafiṣ",
     "loss": {
-      "arabic": 0.23125,
+      "arabic": 0.303125,
       "hebrew": 0.7311428571428572,
-      "joint": 0.9623928571428573
+      "joint": 1.0342678571428572
     }
   },
   {
@@ -61279,8 +61627,7 @@
       "glosses": [
         "47th sura (chapter) of Quran",
         "Muhammad, Islamic final prophet to whom Qur'an was revealed.",
-        "a male given name from Arabic, equivalent to English Muhammad",
-        "defective spelling of מוחמד"
+        "a male given name from Arabic, equivalent to English Muhammad"
       ],
       "wiktionary": "https://en.wiktionary.org/wiki/%D7%9E%D7%97%D7%9E%D7%93#Hebrew",
       "ipa": "muχamad"
@@ -61413,7 +61760,6 @@
       "canonical": "רִבָּה",
       "roman": "ribá",
       "glosses": [
-        "defective spelling of ריבה",
         "jam (sweet mixture of fruit boiled with sugar)"
       ],
       "wiktionary": "https://en.wiktionary.org/wiki/%D7%A8%D7%91%D7%94#Hebrew",
@@ -61460,7 +61806,6 @@
       "glosses": [
         "assembled, installed",
         "complicated, complex",
-        "defective spelling of מורכב",
         "made of, composed of, consists of"
       ],
       "wiktionary": "https://en.wiktionary.org/wiki/%D7%9E%D7%A8%D7%9B%D7%91#Hebrew",
@@ -61594,7 +61939,6 @@
       "canonical": "מֹר",
       "roman": "mór",
       "glosses": [
-        "defective spelling of מור",
         "myrrh"
       ],
       "wiktionary": "https://en.wiktionary.org/wiki/%D7%9E%D7%A8#Hebrew",
@@ -61999,8 +62343,7 @@
       "canonical": "מְהֻנְדָּס",
       "roman": "m'hundás",
       "glosses": [
-        "Engineered: produced by engineering.",
-        "defective spelling of מהונדס"
+        "Engineered: produced by engineering."
       ],
       "wiktionary": "https://en.wiktionary.org/wiki/%D7%9E%D7%94%D7%A0%D7%93%D7%A1#Hebrew",
       "ipa": "mehandes"
@@ -62479,7 +62822,6 @@
       "roman": "m'sukán",
       "glosses": [
         "dangerous",
-        "defective spelling of מסוכן",
         "perilous"
       ],
       "wiktionary": "https://en.wiktionary.org/wiki/%D7%9E%D7%A1%D7%95%D7%9B%D7%9F#Hebrew",
@@ -62768,6 +63110,50 @@
       "arabic": 0.19,
       "hebrew": 0.74,
       "joint": 0.9299999999999999
+    }
+  },
+  {
+    "arabic": {
+      "canonical": "مِعًى",
+      "roman": "miʕan",
+      "glosses": [
+        "gut, intestine"
+      ],
+      "wiktionary": "https://en.wiktionary.org/wiki/%D9%85%D8%B9%D9%89#Arabic",
+      "ipa": "miʕan"
+    },
+    "hebrew": {
+      "canonical": "מַעֲיָן",
+      "roman": "ma'ayán",
+      "glosses": [
+        "a well",
+        "spring (water source), fountain"
+      ],
+      "wiktionary": "https://en.wiktionary.org/wiki/%D7%9E%D7%A2%D7%99%D7%99%D7%9F#Hebrew",
+      "ipa": "maʔajan"
+    },
+    "match_layers": [
+      "lemma_promoted"
+    ],
+    "shared_borrowing_sources": {
+      "sem-pro:miʕay-": [
+        0,
+        0
+      ]
+    },
+    "best_sense_match": {
+      "arabic_sense": "gut, intestine",
+      "arabic_pos": "noun",
+      "hebrew_sense": "a well",
+      "hebrew_pos": "noun",
+      "similarity": 0.8305
+    },
+    "ancestor": "sem-pro:miʕaj",
+    "pansemitic_form": "miʕay",
+    "loss": {
+      "arabic": 0.19,
+      "hebrew": 0.5392857142857143,
+      "joint": 0.7292857142857143
     }
   },
   {
@@ -63422,15 +63808,15 @@
         0,
         0
       ],
-      "grc:μῑμέομαι": [
-        1,
-        1
-      ],
       "grc:μῖμος": [
         1,
         1
       ],
       "fr:mémé": [
+        1,
+        1
+      ],
+      "grc:μῑμέομαι": [
         1,
         1
       ]
@@ -63716,15 +64102,15 @@
         0,
         3
       ],
+      "fa:نارنگ": [
+        0,
+        4
+      ],
       "sa:नारङ्ग": [
         0,
         4
       ],
       "fa-cls:نَارَنْگ": [
-        0,
-        4
-      ],
-      "fa:نارنگ": [
         0,
         4
       ],
@@ -64700,7 +65086,6 @@
       "roman": "nisá",
       "glosses": [
         "First-person plural future (prefix conjugation) of נָשָׂא",
-        "defective spelling of נישא.",
         "lofty, exalted",
         "mobile, portable, movable",
         "to be elevated",
@@ -64804,7 +65189,6 @@
       "roman": "nisá",
       "glosses": [
         "First-person plural future (prefix conjugation) of נָשָׂא",
-        "defective spelling of נישא.",
         "lofty, exalted",
         "mobile, portable, movable",
         "to be elevated",
@@ -65065,7 +65449,6 @@
       "roman": "nó'am",
       "glosses": [
         "a male given name, Noam",
-        "defective spelling of נועם",
         "pleasantness"
       ],
       "wiktionary": "https://en.wiktionary.org/wiki/%D7%A0%D7%95%D7%A2%D7%9D#Hebrew",
@@ -65312,7 +65695,7 @@
       "hebrew_pos": "noun",
       "similarity": 0.8492
     },
-    "morphology": "he: feminine ending stripped",
+    "morphology": "he: cited masculine base: substituted cited base נָעִים (na'ím)",
     "ancestor": "recon-sem-pro:naɣim",
     "pansemitic_form": "nagim",
     "loss": {
@@ -65336,7 +65719,6 @@
       "canonical": "נִפֵּחַ",
       "roman": "nipéakh",
       "glosses": [
-        "defective spelling of ניפח",
         "to inflate"
       ],
       "wiktionary": "https://en.wiktionary.org/wiki/%D7%A0%D7%A4%D7%97#Hebrew",
@@ -66172,7 +66554,6 @@
       "roman": "n'kudá",
       "glosses": [
         "aspect, facet",
-        "defective spelling of נקודה.",
         "dot",
         "full stop, period",
         "point",
@@ -66421,11 +66802,11 @@
         0,
         0
       ],
-      "ine-pro:*nébʰos": [
+      "itc-pro:*neptūnos": [
         1,
         1
       ],
-      "itc-pro:*neptūnos": [
+      "ine-pro:*nébʰos": [
         1,
         1
       ]
@@ -66651,11 +67032,11 @@
         0,
         0
       ],
-      "grc:Νίκαια": [
+      "la:Nīcaea": [
         1,
         1
       ],
-      "la:Nīcaea": [
+      "grc:Νίκαια": [
         1,
         1
       ],
@@ -67279,11 +67660,11 @@
         0,
         1
       ],
-      "sux:𒂍𒃲": [
+      "akk:ēkallum": [
         0,
         0
       ],
-      "akk:ēkallum": [
+      "sux:𒂍𒃲": [
         0,
         0
       ]
@@ -67332,7 +67713,7 @@
         0,
         0
       ],
-      "fa:هل": [
+      "fa:هیل": [
         0,
         1
       ],
@@ -67340,7 +67721,7 @@
         0,
         1
       ],
-      "fa:هیل": [
+      "fa:هل": [
         0,
         1
       ],
@@ -67597,11 +67978,11 @@
         0,
         0
       ],
-      "iir-pro:*síndʰuš": [
+      "ira-pro:*hínduš": [
         1,
         0
       ],
-      "ira-pro:*hínduš": [
+      "iir-pro:*síndʰuš": [
         1,
         0
       ],
@@ -67609,11 +67990,11 @@
         1,
         1
       ],
-      "sa:सिन्धु॑": [
+      "inc-pro:*síndʰuṣ": [
         1,
         1
       ],
-      "inc-pro:*síndʰuṣ": [
+      "sa:सिन्धु॑": [
         1,
         1
       ],
@@ -68348,7 +68729,6 @@
       "canonical": "צִוָּה",
       "roman": "tsivá",
       "glosses": [
-        "defective spelling of ציווה",
         "to command"
       ],
       "wiktionary": "https://en.wiktionary.org/wiki/%D7%A6%D7%95%D7%94#Hebrew",
@@ -68389,14 +68769,14 @@
       "roman": "mitsvá",
       "glosses": [
         "commandment",
-        "defective spelling of מצווה",
         "mitzvah"
       ],
       "wiktionary": "https://en.wiktionary.org/wiki/%D7%9E%D7%A6%D7%95%D7%95%D7%94#Hebrew",
       "ipa": "mit͡sva"
     },
     "match_layers": [
-      "direct_cognate_he→ar"
+      "direct_cognate_he→ar",
+      "lemma_promoted"
     ],
     "best_sense_match": {
       "arabic_sense": "commandment, injunction, bidding, ordinance",
@@ -68568,7 +68948,6 @@
       "canonical": "לֵדָה",
       "roman": "leydá",
       "glosses": [
-        "Defective spelling of לידה.",
         "birth, childbirth, delivery"
       ],
       "wiktionary": "https://en.wiktionary.org/wiki/%D7%9C%D7%99%D7%93%D7%94#Hebrew",
@@ -68703,7 +69082,6 @@
       "canonical": "לֵדָה",
       "roman": "leydá",
       "glosses": [
-        "Defective spelling of לידה.",
         "birth, childbirth, delivery"
       ],
       "wiktionary": "https://en.wiktionary.org/wiki/%D7%9C%D7%99%D7%93%D7%94#Hebrew",
@@ -68880,15 +69258,7 @@
         0,
         0
       ],
-      "ga:uisce": [
-        1,
-        1
-      ],
       "la-med:aqua vītae": [
-        1,
-        1
-      ],
-      "ga:uisce beatha": [
         1,
         1
       ],
@@ -68896,19 +69266,19 @@
         1,
         1
       ],
+      "ga:uisce beatha": [
+        1,
+        1
+      ],
+      "ga:uisce": [
+        1,
+        1
+      ],
       "ga:uisge": [
         1,
         1
       ],
-      "la-med:aqua": [
-        2,
-        2
-      ],
       "la:aqua vītae": [
-        2,
-        2
-      ],
-      "cel-pro:*udenskyos": [
         2,
         2
       ],
@@ -68916,15 +69286,23 @@
         2,
         2
       ],
+      "cel-pro:*udenskyos": [
+        2,
+        2
+      ],
+      "la-med:aqua": [
+        2,
+        2
+      ],
       "ine-pro:*wódr̥": [
         2,
         2
       ],
-      "cel-pro:udenskyos": [
+      "ine-pro:wódr̥": [
         3,
         3
       ],
-      "ine-pro:wódr̥": [
+      "cel-pro:udenskyos": [
         3,
         3
       ]
@@ -69266,7 +69644,7 @@
       "hebrew_pos": "noun",
       "similarity": 0.8524
     },
-    "morphology": "ar: feminine ending stripped",
+    "morphology": "ar: cited masculine base: substituted cited base يَابِس (yābis)",
     "ancestor": "recon-sem-pro:jaːbisa",
     "pansemitic_form": "yabisa",
     "loss": {
@@ -69444,15 +69822,15 @@
         0,
         1
       ],
+      "dum:jaget": [
+        1,
+        1
+      ],
       "dum:jacht": [
         1,
         1
       ],
       "odt:*jagot": [
-        1,
-        1
-      ],
-      "dum:jaget": [
         1,
         1
       ],
@@ -69820,8 +70198,7 @@
         "Jacob",
         "Third-person masculine singular future (prefix conjugation) of עָקַב (ʿaqáv, “to follow”).",
         "Yaqub, a major nabi of Islam",
-        "a male given name, equivalent to English Jacob",
-        "defective spelling of יעקוב"
+        "a male given name, equivalent to English Jacob"
       ],
       "wiktionary": "https://en.wiktionary.org/wiki/%D7%99%D7%A2%D7%A7%D7%95%D7%91#Hebrew",
       "ipa": "jaʕaqov"
@@ -70339,16 +70716,16 @@
       "ipa": "jawm alɣufraːn"
     },
     "hebrew": {
-      "canonical": "יוֹם כִּפּוּר",
-      "roman": "yom kippúr",
+      "canonical": "יוֹם כִּיפּוּר",
+      "roman": "yom kipúr",
       "glosses": [
-        "Defective spelling of יום כיפור."
+        "Yom Kippur (a particular Jewish holiday, the day of atonement, falling on the tenth day of the Hebrew month of Tishrei)"
       ],
-      "wiktionary": "https://en.wiktionary.org/wiki/%D7%99%D7%95%D7%9D%20%D7%9B%D7%A4%D7%95%D7%A8#Hebrew",
-      "ipa": "jom kipːur"
+      "wiktionary": "https://en.wiktionary.org/wiki/%D7%99%D7%95%D7%9D%20%D7%9B%D7%99%D7%A4%D7%95%D7%A8#Hebrew",
+      "ipa": "jom kipur"
     },
     "match_layers": [
-      "shared_borrowing_source"
+      "lemma_promoted"
     ],
     "shared_borrowing_sources": {
       "he:יוֹם כִּפּוּר": [
@@ -70359,9 +70736,9 @@
     "best_sense_match": {
       "arabic_sense": "Yom Kippur, the Jewish Day of Atonement.",
       "arabic_pos": "name",
-      "hebrew_sense": "Defective spelling of יום כיפור.",
+      "hebrew_sense": "Yom Kippur (a particular Jewish holiday, the day of atonement, falling on the tenth day of the Hebrew month of Tishrei)",
       "hebrew_pos": "name",
-      "similarity": 0.8418
+      "similarity": 0.901
     },
     "ancestor": "he:jom kipur",
     "pansemitic_form": "yam kipur"
@@ -70377,16 +70754,16 @@
       "ipa": "jawm alkafːaːra"
     },
     "hebrew": {
-      "canonical": "יוֹם כִּפּוּר",
-      "roman": "yom kippúr",
+      "canonical": "יוֹם כִּיפּוּר",
+      "roman": "yom kipúr",
       "glosses": [
-        "Defective spelling of יום כיפור."
+        "Yom Kippur (a particular Jewish holiday, the day of atonement, falling on the tenth day of the Hebrew month of Tishrei)"
       ],
-      "wiktionary": "https://en.wiktionary.org/wiki/%D7%99%D7%95%D7%9D%20%D7%9B%D7%A4%D7%95%D7%A8#Hebrew",
-      "ipa": "jom kipːur"
+      "wiktionary": "https://en.wiktionary.org/wiki/%D7%99%D7%95%D7%9D%20%D7%9B%D7%99%D7%A4%D7%95%D7%A8#Hebrew",
+      "ipa": "jom kipur"
     },
     "match_layers": [
-      "shared_borrowing_source"
+      "lemma_promoted"
     ],
     "shared_borrowing_sources": {
       "he:יוֹם כִּפּוּר": [
@@ -70397,9 +70774,9 @@
     "best_sense_match": {
       "arabic_sense": "Yom Kippur, the Jewish Day of Atonement.",
       "arabic_pos": "name",
-      "hebrew_sense": "Defective spelling of יום כיפור.",
+      "hebrew_sense": "Yom Kippur (a particular Jewish holiday, the day of atonement, falling on the tenth day of the Hebrew month of Tishrei)",
       "hebrew_pos": "name",
-      "similarity": 0.8418
+      "similarity": 0.901
     },
     "ancestor": "he:jom kipur",
     "pansemitic_form": "yam kipur"
@@ -70683,11 +71060,11 @@
         0,
         0
       ],
-      "sem-pro:*šawmān-": [
+      "sem-wes-pro:*hawmān-": [
         1,
         0
       ],
-      "sem-wes-pro:*hawmān-": [
+      "sem-pro:*šawmān-": [
         1,
         0
       ],
@@ -70744,11 +71121,11 @@
         0,
         0
       ],
-      "sem-pro:*šawmān-": [
+      "sem-wes-pro:*hawmān-": [
         1,
         0
       ],
-      "sem-wes-pro:*hawmān-": [
+      "sem-pro:*šawmān-": [
         1,
         0
       ],

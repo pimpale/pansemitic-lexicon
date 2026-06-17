@@ -83,6 +83,30 @@ ETYMON_SEM_PRO = re.compile(r"sem-pro:([^<>\s]+)")
 ETYMON_LANG_WORD = re.compile(r"([a-z]{2,}(?:-[a-z]+)*):([^<>\s:]+)")
 ETYMON_METADATA = re.compile(r"<[^>]*>")
 
+# First parenthetical in a template expansion, e.g. the "(aṃbaa)" in
+# "Maharastri Prakrit 𑀅𑀁𑀩𑀅 (aṃbaa)".  Holds the transliteration,
+# optionally followed by a comma-separated gloss ("(viṇā, “without”)").
+TEMPLATE_EXPANSION_PAREN = re.compile(r"\(([^()]*)\)")
+
+
+def _template_tr_from_expansion(expansion: str) -> str | None:
+    """Recover a transliteration from a template's rendered ``expansion``
+    when the template has no explicit ``tr`` arg.
+
+    Wiktionary renders the source word's romanization in the first
+    parenthetical after the headword (any trailing ", gloss" is dropped).
+    Used as a tier-2 fallback for citations whose only romanization lives
+    in the prose expansion, e.g. phantom Maharastri Prakrit nodes that
+    never get their own kaikki entry.
+    """
+    if not expansion:
+        return None
+    m = TEMPLATE_EXPANSION_PAREN.search(expansion)
+    if not m:
+        return None
+    candidate = m.group(1).split(",")[0].strip()
+    return candidate if _looks_romanized(candidate) else None
+
 ETYMOLOGY_TEMPLATES = {"bor", "der", "lbor", "ubor", "slbor", "borrowed",
                        "inh", "inh+", "bor+", "der+"}
 ETYMON_RELATIONS = {":bor", ":der", ":inh", ":from", ":lbor"}
@@ -137,6 +161,24 @@ class WordData:
     # lemma_of: lemma_of keeps feeding lemma promotion (recall) unchanged,
     # derived_from feeds merge-time base substitution (fairness).
     derived_from: set[str] = field(default_factory=set)
+    # Cited singular of a plural/dual lemma (he-noun sg=, or a plural/dual
+    # form_of target), normalized.  Feeds merge-time number reduction so the
+    # singular Wiktionary cites is preferred over heuristic suffix-stripping.
+    singular_of: set[str] = field(default_factory=set)
+    # Cited masculine base of a derived feminine lemma (he/ar-noun m=, or a
+    # "feminine of X" form_of target), normalized.  Feeds merge-time feminine
+    # reduction the same way singular_of feeds number reduction.
+    masculine_of: set[str] = field(default_factory=set)
+    # A "defective spelling of X" page carries no content sense of its own, only
+    # a redirect; its full-spelling target is recorded in lemma_of so lemma
+    # promotion re-anchors the pair there (see _is_defective_gloss).
+    has_content_sense: bool = False
+    has_defective_sense: bool = False
+
+    @property
+    def defective_only(self) -> bool:
+        """True for a pure defective-spelling redirect (no content sense)."""
+        return self.has_defective_sense and not self.has_content_sense
 
     def absorb(self, other: Self) -> None:
         """Fold another partial WordData for the same canonical into self."""
@@ -146,11 +188,15 @@ class WordData:
         self.cognates |= other.cognates
         self.lemma_of |= other.lemma_of
         self.borrow_sources |= other.borrow_sources
+        self.has_content_sense |= other.has_content_sense
+        self.has_defective_sense |= other.has_defective_sense
         self.pos |= other.pos
         self.verb_forms |= other.verb_forms
         self.number |= other.number
         self.gender |= other.gender
         self.derived_from |= other.derived_from
+        self.singular_of |= other.singular_of
+        self.masculine_of |= other.masculine_of
 
 
 @dataclass
@@ -332,6 +378,11 @@ SEMITIC_LANG_CONFIG: dict[str, type] = {
 SEMITIC_LANGS = frozenset(SEMITIC_LANG_CONFIG)
 
 
+def _is_defective_gloss(gloss: str) -> bool:
+    """True for a "defective spelling of X" redirect gloss (any capitalization)."""
+    return "defective spelling of" in gloss.lower()
+
+
 def _process_semitic_entry(
     entry: dict[str, Any],
     lang_code: str,
@@ -381,6 +432,15 @@ def _process_semitic_entry(
                           for t in part.split("-")} & _GENDER_NUMBER_TOKENS
                 wd.number |= tokens & {"p", "d"}
                 wd.gender |= tokens & {"m", "f"}
+        # he-noun cites the singular of a dual/plurale-tantum lemma in sg=,
+        # and the masculine base of a derived feminine (he/ar-noun) in m=.
+        for arg, target in (("sg", wd.singular_of), ("m", wd.masculine_of)):
+            value = args.get(arg, "")
+            if isinstance(value, str) and value:
+                for form in value.split(","):
+                    form = form.strip()
+                    if form:
+                        target.add(normalize_self(form))
 
     for tmpl in entry.get("etymology_templates", []):
         args = tmpl.get("args", {})
@@ -422,6 +482,20 @@ def _process_semitic_entry(
 
     for sense in entry.get("senses", []):
         tags = sense.get("tags") or []
+        glosses = sense.get("glosses") or []
+        # A defective-spelling redirect carries no etymology of its own — it
+        # just points at its full-spelling page.  Record that page as a lemma
+        # target (so lemma promotion re-anchors the pair there) and skip its
+        # placeholder gloss, but keep processing the entry so its consonantal
+        # norm still bridges cognate references the full spelling can't reach.
+        if any(_is_defective_gloss(g) for g in glosses):
+            wd.has_defective_sense = True
+            for alt in sense.get("alt_of", []) or []:
+                target = alt.get("word", "")
+                if target:
+                    wd.lemma_of.add(normalize_self(target))
+        elif glosses:
+            wd.has_content_sense = True
         if "plural" in tags or "plural-only" in tags:
             wd.number.add("p")
         if "dual" in tags:
@@ -432,8 +506,15 @@ def _process_semitic_entry(
                 wd.lemma_of.add(normalize_self(base))
                 if "noun-from-verb" in tags:
                     wd.derived_from.add(normalize_self(base))
-        for gloss in sense.get("glosses", []):
-            wd.glosses.add(gloss)
+                # A "plural/dual of X" form points at its singular base; a
+                # "feminine of X" form points at its masculine base.
+                if "plural" in tags or "dual" in tags:
+                    wd.singular_of.add(normalize_self(base))
+                if "feminine" in tags:
+                    wd.masculine_of.add(normalize_self(base))
+        for gloss in glosses:
+            if not _is_defective_gloss(gloss):
+                wd.glosses.add(gloss)
 
 
 def _extract_borrowing(entry, lang_code, borrow_graph, template_tr_index):
@@ -479,6 +560,8 @@ def _extract_borrowing(entry, lang_code, borrow_graph, template_tr_index):
                 for key in node_keys:
                     borrow_graph[key].add(src_key)
                 tr = args.get("tr", "")
+                if not tr:
+                    tr = _template_tr_from_expansion(tmpl.get("expansion", "")) or ""
                 if tr and src_key not in template_tr_index:
                     template_tr_index[src_key] = tr
 
@@ -1189,9 +1272,32 @@ def main():
                     if prev is None or depths < prev:
                         new_pair.sources[src] = depths
 
+    # Follow-to-source: a defective-spelling side whose full-spelling lemma
+    # now carries a sibling pair (via the lemma_of redirect above) is a
+    # duplicate — drop it so the full spelling represents the cognate.  A
+    # bridge with no indexed full form keeps its pair (no loss).
+    pruned = 0
+    for (ar_c, he_c) in list(pair_data):
+        ar_wd, he_wd = ar_words.get(ar_c), he_words.get(he_c)
+        ar_fulls = (_resolve_lemmas(ar_wd, ar_norm_to_canonicals)
+                    if ar_wd and ar_wd.defective_only else set())
+        he_fulls = (_resolve_lemmas(he_wd, he_norm_to_canonicals)
+                    if he_wd and he_wd.defective_only else set())
+        if not ar_fulls and not he_fulls:
+            continue
+        for new_ar in (ar_fulls or {ar_c}):
+            for new_he in (he_fulls or {he_c}):
+                if (new_ar, new_he) != (ar_c, he_c) and (new_ar, new_he) in pair_data:
+                    del pair_data[ar_c, he_c]
+                    pruned += 1
+                    break
+            else:
+                continue
+            break
+
     match_elapsed = time.monotonic() - t0
     print(f"\n  {len(pair_data)} cognate pairs found "
-          f"({promoted} via lemma promotion)")
+          f"({promoted} via lemma promotion, {pruned} defective pruned)")
     print(f"  ⏱ {match_elapsed:.1f}s")
 
     # ── Load sense embeddings ───────────────────────────────────
@@ -1214,6 +1320,10 @@ def main():
         """Find the (ar_sense, he_sense) pair with highest dot product."""
         ar_senses = _get_senses("ar", ar_canonical, ar_norm)
         he_senses = _get_senses("he", he_canonical, he_norm)
+        # Prefer content senses over "defective spelling of X" redirects, but
+        # keep the redirect if it's all a bridge form has, so the row survives.
+        ar_senses = [s for s in ar_senses if not _is_defective_gloss(s["gloss"])] or ar_senses
+        he_senses = [s for s in he_senses if not _is_defective_gloss(s["gloss"])] or he_senses
         if not ar_senses or not he_senses:
             return None
 
@@ -1249,14 +1359,20 @@ def main():
         except ReconstructionError:
             return None
 
-    def _base_romanization(lang: str, norms: frozenset[str]) -> tuple[str, str] | None:
-        """Resolve a derivational base citation to (canonical, romanization).
+    def _base_romanization(
+        lang: str, norms: frozenset[str],
+        prefer_pos: frozenset[str] = frozenset({"verb"}),
+    ) -> tuple[str, str] | None:
+        """Resolve a base citation to (canonical, romanization).
 
-        The unpointed norm fans out to homograph canonicals; rank them so
-        real lemma pages win: derived_from targets are noun-from-verb bases,
-        so prefer verb POS, then entries that aren't themselves form-of
-        redirects, then the most-glossed page.  '#'-containing canonicals
-        are kaikki headword artifacts (inflection-table rows) — skip them."""
+        The unpointed norm fans out to homograph canonicals; rank them so the
+        right base wins: prefer the part(s) of speech the caller expects
+        (verb for noun-from-verb decausative bases, the nominal set for
+        singular/masculine reductions — picking the noun/adjective base over a
+        verb homograph), then the language's underived stem, then entries that
+        aren't themselves form-of redirects, then the most-glossed page.
+        '#'-containing canonicals are kaikki inflection-table artifacts — skip
+        them."""
         words, n2c = (
             (ar_words, ar_norm_to_canonicals) if lang == "ar"
             else (he_words, he_norm_to_canonicals)
@@ -1273,7 +1389,7 @@ def main():
                 if "#" in canonical or not _looks_romanized(wd.romanization):
                     continue
                 rank = (
-                    0 if "verb" in wd.pos else 1,
+                    0 if wd.pos & prefer_pos else 1,
                     # Among verb homographs prefer the language's underived
                     # base stem over derived stems sharing the same norm.
                     0 if wd.verb_forms & base_forms else 1,
@@ -1303,6 +1419,8 @@ def main():
             number=ar_wd.number if ar_wd else frozenset(),
             gender=ar_wd.gender if ar_wd else frozenset(),
             derived_from=ar_wd.derived_from if ar_wd else frozenset(),
+            singular_of=ar_wd.singular_of if ar_wd else frozenset(),
+            masculine_of=ar_wd.masculine_of if ar_wd else frozenset(),
         )
         he_phrase = analyze_phrase(
             "he", he_canonical, he_roman,
@@ -1311,6 +1429,8 @@ def main():
             number=he_wd.number if he_wd else frozenset(),
             gender=he_wd.gender if he_wd else frozenset(),
             derived_from=he_wd.derived_from if he_wd else frozenset(),
+            singular_of=he_wd.singular_of if he_wd else frozenset(),
+            masculine_of=he_wd.masculine_of if he_wd else frozenset(),
         )
         plan = plan_merge(ar_phrase, he_phrase, _base_romanization)
         notes.extend(plan.notes)
@@ -1443,19 +1563,11 @@ def main():
                 # Multi-word ancestors keep their space separator; the loss
                 # phoneme inventory has no segment for it, so skip scoring.
                 if ar_ipa and he_ipa and " " not in pansemitic_word.word:
-                    try:
-                        entry.loss = triplet_loss_breakdown(
-                            pansemitic_word.to_ipa(),
-                            ar_ipa,
-                            he_ipa,
-                        )
-                    except ValueError as e:
-                        # IPA contains a phoneme not in loss.py's
-                        # inventory; the pair still emits, just
-                        # without a loss score. Tracked so the
-                        # offending phonemes can be added to the
-                        # inventory over time.
-                        unknown_phonemes[str(e)] += 1
+                    entry.loss = triplet_loss_breakdown(
+                        pansemitic_word.to_ipa(),
+                        ar_ipa,
+                        he_ipa,
+                    )
             else:
                 entry.pansemitic_failure = "empty_pansemitic"
         except UnsupportedLanguageError as e:
