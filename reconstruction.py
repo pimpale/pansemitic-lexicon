@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import re
 import unicodedata
-from typing import Self, TYPE_CHECKING
+from typing import ClassVar, Self, TYPE_CHECKING
 from dataclasses import dataclass
 
 from numpy import isin
@@ -189,8 +189,14 @@ class Word:
     preserving vowel length and gemination.  Downstream consumers should call
     `to_protosemitic_convention()` for scholarly notation or
     `to_protopansemitic()` for the compressed pansemitic form.
+
+    `lang` is a ClassVar each subclass assigns to its language tag (declared
+    here, not assigned, so the base stays abstract and ClassVar keeps it out
+    of the dataclass __init__).  GenericWord overrides it with a property
+    because its tag is per-instance.
     """
     word: str
+    lang: ClassVar[str]
 
     @classmethod
     def from_ipa(cls, ipa: str) -> Self:
@@ -203,6 +209,10 @@ class Word:
         # many languages represent an unknown vowel with capital V in even IPA.
         # We replace it with a concrete guessed vowel
         ipa = ipa.replace("V", "a")
+
+        # The liaison undertie ‿ (e.g. ʃaːʔa‿lˤːaːh) is a word boundary; treat
+        # it as a plain space so downstream tokenization and output are uniform.
+        ipa = ipa.replace("‿", " ")
 
         # eliminate parens
         ipa = ipa.replace("(", "").replace(")", "")
@@ -243,9 +253,7 @@ class Word:
 
 
 class ArabicWord(Word):
-    @property
-    def lang(self) -> str:
-        return "ar"
+    lang = "ar"
 
     @classmethod
     def normalize(cls, text: str) -> str:
@@ -257,7 +265,7 @@ class ArabicWord(Word):
         """Arabic romanization → IPA (lossless: preserves length + gemination).
 
         Definite articles are NOT stripped here — that is morphology, owned
-        by morphology.plan_merge before romanizations reach reconstruction."""
+        by morphology.merge before romanizations reach reconstruction."""
         if not text:
             return cls(word=text)
         form = text.lower()
@@ -298,9 +306,7 @@ class ArabicWord(Word):
 
 
 class HebrewWord(Word):
-    @property
-    def lang(self) -> str:
-        return "he"
+    lang = "he"
 
     @classmethod
     def normalize(cls, text: str) -> str:
@@ -382,9 +388,7 @@ class HebrewWord(Word):
 
 
 class SemProWord(Word):
-    @property
-    def lang(self) -> str:
-        return "sem-pro"
+    lang = "sem-pro"
 
     @classmethod
     def from_romanization(cls, text: str) -> Self:
@@ -445,14 +449,10 @@ class SemProWord(Word):
 
 
 class SemWesProWord(SemProWord):
-    @property
-    def lang(self) -> str:
-        return "sem-wes-pro"
+    lang = "sem-wes-pro"
 
 class ReconstructedSemProWord(SemProWord):
-    @property
-    def lang(self) -> str:
-        return "recon-sem-pro"
+    lang = "recon-sem-pro"
 
 
 _AKKADIAN_DETERMINATIVE_RE = re.compile(
@@ -461,9 +461,7 @@ _AKKADIAN_DETERMINATIVE_RE = re.compile(
 
 
 class AkkadianWord(SemProWord):
-    @property
-    def lang(self) -> str:
-        return "akk"
+    lang = "akk"
 
     @classmethod
     def from_romanization(cls, text: str) -> Self:
@@ -490,9 +488,7 @@ class AkkadianWord(SemProWord):
 
 
 class ProtoItalicWord(Word):
-    @property
-    def lang(self) -> str:
-        return "itc-pro"
+    lang = "itc-pro"
 
     @classmethod
     def from_romanization(cls, text: str) -> Self:
@@ -517,9 +513,7 @@ class ProtoItalicWord(Word):
 
 
 class ProtoSouthDravidianWord(Word):
-    @property
-    def lang(self) -> str:
-        return "dra-sou-pro"
+    lang = "dra-sou-pro"
 
     @classmethod
     def from_romanization(cls, text: str) -> Self:
@@ -559,9 +553,7 @@ class ProtoSouthDravidianWord(Word):
 
 
 class ProtoGermanicWord(Word):
-    @property
-    def lang(self) -> str:
-        return "gem-pro"
+    lang = "gem-pro"
 
     @classmethod
     def from_romanization(cls, text: str) -> Self:
@@ -595,9 +587,7 @@ class ProtoGermanicWord(Word):
 
 
 class SumerianWord(Word):
-    @property
-    def lang(self) -> str:
-        return "sux"
+    lang = "sux"
 
     @classmethod
     def from_romanization(cls, text: str) -> Self:
@@ -686,9 +676,7 @@ _AFRASIANIST_TO_IPA: list[tuple[str, str]] = [
 
 
 class AfrasianWord(Word):
-    @property
-    def lang(self) -> str:
-        return "afa-pro"
+    lang = "afa-pro"
 
     @classmethod
     def from_romanization(cls, text: str) -> Self:
@@ -735,9 +723,7 @@ _GREEK_MAP = {
 
 
 class GreekWord(Word):
-    @property
-    def lang(self) -> str:
-        return "grc"
+    lang = "grc"
 
     @classmethod
     def from_greek(cls, text: str) -> Self:
@@ -790,9 +776,7 @@ _EGYPTIAN_MAP: list[tuple[str, str]] = [
 
 
 class EgyptianWord(Word):
-    @property
-    def lang(self) -> str:
-        return "egy"
+    lang = "egy"
 
     @classmethod
     def from_romanization(cls, text: str) -> Self:
@@ -846,9 +830,7 @@ _PIE_MAP: list[tuple[str, str]] = [
 
 
 class PieWord(Word):
-    @property
-    def lang(self) -> str:
-        return "ine-pro"
+    lang = "ine-pro"
 
     @classmethod
     def from_romanization(cls, text: str) -> Self:
@@ -867,9 +849,7 @@ class PieWord(Word):
 
 
 class IranianWord(Word):
-    @property
-    def lang(self) -> str:
-        return "ira-pro"
+    lang = "ira-pro"
 
     @classmethod
     def from_romanization(cls, text: str) -> Self:
@@ -911,9 +891,7 @@ class IranianWord(Word):
 
 
 class OldPersianWord(Word):
-    @property
-    def lang(self) -> str:
-        return "peo"
+    lang = "peo"
 
     @classmethod
     def from_romanization(cls, text: str) -> Self:
@@ -991,9 +969,7 @@ _CYRILLIC_MAP: list[tuple[str, str]] = [
 
 
 class CyrillicWord(Word):
-    @property
-    def lang(self) -> str:
-        return "ru"
+    lang = "ru"
 
     @classmethod
     def from_cyrillic(cls, text: str) -> Self:
@@ -1044,9 +1020,7 @@ _ARAMAIC_SKIP = {
 
 
 class AramaicWord(Word):
-    @property
-    def lang(self) -> str:
-        return "arc"
+    lang = "arc"
 
     @classmethod
     def normalize(cls, text: str) -> str:
@@ -1140,9 +1114,7 @@ _SYRIAC_SKIP = {
 
 
 class SyriacWord(Word):
-    @property
-    def lang(self) -> str:
-        return "syc"
+    lang = "syc"
 
     @classmethod
     def normalize(cls, text: str) -> str:
@@ -1208,8 +1180,11 @@ class GenericWord(Word):
         base = SemProWord.from_romanization(text)
         return cls.from_ipa(base.word, lang=lang)
 
+    # GenericWord is the one source whose tag is per-instance, so it overrides
+    # the base ClassVar with a property; the override is intentional and the
+    # ClassVar/property mismatch is the expected cost of that exception.
     @property
-    def lang(self) -> str:
+    def lang(self) -> str:  # pyright: ignore[reportIncompatibleVariableOverride]
         if not self._lang_tag:
             raise ValueError("GenericWord instance missing lang tag")
         return self._lang_tag
@@ -1328,16 +1303,23 @@ class PansemiticWord(Word):
     (notably the loss function in `loss.py`) can work uniformly in IPA.
     """
 
-    @property
-    def lang(self) -> str:
-        return "pansemitic"
+    lang = "pansemitic"
+
+    # Gemination (ː) on a consonant token — a tie-bar affricate (d͡ʒ), an
+    # emphatic (sˤ), or a plain consonant — left by the D/tD stem exponent.
+    # (from_word strips all lexical/vowel-length ː, so a surviving ː is always
+    # morphological consonant gemination.)
+    _GEMINATE = re.compile(r"((?:[^ ]͡[^ ]|[^ ])ˤ?)ː")
 
     def to_protosemitic_convention(self) -> str:
         """Human-readable pansemitic rendering.  Uses a bespoke table: the
         generic scholar mapping would fold x → ḫ, but pansemitic keeps x."""
-        out = self.word
+        # Render gemination as a doubled consonant (jadːafa → jaddafa) before
+        # the scholar mapping rewrites the token.
+        out = self._GEMINATE.sub(r"\1\1", self.word)
         for src, dst in _PANSEMITIC_IPA_TO_SCHOLAR:
             out = out.replace(src, dst)
+
         return out
 
     @classmethod
@@ -1365,9 +1347,8 @@ class PansemiticWord(Word):
         form = form.replace("aː", "a").replace("iː", "i").replace("uː", "u")
         form = form.replace("e", "i").replace("o", "a")
 
-        # Drop remaining ː (consonant gemination), then dedupe any identical
+        # dedupe any identical
         # consonants introduced by lowering rules and finally dedupe vowels.
-        form = form.replace("ː", "")
         form = _dedupe_adjacent_consonants(form)
         form = re.sub(r"([aiu])\1+", r"\1", form)
 
@@ -1555,6 +1536,21 @@ def reconstruct_ancestor(
         raise EmptyAncestorError()
     return result
 
+
+def reconstruct_from_words(ar: ArabicWord, he: HebrewWord) -> Word:
+    """Reconstruct the ancestor from pre-built Arabic/Hebrew IPA Words.
+
+    The morphology layer strips affixes in IPA space and hands the bare stems
+    here directly, so this skips the romanization → IPA conversion that
+    `reconstruct_ancestor` does and aligns the phoneme strings as-is."""
+    if not ar.word or not he.word:
+        missing = ("both" if (not ar.word and not he.word)
+                   else "arabic" if not ar.word else "hebrew")
+        raise MissingRomanizationError(missing)
+    result, _unresolved = merge_roots_aligned(ar, he)
+    if not result or not result.word:
+        raise EmptyAncestorError()
+    return result
 
 
 def _dedupe_adjacent_consonants(ipa: str) -> str:

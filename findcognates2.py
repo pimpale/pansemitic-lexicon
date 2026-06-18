@@ -49,13 +49,14 @@ import orjson
 
 from loss import LossBreakdown, ipa_distance, triplet_loss_breakdown
 from kaikki import PartialSource, SharedSource, canonical_from_entry, _looks_romanized
-from morphology import Layer, analyze_phrase, morphology_for, plan_merge
+from morphology import (
+    Layer, analyze_phrase, merge, morphology_for,
+)
 from reconstruction import (
     ArabicWord,
     AramaicWord,
     HebrewWord,
     PansemiticWord,
-    ReconstructedSemProWord,
     SyriacWord,
     Word,
     reconstruct_ancestor,
@@ -125,6 +126,16 @@ _HEAD_GENDER_NUMBER_ARGS = {
 }
 _GENDER_NUMBER_TOKENS = frozenset({"m", "f", "p", "d"})
 
+# ar-verb arg 1 packs the form with paradigm flags ("I/a~u.ipass.vn:صَرْب");
+# the leading form token ends at the first "." (flag) or "/" (vowel pattern).
+_AR_VERB_FORM = re.compile(r"[./]")
+
+# Glosses signalling an Arabic noun of instance (nomen vicis); detection is
+# best-effort — these forms are rare and inconsistently glossed.
+_INSTANCE_GLOSS = re.compile(
+    r"\b(noun of instance|nomen vicis|single (?:act|instance|occurrence) of)\b",
+    re.IGNORECASE)
+
 
 # Wiktionary editors interchangeably use U+02BF/U+02BB for ayin and U+02BE for
 # alif in romanized citations; collapse to the project's convention (U+0295,
@@ -155,6 +166,9 @@ class WordData:
     borrow_sources: set[tuple[str, str]] = field(default_factory=set)
     pos: set[str] = field(default_factory=set)
     verb_forms: set[str] = field(default_factory=set)  # ar form (I..X) / he binyan
+    # Templatic deverbal categories (morphology.Derivation values: active-
+    # participle, passive-participle, verbal-noun, instance-noun).
+    derivation: set[str] = field(default_factory=set)
     number: set[str] = field(default_factory=set)  # ⊆ {"p", "d"} (plural/dual lemma)
     gender: set[str] = field(default_factory=set)  # ⊆ {"m", "f"}
     # Derivational form_of targets (noun-from-verb), normalized.  A subset of
@@ -192,6 +206,7 @@ class WordData:
         self.has_defective_sense |= other.has_defective_sense
         self.pos |= other.pos
         self.verb_forms |= other.verb_forms
+        self.derivation |= other.derivation
         self.number |= other.number
         self.gender |= other.gender
         self.derived_from |= other.derived_from
@@ -337,6 +352,8 @@ class CognateEntry:
     shared_borrowing_sources: dict[str, tuple[int, int]] | None = None
     best_sense_match: SenseMatch | None = None
     morphology: str | None = None  # merge-time normalizations applied (audit)
+    verb_stem: str | None = None   # Proto-Semitic stem of a shared deverbal form
+    derivation: str | None = None  # shared templatic category (participle, …)
     ancestor: str | None = None
     pansemitic_form: str | None = None
     loss: LossBreakdown | None = None
@@ -423,6 +440,10 @@ def _process_semitic_entry(
         if name in ("ar-verb", "he-verb"):
             form = args.get("1", "")
             if form:
+                # ar-verb packs the form with paradigm flags (e.g.
+                # "I/a~u.ipass.vn:…"); keep only the leading form token.
+                if name == "ar-verb":
+                    form = _AR_VERB_FORM.split(form, 1)[0]
                 wd.verb_forms.add(form)
         gn_arg = _HEAD_GENDER_NUMBER_ARGS.get(name)
         if gn_arg:
@@ -504,7 +525,9 @@ def _process_semitic_entry(
             base = fof.get("word", "")
             if base:
                 wd.lemma_of.add(normalize_self(base))
-                if "noun-from-verb" in tags:
+                # A participle / verbal noun points at the verb it derives from;
+                # both feed merge-time reduction to that verb base.
+                if "noun-from-verb" in tags or "participle" in tags:
                     wd.derived_from.add(normalize_self(base))
                 # A "plural/dual of X" form points at its singular base; a
                 # "feminine of X" form points at its masculine base.
@@ -512,6 +535,20 @@ def _process_semitic_entry(
                     wd.singular_of.add(normalize_self(base))
                 if "feminine" in tags:
                     wd.masculine_of.add(normalize_self(base))
+        # Templatic deverbal category (drives merge-time preserve/reduce).
+        if "participle" in tags:
+            wd.derivation.add("passive-participle" if "passive" in tags
+                              else "active-participle")
+            # A participle sense may name its verb's form (form-i … form-x);
+            # that's the only place the deverbal lexeme carries its stem.
+            for t in tags:
+                if t.startswith("form-") and t[5:] and set(t[5:]) <= set("ivx"):
+                    wd.verb_forms.add(t[5:].upper())
+        if "noun-from-verb" in tags or any(
+                g.lower().startswith("verbal noun of") for g in glosses):
+            wd.derivation.add("verbal-noun")
+        if any(_INSTANCE_GLOSS.search(g) for g in glosses):
+            wd.derivation.add("instance-noun")
         for gloss in glosses:
             if not _is_defective_gloss(gloss):
                 wd.glosses.add(gloss)
@@ -1320,10 +1357,12 @@ def main():
         """Find the (ar_sense, he_sense) pair with highest dot product."""
         ar_senses = _get_senses("ar", ar_canonical, ar_norm)
         he_senses = _get_senses("he", he_canonical, he_norm)
-        # Prefer content senses over "defective spelling of X" redirects, but
-        # keep the redirect if it's all a bridge form has, so the row survives.
-        ar_senses = [s for s in ar_senses if not _is_defective_gloss(s["gloss"])] or ar_senses
-        he_senses = [s for s in he_senses if not _is_defective_gloss(s["gloss"])] or he_senses
+        # Never rank on a "defective spelling of X" redirect: it's a pointer
+        # string (with a foreign word in it), not a meaning, and the sense
+        # embedding model isn't multilingual — it can't interpret it.  Drop
+        # those senses; if a side has none left, there's no real match.
+        ar_senses = [s for s in ar_senses if not _is_defective_gloss(s["gloss"])]
+        he_senses = [s for s in he_senses if not _is_defective_gloss(s["gloss"])]
         if not ar_senses or not he_senses:
             return None
 
@@ -1404,18 +1443,24 @@ def main():
         return canonical, roman
 
     def _morph_reconstruct(
-        ar_canonical: str, ar_roman: str, ar_wd: WordData | None,
-        he_canonical: str, he_roman: str, he_wd: WordData | None,
+        ar_canonical: str, ar_roman: str, ar_ipa: str, ar_wd: WordData | None,
+        he_canonical: str, he_roman: str, he_ipa: str, he_wd: WordData | None,
         notes: list[str],
-    ) -> "Word":
+    ) -> tuple[Word, PansemiticWord, str | None, str | None]:
         """Morphology-aware surface merge (the no-shared-source path).
 
-        Splits compounds, strips asymmetric morphology per plan_merge, then
-        reconstructs word-by-word; multi-word ancestors are space-joined."""
+        Analyzes each side into its morphological structure (script/roman for
+        detection, IPA for the working representation) and hands the pair to
+        morphology.merge, which strips asymmetric morphology in phoneme space,
+        reconstructs word-by-word, and re-applies shared morphology.  Returns
+        the (bare-stem) ancestor, the pansemitic form with shared morphology
+        re-applied, and the shared verb stem / derivation category (the latter
+        two None unless both sides share a deverbal category)."""
         ar_phrase = analyze_phrase(
-            "ar", ar_canonical, ar_roman,
+            "ar", ar_canonical, ar_roman, ar_ipa,
             pos=ar_wd.pos if ar_wd else frozenset(),
             verb_forms=ar_wd.verb_forms if ar_wd else frozenset(),
+            derivation=ar_wd.derivation if ar_wd else frozenset(),
             number=ar_wd.number if ar_wd else frozenset(),
             gender=ar_wd.gender if ar_wd else frozenset(),
             derived_from=ar_wd.derived_from if ar_wd else frozenset(),
@@ -1423,24 +1468,20 @@ def main():
             masculine_of=ar_wd.masculine_of if ar_wd else frozenset(),
         )
         he_phrase = analyze_phrase(
-            "he", he_canonical, he_roman,
+            "he", he_canonical, he_roman, he_ipa,
             pos=he_wd.pos if he_wd else frozenset(),
             verb_forms=he_wd.verb_forms if he_wd else frozenset(),
+            derivation=he_wd.derivation if he_wd else frozenset(),
             number=he_wd.number if he_wd else frozenset(),
             gender=he_wd.gender if he_wd else frozenset(),
             derived_from=he_wd.derived_from if he_wd else frozenset(),
             singular_of=he_wd.singular_of if he_wd else frozenset(),
             masculine_of=he_wd.masculine_of if he_wd else frozenset(),
         )
-        plan = plan_merge(ar_phrase, he_phrase, _base_romanization)
-        notes.extend(plan.notes)
-        parts: list[str] = []
-        for pair in plan.word_pairs:
-            merged = reconstruct_ancestor(pair.ar_roman, pair.he_roman)
-            # Re-attach shared morphology stripped for the stem merge
-            # (shared definiteness as hal-, shared nisba as -i).
-            parts.append(pair.prefix + merged.word + pair.suffix)
-        return ReconstructedSemProWord(word=" ".join(parts))
+        result = merge(ar_phrase, he_phrase, _base_romanization)
+        notes.extend(result.notes)
+        return (result.ancestor, result.pansemitic,
+                result.verb_stem, result.derivation)
 
     # ── Build output ─────────────────────────────────────────────
     print(f"\nWriting {OUTPUT_FILE} …")
@@ -1523,6 +1564,7 @@ def main():
                 romanization_tier_obs[key].uses += 1
             lca_sources.append(src)
         morph_notes: list[str] = []
+        pansemitic_word: "PansemiticWord | None" = None
         try:
             if lca_sources:
                 ancestor = reconstruct_ancestor(
@@ -1530,7 +1572,7 @@ def main():
                     ancestor=word_from_sharedsource(lca_sources[0]),
                 )
                 # Ancestors that ARE Semitic surface lexemes bypass
-                # plan_merge, so apply the article morphology here: strip,
+                # merge, so apply the article morphology here: strip,
                 # or preserve shared definiteness as "hal " when the Hebrew
                 # surface is also definite.
                 src_lang = lca_sources[0].lang
@@ -1548,15 +1590,20 @@ def main():
                             morph_notes.append(
                                 f"{src_lang}: definite article stripped (shared-source ancestor)")
             else:
-                ancestor = _morph_reconstruct(
-                    ar_canonical, ar_roman, ar_wd,
-                    he_canonical, he_roman, he_wd,
+                (ancestor, pansemitic_word,
+                 entry.verb_stem, entry.derivation) = _morph_reconstruct(
+                    ar_canonical, ar_roman, ar_ipa or "", ar_wd,
+                    he_canonical, he_roman, he_ipa or "", he_wd,
                     morph_notes,
                 )
             entry.ancestor = str(ancestor)
             if morph_notes:
                 entry.morphology = "; ".join(morph_notes)
-            pansemitic_word = PansemiticWord.from_word(ancestor)
+            # The morphology path produces its own pansemitic form (shared
+            # affixes re-applied post-reduction); the shared-source path reduces
+            # the resolved ancestor lexeme directly.
+            if pansemitic_word is None:
+                pansemitic_word = PansemiticWord.from_word(ancestor)
             pansemitic = pansemitic_word.to_protosemitic_convention()
             if pansemitic:
                 entry.pansemitic_form = pansemitic
