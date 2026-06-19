@@ -39,7 +39,7 @@ import re
 import statistics
 import sys
 import time
-from collections import defaultdict
+from collections import Counter, defaultdict
 from concurrent.futures import ProcessPoolExecutor, as_completed
 from pathlib import Path
 from typing import Any, Iterator, Self
@@ -50,7 +50,11 @@ import orjson
 from loss import LossBreakdown, ipa_distance, triplet_loss_breakdown
 from kaikki import PartialSource, SharedSource, canonical_from_entry, _looks_romanized
 from morphology import (
-    Layer, analyze_phrase, merge, morphology_for,
+    Layer, MergeTrace, analyze_phrase, apply_verb_stem_ipa, merge, morphology_for,
+)
+from protoroot import (
+    arabic_root_radicals, hebrew_root_radicals, proto_root, stem_radicals,
+    surface_radicals,
 )
 from reconstruction import (
     ArabicWord,
@@ -136,6 +140,19 @@ _INSTANCE_GLOSS = re.compile(
     r"\b(noun of instance|nomen vicis|single (?:act|instance|occurrence) of)\b",
     re.IGNORECASE)
 
+# Sense-level category naming the lexeme's consonantal root, e.g.
+# "Arabic terms belonging to the root ح ل ل" / "Hebrew terms belonging to the
+# root ח־ת־ל".  The radicals are separated by spaces (Arabic) or maqaf U+05BE /
+# hyphen (Hebrew); _normalize_root collapses them to a bare consonant string so
+# the same root keys identically regardless of separator.
+_ROOT_CATEGORY = re.compile(r"belonging to the root\s+(\S.*)$")
+_ROOT_SEPARATORS = re.compile(r"[\s־‏\-]+")
+
+
+def _normalize_root(raw: str) -> str:
+    """Collapse a root-category radical string to a bare consonant key."""
+    return _ROOT_SEPARATORS.sub("", raw).strip()
+
 
 # Wiktionary editors interchangeably use U+02BF/U+02BB for ayin and U+02BE for
 # alif in romanized citations; collapse to the project's convention (U+0295,
@@ -165,6 +182,9 @@ class WordData:
     lemma_of: set[str] = field(default_factory=set)
     borrow_sources: set[tuple[str, str]] = field(default_factory=set)
     pos: set[str] = field(default_factory=set)
+    # Consonantal root(s) from sense categories, normalized (separator-stripped),
+    # e.g. "حلل" / "חתל".  Drives root-family grouping in the output lexicon.
+    roots: set[str] = field(default_factory=set)
     verb_forms: set[str] = field(default_factory=set)  # ar form (I..X) / he binyan
     # Templatic deverbal categories (morphology.Derivation values: active-
     # participle, passive-participle, verbal-noun, instance-noun).
@@ -205,6 +225,7 @@ class WordData:
         self.has_content_sense |= other.has_content_sense
         self.has_defective_sense |= other.has_defective_sense
         self.pos |= other.pos
+        self.roots |= other.roots
         self.verb_forms |= other.verb_forms
         self.derivation |= other.derivation
         self.number |= other.number
@@ -342,6 +363,9 @@ class LangEntry:
     glosses: list[str]
     wiktionary: str
     ipa: str | None = None  # native kaikki IPA if available, else derived from roman
+    roots: list[str] = field(default_factory=list)  # consonantal root tag(s)
+    pos: list[str] = field(default_factory=list)     # part(s) of speech
+    stems: list[str] = field(default_factory=list)   # verb stem(s): G, D, tD, Š, N, …
 
 @dataclass
 class CognateEntry:
@@ -351,7 +375,7 @@ class CognateEntry:
     match_layers: list[str]
     shared_borrowing_sources: dict[str, tuple[int, int]] | None = None
     best_sense_match: SenseMatch | None = None
-    morphology: str | None = None  # merge-time normalizations applied (audit)
+    morphology: list[MergeTrace] | None = None  # per-word merge normalization trace
     verb_stem: str | None = None   # Proto-Semitic stem of a shared deverbal form
     derivation: str | None = None  # shared templatic category (participle, …)
     ancestor: str | None = None
@@ -398,6 +422,32 @@ SEMITIC_LANGS = frozenset(SEMITIC_LANG_CONFIG)
 def _is_defective_gloss(gloss: str) -> bool:
     """True for a "defective spelling of X" redirect gloss (any capitalization)."""
     return "defective spelling of" in gloss.lower()
+
+
+def _word_stems(lang: str, wd: "WordData | None") -> list[str]:
+    """Proto-Semitic verb stem label(s) (G, D, tD, Š, N, …) for a word's
+    binyan/form tags — the binyan-matching key for verb lexemes."""
+    if wd is None or not wd.verb_forms:
+        return []
+    morph = morphology_for(lang)
+    if morph is None:
+        return []
+    return sorted({s for f in wd.verb_forms if (s := morph.verb_stem(f)) is not None})
+
+
+# Ancestors for which binyan (verb-stem) re-application is meaningful: the
+# Semitic family only (Proto-Semitic and Semitic donor languages).  Mirrors the
+# Semitic-source set in reconstruction.PansemiticWord.from_word.
+SEMITIC_ANCESTOR_LANGS = frozenset({
+    "sem-pro", "sem-wes-pro", "recon-sem-pro", "ar", "he", "akk", "arc", "syc"})
+
+
+def _shared_verb_stem(ar_wd: "WordData | None", he_wd: "WordData | None") -> str | None:
+    """The derived Proto-Semitic verb stem (non-G) both sides share, if any —
+    e.g. Arabic form II + Hebrew piel → D.  Used to re-apply binyan on the
+    shared-source reconstruction path."""
+    shared = (set(_word_stems("ar", ar_wd)) & set(_word_stems("he", he_wd))) - {"G"}
+    return sorted(shared)[0] if shared else None
 
 
 def _process_semitic_entry(
@@ -504,6 +554,12 @@ def _process_semitic_entry(
     for sense in entry.get("senses", []):
         tags = sense.get("tags") or []
         glosses = sense.get("glosses") or []
+        for cat in sense.get("categories", []) or []:
+            m = _ROOT_CATEGORY.search(cat.get("name", ""))
+            if m:
+                root = _normalize_root(m.group(1))
+                if root:
+                    wd.roots.add(root)
         # A defective-spelling redirect carries no etymology of its own — it
         # just points at its full-spelling page.  Record that page as a lemma
         # target (so lemma promotion re-anchors the pair there) and skip its
@@ -1065,6 +1121,203 @@ def _tiers_differ(obs: RomanizationTierObservation) -> bool:
     return len(available) >= 2 and len(set(available)) > 1
 
 
+# ── Root-anchored lexicon assembly ───────────────────────────────────────
+# A lexeme groups all cognate-pair evidence for one derived word and surfaces a
+# single representative reconstruction.  Lexemes are indexed under the Arabic
+# root (the spine — robust to a Hebrew partner lacking its own root tag).  Verbs
+# are keyed by (root, stem) so each binyan is its own paradigm slot and the
+# representative is drawn from a *same-stem* pair when one exists (strict binyan
+# matching, falling back to the best cross-stem pair otherwise); nominals are
+# keyed by the Arabic lemma.  The representative is the highest sense-similarity
+# pair in its pool; the rest are retained as evidence.
+
+def _entry_is_verb(e: CognateEntry) -> bool:
+    return "verb" in e.arabic.pos
+
+
+def _entry_ar_stem(e: CognateEntry) -> str:
+    """Arabic verb stem (binyan) label; defaults to G for an untagged verb."""
+    return e.arabic.stems[0] if e.arabic.stems else "G"
+
+
+def _lexeme_subkey(e: CognateEntry) -> tuple[str, str, str]:
+    """Within-root lexeme key: (Arabic lemma, POS, layer).
+
+    Verbs split by stem/binyan (its layer) — distinct binyanim are distinct
+    lexemes.  Nominals split by the matched sense's POS, so one Arabic lemma
+    that is both noun and adjective (e.g. حَدِيث 'hadith'/'new') yields separate
+    'news' (noun) and 'new' (adj) entries that genuinely differ in meaning."""
+    if _entry_is_verb(e):
+        return (e.arabic.canonical, "verb", _entry_ar_stem(e))
+    pos = e.best_sense_match.arabic_pos if e.best_sense_match else ""
+    return (e.arabic.canonical, pos, "")
+
+
+def _entry_similarity(e: CognateEntry) -> float:
+    return e.best_sense_match.similarity if e.best_sense_match else -1.0
+
+
+def _entry_loss(e: CognateEntry) -> float:
+    """Triplet (form-fit) loss; +inf when unscored, so scored beats unscored."""
+    return e.loss.joint if e.loss else float("inf")
+
+
+def _he_effective_stems(e: CognateEntry) -> list[str]:
+    """Hebrew partner's verb stem(s), treating an untagged Hebrew verb as G —
+    many qal base verbs carry no binyan tag, but derived stems (D/tD/Š/N) always
+    do, so this keeps G-G matching robust without admitting a derived stem."""
+    if e.hebrew.stems:
+        return e.hebrew.stems
+    return ["G"] if "verb" in e.hebrew.pos else []
+
+
+# Sense-similarity margin within which the representative is chosen on form
+# quality (reconstruction loss) instead — keeps meaning primary while avoiding
+# a morphologically messy partner that scores a hair higher (قَدِيم via the
+# nisba form قَדْמוֹנִי → "qadmimi" instead of via قָדוּם → the clean "qadim").
+_REP_SIM_MARGIN = 0.05
+
+
+def _pick_representative(
+    entries: list[CognateEntry], subkey: tuple[str, str, str],
+) -> CognateEntry | None:
+    """Representative pair for a lexeme slot.
+
+    Verbs match strictly by stem (binyan): the representative must come from a
+    same-stem pair (D-D, tD-tD, Š-Š, …; an untagged Hebrew verb counts as G).
+    A verb with no same-stem partner gets no headword — its cross-stem pairs
+    are left in the flat dump rather than merged across binyanim (which would
+    pair e.g. an Arabic D with a Hebrew Š).
+
+    Within the eligible pool the highest sense similarity wins, but ties within
+    _REP_SIM_MARGIN are broken on form quality (lowest reconstruction loss),
+    then on similarity — so a near-equal but cleaner reconstruction is preferred."""
+    if subkey[1] == "verb":
+        stem = subkey[2]
+        pool = [e for e in entries if stem in _he_effective_stems(e)]
+        if not pool:
+            return None
+    else:
+        pool = entries
+    top_sim = max(_entry_similarity(e) for e in pool)
+    contenders = [e for e in pool if _entry_similarity(e) >= top_sim - _REP_SIM_MARGIN]
+    return min(contenders, key=lambda e: (_entry_loss(e), -_entry_similarity(e)))
+
+
+def _evidence_dict(e: CognateEntry) -> dict[str, Any]:
+    """Compact record of a supporting cognate pair under a lexeme."""
+    bm = e.best_sense_match
+    return {
+        "arabic": e.arabic.canonical,
+        "arabic_roman": e.arabic.roman,
+        "hebrew": e.hebrew.canonical,
+        "hebrew_roman": e.hebrew.roman,
+        "pansemitic": e.pansemitic_form,
+        "arabic_stem": e.arabic.stems or None,
+        "hebrew_stem": e.hebrew.stems or None,
+        "similarity": bm.similarity if bm else None,
+        "arabic_meaning": bm.arabic_sense if bm else None,
+        "hebrew_meaning": bm.hebrew_sense if bm else None,
+        "layers": e.match_layers,
+    }
+
+
+def _trace_stems(e: CognateEntry) -> tuple[str | None, str | None]:
+    """The single-word merge-trace bare stems (ar, he), if this pair took the
+    morphology path and is one component — these have the affixes already
+    stripped, so they beat the raw surface for radical extraction."""
+    if e.morphology and len(e.morphology) == 1:
+        t = e.morphology[0]
+        return t.ar.stem, t.he.stem
+    return None, None
+
+
+def _entry_proto_root(e: CognateEntry) -> tuple[str, str] | None:
+    """(ipa_key, latin_label) Proto-Semitic root for a pair, jointly
+    reconstructed from each side's radicals.  Radical source per side: the root
+    tag when present (Arabic phonology, Hebrew script); else the merge-trace
+    bare stem (affixes already stripped); else the raw surface skeleton."""
+    ar_stem, he_stem = _trace_stems(e)
+    if e.arabic.roots:
+        ar_rad = arabic_root_radicals(e.arabic.roots[0])
+    elif ar_stem:
+        ar_rad = stem_radicals(ar_stem)
+    else:
+        ar_rad = surface_radicals(ArabicWord, e.arabic.roman)
+    if e.hebrew.roots:
+        he_rad = hebrew_root_radicals(e.hebrew.roots[0])
+    elif he_stem:
+        he_rad = stem_radicals(he_stem)
+    else:
+        he_rad = surface_radicals(HebrewWord, e.hebrew.roman)
+    return proto_root(ar_rad, he_rad)
+
+
+def _build_lexicon(
+    results: list[CognateEntry], threshold: float,
+) -> dict[str, Any]:
+    """Group reconstructed pairs into the Proto-Semitic-root lexicon (see header).
+
+    Pairs are first collapsed into lexemes keyed by (Arabic lemma, POS, stem);
+    each lexeme's representative is then assigned a Proto-Semitic root computed
+    by jointly reconstructing both sides' radicals (see protoroot.proto_root).
+    The lexicon is indexed by that root — language-neutral, computed per pair
+    (so no transitive over-merge), and placing tag-less Arabic lemmas (بَطَّلَ)
+    via their Hebrew partner's radicals.  Lexemes whose root can't be computed
+    (no radicals either side) fall to a flat 'standalone' list."""
+    usable = [e for e in results
+              if e.pansemitic_form and e.best_sense_match is not None]
+    lex_groups: dict[tuple[str, str, str], list[CognateEntry]] = defaultdict(list)
+    for e in usable:
+        lex_groups[_lexeme_subkey(e)].append(e)
+
+    root_lexemes: dict[str, list[dict[str, Any]]] = defaultdict(list)
+    root_labels: dict[str, Counter] = defaultdict(Counter)
+    root_ar_tags: dict[str, set[str]] = defaultdict(set)
+    root_he_tags: dict[str, set[str]] = defaultdict(set)
+    standalone_out: list[dict[str, Any]] = []
+    for subkey, entries in lex_groups.items():
+        rep = _pick_representative(entries, subkey)
+        if rep is None or _entry_similarity(rep) <= threshold:
+            continue
+        lexeme = rep.to_dict()
+        lexeme["stem"] = subkey[2] if subkey[1] == "verb" else None
+        lexeme["evidence"] = [
+            _evidence_dict(e)
+            for e in sorted(entries, key=_entry_similarity, reverse=True)
+            if e is not rep
+        ]
+        pr = _entry_proto_root(rep)
+        if pr is None:
+            lexeme["proto_root"] = None
+            standalone_out.append(lexeme)
+            continue
+        key, label = pr
+        lexeme["proto_root"] = label
+        root_lexemes[key].append(lexeme)
+        root_labels[key][label] += 1
+        root_ar_tags[key].update(rep.arabic.roots)
+        root_he_tags[key].update(rep.hebrew.roots)
+
+    roots_out: list[dict[str, Any]] = []
+    for key, lexemes in root_lexemes.items():
+        lexemes.sort(key=lambda L: (
+            0 if L.get("stem") else 1, L.get("stem") or "",
+            L.get("pansemitic_form") or ""))
+        roots_out.append({
+            "proto_root": root_labels[key].most_common(1)[0][0],
+            "proto_root_ipa": key,
+            "arabic_roots": sorted(root_ar_tags[key]),
+            "hebrew_roots": sorted(root_he_tags[key]),
+            "lexeme_count": len(lexemes),
+            "lexemes": lexemes,
+        })
+    roots_out.sort(key=lambda r: (r["proto_root"], r["proto_root_ipa"]))
+    standalone_out.sort(key=lambda L: L.get("pansemitic_form") or "")
+
+    return {"roots": roots_out, "standalone": standalone_out}
+
+
 def _print_loss_statistics(results: list[CognateEntry]) -> None:
     losses = [entry.loss for entry in results if entry.loss is not None]
     skipped = len(results) - len(losses)
@@ -1169,6 +1422,11 @@ def main():
 
     ar_lemma_count = sum(1 for wd in ar_words.values() if wd.lemma_of)
     he_lemma_count = sum(1 for wd in he_words.values() if wd.lemma_of)
+
+    ar_root_count = sum(1 for wd in ar_words.values() if wd.roots)
+    he_root_count = sum(1 for wd in he_words.values() if wd.roots)
+    print(f"  Root tags: ar {ar_root_count}/{len(ar_words)} words, "
+          f"he {he_root_count}/{len(he_words)} words")
 
     print(f"\n  Arabic:  {len(ar2he_cog)} cognate refs, "
           f"{ar_lemma_count} lemma links, {len(ar_borrow)} borrow/etym sources")
@@ -1381,6 +1639,58 @@ def main():
             similarity=round(float(dots[best]), 4),
         )
 
+    # ── Root-family alignment ────────────────────────────────────
+    # A seed pair whose both sides carry a root tag establishes an
+    # (ar_root, he_root) correspondence; we then expand that correspondence to
+    # the full family — every Arabic word of ar_root × every Hebrew word of
+    # he_root — keeping the new combinations whose best sense match clears the
+    # similarity threshold.  Root co-membership alone over-generates, so the
+    # gloss embeddings prune same-root/different-meaning false friends.
+    print("\nAligning root families …")
+    t0 = time.monotonic()
+    root_to_ar: dict[str, list[str]] = defaultdict(list)
+    root_to_he: dict[str, list[str]] = defaultdict(list)
+    for c, wd in ar_words.items():
+        for r in wd.roots:
+            root_to_ar[r].append(c)
+    for c, wd in he_words.items():
+        for r in wd.roots:
+            root_to_he[r].append(c)
+
+    correspondences: set[tuple[str, str]] = set()
+    seed_with_roots = 0
+    for (ar_c, he_c) in list(pair_data):
+        ar_wd, he_wd = ar_words.get(ar_c), he_words.get(he_c)
+        if ar_wd and he_wd and ar_wd.roots and he_wd.roots:
+            seed_with_roots += 1
+            for ar_r in ar_wd.roots:
+                for he_r in he_wd.roots:
+                    correspondences.add((ar_r, he_r))
+
+    family_kept = 0
+    for (ar_r, he_r) in correspondences:
+        for ar_c in root_to_ar.get(ar_r, ()):
+            ar_wd = ar_words.get(ar_c)
+            ar_norm = ar_wd.norm if ar_wd else ar_c
+            for he_c in root_to_he.get(he_r, ()):
+                if (ar_c, he_c) in pair_data:
+                    continue  # already matched by a stronger layer
+                he_wd = he_words.get(he_c)
+                he_norm = he_wd.norm if he_wd else he_c
+                sm = _best_sense_pair(ar_c, ar_norm, he_c, he_norm)
+                if sm is None or sm.similarity < GOOD_SIMILARITY_THRESHOLD:
+                    continue
+                pair = _ensure_pair(ar_c, he_c)
+                if pair is None:
+                    continue
+                if "root_family" not in pair.layers:
+                    pair.layers.append("root_family")
+                    family_kept += 1
+    print(f"  {len(correspondences)} root correspondences from "
+          f"{seed_with_roots} rooted seeds; {family_kept} family pairs kept "
+          f"({len(pair_data)} pairs total)")
+    print(f"  ⏱ {time.monotonic() - t0:.1f}s")
+
     def _surface_source(lang: str, canonical: str, norm: str, roman: str) -> SharedSource:
         """Build a SharedSource for the Arabic/Hebrew surface form itself."""
         partial = kaikki_partials.get((lang, canonical)) or kaikki_partials.get((lang, norm))
@@ -1467,17 +1777,15 @@ def main():
     def _morph_reconstruct(
         ar_canonical: str, ar_roman: str, ar_ipa: str, ar_wd: WordData | None,
         he_canonical: str, he_roman: str, he_ipa: str, he_wd: WordData | None,
-        notes: list[str],
-    ) -> tuple[Word, PansemiticWord, str | None, str | None]:
+    ) -> tuple[Word, PansemiticWord, str | None, str | None, list[MergeTrace]]:
         """Morphology-aware surface merge (the no-shared-source path).
 
         Analyzes each side into its morphological structure (script/roman for
         detection, IPA for the working representation) and hands the pair to
-        morphology.merge, which strips asymmetric morphology in phoneme space,
-        reconstructs word-by-word, and re-applies shared morphology.  Returns
-        the (bare-stem) ancestor, the pansemitic form with shared morphology
-        re-applied, and the shared verb stem / derivation category (the latter
-        two None unless both sides share a deverbal category)."""
+        morphology.merge, which strips every layer per-side in phoneme space,
+        reconstructs word-by-word, and re-applies the shared layers.  Returns the
+        (bare-stem) ancestor, the pansemitic form, the shared verb stem /
+        derivation category, and the per-word merge trace."""
         ar_phrase = analyze_phrase(
             "ar", ar_canonical, ar_roman, ar_ipa,
             pos=ar_wd.pos if ar_wd else frozenset(),
@@ -1501,9 +1809,8 @@ def main():
             masculine_of=he_wd.masculine_of if he_wd else frozenset(),
         )
         result = merge(ar_phrase, he_phrase, _base_romanization, _component_meta)
-        notes.extend(result.notes)
         return (result.ancestor, result.pansemitic,
-                result.verb_stem, result.derivation)
+                result.verb_stem, result.derivation, result.trace)
 
     # ── Build output ─────────────────────────────────────────────
     print(f"\nWriting {OUTPUT_FILE} …")
@@ -1540,6 +1847,9 @@ def main():
                 glosses=sorted(ar_wd.glosses if ar_wd else []),
                 wiktionary=_WIKT + quote(ar_norm) + "#Arabic",
                 ipa=ar_ipa,
+                roots=sorted(ar_wd.roots) if ar_wd else [],
+                pos=sorted(ar_wd.pos) if ar_wd else [],
+                stems=_word_stems("ar", ar_wd),
             ),
             hebrew=LangEntry(
                 canonical=he_canonical,
@@ -1547,6 +1857,9 @@ def main():
                 glosses=sorted(he_wd.glosses if he_wd else []),
                 wiktionary=_WIKT + quote(he_norm) + "#Hebrew",
                 ipa=he_ipa,
+                roots=sorted(he_wd.roots) if he_wd else [],
+                pos=sorted(he_wd.pos) if he_wd else [],
+                stems=_word_stems("he", he_wd),
             ),
             match_layers=pair.layers,
             shared_borrowing_sources=None,  # filled in below after LCA
@@ -1585,7 +1898,6 @@ def main():
             else:
                 romanization_tier_obs[key].uses += 1
             lca_sources.append(src)
-        morph_notes: list[str] = []
         pansemitic_word: "PansemiticWord | None" = None
         try:
             if lca_sources:
@@ -1606,26 +1918,30 @@ def main():
                         he_surface = analyze_phrase("he", he_canonical, he_roman)
                         if all(Layer.DEFINITE in w.layers for w in he_surface.words):
                             ancestor = type(ancestor)(word="hal " + stripped)
-                            morph_notes.append("shared definite article → hal (shared-source ancestor)")
                         else:
                             ancestor = type(ancestor)(word=stripped)
-                            morph_notes.append(
-                                f"{src_lang}: definite article stripped (shared-source ancestor)")
             else:
-                (ancestor, pansemitic_word,
-                 entry.verb_stem, entry.derivation) = _morph_reconstruct(
+                (ancestor, pansemitic_word, entry.verb_stem,
+                 entry.derivation, entry.morphology) = _morph_reconstruct(
                     ar_canonical, ar_roman, ar_ipa or "", ar_wd,
                     he_canonical, he_roman, he_ipa or "", he_wd,
-                    morph_notes,
                 )
             entry.ancestor = str(ancestor)
-            if morph_notes:
-                entry.morphology = "; ".join(morph_notes)
             # The morphology path produces its own pansemitic form (shared
             # affixes re-applied post-reduction); the shared-source path reduces
             # the resolved ancestor lexeme directly.
             if pansemitic_word is None:
                 pansemitic_word = PansemiticWord.from_word(ancestor)
+                # Shared-source verbs bypass merge, so re-apply a shared derived
+                # binyan here (Semitic-ancestor-gated — binyan is a Semitic
+                # system).  Both sides must share the same non-G stem, e.g.
+                # Arabic form II + Hebrew piel → D gemination (baṭal → baṭṭal).
+                shared_stem = _shared_verb_stem(ar_wd, he_wd)
+                if (shared_stem and " " not in pansemitic_word.word
+                        and lca_sources[0].lang in SEMITIC_ANCESTOR_LANGS):
+                    pansemitic_word = PansemiticWord.from_ipa(
+                        apply_verb_stem_ipa(pansemitic_word.word, shared_stem))
+                    entry.verb_stem = shared_stem
             pansemitic = pansemitic_word.to_protosemitic_convention()
             if pansemitic:
                 entry.pansemitic_form = pansemitic
@@ -1663,7 +1979,7 @@ def main():
     print(f"Writing {CSV_FILE} …")
     with open(CSV_FILE, "w", encoding="utf-8", newline="") as f:
         writer = csv.writer(f)
-        writer.writerow(["arabic", "arabic_romanization", "hebrew", "hebrew_romanization", "pansemitic", "layers", "morphology"])
+        writer.writerow(["arabic", "arabic_romanization", "hebrew", "hebrew_romanization", "pansemitic", "layers"])
         for entry in results:
             writer.writerow([
                 entry.arabic.canonical,
@@ -1672,35 +1988,46 @@ def main():
                 entry.hebrew.roman,
                 entry.pansemitic_form or "",
                 ";".join(entry.match_layers),
-                entry.morphology or "",
             ])
 
-    good_results = [
-        e for e in results
-        if e.pansemitic_form
-        and e.best_sense_match is not None
-        and e.best_sense_match.similarity > GOOD_SIMILARITY_THRESHOLD
-    ]
-    print(f"Writing {GOOD_OUTPUT_FILE} ({len(good_results)} entries) …")
+    lexicon = _build_lexicon(results, GOOD_SIMILARITY_THRESHOLD)
+    n_lexemes = sum(len(r["lexemes"]) for r in lexicon["roots"])
+    n_evidence = sum(len(L["evidence"]) for r in lexicon["roots"] for L in r["lexemes"])
+    print(f"Writing {GOOD_OUTPUT_FILE} "
+          f"({len(lexicon['roots'])} proto-roots, {n_lexemes} rooted lexemes, "
+          f"{len(lexicon['standalone'])} standalone, {n_evidence} evidence pairs) …")
     with open(GOOD_OUTPUT_FILE, "wb") as f:
-        f.write(orjson.dumps(
-            [e.to_dict() for e in good_results], option=orjson.OPT_INDENT_2,
-        ))
+        f.write(orjson.dumps(lexicon, option=orjson.OPT_INDENT_2))
+
     print(f"Writing {GOOD_CSV_FILE} …")
     with open(GOOD_CSV_FILE, "w", encoding="utf-8", newline="") as f:
         writer = csv.writer(f)
-        writer.writerow(["arabic", "arabic_romanization", "hebrew", "hebrew_romanization", "pansemitic", "arabic_meaning", "hebrew_meaning", "morphology"])
-        for entry in good_results:
-            writer.writerow([
-                entry.arabic.canonical,
-                entry.arabic.roman,
-                entry.hebrew.canonical,
-                entry.hebrew.roman,
-                entry.pansemitic_form or "",
-                entry.best_sense_match.arabic_sense if entry.best_sense_match else "",
-                entry.best_sense_match.hebrew_sense if entry.best_sense_match else "",
-                entry.morphology or "",
-            ])
+        writer.writerow(["proto_root", "arabic_roots", "hebrew_roots", "pos",
+                         "stem", "pansemitic", "arabic", "arabic_romanization",
+                         "hebrew", "hebrew_romanization", "arabic_meaning",
+                         "hebrew_meaning", "evidence_count"])
+
+        def _lex_row(proot: str, ar_roots: str, he_roots: str,
+                     L: dict[str, Any]) -> list[Any]:
+            bm = L.get("best_sense_match") or {}
+            return [
+                proot, ar_roots, he_roots,
+                "/".join(L["arabic"].get("pos") or []),
+                L.get("stem") or "",
+                L.get("pansemitic_form") or "",
+                L["arabic"]["canonical"], L["arabic"].get("roman", ""),
+                L["hebrew"]["canonical"], L["hebrew"].get("roman", ""),
+                bm.get("arabic_sense", ""), bm.get("hebrew_sense", ""),
+                len(L["evidence"]),
+            ]
+
+        for r in lexicon["roots"]:
+            ar_roots = "/".join(r["arabic_roots"])
+            he_roots = "/".join(r["hebrew_roots"])
+            for L in r["lexemes"]:
+                writer.writerow(_lex_row(r["proto_root"], ar_roots, he_roots, L))
+        for L in lexicon["standalone"]:
+            writer.writerow(_lex_row(L.get("proto_root") or "", "", "", L))
 
     tier1_available = sum(1 for obs in romanization_tier_obs.values() if obs.tier1)
     tier2_available = sum(1 for obs in romanization_tier_obs.values() if obs.tier2)
@@ -1715,7 +2042,9 @@ def main():
 
     pansemitic_count = sum(1 for e in results if e.pansemitic_form)
     total_failures = sum(unsupported_langs.values()) + consonant_mismatches + missing_romanizations + empty_ancestors
-    morph_adjusted = sum(1 for e in results if e.morphology)
+    morph_adjusted = sum(
+        1 for e in results if e.morphology
+        and any(t.ar.layers or t.he.layers or t.applied_layers for t in e.morphology))
     print(f"\nDone in {time.monotonic() - t_total:.1f}s total.")
     print(f"  {len(results)} cognate pairs written ({skipped} skipped, no senses)")
     print(f"  {pansemitic_count} pansemitic forms generated")
