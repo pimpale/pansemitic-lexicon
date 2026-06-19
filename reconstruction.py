@@ -1368,7 +1368,7 @@ def get_dialect(pronounciations: list[IpaRealization], ordered_tags: list[str]) 
 # Per-language dialect preference, applied to IpaRealization.tags.  The "*"
 # sentinel in get_dialect accepts any remaining realization as a last resort.
 _DIALECT_PREFERENCES: dict[str, list[str]] = {
-    "he": ["Biblical-Hebrew", "Modern-Israeli-Hebrew", "*"],
+    "he": ["Modern-Israeli-Hebrew", "Biblical-Hebrew", "*"],
     "en": ["General-American", "Received-Pronunciation", "*"],
     # Egyptian period tags are synthesized from sounds[].note in kaikki.py
     # (see _NOTE_TAG_SYNONYMS); the substring "Late Egyptian" also matches

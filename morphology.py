@@ -89,6 +89,13 @@ class Layer(Enum):
     N_PREFIX = "n-prefix"       # N: na-
     CAUSATIVE = "causative"     # Š: ša-
     T_PREFIX = "t-prefix"       # t-stems: ta-
+    # Deverbal templates (non-concatenative): the lexeme is reduced to its verb
+    # root in deep_parse, and a shared category re-applies the pansemitic
+    # root-and-pattern melody (PansemiticMorphology.DEVERBAL_TEMPLATES).
+    ACTIVE_PARTICIPLE = "active-participle"
+    PASSIVE_PARTICIPLE = "passive-participle"
+    VERBAL_NOUN = "verbal-noun"
+    INSTANCE_NOUN = "instance-noun"
 
 
 # Proto-Semitic stem → the set of verbal-derivation layers it decomposes into.
@@ -102,6 +109,9 @@ _STEM_LAYERS: dict[str, frozenset[Layer]] = {
     "tD": frozenset({Layer.T_PREFIX, Layer.GEMINATION}),
 }
 
+# Every verbal-derivation exponent, across all stems (the non-nominal layers).
+_ALL_STEM_LAYERS: frozenset[Layer] = frozenset().union(*_STEM_LAYERS.values())
+
 
 class Derivation(Enum):
     """Templatic deverbal category of a lexeme (non-concatenative, so detected
@@ -113,14 +123,24 @@ class Derivation(Enum):
     INSTANCE_NOUN = "instance-noun"
 
 
-# Templatic categories whose vowel melody is data: a shared one is preserved by
-# merging surfaces (the deepest lossless layer), never reduced to a root.
+# Priority among co-occurring templatic categories (a lexeme usually carries
+# exactly one).
 _DEVERBAL_PRIORITY = (
     Derivation.ACTIVE_PARTICIPLE,
     Derivation.PASSIVE_PARTICIPLE,
     Derivation.VERBAL_NOUN,
     Derivation.INSTANCE_NOUN,
 )
+
+# A deverbal lexeme is reduced to its verb root in deep_parse and the category
+# carried as a re-appliable Layer (so a *shared* category re-applies the
+# pansemitic template, and an asymmetric one is dropped like any other layer).
+_DERIVATION_LAYER: dict[Derivation, Layer] = {
+    Derivation.ACTIVE_PARTICIPLE: Layer.ACTIVE_PARTICIPLE,
+    Derivation.PASSIVE_PARTICIPLE: Layer.PASSIVE_PARTICIPLE,
+    Derivation.VERBAL_NOUN: Layer.VERBAL_NOUN,
+    Derivation.INSTANCE_NOUN: Layer.INSTANCE_NOUN,
+}
 
 
 @dataclass
@@ -189,10 +209,38 @@ class MergeResult:
     derivation: str | None = None
 
 
+@dataclass
+class ParsedWord:
+    """One component word parsed as deep as it can directly be: ``stem_ipa`` is
+    the bare reconstruction stem with *every* detected layer already stripped —
+    the definite article, the suffixal nominal layers, finite verb-stem
+    exponents, and (reduced to the verb root) deverbal templates — and ``layers``
+    records what was removed (deverbal categories carried as their Layer).
+
+    The merge re-applies only the layers an aligned pair *shares* (the set
+    intersection); asymmetric layers were already stripped and are simply
+    dropped.  ``phrase`` is the single-component AnalyzedPhrase, the source of
+    pos/gender for the framing notes and feminine-plural marking."""
+    stem_ipa: str
+    phrase: AnalyzedPhrase
+    layers: set[Layer] = field(default_factory=set)
+    used_cited: set[Layer] = field(default_factory=set)  # layers a cited base resolved
+    num_value: str | None = None          # "dual"/"plural" detected (for audit notes)
+    verb_note: str | None = None          # finite verb-stem synth note (asymmetric audit)
+    notes: list[str] = field(default_factory=list)
+
+
 # Looks up the (canonical, romanization) of a base lexeme in the caller's
 # word index, given (lang, normalized base candidates, preferred POS set —
 # so a nominal base beats a verb homograph and vice-versa).
 BaseLookup = Callable[[str, frozenset[str], frozenset[str]], tuple[str, str] | None]
+
+# Looks up a component word's lexeme-level metadata (the analyze_phrase kwargs:
+# pos, verb_forms, derivation, number, gender, derived_from, singular_of,
+# masculine_of) by (lang, script token), so multi-word phrases can be dispatched
+# component-by-component with each component's own metadata.  None when the
+# component is not a known lemma (→ concatenative-only fallback).
+MetaLookup = Callable[[str, str], dict | None]
 
 # POS the singular/masculine reductions expect their base to be (a noun-like
 # lexeme), used to outrank verb homographs sharing the consonantal skeleton.
@@ -256,9 +304,6 @@ class LangMorphology:
     # binyan) to the Proto-Semitic stem notation (G, D, Š, N, …); a missing
     # entry leaves the form unnormalized (uncommon stems pass through raw).
     verb_stem_map: ClassVar[dict[str, str]] = {}
-    # Whether a single-word article strip needs the other side of the pair
-    # to also be definite (script evidence alone too weak — Hebrew).
-    article_needs_corroboration: ClassVar[bool] = False
 
     # Inverse of strip_patterns: the surface shape each layer re-attaches as
     # when *producing* a word back from its analyzed stem.  Prefixal layers
@@ -583,10 +628,6 @@ class HebrewMorphology(LangMorphology):
         "pa": "G", "qal": "G", "nif": "N", "ni": "N", "pi": "D", "pu": "Dp",
         "hif": "Š", "hi": "Š", "huf": "Šp", "ho": "Šp", "hit": "tD",
     }
-    # A he/ha-initial word is weak evidence on its own (hifʕil-derived nouns
-    # like הַצָּלָה share the shape) — single-word strips need the other
-    # side of the pair to also be definite.
-    article_needs_corroboration = True
 
     _DAGESH = "ּ"
     _PATACH = "ַ"
@@ -623,7 +664,12 @@ class HebrewMorphology(LangMorphology):
     @classmethod
     def script_definite(cls, script: str) -> bool:
         """Pointed-script test for the definite article: הַ + dagesh forte in
-        the next letter, or הָ/הֶ before a guttural (which cannot take dagesh)."""
+        the next letter, or הָ before a guttural (which cannot take dagesh).
+
+        The segol form הֶ is deliberately NOT accepted: before a guttural it is
+        overwhelmingly the hifʕil prefix (הֶאָרָה, הֶרְגֵּל) or part of a loan
+        (הֶרְץ "Hertz"), not the article — the article's reliable signatures are
+        gemination (dagesh forte) and qamats compensatory lengthening."""
         if len(script) < 4 or script[0] != "ה":
             return False
         vowel = script[1]
@@ -634,7 +680,7 @@ class HebrewMorphology(LangMorphology):
                     return True
                 i += 1
             return False
-        if vowel in (cls._QAMATS, cls._SEGOL):
+        if vowel == cls._QAMATS:
             return script[2] in cls._GUTTURALS
         return False
 
@@ -745,7 +791,32 @@ class PansemiticMorphology(LangMorphology):
     stem_prefixes = {Layer.CAUSATIVE: "ʃa", Layer.N_PREFIX: "na", Layer.T_PREFIX: "ta"}
     _STEM_PREFIX_ORDER = (Layer.CAUSATIVE, Layer.N_PREFIX, Layer.T_PREFIX)
 
+    # Pansemitic deverbal melodies, applied root-and-pattern to the merged
+    # triliteral root (a shared deverbal lexeme is reduced to its verb root in
+    # deep_parse, then re-templatized here).  PROPOSED conventions — this dict is
+    # the single place the deverbal surface shape is defined, so adjust freely.
+    # IPA format strings slotting the three root consonants ({0}{1}{2}); ː = long.
+    DEVERBAL_TEMPLATES: ClassVar[dict[Layer, str]] = {
+        Layer.ACTIVE_PARTICIPLE: "{0}aː{1}i{2}",   # *kaːtib (qātil / fāʕil ~ qōtēl)
+        Layer.PASSIVE_PARTICIPLE: "{0}a{1}uː{2}",  # *katuːb (qatūl, common to ar/he)
+        Layer.VERBAL_NOUN: "{0}a{1}aː{2}",         # *kataːb (neutral maṣdar qatāl)
+        Layer.INSTANCE_NOUN: "{0}a{1}{2}a",        # *katla (faʕla nomen vicis, fem.)
+    }
+    _DEVERBAL_ORDER = (Layer.ACTIVE_PARTICIPLE, Layer.PASSIVE_PARTICIPLE,
+                       Layer.VERBAL_NOUN, Layer.INSTANCE_NOUN)
+
     _PAN_VOWELS = frozenset("aiu")
+
+    @classmethod
+    def _apply_deverbal(cls, stem: str, layer: Layer) -> str | None:
+        """Re-templatize a merged verb root with a deverbal melody.
+
+        Triliteral roots only (the templates assume three radicals); a root with
+        a different consonant count falls back to the bare stem."""
+        cons = [p.tok for p in Phoneme.parse(stem) if isinstance(p, Consonant)]
+        if len(cons) != 3:
+            return None
+        return cls.DEVERBAL_TEMPLATES[layer].format(*cons)
 
     @classmethod
     def _geminate_c2(cls, stem: str) -> str:
@@ -767,13 +838,16 @@ class PansemiticMorphology(LangMorphology):
     def produce_word(cls, word: AnalyzedWord) -> str:
         """Re-attach shared layers to a merged pansemitic stem.
 
-        Order: definite article, then verbal-stem prefix, then the (possibly
-        geminated) stem, then the single nominal suffix.  Number (dual/plural)
-        outranks nisba and bare feminine for that suffix slot, and a feminine
-        stem takes -at rather than -im."""
+        Order: definite article, then verbal-stem prefix, then the stem (a
+        deverbal melody, else possibly geminated), then the single nominal
+        suffix.  Number (dual/plural) outranks nisba and bare feminine for that
+        suffix slot, and a feminine stem takes -at rather than -im."""
         layers = word.layers
         stem = word.roman
-        if Layer.GEMINATION in layers:
+        deverbal = next((L for L in cls._DEVERBAL_ORDER if L in layers), None)
+        if deverbal is not None:
+            stem = cls._apply_deverbal(stem, deverbal) or stem
+        elif Layer.GEMINATION in layers:
             stem = cls._geminate_c2(stem)
         stem_prefix = next((cls.stem_prefixes[L] for L in cls._STEM_PREFIX_ORDER
                             if L in layers), "")
@@ -842,15 +916,6 @@ def analyze_phrase(
         singular_of=frozenset(singular_of),
         masculine_of=frozenset(masculine_of),
     )
-
-
-_CAUSATIVE_NOMINAL_POS = {"noun", "adj", "name", "num"}
-
-
-def _verb_vs_nominal(verb_side: AnalyzedPhrase, nominal_side: AnalyzedPhrase) -> bool:
-    return ("verb" in verb_side.pos
-            and "verb" not in nominal_side.pos
-            and bool(nominal_side.pos & _CAUSATIVE_NOMINAL_POS))
 
 
 def _strictly_feminine(phrase: AnalyzedPhrase) -> bool:
@@ -971,22 +1036,6 @@ def _pansemitic_affix(layers: set[Layer]) -> str:
     return PansemiticMorphology.produce_word(AnalyzedWord("", "", layers=set(layers)))
 
 
-def _strip_definite(
-    morph: type[LangMorphology],
-    word: AnalyzedWord,
-    ipa: str,
-    other_definite: bool,
-    multiword: bool,
-) -> str | None:
-    """Strip *word*'s article (in IPA) if detected and sufficiently evidenced."""
-    if Layer.DEFINITE not in word.layers:
-        return None
-    if (morph.article_needs_corroboration
-            and not multiword and not other_definite):
-        return None
-    return morph.strip_article_ipa(ipa, word.script)
-
-
 def _reconstruct_word_pairs(
     word_pairs: list[PlannedPair],
 ) -> tuple[Word, PansemiticWord]:
@@ -1012,21 +1061,228 @@ def _reconstruct_word_pairs(
             PansemiticWord(word=" ".join(pan_parts)))
 
 
+def _pure_verb(phrase: AnalyzedPhrase) -> bool:
+    """A verb with no nominal reading — the only POS that can't take the definite
+    article (its he-/hi- is the binyan prefix, not the article)."""
+    return "verb" in phrase.pos and not (phrase.pos & {"noun", "adj", "name", "num"})
+
+
+def deep_parse(phrase: AnalyzedPhrase, base_lookup: BaseLookup) -> ParsedWord:
+    """Parse a single-word phrase as deep as it can directly be: strip every
+    detected layer down to the bare reconstruction stem (in phoneme space) and
+    record what was removed, so the merge only has to re-apply the shared layers.
+
+    Strips, in order: the definite article (eager — script_definite is the gate,
+    plus a pure-verb guard so a hifʕil he- isn't mistaken for it); the suffixal
+    nominal layers (feminine, nisba, dual/plural, preferring the Wiktionary-cited
+    masculine/singular base, else the IPA suffix-strip); a finite verb's derived
+    stem toward its G base; and a deverbal lexeme to its verb root (its category
+    carried as a re-appliable Layer).  Cited-base / reduction notes are emitted
+    here; the shared/asymmetric framing is left to merge."""
+    morph = MORPHOLOGY_CONFIG[phrase.lang]
+    word = phrase.words[0]
+    ipa = word.ipa
+    layers: set[Layer] = set()
+    used_cited: set[Layer] = set()
+    notes: list[str] = []
+
+    if Layer.DEFINITE in word.layers and not _pure_verb(phrase):
+        stem = morph.strip_article_ipa(ipa, word.script)
+        if stem:
+            ipa = stem
+            layers.add(Layer.DEFINITE)
+
+    if Layer.FEMININE in word.layers:
+        stem, used = _reduce_to_base(
+            phrase, morph, ipa, Layer.FEMININE, phrase.masculine_of,
+            "masculine base", base_lookup, notes, phrase.lang)
+        if stem:
+            ipa = stem
+            layers.add(Layer.FEMININE)
+            if used:
+                used_cited.add(Layer.FEMININE)
+
+    if Layer.NISBA in word.layers:
+        stem = morph.strip_ipa(ipa, Layer.NISBA)
+        if stem:
+            ipa = stem
+            layers.add(Layer.NISBA)
+
+    num = next(iter({Layer.DUAL, Layer.PLURAL} & word.layers), None)
+    num_value: str | None = None
+    if num is not None:
+        stem, used = _reduce_to_base(
+            phrase, morph, ipa, num, phrase.singular_of, "singular base",
+            base_lookup, notes, phrase.lang)
+        if stem:
+            ipa = stem
+            layers.add(Layer.PLURAL)  # dual collapses into the plural slot
+            num_value = num.value
+            if used:
+                used_cited.add(Layer.PLURAL)
+
+    # Verbal morphology.  A deverbal lexeme is reduced to its verb root and its
+    # category recorded as a Layer (re-applied as a pansemitic template only if
+    # shared); a plain finite verb's derived stem is reduced to the G base and
+    # its exponent layer(s) recorded.
+    cat = _deverbal_category(phrase)
+    vs = next(iter(phrase.verb_stem), None)
+    verb_note: str | None = None
+    if cat is not None:
+        reduced = _reduce_verb_stem(phrase, ipa, base_lookup, notes, phrase.lang)
+        if reduced is not None:
+            ipa = reduced
+            layers.add(_DERIVATION_LAYER[cat])
+    elif "verb" in phrase.pos and vs is not None and vs != "G":
+        stem_layers = _STEM_LAYERS.get(vs, frozenset())
+        if stem_layers:
+            synth = morph.synthesize_base_stem(ipa, vs)
+            if synth is not None:
+                ipa, verb_note = synth
+            layers |= stem_layers
+
+    return ParsedWord(
+        stem_ipa=ipa, phrase=phrase, layers=layers, used_cited=used_cited,
+        num_value=num_value, verb_note=verb_note, notes=notes)
+
+
+def _emit_layer_notes(
+    ar_pw: ParsedWord, he_pw: ParsedWord, shared: set[Layer],
+    where: str, notes: list[str],
+) -> None:
+    """Append the human-readable audit notes for one reconciled pair.
+
+    A layer in *shared* was on both sides (kept / re-applied); a layer on one
+    side only was asymmetric (stripped, dropped).  The per-side cited-base /
+    reduction substitution notes were already emitted by deep_parse, so a
+    cited-resolved asymmetric strip is not re-announced here."""
+    al, hl = ar_pw.layers, he_pw.layers
+    ar, he = ar_pw.phrase, he_pw.phrase
+
+    if Layer.DEFINITE in shared:
+        notes.append(
+            f"shared definite article → {_pansemitic_affix({Layer.DEFINITE}).strip()}{where}")
+    elif Layer.DEFINITE in al:
+        notes.append(f"ar: definite article stripped{where}")
+    elif Layer.DEFINITE in hl:
+        notes.append(f"he: definite article stripped{where}")
+
+    if Layer.FEMININE in shared:
+        notes.append(f"shared feminine ending → -{_pansemitic_affix({Layer.FEMININE})}{where}")
+    elif Layer.FEMININE in al and Layer.FEMININE not in ar_pw.used_cited:
+        notes.append(f"ar: feminine ending stripped{where}")
+    elif Layer.FEMININE in hl and Layer.FEMININE not in he_pw.used_cited:
+        notes.append(f"he: feminine ending stripped{where}")
+
+    if Layer.NISBA in shared:
+        notes.append(f"shared nisba suffix → -{_pansemitic_affix({Layer.NISBA})}{where}")
+    elif Layer.NISBA in al:
+        notes.append(f"ar: nisba suffix stripped (de-adjectivized){where}")
+    elif Layer.NISBA in hl:
+        notes.append(f"he: nisba suffix stripped (de-adjectivized){where}")
+
+    if Layer.PLURAL in shared:
+        kind = "/".join(sorted({v for v in (ar_pw.num_value, he_pw.num_value) if v}))
+        affix = _pansemitic_affix({Layer.PLURAL} | (shared & {Layer.FEMININE}))
+        notes.append(f"shared {kind} → -{affix}{where}")
+    elif Layer.PLURAL in al and Layer.PLURAL not in ar_pw.used_cited:
+        notes.append(f"ar: {ar_pw.num_value} suffix stripped{where}")
+    elif Layer.PLURAL in hl and Layer.PLURAL not in he_pw.used_cited:
+        notes.append(f"he: {he_pw.num_value} suffix stripped{where}")
+
+    # Finite verb-stem exponents (D/N/Š/tD): shared → reduced to G + re-applied;
+    # asymmetric → the per-side synth note (the dropped exponent).
+    a_vs = next(iter(ar.verb_stem), None)
+    h_vs = next(iter(he.verb_stem), None)
+    both_verb = "verb" in ar.pos and "verb" in he.pos and a_vs is not None and a_vs == h_vs
+    if both_verb and (shared & _ALL_STEM_LAYERS):
+        notes.append(f"shared {a_vs}-stem verb → reduced to G, {a_vs} re-applied{where}")
+    elif both_verb:
+        notes.append(f"shared {a_vs}-stem verb{where}")
+    else:
+        if ar_pw.verb_note and (al & _ALL_STEM_LAYERS) - shared:
+            notes.append(f"ar: {ar_pw.verb_note}{where}")
+        if he_pw.verb_note and (hl & _ALL_STEM_LAYERS) - shared:
+            notes.append(f"he: {he_pw.verb_note}{where}")
+
+    # Deverbal template: shared → re-applied on the pansemitic side.
+    dev = next((L for L in PansemiticMorphology._DEVERBAL_ORDER if L in shared), None)
+    if dev is not None:
+        notes.append(f"shared {dev.value} → pansemitic template re-applied{where}")
+
+
+def _merge_word_pair(
+    ar_pw: ParsedWord,
+    he_pw: ParsedWord,
+    notes: list[str],
+    where: str,
+) -> tuple[PlannedPair, str | None, str | None]:
+    """Reconcile one aligned, deep-parsed word pair into a PlannedPair.
+
+    Everything was stripped per-side in deep_parse, so this just re-applies the
+    layers the two sides *share* (the set intersection) and emits the audit
+    notes.  Returns the PlannedPair plus the shared verb_stem / deverbal category
+    for the MergeResult annotation."""
+    ar, he = ar_pw.phrase, he_pw.phrase
+    notes.extend(ar_pw.notes)
+    notes.extend(he_pw.notes)
+
+    shared: set[Layer] = ar_pw.layers & he_pw.layers
+    # The feminine-plural -at marker is a property of the reconstructed form, not
+    # a shared strip: a shared plural on a feminine stem (either side) takes -at.
+    if Layer.PLURAL in shared and (_strictly_feminine(ar) or _strictly_feminine(he)):
+        shared.add(Layer.FEMININE)
+
+    _emit_layer_notes(ar_pw, he_pw, shared, where, notes)
+
+    a_vs, h_vs = next(iter(ar.verb_stem), None), next(iter(he.verb_stem), None)
+    res_vs = a_vs if (a_vs is not None and a_vs == h_vs) else None
+    a_cat, h_cat = _deverbal_category(ar), _deverbal_category(he)
+    res_der = a_cat.value if (a_cat is not None and a_cat == h_cat) else None
+
+    return PlannedPair(ar_pw.stem_ipa, he_pw.stem_ipa, layers=shared), res_vs, res_der
+
+
+def _component_phrase(
+    lang: str, word: AnalyzedWord, meta_lookup: MetaLookup,
+) -> AnalyzedPhrase:
+    """Re-analyze one component word as a standalone single-word phrase, folding
+    in its own lexeme-level metadata (looked up by script token).  Unknown
+    components get empty metadata → concatenative-only treatment."""
+    meta = meta_lookup(lang, word.script) or {}
+    return analyze_phrase(lang, word.script, word.roman, word.ipa, **meta)
+
+
+def _component_pairs(
+    ar: AnalyzedPhrase, he: AnalyzedPhrase, meta_lookup: MetaLookup,
+) -> list[tuple[AnalyzedPhrase, AnalyzedPhrase]]:
+    """Aligned component phrase pairs.  A single-word phrase is its own only
+    component (carrying its full metadata); a multi-word phrase is dispatched
+    word-by-word, each component re-analyzed with its own looked-up metadata."""
+    if len(ar.words) == 1:
+        return [(ar, he)]
+    return [
+        (_component_phrase(ar.lang, aw, meta_lookup),
+         _component_phrase(he.lang, hw, meta_lookup))
+        for aw, hw in zip(ar.words, he.words)
+    ]
+
+
 def merge(
     ar: AnalyzedPhrase,
     he: AnalyzedPhrase,
     base_lookup: BaseLookup,
+    meta_lookup: MetaLookup,
 ) -> MergeResult:
     """Align, morphology-normalize, and reconstruct a cognate pair.
 
-    Aligns the two phrases word-by-word, stripping asymmetric layers only: a
-    layer detected on both sides of an aligned word pair is shared morphology —
-    kept, or re-attached as a compromise affix.  Each aligned pair is then
-    reconstructed into its proto-Semitic ancestor (and pansemitic reduction).
-    Falls back to the unsplit pair when word counts differ.
-    """
-    ar_m = MORPHOLOGY_CONFIG[ar.lang]
-    he_m = MORPHOLOGY_CONFIG[he.lang]
+    Each aligned word is parsed as deep as it can directly be (deep_parse strips
+    it to a bare stem, recording its layers), then the pair is reconciled by
+    re-applying only the *shared* layers — a layer present on just one side was
+    asymmetric morphology and is dropped.  Multi-word phrases are dispatched
+    component-by-component, each component carrying its own looked-up metadata,
+    and the per-word ancestors are joined.  Falls back to the unsplit pair when
+    word counts differ."""
     notes: list[str] = []
     if len(ar.words) != len(he.words):
         notes.append(
@@ -1034,218 +1290,23 @@ def merge(
         ancestor, pansemitic = _reconstruct_word_pairs([PlannedPair(ar.ipa, he.ipa)])
         return MergeResult(ancestor=ancestor, pansemitic=pansemitic, notes=notes)
 
-    multiword = len(ar.words) > 1
+    pairs = _component_pairs(ar, he, meta_lookup)
+    multiword = len(pairs) > 1
     word_pairs: list[PlannedPair] = []
-    plan_verb_stem: str | None = None
-    plan_derivation: str | None = None
-    for i, (aw, hw) in enumerate(zip(ar.words, he.words)):
-        a_i, h_i = aw.ipa, hw.ipa  # working stems, in phoneme space
-        shared: set[Layer] = set()  # shared morphemes, re-attached on the pansemitic side
+    verb_stems: list[str | None] = []
+    derivations: list[str | None] = []
+    for i, (arc, hec) in enumerate(pairs):
         where = f" (word {i + 1})" if multiword else ""
-
-        a_stripped = _strip_definite(
-            ar_m, aw, a_i, Layer.DEFINITE in hw.layers, multiword)
-        h_stripped = _strip_definite(
-            he_m, hw, h_i, Layer.DEFINITE in aw.layers, multiword)
-        if a_stripped:
-            a_i = a_stripped
-        if h_stripped:
-            h_i = h_stripped
-        if a_stripped and h_stripped:
-            shared.add(Layer.DEFINITE)
-            notes.append(
-                f"shared definite article → {_pansemitic_affix({Layer.DEFINITE}).strip()}{where}")
-        elif a_stripped:
-            notes.append(f"ar: definite article stripped{where}")
-        elif h_stripped:
-            notes.append(f"he: definite article stripped{where}")
-
-        # Asymmetric feminine is reduced to the masculine stem: the masculine
-        # base Wiktionary cites (he-noun m=, "feminine of X") where available
-        # — exact, and it handles stem-vowel changes like he malká/melekh that
-        # suffix-stripping can't — else the IPA strip.  masculine_of is
-        # lexeme-level, so it only applies to single-word lemmas.
-        ar_fem = Layer.FEMININE in aw.layers
-        he_fem = Layer.FEMININE in hw.layers
-        ar_masc = frozenset() if multiword else ar.masculine_of
-        he_masc = frozenset() if multiword else he.masculine_of
-        acted = False
-        if ar_fem and not he_fem:
-            stripped, used = _reduce_to_base(
-                ar, ar_m, a_i, Layer.FEMININE, ar_masc, "masculine base",
-                base_lookup, notes, "ar")
-            if stripped:
-                a_i = stripped
-                acted = True
-                if not used:
-                    notes.append(f"ar: feminine ending stripped{where}")
-        elif he_fem and not ar_fem:
-            stripped, used = _reduce_to_base(
-                he, he_m, h_i, Layer.FEMININE, he_masc, "masculine base",
-                base_lookup, notes, "he")
-            if stripped:
-                h_i = stripped
-                acted = True
-                if not used:
-                    notes.append(f"he: feminine ending stripped{where}")
-        elif ar_fem and he_fem:
-            # Shared feminine: strip both to the bare common stem (lossless)
-            # and re-attach the pansemitic compromise -a, rather than leaving
-            # ar -a(t) / he -á for the aligner to reconcile.
-            sa = ar_m.strip_ipa(a_i, Layer.FEMININE)
-            sh = he_m.strip_ipa(h_i, Layer.FEMININE)
-            if sa and sh:
-                a_i, h_i = sa, sh
-                shared.add(Layer.FEMININE)
-                acted = True
-                notes.append(
-                    f"shared feminine ending → -{_pansemitic_affix({Layer.FEMININE})}{where}")
-
-        ar_nis = Layer.NISBA in aw.layers
-        he_nis = Layer.NISBA in hw.layers
-        if ar_nis and he_nis:
-            sa = ar_m.strip_ipa(a_i, Layer.NISBA)
-            sh = he_m.strip_ipa(h_i, Layer.NISBA)
-            if sa and sh:
-                a_i, h_i = sa, sh
-                shared.add(Layer.NISBA)
-                acted = True
-                notes.append(
-                    f"shared nisba suffix → -{_pansemitic_affix({Layer.NISBA})}{where}")
-        elif ar_nis:
-            stripped = ar_m.strip_ipa(a_i, Layer.NISBA)
-            if stripped:
-                a_i = stripped
-                acted = True
-                notes.append(f"ar: nisba suffix stripped (de-adjectivized){where}")
-        elif he_nis:
-            stripped = he_m.strip_ipa(h_i, Layer.NISBA)
-            if stripped:
-                h_i = stripped
-                acted = True
-                notes.append(f"he: nisba suffix stripped (de-adjectivized){where}")
-
-        # Dual/plural normalization (lexeme-level metadata, single-word
-        # only).  The singular stem comes from the singular Wiktionary cites
-        # (exact, and handles broken plurals) where available, else the
-        # romanization suffix-strip.  Asymmetric number is reduced outright;
-        # when both sides are non-singular the stems merge and the compromise
-        # plural suffix is re-attached — duals merge into plurals in
-        # pansemitic, -im for masculine, -at for feminine.  Runs even after a
-        # feminine strip: ar ḥayāh (fem) vs he khayím (plural) needs both.
-        if not multiword:
-            a_num = next(iter({Layer.DUAL, Layer.PLURAL} & aw.layers), None)
-            h_num = next(iter({Layer.DUAL, Layer.PLURAL} & hw.layers), None)
-            if a_num and h_num:
-                sa, _ = _reduce_to_base(
-                    ar, ar_m, a_i, a_num, ar.singular_of, "singular base",
-                    base_lookup, notes, "ar")
-                sh, _ = _reduce_to_base(
-                    he, he_m, h_i, h_num, he.singular_of, "singular base",
-                    base_lookup, notes, "he")
-                if sa and sh:
-                    a_i, h_i = sa, sh
-                    fem = _strictly_feminine(ar) or _strictly_feminine(he)
-                    shared.add(Layer.PLURAL)
-                    if fem:
-                        shared.add(Layer.FEMININE)
-                    acted = True
-                    kind = "/".join(sorted({a_num.value, h_num.value}))
-                    notes.append(f"shared {kind} → -{_pansemitic_affix(shared)}")
-            elif a_num:
-                stripped, used = _reduce_to_base(
-                    ar, ar_m, a_i, a_num, ar.singular_of, "singular base",
-                    base_lookup, notes, "ar")
-                if stripped:
-                    a_i = stripped
-                    acted = True
-                    if not used:
-                        notes.append(f"ar: {a_num.value} suffix stripped")
-            elif h_num:
-                stripped, used = _reduce_to_base(
-                    he, he_m, h_i, h_num, he.singular_of, "singular base",
-                    base_lookup, notes, "he")
-                if stripped:
-                    h_i = stripped
-                    acted = True
-                    if not used:
-                        notes.append(f"he: {h_num.value} suffix stripped")
-
-        # Verbal morphology (lexeme-level metadata, single-word only).
-        if not multiword:
-            a_cat = _deverbal_category(ar)
-            h_cat = _deverbal_category(he)
-            a_stem = next(iter(ar.verb_stem), None)
-            h_stem = next(iter(he.verb_stem), None)
-
-            if a_cat is not None and a_cat == h_cat:
-                # Shared deverbal category: preserve.  The deepest lossless
-                # common layer is the surface itself — underiving to the
-                # vowelless root would drop the template's vowel melody — so the
-                # stems merge as-is and we only record the shared analysis.
-                plan_verb_stem = a_stem if a_stem == h_stem else None
-                plan_derivation = a_cat.value
-                label = " ".join(x for x in (plan_verb_stem, a_cat.value) if x)
-                notes.append(f"shared {label} preserved")
-            elif (a_cat is None and h_cat is None
-                  and "verb" in ar.pos and "verb" in he.pos):
-                # Two plain finite verbs sharing a stem.  Derived stems (D, N,
-                # Š, tD) go through the layers process: strip both sides to the
-                # G base, merge the clean stems, and re-attach the stem's
-                # pansemitic exponent (gemination / na-/ša-/ta-).  G needs no
-                # work.  If either side won't cleanly reduce, fall back to
-                # merging the surfaces whole.
-                if a_stem is not None and a_stem == h_stem:
-                    plan_verb_stem = a_stem
-                    stem_layers = _STEM_LAYERS.get(a_stem, frozenset())
-                    if stem_layers:
-                        # The stem is known from the binyan/form, so always
-                        # re-apply its exponent; reduce each side to the G base
-                        # best-effort (a no-op where the exponent isn't in the
-                        # surface — e.g. Modern Hebrew piʕel carries no
-                        # gemination — leaves an already-bare stem).
-                        sa = ar_m.synthesize_base_stem(a_i, a_stem)
-                        sh = he_m.synthesize_base_stem(h_i, a_stem)
-                        a_i = sa[0] if sa else a_i
-                        h_i = sh[0] if sh else h_i
-                        shared |= stem_layers
-                        notes.append(
-                            f"shared {a_stem}-stem verb → reduced to G, {a_stem} re-applied")
-                    else:
-                        notes.append(f"shared {a_stem}-stem verb")
-            elif not acted:
-                # Asymmetric: reduce the more-derived side toward its G-stem
-                # base so the two sides align.  A lone deverbal noun/adj
-                # (participle, verbal noun, instance noun) is reduced to its
-                # cited verb; failing that, a finite verb opposite a plain
-                # nominal is de-derived (or the nominal's verb base swapped in).
-                if a_cat is not None and h_cat is None:
-                    new_a = _reduce_verb_stem(ar, a_i, base_lookup, notes, "ar")
-                    if new_a:
-                        a_i = new_a
-                elif h_cat is not None and a_cat is None:
-                    new_h = _reduce_verb_stem(he, h_i, base_lookup, notes, "he")
-                    if new_h:
-                        h_i = new_h
-                elif _verb_vs_nominal(ar, he):
-                    new_a = _reduce_verb_stem(ar, a_i, base_lookup, notes, "ar")
-                    if new_a:
-                        a_i = new_a
-                    else:
-                        new_h = _substitute_base(he, base_lookup, notes, "he")
-                        if new_h:
-                            h_i = new_h
-                elif _verb_vs_nominal(he, ar):
-                    new_h = _reduce_verb_stem(he, h_i, base_lookup, notes, "he")
-                    if new_h:
-                        h_i = new_h
-                    else:
-                        new_a = _substitute_base(ar, base_lookup, notes, "ar")
-                        if new_a:
-                            a_i = new_a
-
-        word_pairs.append(PlannedPair(a_i, h_i, layers=shared))
+        planned, res_vs, res_der = _merge_word_pair(
+            deep_parse(arc, base_lookup), deep_parse(hec, base_lookup),
+            notes, where)
+        word_pairs.append(planned)
+        verb_stems.append(res_vs)
+        derivations.append(res_der)
 
     ancestor, pansemitic = _reconstruct_word_pairs(word_pairs)
+    # The shared verb_stem / derivation are a single-word lexeme property.
+    verb_stem = None if multiword else verb_stems[0]
+    derivation = None if multiword else derivations[0]
     return MergeResult(ancestor=ancestor, pansemitic=pansemitic, notes=notes,
-                       verb_stem=plan_verb_stem, derivation=plan_derivation)
+                       verb_stem=verb_stem, derivation=derivation)

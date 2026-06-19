@@ -1442,6 +1442,28 @@ def main():
         _, canonical, roman = min(candidates)
         return canonical, roman
 
+    def _component_meta(lang: str, token: str) -> dict | None:
+        """Look up a component word's lexeme-level metadata by script token, for
+        the morphology layer's word-by-word multi-word dispatch.  Resolves the
+        exact canonical, else an unambiguously-normalized one; None (→
+        concatenative-only) when the token is not a known lemma."""
+        words, n2c = (
+            (ar_words, ar_norm_to_canonicals) if lang == "ar"
+            else (he_words, he_norm_to_canonicals)
+        )
+        wd = words.get(token)
+        if wd is None:
+            cands = n2c.get(SEMITIC_LANG_CONFIG[lang].normalize(token), [])
+            if len(cands) == 1:
+                wd = words.get(cands[0])
+        if wd is None:
+            return None
+        return dict(
+            pos=wd.pos, verb_forms=wd.verb_forms, derivation=wd.derivation,
+            number=wd.number, gender=wd.gender, derived_from=wd.derived_from,
+            singular_of=wd.singular_of, masculine_of=wd.masculine_of,
+        )
+
     def _morph_reconstruct(
         ar_canonical: str, ar_roman: str, ar_ipa: str, ar_wd: WordData | None,
         he_canonical: str, he_roman: str, he_ipa: str, he_wd: WordData | None,
@@ -1478,7 +1500,7 @@ def main():
             singular_of=he_wd.singular_of if he_wd else frozenset(),
             masculine_of=he_wd.masculine_of if he_wd else frozenset(),
         )
-        result = merge(ar_phrase, he_phrase, _base_romanization)
+        result = merge(ar_phrase, he_phrase, _base_romanization, _component_meta)
         notes.extend(result.notes)
         return (result.ancestor, result.pansemitic,
                 result.verb_stem, result.derivation)

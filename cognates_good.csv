@@ -1,6 +1,6 @@
 arabic,arabic_romanization,hebrew,hebrew_romanization,pansemitic,arabic_meaning,hebrew_meaning,morphology
-آتَى,ʔātā,נָאוֹת,na'ót,naʔata,to agree with,"to consent, agree",
-آدَم,ʔādam,אָדָם,adám,ʔadami,man,"man, human",
+آتَى,ʔātā,נָאוֹת,na'ót,naʔata,to agree with,"to consent, agree",ar: Š-stem (form IV) ʔa- prefix stripped
+آدَم,ʔādam,אָדָם,adám,ʔadam,man,"man, human",
 آدَم,ʔādam,דָּם,dam,dam,human,blood,
 آس,ʔās,הֲדַס,haḏás,ʔasum,myrtle (Myrtus gen. et spp.),"myrtle: any of a genus of flowering plants in genus Myrtus, as well as a twig of it",
 آشُور,ʔāšūr,אַשּׁוּר,ashúr,ʔaššur,"Assyria (an ancient Semitic Akkadian kingdom and at times an empire, extant from the mid-23rd century BCE to 608 BCE and centred on the Upper Tigris river in northern Mesopotamia (present day northern Iraq, but at its maximum extent including parts of modern Iran, Syria, Israel, Palestine and Egypt))","Assyria (an ancient Semitic Akkadian kingdom and at times an empire, extant from the mid-23rd century BCE to 608 BCE and centred on the Upper Tigris river in northern Mesopotamia (present day northern Iraq, but at its maximum extent including parts of modern Iran, Syria, Israel, Palestine and Egypt))",
@@ -38,10 +38,10 @@ arabic,arabic_romanization,hebrew,hebrew_romanization,pansemitic,arabic_meaning,
 أَرْض,ʔarḍ,אֶרֶץ,érets,ʔarṣ,"country, land","country, land",
 أَرْضِي ّ شَوْكِيّ,ʔarḍiyy šawkiyy,אַרְטִישׁוֹק,artishók,ʔartišakka,artichoke,artichoke (Cynara scolymus),
 أَرْضِي ّ شَوْكِيّ,ʔarḍiyy šawkiyy,חֻרְשָׁף,khursháf,xaršup,artichoke,artichoke,
-أَرْمَلَة,ʔarmala,אַלְמָנָה,almaná,ʔarmala,widow,widow (a woman whose spouse (traditionally husband) has died (and who has not remarried); a woman in relation to her late spouse; feminine of widower),shared feminine ending → -a
+أَرْمَلَة,ʔarmala,אַלְמָנָה,almaná,ʔarmala,widow,widow (a woman whose spouse (traditionally husband) has died (and who has not remarried); a woman in relation to her late spouse; feminine of widower),he: cited masculine base: substituted cited base אַלְמָן (almán); shared feminine ending → -a
 أَرْنَب,ʔarnab,אַרְנָב,arnáv,ʔarnab,rabbit (mammal),"rabbit (a mammal of most genera of the family Leporidae, with long ears, long hind legs and a short, fluffy tail)",
 أَزَرَ,ʔazara,עָזַר,'azár,ʔazara,"to strengthen, to support","to help, to assist",shared G-stem verb
-أَزَّرَ,ʔazzara,עָזַר,'azár,ʔazzara,"to strengthen, to roborate, to support","to help, to assist",
+أَزَّرَ,ʔazzara,עָזַר,'azár,ʔazara,"to strengthen, to roborate, to support","to help, to assist",ar: D-stem (form II) degeminated
 أَزْعَر,ʔazʕar,זָעִיר,za'ir,ʔazʕar,thin-haired,"tiny, little, minute (""very small"").",
 أَسَرَ,ʔasara,אָסַר,asár,ʔasar,"to bind, to fetter","to bind, tie, join",
 أَسِير,ʔasīr,אָסִיר,asír,ʔasir,"prisoner of war, captive","A (male) prisoner, inmate, captive, bondsman.",
@@ -118,14 +118,14 @@ arabic,arabic_romanization,hebrew,hebrew_romanization,pansemitic,arabic_meaning,
 أُونْصَة,ʔunṣa,אִינְץ׳,ínch,ʔunṣ,ounce,inch,ar: feminine ending stripped
 أُوَار,ʔuwār,אוֹר,'ór,ʔuwar,"heat, blaze (the intense heat of the sun or fire)",fire,
 إِبْزِيم,ʔibzīm,אַבְזָם,avzám,ʔibzim,"clasp, buckle (of a belt or shoe or surcingle etc.)",buckle (of a belt),
-إِبْهَام,ʔibhām,בֹּהֶן,bóhen,ʔabuhama,big toe,"thumb, big toe",ar: substituted cited base أَبْهَمَ (ʔabhama)
-إِثْم,ʔiṯm,אַשְׁמָה,ashmá,ʔism,"sin, guilt, wrongdoing, mistake",blame; fault,he: feminine ending stripped
+إِبْهَام,ʔibhām,בֹּהֶן,bóhen,ʔabahama,big toe,"thumb, big toe",ar: substituted cited base أَبْهَمَ (ʔabhama)
+إِثْم,ʔiṯm,אַשְׁמָה,ashmá,ʔasima,"sin, guilt, wrongdoing, mistake",blame; fault,ar: substituted cited base أَثِمَ (ʔaṯima); he: feminine ending stripped
 إِجَّاص,ʔijjāṣ,אַגָּס,agás,ʔagas,"pears (the fruits as well as the tree, the whole genus Pyrus)",pear (a type of fruit tree (Pyrus communis)),
 إِحْدَى,ʔiḥdā,אַחַת,akhát,ʔaxad,female equivalent of أَحَد (ʔaḥad),feminine of אֶחָד (ekhád),
 إِرْمِيَا,ʔirmiyā,יִרְמְיָה,yirm'yá,yirmya,"Jeremiah, Jeremias, Jeremy (prophet)","Jeremiah (an ancient prophet, the author of the Book of Jeremiah, and of the Lamentations)",
 إِزْمِيل,ʔizmīl,אִזְמֵל,izmél,zmili,"chisel, scraper, shoe-knife","knife, scalpel.",
 إِسْتَاد,ʔistād,אִצְטַדְיוֹן,itstadyón,stadian,stadium,stadium,
-إِسْحَاق,ʔisḥāq,יִצְחָק,yitskhák,yiṣxaq,"a male given name, Ishaq or Ishak, equivalent to English Isaac or Yitzchak","a male given name, equivalent to English Isaac",
+إِسْحَاق,ʔisḥāq,יִצְחָק,yitskhák,yiṣxak,"a male given name, Ishaq or Ishak, equivalent to English Isaac or Yitzchak","a male given name, equivalent to English Isaac",
 إِسْرَائِيل,ʔisrāʔīl,יִשְׂרָאֵל,yisra'él,yisraʔil,Israel (the Hebrew patriarch Jacob),Israel (the alternative name of Jacob),
 إِسْفَنْج,ʔisfanj,סְפוֹג,sfog,spangas,sponge,sponge,
 إِسْمَاعِيل,ʔismāʕīl,יִשְׁמָעֵאל,yishma'él,yišmaʔil,"Ishmael, Ismail",Ishmael,
@@ -165,8 +165,8 @@ arabic,arabic_romanization,hebrew,hebrew_romanization,pansemitic,arabic_meaning,
 الْإِسْكَنْدَر,al-ʔiskandar,אָלֶכְּסָנְדֶר,aleksánder,ʔaliksandras,Alexander,Alexander: a male given name.,
 الْإِسْكَنْدَرِيَّة,al-ʔiskandariyya,אֲלֶכְּסַנְדְּרִיָּה,aleksandríya,ʔaliksandria,Alexandria (a governorate of Egypt),Alexandria (a governorate of Egypt around the city),
 الْبَحْرَيْن,al-baḥrayn,בַּחְרֵיְן,bakhréyn,baxrayn,Bahrain (a nation in Asia),"Bahrain (an archipelago, island, and country in West Asia in the Persian Gulf)",ar: definite article stripped (shared-source ancestor)
-الْعِبْرِيَّة,al-ʕibriyya,עִבְרִי,ivrí,ʕibrit,Hebrew (language),Hebrew (person),
-الْعِبْرِيَّة,al-ʕibriyya,עִבְרִית,ivrít,ʕibrit,Hebrew (language),Hebrew (language),
+الْعِبْرِيَّة,al-ʕibriyya,עִבְרִי,ivrí,ʔiwrit,Hebrew (language),Hebrew (person),
+الْعِبْرِيَّة,al-ʕibriyya,עִבְרִית,ivrít,ʔiwrit,Hebrew (language),Hebrew (language),
 الْعِرَاق,al-ʕirāq,עיראק,'irák,ʕiraq,Iraq (a country in Asia),Iraq (a country in West Asia in the Middle East; official name: הרפובליקה העיראקית (harepublika ha'irakit)),ar: definite article stripped (shared-source ancestor)
 الْفُرَات,al-furāt,פְּרָת,p'rát,purattu,the Euphrates,Euphrates,
 الْقَاهِرَة,al-qāhira,קָהִיר,kahír,qahira,"Cairo (a governorate of Egypt, containing the capital city)","Cairo (a governorate of Egypt, containing the capital city)",ar: definite article stripped (shared-source ancestor)
@@ -196,7 +196,7 @@ arabic,arabic_romanization,hebrew,hebrew_romanization,pansemitic,arabic_meaning,
 اِنْتَقَمَ,intaqama,נְקָמָה,nekamá,ʔintaqama,to take revenge,revenge,he: feminine ending stripped
 اِنْتَقَمَ,intaqama,נָקַם,nakám,ʔintaqama,to take revenge,"to take revenge, to avenge",
 اِنْتِفَاضَة,intifāḍa,אִנְתִּיפָדָה,intifáda,ʔintipaṣa,instance noun of اِنْتَفَضَ (intafaḍa),"intifada (an uprising, especially by Palestinians)",
-اِنْتِقَام,intiqām,נְקָמָה,nekamá,ʔintiqam,"revenge, vengeance",revenge,he: feminine ending stripped
+اِنْتِقَام,intiqām,נְקָמָה,nekamá,ʔintaqama,"revenge, vengeance",revenge,ar: substituted cited base اِنْتَقَمَ (intaqama); he: feminine ending stripped
 بالُون,bālūn,בָּלוֹן,balón,bala,balloon,balloon,
 بَأْسَاء,baʔsāʔ,בָּאסָה,bása,baʔsaʔ,"adversity, affliction, distress, calamity","bummer, disappointing experience",
 بَاءَ,bāʔa,בָּא,ba,baʔa,"to return, to come back",To come.,shared G-stem verb
@@ -257,7 +257,7 @@ arabic,arabic_romanization,hebrew,hebrew_romanization,pansemitic,arabic_meaning,
 بَيْت,bayt,בַּיִת,báyit,bayt,"house, building",house,
 بَيْت الْمَقْدِس,bayt al-maqdis,בֵּית ־הַמִּקְדָּשׁ,béit-hamikdásh,bayt hal maqdis,the Temple in Jerusalem,Temple in Jerusalem,shared definite article → hal (word 2)
 بَيْت لَحْم,bayt laḥm,בֵּית לֶחֶם,bet lékhem,bit lixim,"Bethlehem (a city in the West Bank, Palestine)","Bethlehem (a city in the West Bank, Palestine, believed to be the birthplace of Jesus)",
-بَيْض,bayḍ,בֵּיצָה,betsá,bayṣ,eggs,egg,he: feminine ending stripped
+بَيْض,bayḍ,בֵּיצָה,betsá,bayṣa,eggs,egg,ar: substituted cited base بَاضَ (bāḍa); he: feminine ending stripped
 بَيْلَسَان,baylasān,אֲפַרְסְמוֹן,afarsemón,balsaman,"Myroxylon, especially Myroxylon balsamum",balsam,
 بَيْنَ,bayna,בֵּין,ben,bayna,between (“in the position or interval that separates two things”),"between, among, amid",
 بُرّ,burr,בָּר,bar,barr,wheat,grain,
@@ -316,7 +316,7 @@ arabic,arabic_romanization,hebrew,hebrew_romanization,pansemitic,arabic_meaning,
 تَنُّور,tannūr,תַּנּוּר,tanúr,tinurum,"oven, furnace, kiln","furnace, kiln",
 تَنْوِين,tanwīn,תַּנְוִין,tanwín,tanwin,nunation,"tanwin, nunation.",
 تَوْأَم,tawʔam,תְּאוֹם,te'óm,tawʔam,"one who was born of a multiple birth, i.e. a twin, triplet, quadruplet, etc.","A (male) twin, a twin brother: one of two or more siblings born after a single pregnancy.",
-تَيْس,tays,תַּיִשׁ,táyish,tays,"a male goat; billy goat, he-goat","male goat, he-goat, billy goat",
+تَيْس,tays,תַּיִשׁ,táyish,tayis,"a male goat; billy goat, he-goat","male goat, he-goat, billy goat",
 تُرُنْج,turunj,אֶתְרוֹג,etróg,matulunga,citron (Citrus medica fruit and tree),citron (the fruit of a citron tree),
 تُرْجُمَان,turjumān,תֻּרְגְּמָן,turg'mán,turguman,translator,translator,
 تُرْس,turs,תְּרִיס,tris,tyrias,"shield, scutum",shield,
@@ -340,13 +340,13 @@ arabic,arabic_romanization,hebrew,hebrew_romanization,pansemitic,arabic_meaning,
 تْسَار,tsār,צָאר,tsár,tsar,tzar,tsar,
 ثَابَ,ṯāba,שָׁב,sháv,saba,"to return, to come back",to return (to go back to a place or person),shared G-stem verb
 ثَانٍ,ṯānin,שֵׁנִי,shení,sanin,second,second,he: nisba suffix stripped (de-adjectivized)
-ثَانِيَة,ṯāniya,שְׁנִיָּה,sh'niyá,saniya,feminine singular of ثَانٍ (ṯānin),feminine singular indefinite form of שֵׁנִי (shení),shared feminine ending → -a
+ثَانِيَة,ṯāniya,שְׁנִיָּה,sh'niyá,sanina,feminine singular of ثَانٍ (ṯānin),feminine singular indefinite form of שֵׁנִי (shení),ar: cited masculine base: substituted cited base ثَانٍ (ṯānin); he: cited masculine base: substituted cited base שָׁנִי (shaní); shared feminine ending → -a
 ثَبَرَ,ṯabara,שִׁבֵּר,shibér,sabar,"to destroy, to devastate, to ruin, to wreck",to shatter (break violently),
 ثَبَرَ,ṯabara,שֻׁבַּר,shubár,sabar,"to destroy, to devastate, to ruin, to wreck",to be shattered (broken violently),
 ثَدْي,ṯady,שָׁד,shad,sadaʔa,breast,breast,
 ثَعْلَب,ṯaʕlab,שׁוּעָל,shu'ál,saʕlab,fox (Vulpes vulpes),"fox (the red fox, a small carnivore (Vulpes vulpes) with red or silver fur)",
 ثَقَلَ,ṯaqala,שָׁקַל,shakál,saqala,to weigh; to determine the weight of an object,"to weigh, weigh in",
-ثَقَّلَ,ṯaqqala,שָׁקַל,shakál,saqqala,to make (something) heavy,"to weigh, weigh in",
+ثَقَّلَ,ṯaqqala,שָׁקַל,shakál,saqala,to make (something) heavy,"to weigh, weigh in",ar: D-stem (form II) degeminated
 ثَقُلَ,ṯaqula,שָׁקַל,shakál,saqala,to be heavy,"to weigh, weigh in",
 ثَلَاثَة,ṯalāṯa,שְׁלוֹשָׁה,sh'loshá,salas,three,three,
 ثَلْج,ṯalj,שֶׁלֶג,shéleg,salg,snow,snow,
@@ -388,7 +388,7 @@ arabic,arabic_romanization,hebrew,hebrew_romanization,pansemitic,arabic_meaning,
 جَوْرَب,jawrab,גֶּרֶב,gérev,jawrab,sock,sock,
 جَوْرَب,jawrab,גָּרַב,garáv,jawrab,sock,to wear socks/stockings,
 جُبّ,jubb,גֵּב,gev,gubb,"cistern, well",cistern,
-جُبْن,jubn,גְּבִינָה,g'viná,jubin,cheese,cheese,he: feminine ending stripped
+جُبْن,jubn,גְּבִינָה,g'viná,jabuna,cheese,cheese,ar: substituted cited base جَبُنَ (jabuna); he: feminine ending stripped
 جُثَّة,juṯṯa,גּוּף,guf,juss,body,body (physical structure of a person or animal),ar: feminine ending stripped
 جُرْن,jurn,גֹּרֶן,góren,gurin,"threshing-floor, surface where grain sheaves or where dates are collected, heap of harvest",threshing floor,
 جُلّ,jull,וֶרֶד,véred,wrdah,"jasmine, rose",rose,
@@ -399,10 +399,10 @@ arabic,arabic_romanization,hebrew,hebrew_romanization,pansemitic,arabic_meaning,
 جُون,jūn,יוֹחָנָן,yokhanán,yaxanan,"a male given name from English, equivalent to English John","a male given name, equivalent to English John",
 جِبْرِيل,jibrīl,גַּבְרִיאֵל,gavri'él,gawriʔil,The archangel Gabriel,Gabriel (an archangel associated with carrying messages from God.),
 جِدَار,jidār,גָּדֵר,gadér,jidar,wall (division in a building),"fence, hedge, wall",
-جِدَّة,jidda,גָּדָה,gadá,gidda,"bank, side, edge of a water body",a bank (edge of river or lake),shared feminine ending → -a
+جِدَّة,jidda,גָּדָה,gadá,gaddaa,"bank, side, edge of a water body",a bank (edge of river or lake),ar: substituted cited base جَدَّ (jadda); shared feminine ending → -a
 جِذْع,jiḏʕ,גֶּזַע,géza',gizaʕ,"a tree trunk, body, stock, torso","trunk, stock (of a tree)",
 جِسْر,jisr,גֶּשֶׁר,gésher,gišrum,bridge,bridge,
-جِسْم,jism,גֶּשֶׁם,géshem,jism,a body,body,
+جِسْم,jism,גֶּשֶׁם,géshem,jisim,a body,body,
 جِنِرال,jinirāl,גֶּנֶרָל,generál,jiniral,"general (officer in any general rank, such as a brigadier general, major general, lieutenant general, etc.)",a general.,
 جِنْس,jins,זַן,zan,ginhas,a kind; a variety; a breed,"type, variety",
 جِهَاد,jihād,גִּ׳יהַאד,jihad,jihad,religious struggle,jihad,
@@ -412,14 +412,14 @@ arabic,arabic_romanization,hebrew,hebrew_romanization,pansemitic,arabic_meaning,
 جِين,jīn,גֶּן,gen,gin,gene,a gene,
 جِينْز,jīnz,גִ׳ינְס,jins,jinz,jeans,jeans,
 حَاج,ḥāj,הגה,hagé,ʔigu,"camelthorn, manna tree, Alhagi gen. et spp.","camelthorn (Alhagi, a genus of shrubs native to northern Africa and Asia Minor)",
-حَاخَام,ḥāḵām,חָכָם,khakhám,xakam,rabbi,rabbi,
+حَاخَام,ḥāḵām,חָכָם,khakhám,xaxam,rabbi,rabbi,
 حَادٍ,ḥādin,חַד,khad-,xadin,first (only in composed numbers),sharp,
 حَادّ,ḥādd,חַד,khad-,xadd,"sharp, pointed",sharp,
 حَارّ,ḥārr,חָרִיף,kharíf,xarrif,"hot, burning",spicy (of food),
 حَافَة,ḥāfa,חוֹף,khof,xaf,"edge, border","beach, shore, coast",ar: feminine ending stripped
 حَامِض,ḥāmiḍ,חֹמֶץ,khómets,xamiṣ,acid,vinegar,
 حَانُوت,ḥānūt,חֲנוּת,khanút,xanusa,"shop, store","shop, store",
-حَبَقُّوق,ḥabaqqūq,חֲבַקּוּק,khavakúk,xabaqquq,Habakkuk (a Jewish prophet of the Old Testament; author of the book that bears his name),Habakkuk (a Jewish prophet of the Old Testament; author of the book that bears his name),
+حَبَقُّوق,ḥabaqqūq,חֲבַקּוּק,khavakúk,xawakuk,Habakkuk (a Jewish prophet of the Old Testament; author of the book that bears his name),Habakkuk (a Jewish prophet of the Old Testament; author of the book that bears his name),
 حَبِيب,ḥabīb,חַבִּיבִּי,khabíbi,xabibi,darling,Darling: a term of endearment.,
 حَبِيب,ḥabīb,חָבִיב,khavív,xabib,darling,darling,
 حَبْل,ḥabl,חֶבֶל,khével,xabl,"a rope, a cable; a hawser; a cord; a string; a thread",rope,
@@ -461,17 +461,17 @@ arabic,arabic_romanization,hebrew,hebrew_romanization,pansemitic,arabic_meaning,
 حَمِيم,ḥamīm,חֹם,khóm,xamim,"hot water, hot bath, fever","Warmth, fever, feverishness.",
 حَنَك,ḥanak,חֵךְ,khékh,xanak,"palate, palatum durum","palate, roof of the mouth",
 حَنُون,ḥanūn,חַנּוּן,khanún,xanun,"loving, fond, affectionate; compassionate, merciful, gracious","gracious, merciful, compassionate",
-حَوَّاء,ḥawwāʔ,חַוָּה,khavá,xawwa,"Eve, the first woman in Abrahamic religions",Eve (the first woman and mother of the human race; Adam's wife),
+حَوَّاء,ḥawwāʔ,חַוָּה,khavá,xawa,"Eve, the first woman in Abrahamic religions",Eve (the first woman and mother of the human race; Adam's wife),
 حَوْل,ḥawl,חַיִל,kháyil,xayila,strength,army,ar: substituted cited base حَالَ (ḥāla)
 حَوْل,ḥawl,חַיָּל,khayál,xayla,strength,soldier,ar: substituted cited base حَالَ (ḥāla)
 حَيَاة,ḥayāh,חַי,kháy,xayiya,life,"to live (to be alive, to have life)",ar: substituted cited base حَيِيَ (ḥayiya)
-حَيَاة,ḥayāh,חַיִּים,khayím,xayah,life,life (state of being alive),he: cited singular base: substituted cited base חַי (kháy)
-حَيَوَان,ḥayawān,חַיָּה,khayá,xayawan,"animals, living creatures",animal (organism other than man),he: cited masculine base: substituted cited base חַי (kháy)
+حَيَاة,ḥayāh,חַיִּים,khayím,xayiya,life,life (state of being alive),ar: substituted cited base حَيِيَ (ḥayiya); he: cited singular base: substituted cited base חַי (kháy); he: substituted cited base חַי (kháy)
+حَيَوَان,ḥayawān,חַיָּה,khayá,xayya,"animals, living creatures",animal (organism other than man),ar: substituted cited base حَيَّ (ḥayya); he: cited masculine base: substituted cited base חַי (kháy)
 حَيِيَ,ḥayiya,חַי,kháy,xayawa,to live,"to live (to be alive, to have life)",
-حَيِيَ,ḥayiya,חַיִּים,khayím,xayiya,to live,life (state of being alive),he: cited singular base: substituted cited base חַי (kháy)
+حَيِيَ,ḥayiya,חַיִּים,khayím,xayiya,to live,life (state of being alive),he: cited singular base: substituted cited base חַי (kháy); he: substituted cited base חַי (kháy)
 حَيِيَ,ḥayiya,חָוָה,khavá,xayawa,to live,to experience,
 حَيّ,ḥayy,חַי,kháy,xawa,alive,alive,ar: substituted cited base حَوَى (ḥawā)
-حَيّ,ḥayy,חַיָּה,khayá,xayy,"organism, living being",animal (organism other than man),he: cited masculine base: substituted cited base חַי (kháy)
+حَيّ,ḥayy,חַיָּה,khayá,xawa,"organism, living being",animal (organism other than man),ar: substituted cited base حَوَى (ḥawā); he: cited masculine base: substituted cited base חַי (kháy)
 حَيْصَل,ḥayṣal,חָצִיל,khatsíl,xayṣal,"eggplant, aubergine","eggplant, aubergine (the fruit)",
 حَيْل,ḥayl,חַיִל,kháyil,xayil,"strength, force",army,
 حُرّ,ḥurr,חִוֵּר,khivér,xuwirr,free,pale,
@@ -497,7 +497,7 @@ arabic,arabic_romanization,hebrew,hebrew_romanization,pansemitic,arabic_meaning,
 خَتَمَ,ḵatama,חָתַם,ḥɔṯam,xatama,to seal,"to sign, to affix a seal",shared G-stem verb
 خَتَن,ḵatan,חָתָן,khatán,xatan,a man being related through marriage (son-in-law or brother-in-law or father-in-law or bridegroom),son-in-law,
 خَتَن,ḵatan,חוֹתֵן,khotén,xatan,a man being related through marriage (son-in-law or brother-in-law or father-in-law or bridegroom),"father-in-law, in relation to the groom",
-خَتَّمَ,ḵattama,חָתַם,ḥɔṯam,xattama,"to seal, stamp","to sign, to affix a seal",
+خَتَّمَ,ḵattama,חָתַם,ḥɔṯam,xatama,"to seal, stamp","to sign, to affix a seal",ar: D-stem (form II) degeminated
 خَتْم,ḵatm,חָתַם,ḥɔṯam,xatam,"stamp, seal","to sign, to affix a seal",
 خَرَاب,ḵarāb,חֻרְבָּן,khurbán,xarbab,"ruination, wreckage, desolation",destruction,
 خَرَبَ,ḵaraba,חָרַב,kharáv,xaraba,"to demolish, devastate","to be destroyed, collapse, fall to destruction",shared G-stem verb
@@ -510,7 +510,7 @@ arabic,arabic_romanization,hebrew,hebrew_romanization,pansemitic,arabic_meaning,
 خَزَف,ḵazaf,חֶרֶס,khéres,xazaf,"earthenware, ceramic, pottery","pottery, earthenware; clay, ceramics",
 خَزِينَة,ḵazīna,גְּנִיזָה,g'nizá,ganjam,"treasury, closet (room where valuables are stored)","archiving, storage, preservation, hiding",
 خَزِينَة,ḵazīna,גְּנָזִים,g'nazím,ganjam,"treasury, closet (room where valuables are stored)","treasures, hoards, archives, collections",
-خَسَارَة,ḵasāra,חִסָּרוֹן,khisarón,xasaran,"loss, damage","disadvantage, shortcoming, drawback",ar: feminine ending stripped
+خَسَارَة,ḵasāra,חִסָּרוֹן,khisarón,xasaran,"loss, damage","disadvantage, shortcoming, drawback",ar: substituted cited base خَسَرَ (ḵasara); ar: feminine ending stripped
 خَسّ,ḵass,חַסָּה,khása,xasa,lettuce (Lactuca gen. and Lactuca sativa in particular),"lettuce (an edible plant, Lactuca sativa and its close relatives, having a head of green or purple leaves)",
 خَشِن,ḵašin,אָשׁוּן,ashún,xašin,tough (life),"hard, tough",
 خَطَأ,ḵaṭaʔ,חֵטְא,khet,xaṭiʔa,"mistake, error","an unintentional sin, done unknowingly",ar: substituted cited base خَطِئَ (ḵaṭiʔa)
@@ -553,7 +553,7 @@ arabic,arabic_romanization,hebrew,hebrew_romanization,pansemitic,arabic_meaning,
 دَفْتَر,daftar,דִּפְתָּר,diftar,dptr,notebook; copybook; exercise book,"A notebook (book), a copybook.",
 دَقَل,daqal,דֶּקֶל,dékel,daqal,a variety of dates (fruit and tree),"date (the fruit of the date palm, Phoenix dactylifera, somewhat in the shape of an olive, containing a soft, sweet pulp and enclosing a hard kernel)",
 دَقِيق,daqīq,דַּק,dak,daqiq,"little, small, tiny, minute","small, diminutive",
-دَقِيقَة,daqīqa,דַּקָּה,daká,daqiqa,minute (unit of time),minute,shared feminine ending → -a
+دَقِيقَة,daqīqa,דַּקָּה,daká,daqiqa,minute (unit of time),minute,he: cited masculine base: substituted cited base דַּק (dak); shared feminine ending → -a
 دَلَّاع,dallāʕ,דְּלַעַת,dlá'at,dallaʔaʕ,watermelon,pumpkin,
 دَلْو,dalw,דְּלִי,dli,daliw,"pail, bucket",bucket (container),
 دَم,dam,דָּם,dam,dam,blood,blood,
@@ -584,7 +584,7 @@ arabic,arabic_romanization,hebrew,hebrew_romanization,pansemitic,arabic_meaning,
 دِين,dīn,דַּיָּן,dayán,dana,"judgement, decision, ruling, requital, compensation, indemnification","judge, jurist",ar: substituted cited base دَانَ (dāna)
 ذَا,ḏā,זֶה,ze,za,this,"this, this one.",
 ذَبَحَ,ḏabaḥa,זָבַח,zavákh,zabaxa,"to slaughter, to butcher","To slaughter, to kill",shared G-stem verb
-ذَبَّحَ,ḏabbaḥa,זָבַח,zavákh,zabbaxa,"to kill, to slaughter, to butcher, to massacre, to murder","To slaughter, to kill",
+ذَبَّحَ,ḏabbaḥa,זָבַח,zavákh,zabaxa,"to kill, to slaughter, to butcher, to massacre, to murder","To slaughter, to kill",ar: D-stem (form II) degeminated
 ذَبْح,ḏabḥ,זָבַח,zavákh,zabaxa,"slaughter, slaughtering","To slaughter, to kill",ar: substituted cited base ذَبَحَ (ḏabaḥa)
 ذَقَن,ḏaqan,זָקָן,zakán,zaqan,"beard on the chin; goatee, beard",beard,
 ذَكَر,ḏakar,זָכָר,zakhár,zikar,male,"man, male",
@@ -607,25 +607,25 @@ arabic,arabic_romanization,hebrew,hebrew_romanization,pansemitic,arabic_meaning,
 رَجْم,rajm,רָגַם,ragám,rajama,"stoning, lapidation",to stone to death,ar: substituted cited base رَجَمَ (rajama)
 رَحَضَ,raḥaḍa,רָחַץ,rakháts,raxaṣa,"to wash, to clean","To wash, to clean by washing, as an object or a body part.",shared G-stem verb
 رَحَّمَ,raḥḥama,רַחְמָנוּת,rakhmanút,raxmamat,to have mercy (upon),"mercy, mercifulness",ar: D-stem (form II) degeminated
-رَحَّمَ,raḥḥama,רַחֲמִים,rakhamím,raxxama,to have mercy (upon),mercy,he: plural suffix stripped
+رَحَّمَ,raḥḥama,רַחֲמִים,rakhamím,raxama,to have mercy (upon),mercy,he: plural suffix stripped; ar: D-stem (form II) degeminated
 رَحِم,raḥim,רֶחֶם,rékhem,raxim,"uterus, womb","womb, uterus",
 رَحِمَ,raḥima,רַחְמָנוּת,rakhmanút,raximanut,to be merciful,"mercy, mercifulness",
 رَحِمَ,raḥima,רַחֲמִים,rakhamím,raxima,to be merciful,mercy,he: plural suffix stripped
 رَحِمَ,raḥima,רָחַם,rakhám,raxima,to be merciful,to have compassion,shared G-stem verb
 رَحِيم,raḥīm,רַחוּם,rakhúm,raxim,merciful,"merciful, compassionate",
 رَحْب,raḥb,רָחָב,rakháv,raxab,"wide, spacious, roomy",wide (broad from side to side),
-رَحْمَة,raḥma,רַחְמָנוּת,rakhmanút,raxmanut,"mercy, compassion, commiseration","mercy, mercifulness",ar: feminine ending stripped
-رَحْمَة,raḥma,רַחֲמִים,rakhamím,raxam,"mercy, compassion, commiseration",compassion,ar: feminine ending stripped; he: plural suffix stripped
+رَحْمَة,raḥma,רַחְמָנוּת,rakhmanút,raximanut,"mercy, compassion, commiseration","mercy, mercifulness",ar: substituted cited base رَحِمَ (raḥima); ar: feminine ending stripped
+رَحْمَة,raḥma,רַחֲמִים,rakhamím,raxima,"mercy, compassion, commiseration",compassion,ar: substituted cited base رَحِمَ (raḥima); ar: feminine ending stripped; he: plural suffix stripped
 رَدَفَ,radafa,רָדַף,radáf,radafa,to follow,to follow after,shared G-stem verb
 رَسَمَ,rasama,רָשַׁם,rashám,rasama,"to record, to enter, to mark, to indicate","To inscribe, to write down, to note, to make a note.",shared G-stem verb
 رَسْمِيّ,rasmiyy,רִשְׁמִי,rishmí,rasmiyy,formal,formal,
 رَضِيَ,raḍiya,רִצָּה,ritsá,raṣiya,"to be satisfied, to be content","to satisfy, to please, to placate",he: feminine ending stripped
 رَضِيَ,raḍiya,רָצָה,ratsá,raṣiya,to desire,To want.,he: feminine ending stripped; shared G-stem verb
 رَطْب,raṭb,רָטֹב,ratóv,raṭab,"humid, moist","wet (of an object: covered with or impregnated with liquid), moist, sapful (sap of plants)",
-رَعْشَة,raʕša,רַעַשׁ,rá'ash,raʕš,tremor,earthquake,ar: feminine ending stripped
+رَعْشَة,raʕša,רַעַשׁ,rá'ash,raʕaš,tremor,earthquake,ar: feminine ending stripped
 رَغُبَ,raḡuba,רָעַב,ra'áv,ragiba,"to be greedy, to be gluttonous","to hunger, to be malnourished",shared G-stem verb
 رَقَصَ,raqaṣa,רָקַד .,raqád,raqaṣa,to dance,"dance, skip",shared G-stem verb
-رَقِيع,raqīʕ,רָקִיעַ,rakía',raqiʕ,"the firmament, the first heaven",Firmament: a surface separating the various levels of heaven.,
+رَقِيع,raqīʕ,רָקִיעַ,rakía',rakiaʕ,"the firmament, the first heaven",Firmament: a surface separating the various levels of heaven.,
 رَقِيق,raqīq,רַךְ,rakh,raqiq,"soft, sensitive, sentimental",soft,
 رَكَضَ,rakaḍa,רָץ,rats,rakaṣa,"to race, to rush, to run","To run; to go fast, to visit quickly.",shared G-stem verb
 رَكَعَ,rakaʕa,כָּרַע,karáʿ,rakaʕa,"to bow, to kneel, to kowtow",to kneel,shared G-stem verb
@@ -637,7 +637,7 @@ arabic,arabic_romanization,hebrew,hebrew_romanization,pansemitic,arabic_meaning,
 رُبَّ,rubba,רַב,ráv,rabb,many,"Many, much.",
 رُبُع,rubuʕ,רֹבַע,róva,rubuʕ,quarter (area or region),"quarter (a division or section of a town or city, especially having a particular character of its own, or associated with a particular group etc)",
 رُحْم,ruḥm,רַחְמָנוּת,rakhmanút,raximanut,"mercy, commiseration","mercy, mercifulness",ar: substituted cited base رَحِمَ (raḥima)
-رُحْم,ruḥm,רַחֲמִים,rakhamím,ruxam,"mercy, commiseration",mercy,he: plural suffix stripped
+رُحْم,ruḥm,רַחֲמִים,rakhamím,raxima,"mercy, commiseration",mercy,ar: substituted cited base رَحِمَ (raḥima); he: plural suffix stripped
 رُزّ,ruzz,אֹרֶז,órez,ʔaryzda,rice,rice,
 رُكْبَة,rukba,בֶּרֶךְ,bérekh,birk,knee,knee,
 رُكْبَة,rukba,בָּרַךְ,barákh,birk,knee,kneeled,
@@ -658,7 +658,7 @@ arabic,arabic_romanization,hebrew,hebrew_romanization,pansemitic,arabic_meaning,
 رِيق,rīq,רֹק,roq,riq,"saliva, spittle",saliva,
 رِيُو دِي جَانِيرُو,riyō dī jānērō,רִיוּ דֵה זַ׳נֵירוּ,riu de janeiru,riu ji janiyru,"Rio de Janeiro (a state of the Southeast Region, Brazil)","Rio de Janeiro (a state of the Southeast Region, Brazil)",
 زَانٍ,zānin,זָנָה,zaná,zanin,"fornicator, adulterer","to lust, fornicate, commit adultery",he: feminine ending stripped
-زَانٍ,zānin,זוֹנָה,zoná,zanin,"fornicator, adulterer",female foodmonger,he: cited masculine base: substituted cited base זוֹנָה (zoná)
+زَانٍ,zānin,זוֹנָה,zoná,zanin,"fornicator, adulterer",female foodmonger,he: cited masculine base: substituted cited base זוֹנָה (zoná); he: substituted cited base זָנָה (zaná)
 زَاوِيَة,zāwiya,זָוִית,zavít,zawiy,"angle, corner, edge",angle,ar: feminine ending stripped
 زَبَرْجَد,zabarjad,אִזְמַרְגָּד,izmargád,zmaragdas,aquamarine,emerald,
 زَبَّلَ,zabbala,זֶבֶל,zével,zabala,"to fertilize, to treat with manure or compost",manure,ar: D-stem (form II) degeminated
@@ -667,13 +667,13 @@ arabic,arabic_romanization,hebrew,hebrew_romanization,pansemitic,arabic_meaning,
 زَرَعَ,zaraʕa,זֶרַע,zéra',zarʕ,to sow,seed,
 زَرَعَ,zaraʕa,זָרַע,zará',zarʕ,to sow,"to seed, to sow",
 زَعَقَ,zaʕaqa,זָעַק,za'ák,zaʕaqa,"to scream, to shout","to shout, to yell",shared G-stem verb
-زَعَّقَ,zaʕʕaqa,זָעַק,za'ák,zaʕʕaqa,"to scream, to shout loudly","to shout, to yell",
+زَعَّقَ,zaʕʕaqa,זָעַק,za'ák,zaʕaqa,"to scream, to shout loudly","to shout, to yell",ar: D-stem (form II) degeminated
 زَعْتَر,zaʕtar,זַעְתָּר,zá'tar,zaʕtar,"zaatar, wild thyme",zaatar,
 زَعْزَعَ,zaʕzaʕa,זִעְזֵעַ,zi'zéa',zaʕzaʕa,"to shake, to agitate, shock or horrify","to agitate, shock or horrify; to destabilize",
 زَعْفَرَان,zaʕfarān,זְעַפְרָן,ze'afrán,zaʕparan,saffron,saffron,
 زَكَرِيَّا,zakariyyā,זְכַרְיָה,z'kharyá,zaxarya,"Zechariah, Zacharias (Hebrew prophet)",Zechariah (a book of the Old Testament and the Hebrew Tanakh),
 زَنَى,zanā,זָנָה,zaná,zana,"to commit adultery, to fornicate","to lust, fornicate, commit adultery",he: feminine ending stripped; shared G-stem verb
-زَنَّى,zannā,זָנָה,zaná,zanna,to accuse of fornication,"to lust, fornicate, commit adultery",he: feminine ending stripped
+زَنَّى,zannā,זָנָה,zaná,zana,to accuse of fornication,"to lust, fornicate, commit adultery",he: feminine ending stripped; ar: D-stem (form II) degeminated
 زَنْجَبِيل,zanjabīl,זַנְגְּבִיל,zangvíl,zanjabil,ginger,ginger,
 زَوْج,zawj,זוּג,zúg,zdiugas,a pair or couple,"pair, couple, twosome",
 زَوْل,zawl,זוּלָת,zulát,zawal,person,"fellowman, other people",
@@ -688,7 +688,7 @@ arabic,arabic_romanization,hebrew,hebrew_romanization,pansemitic,arabic_meaning,
 زِجَاجَة,zijāja,זְכוּכִית,zkhukhít,zxujaj,glassmaking,glass (substance),ar: feminine ending stripped
 زِفْت,zift,זֶפֶת,zéfet,zifit,"pitch, tar, latex, asphalt","pitch, tar",
 زِمَام,zimām,נֶזֶם,nézem,zimam,reins,nose ring,
-زِنًى,zinan,זָנָה,zaná,zinan,"adultery, fornication, lust","to lust, fornicate, commit adultery",he: feminine ending stripped
+زِنًى,zinan,זָנָה,zaná,zana,"adultery, fornication, lust","to lust, fornicate, commit adultery",ar: substituted cited base زَنَى (zanā); he: feminine ending stripped
 زِير,zīr,סִיר,sír,zawar,"cask, tub, vat, large jug","a generic pot, tub, vat, skeel for household or ritual purposes, cooking pot",
 سَأَلَ,saʔala,שְׁאֵלָה,sh'elá,saʔala,"to ask, inquire",question,he: feminine ending stripped
 سَأَلَ,saʔala,שָׁאַל,sha'ál,saʔala,"to ask, inquire","to ask (a question), to query",shared G-stem verb
@@ -702,7 +702,7 @@ arabic,arabic_romanization,hebrew,hebrew_romanization,pansemitic,arabic_meaning,
 سَام,sām,שֵׁם,shem,sam,Shem,Shem,
 سَانْدْوِيتْش,sandwitš,סֶנְדְוִיץ׳,séndvich,sandwiš,sandwich,A sandwich.,
 سَاو بَاوْلُو,sāw bāwlō,סָאוּ פָּאוּלוּ,sau paulu,saw pawlu,"a municipality, the state capital of São Paulo, Brazil","São Paulo (a municipality, the state capital of São Paulo State, Brazil)",
-سَبَب,sabab,סִבָּה,sibá,sabab,"cause, grounds, aetiological reason",cause (source or reason of an event or action),
+سَبَب,sabab,סִבָּה,sibá,sabab,"cause, grounds, aetiological reason",cause (source or reason of an event or action),he: feminine ending stripped
 سَبَى,sabā,שֶׁבִי,shévi,saba,"to captivate, to captive","captivity, a state of being captured",
 سَبَى,sabā,שָׁבָה,shavá,saba,"to captivate, to captive",to capture (took captive).,he: feminine ending stripped; shared G-stem verb
 سَبَّحَ,sabbaḥa,שִׁבֵּחַ,shibéakh,sabbiaxa,"to praise, to glorify","to praise (a person, an organization, an action, etc.)","shared D-stem verb → reduced to G, D re-applied"
@@ -739,12 +739,12 @@ arabic,arabic_romanization,hebrew,hebrew_romanization,pansemitic,arabic_meaning,
 سَلَامْتَك,salāmtak,סלאמתק,salámtak,salamtak,get well soon,"good job, beautiful",
 سَلَمُون,salamūn,סַלְמוֹן,sálmon,salma,salmon,A salmon: an individual member of any of these species.,
 سَلَّة,salla,סַל,sal,sill,basket,basket,ar: feminine ending stripped
-سَلَّطَ,sallaṭa,שָׁלַט,shalát,sallaṭa,to give power,to control,
+سَلَّطَ,sallaṭa,שָׁלַט,shalát,salaṭa,to give power,to control,ar: D-stem (form II) degeminated
 سَلِمَ,salima,שָׁלוֹם,shalóm,salima,"to be safe, to be well","well-being, welfare",
 سَلْوَى,salwā,שְׂלָו,slav,salwa,quails,quail,
 سَلْوَى,salwā,שַׁלְוָה,šalwɔ̂,salwa,"joy, happiness, satisfaction","calm, peace, serenity",
 سَمَاء,samāʔ,שמיים,shamáyim,šamay,"the sky/skies; the heaven(s) (figurative, simile), space, the sphere(s), the cosmos(es), the lift(s).","sky, skies, heavens, heaven",
-سَمَوْأَل,samawʔal,שְׁמוּאֵל,šəmūʾḗl,šamuʔil,"a male given name, equivalent to English Samuel","a male given name, equivalent to English Samuel",
+سَمَوْأَل,samawʔal,שְׁמוּאֵל,šəmūʾḗl,šmuil,"a male given name, equivalent to English Samuel","a male given name, equivalent to English Samuel",
 سَمَّ,samma,סַם,sam,samma,"to poison (someone, something)",poison,
 سَمِعَ,samiʕa,שֵׁמַע,shéma,šamaʕ,to hear,audio,
 سَمِعَ,samiʕa,שָׁמַע,shamá,šamaʕ,to hear,to hear,
@@ -762,8 +762,8 @@ arabic,arabic_romanization,hebrew,hebrew_romanization,pansemitic,arabic_meaning,
 سَوْسَن,sawsan,שׁוֹשָׁן,shoshán,sašan,lily,lily,
 سَوْط,sawṭ,שׁוֹט,shot,šalṭi,"scourge, switch, whip",whip,
 سَوْقَم,sawqam,שִׁקְמָה,šiqmā́,šiqma,"fig-mulberry, sycomore (Ficus sycomorus)","sycamore fig, a tree of the species Ficus sycomorus",
-سَيْف,sayf,סַיִף,sáyif,sayip,"sword, sabre, foil, rapier, scimitar","foil, fencing sword",
-سُؤَال,suʔāl,שְׁאֵלָה,sh'elá,suʔal,question,question,he: feminine ending stripped
+سَيْف,sayf,סַיִף,sáyif,sayif,"sword, sabre, foil, rapier, scimitar","foil, fencing sword",
+سُؤَال,suʔāl,שְׁאֵלָה,sh'elá,saʔala,question,question,ar: substituted cited base سَأَلَ (saʔala); he: feminine ending stripped
 سُتْرَة,sutra,סֵתֶר,séter,sutir,"anything by which a person is covered, concealed or protected or sheltered","hideaway, hiding place",ar: feminine ending stripped
 سُحَاف,suḥāf,שַׁחֶפֶת,shaḥéfet,suxafit,"tuberculosis, consumption, phthisis","tuberculosis, consumption",
 سُكَّر,sukkar,סַיְדֶּר,sáider,šikar,sugar,cider,
@@ -820,14 +820,14 @@ arabic,arabic_romanization,hebrew,hebrew_romanization,pansemitic,arabic_meaning,
 شَمْبَانْيَا,šambānyā,שַׁמְפַּנְיָה,shampánya,šapan,champagne (beverage),champagne,
 شَمْس,šams,שֶׁמֶשׁ,shémesh,samš,sun,sun,
 شَمْعُون,šamʕūn,שִׁמְעוֹן,shim'ón,šimʔan,"a surname from Hebrew, equivalent to English Simon","a male given name, Shimon, equivalent to English Simon",
-شَنَأَ,šanaʔa,שָׂנֵא,sané,šanaʔa,to hate intensely,to hate,shared G-stem verb
-شَنِئَ,šaniʔa,שׂוֹנֵא,soné,šaniʔa,to hate intensely,"hater, enemy",
+شَنَأَ,šanaʔa,שָׂנֵא,sané,sanaʔa,to hate intensely,to hate,shared G-stem verb
+شَنِئَ,šaniʔa,שׂוֹנֵא,soné,saniʔa,to hate intensely,"hater, enemy",
 شَهِيد,šahīd,שָׂהֵד,sahéd,sahid,witness,witness,
 شَهْر,šahr,סַהַר,sáhar,sahr,month (unit of time),moon,
 شَهْر,šahr,שַׂהַר,sáhar,sahr,verbal noun of شَهَرَ (šahara) (form I),alternative form of סַהַר (sáhar),
 شَيْخ,šayḵ,שֵׁיךְ,shékh,šayx,"sheik, chief, chieftain, patriarch",sheikh,
-شَيْطَان,šayṭān,שָׂטָן,śāṭān,saṭan,devil,devil,
-شَيْقَل,šayqal,שֶׁקֶל,shékel,šiqil,shekel (currency unit),"sheqel, the name of Israel's currency unit since 24 February 1980.",
+شَيْطَان,šayṭān,שָׂטָן,śāṭān,satan,devil,devil,
+شَيْقَل,šayqal,שֶׁקֶל,shékel,šikil,shekel (currency unit),"sheqel, the name of Israel's currency unit since 24 February 1980.",
 شُرَّاب,šurrāb,גֶּרֶב,gérev,šurrab,"sock, stocking",sock,
 شُرَّاب,šurrāb,גָּרַב,garáv,šurrab,"sock, stocking",to wear socks/stockings,
 شُوفَان,šūfān,שִׁיפוֹן,shifón,šufan,oat,rye,
@@ -886,7 +886,7 @@ arabic,arabic_romanization,hebrew,hebrew_romanization,pansemitic,arabic_meaning,
 صِير,ṣīr,צִיר,tsír,ṣayyara,brine,"broth, sauce",
 ضَأْن,ḍaʔn,צֹאן,tsón,ṣaʔn,sheep,"sheep, flock of sheep",
 ضَبُع,ḍabuʕ,צָבוֹעַ,tsavóa,ṣabuʕ,hyena,hyena,
-ضَحَّكَ,ḍaḥḥaka,צָחַק,tsakhák,ṣaxxaka,to make (someone) laugh,to laugh,
+ضَحَّكَ,ḍaḥḥaka,צָחַק,tsakhák,ṣaxaka,to make (someone) laugh,to laugh,ar: D-stem (form II) degeminated
 ضَحِك,ḍaḥik,צָחַק,tsakhák,ṣaxika,laughter,to laugh,ar: substituted cited base ضَحِكَ (ḍaḥika)
 ضَحِكَ,ḍaḥika,צָחַק,tsakhák,ṣaxika,to laugh,to laugh,shared G-stem verb
 ضَحِكَ,ḍaḥika,שָׂחַק,saḥáq,ṣaxika,to laugh,to laugh,shared G-stem verb
@@ -929,17 +929,17 @@ arabic,arabic_romanization,hebrew,hebrew_romanization,pansemitic,arabic_meaning,
 ظِلّ,ẓill,צֵל,tsél,ṣill,"shadow, shade","Shade, a shaded area.",
 عَاصِفَة,ʕāṣifa,סוּפָה,sufá,ʕaṣifa,storm,A storm: an extreme weather event.,shared feminine ending → -a
 عَاقَبَ,ʕāqaba,עָקַב,akáv,ʕaqaba,to follow at one's heels,"to follow, tail, track, trace",
-عَالَم,ʕālam,עוֹלָם,'olám,ʕalam,"world, hereunder, worldly life",A world: the entirety of a person's life and experience.,
-عَبَدَ,ʕabada,עֲבוֹדָה,avodá,ʕabada,"to worship, to serve, to be devoted to; to venerate or adore in a subservient manner","worship, service",
+عَالَم,ʕālam,עוֹלָם,'olám,ʔalam,"world, hereunder, worldly life",A world: the entirety of a person's life and experience.,
+عَبَدَ,ʕabada,עֲבוֹדָה,avodá,ʕabada,"to worship, to serve, to be devoted to; to venerate or adore in a subservient manner","worship, service",he: feminine ending stripped
 عَبَرَ,ʕabara,עִבֵּר,ibér,ʕabar,"to cross, to traverse",to cause to cross over or go across,
 عَبَرَ,ʕabara,עָבַר,avár,ʕabar,"to cross, to traverse","to pass, to cross",
 عَبَّدَ,ʕabbada,עַבְדוּת,avdút,ʕabadat,"to enslave, to subjugate, to subject",slavery,ar: D-stem (form II) degeminated
 عَبَّرَ,ʕabbara,עִבֵּר,ibér,ʕabbara,"to get across, to make cross, to cause to pass over, to convey across",to cause to cross over or go across,"shared D-stem verb → reduced to G, D re-applied"
-عَبْد,ʕabd,עֶבֶד,éved,ʕabd,"a person who is under the ownership of another, a slave, a bondservant","A slave, a serf.",
+عَبْد,ʕabd,עֶבֶד,éved,ʕabid,"a person who is under the ownership of another, a slave, a bondservant","A slave, a serf.",
 عَبْد,ʕabd,עַבְדוּת,avdút,ʕabdut,"a person who is under the ownership of another, a slave, a bondservant",slavery,
 عَبْد اللّٰه,ʕabd allāh,עוֹבַדְיָה,Ovadyá,ʕabdallah,"a male given name, Abd Allah","a male given name, equivalent to English Obadiah",word-count mismatch (ar 2 vs he 1); merged unsplit
 عَتِيق,ʕatīq,עַתִּיק,atík,ʕatiyq,"antique, ancient, archaic, old","antique, old",
-عَجَلَة,ʕajala,מַעְגָּל,ma'agál,ʕaʔagal,wheel,a circle,ar: feminine ending stripped
+عَجَلَة,ʕajala,מַעְגָּל,ma'agál,ʕaʔagila,wheel,a circle,ar: substituted cited base عَجِلَ (ʕajila); ar: feminine ending stripped
 عَدَس,ʕadas,עֲדָשָׁה,adashá,ʕadasa,lentils,"lentil, lens",
 عَدَسَة,ʕadasa,עֲדָשָׁה,adashá,ʕadasa,lentil,"lentil, lens",ar: feminine ending stripped
 عَدَن,ʕadan,עַדֶּן,áden,ʕadan,"Aden (a port city, the largest city in Yemen; the former capital of South Yemen)","Aden (a port city, the largest city in Yemen; the former capital of South Yemen)",
@@ -951,19 +951,19 @@ arabic,arabic_romanization,hebrew,hebrew_romanization,pansemitic,arabic_meaning,
 عَزَّ,ʕazza,עָזַז,azáz,ʕazzaz,"to be powerful, to overpower","to become strong, to prevail",shared G-stem verb
 عَزَّ,ʕazza,עֹז,óz,ʕazza,"to be powerful, to overpower","might, strength",
 عَزَّرَ,ʕazzara,עֵזֶר,'ézer,ʕazara,to assist out of honour,"help, aid",ar: D-stem (form II) degeminated
-عَزَّرَ,ʕazzara,עָזַר,'azár,ʕazzara,to assist out of honour,"to help, to assist",
+عَزَّرَ,ʕazzara,עָזַר,'azár,ʕazara,to assist out of honour,"to help, to assist",ar: D-stem (form II) degeminated
 عَزِيز,ʕazīz,עָזִיז,,ʕaziz,"a male given name, Aziz","a male given name, Aziz, from Arabic",
 عَشَرَة,ʕašara,עֲשָׂרָה,asará,ʕasar,ten,ten,
 عَشْر,ʕašr,עֶשֶׂר,éser,ʕasar,"masculine of عَشَرَة (ʕašara, “ten”)","feminine of עֲשָׂרָה (asará, “ten”)",
 عَصًا,ʕaṣan,עֵץ,ʿēṣ,ʕiṣ,wooden handle,wood,
-عَطَسَ,ʕaṭasa,הִתְעַטֵּשׁ,hit'atésh,ʕaṭasaš,to sneeze,to sneeze,
+عَطَسَ,ʕaṭasa,הִתְעַטֵּשׁ,hit'atésh,ʕaṭasa,to sneeze,to sneeze,"he: tD-stem (hitpaʕel) hit- prefix stripped, degeminated"
 عَظِيم,ʕaẓīm,עָצוּם,atsúm,ʕaṣim,"magnificent, grandiose","enormous, colossal: of very great size or quantity; also used figuratively",
 عَظْم,ʕaẓm,עֶצֶם,étsem,ʕaṣm,bone,bone,
 عَفَر,ʕafar,עָפָר,afár,ʕapar,"dust, grime, ash",dust,
 عَقَرَ,ʕaqara,עָקַר,akár,ʕaqara,to hamstring,to hamstring,shared G-stem verb
-عَقَّدَ,ʕaqqada,עֲקֵדָה,ʿaqedá,ʕaqqada,"to connect, tie together with a knot","Binding, an act of tying something's limbs together.",he: feminine ending stripped
+عَقَّدَ,ʕaqqada,עֲקֵדָה,ʿaqedá,ʕaqada,"to connect, tie together with a knot","Binding, an act of tying something's limbs together.",he: feminine ending stripped; ar: D-stem (form II) degeminated
 عَقِب,ʕaqib,עָקֵב,akév,ʕaqib,heel,heel,
-عَقْد,ʕaqd,עֲקֵדָה,ʿaqedá,ʕaqid,"tying together, binding","Binding, an act of tying something's limbs together.",he: feminine ending stripped
+عَقْد,ʕaqd,עֲקֵדָה,ʿaqedá,ʕaqada,"tying together, binding","Binding, an act of tying something's limbs together.",ar: substituted cited base عَقَدَ (ʕaqada); he: feminine ending stripped
 عَقْرَب,ʕaqrab,עַקְרָב,akráv,ʕaqrab,scorpion,scorpion,
 عَقْعَق,ʕaqʕaq,עַקְעָק,ak'ák,ʕaqʕaq,magpie,magpie,
 عَلَا,ʕalā,עָלָה,ʕālā,ʕala,to rise,To grow.,he: feminine ending stripped; shared G-stem verb
@@ -973,9 +973,9 @@ arabic,arabic_romanization,hebrew,hebrew_romanization,pansemitic,arabic_meaning,
 عَمَدَ,ʕamada,עָמַד,amád,ʕamada,"to prop up, to support",to stand (to support oneself on the feet in an erect position),shared G-stem verb
 عَمُود,ʕamūd,עַמּוּד,amúd,ʕamud,"column, shaft, pillar, pole","pillar, column, post",
 عَمِلَ,ʕamila,עָמַל,amál,ʕamila,"to work, perform",to work,shared G-stem verb
-عَمْق,ʕamq,עָמַק,amák,ʕamaq,depth,to be deep,
-عَمْق,ʕamq,עָמֹק,amók,ʕamaq,depth,deep,
-عَمْق,ʕamq,עֹמֶק,ómek,ʕamaq,depth,depth,
+عَمْق,ʕamq,עָמַק,amák,ʕamiq,depth,to be deep,
+عَمْق,ʕamq,עָמֹק,amók,ʕamiq,depth,deep,
+عَمْق,ʕamq,עֹמֶק,ómek,ʕamiq,depth,depth,
 عَنَان,ʕanān,עָנָן,'anán,ʕanan,"clouds, stratosphere, cloudy sky",cloud,
 عَنْبَر,ʕanbar,עִנְבָּר,inbár,ʕanbar,ambergris,amber,
 عَنْز,ʕanz,עֵז,éz,ʕanz,"female goat, she-goat, nanny goat","female goat, she-goat",
@@ -983,19 +983,19 @@ arabic,arabic_romanization,hebrew,hebrew_romanization,pansemitic,arabic_meaning,
 عَنْكَب,ʕankab,עַכָּבִישׁ,akavísh,ʕankab,a male spider,spider,
 عَنْكَبُوت,ʕankabūt,עַכָּבִישׁ,akavísh,ʕankab,spider,spider,
 عَوَّرَ,ʕawwara,עִוֵּר,ʕiwwer,ʕawwara,"to deprive of an eye, to blind in one eye",to blind (to make temporarily or permanently blind).,"shared D-stem verb → reduced to G, D re-applied"
-عَوِرَ,ʕawira,עִוֵּר,ʕiwwer,ʕawira,"to blind (unilaterally), render an eye useless",to blind (to make temporarily or permanently blind).,
-عَوْرَة,ʕawra,עֶרְוָה,'ervá,ʕawra,"nakedness, awrah","nakedness, nudity",
+عَوِرَ,ʕawira,עִוֵּר,ʕiwwer,ʕawira,"to blind (unilaterally), render an eye useless",to blind (to make temporarily or permanently blind).,he: D-stem (piʕel) degeminated
+عَوْرَة,ʕawra,עֶרְוָה,'ervá,ʕawra,"nakedness, awrah","nakedness, nudity",shared feminine ending → -a
 عَيْر,ʕayr,עַיִר,áyir,ʕayr,a donkey; a wild ass; an onager,donkey foal,
 عَيْن,ʕayn,עַיִן,áyin,ʕayn,spring (of water),"spring, fountain",
-عُبُودِيَّة,ʕubūdiyya,עַבְדוּת,avdút,ʕubudiyy,"slavery, servitude",slavery,ar: feminine ending stripped
+عُبُودِيَّة,ʕubūdiyya,עַבְדוּת,avdút,ʕabadat,"slavery, servitude",slavery,ar: substituted cited base عَبَدَ (ʕabada); ar: feminine ending stripped
 عُرْي,ʕury,עֵירֹם,eróm,ʕariya,"bareness, nakedness, nudity",nudity,ar: substituted cited base عَرِيَ (ʕariya)
 عُرْيَان,ʕuryān,עָרֹם,aróm,ʕuryan,"naked, nude","naked, nude, unclothed",
 عُشْب,ʕušb,עֵשֶׂב,ésev,ʕusib,"fresh, green, juicy, soft or tender herbs or herbage","herb, plant, grass; a herbaceous plant in contrast to shrubs or trees",
 عُصْفُور,ʕuṣfūr,צִפּוֹר,tsipór,ʕuṣpur,any small bird,"A small bird, a sparrow.",
 عُضّ,ʕuḍḍ,עֵץ,ʿēṣ,ʕiṣ,thick coarse trees or shrubs,tree,
 عُود,ʕūd,עוּד,'úd,ʕud,"oud, lute",oud,
-عِبَادَة,ʕibāda,עֲבוֹדָה,avodá,ʕabada,"worship, religious practice","worship, service",ar: substituted cited base عَبَدَ (ʕabada)
-عِبْرِيّ,ʕibriyy,עִבְרִי,ivrí,ʕibri,"Hebrew, Hebraic",Hebrew,
+عِبَادَة,ʕibāda,עֲבוֹדָה,avodá,ʕabadaa,"worship, religious practice","worship, service",ar: substituted cited base عَبَدَ (ʕabada); shared feminine ending → -a
+عِبْرِيّ,ʕibriyy,עִבְרִי,ivrí,ʕiwri,"Hebrew, Hebraic",Hebrew,
 عِجْل,ʕijl,עֵגֶל,égel,ʕigl,calf (young head of cattle),male calf,
 عِزَّة,ʕizza,עֹז,óz,ʕizz,honour; power,"might, strength",ar: feminine ending stripped
 عِشْرُونَ,ʕišrūna,עֶשְׂרִים,'esrím,ʕisru,twenty,twenty,
@@ -1005,9 +1005,9 @@ arabic,arabic_romanization,hebrew,hebrew_romanization,pansemitic,arabic_meaning,
 غَار,ḡār,עָר,'ár,gar,bay laurel (Laurus nobilis); laurel (Laurus gen.),laurel (plant),
 غَاز,ḡāz,גָּז,gaz,gaz,gas,gas,
 غَبَرَة,ḡabara,עָפָר,afár,gabar,"dust, gray powder",dust,ar: feminine ending stripped
-غَزَّة,ḡazza,עַזָּה,áza,gazza,"Gaza (a city in the Gaza Strip, Palestine in the Levant; in full, Gaza City)",Gaza,
+غَزَّة,ḡazza,עַזָּה,áza,gazza,"Gaza (a city in the Gaza Strip, Palestine in the Levant; in full, Gaza City)",Gaza,shared feminine ending → -a
 غَطَا,ḡaṭā,עָטָה,ʿatá,gaṭa,"to cover, to enfold, to envelop, to wrap","to wrap oneself, to cover oneself, that is, to wear something",he: feminine ending stripped; shared G-stem verb
-غَطَّى,ḡaṭṭā,עָטָה,ʿatá,gaṭṭa,"to cover up, to cover over, to enfold, to envelop, to wrap up","to wrap oneself, to cover oneself, that is, to wear something",he: feminine ending stripped
+غَطَّى,ḡaṭṭā,עָטָה,ʿatá,gaṭa,"to cover up, to cover over, to enfold, to envelop, to wrap up","to wrap oneself, to cover oneself, that is, to wear something",he: feminine ending stripped; ar: D-stem (form II) degeminated
 غَيْطَلَة,ḡayṭala,עֲלָטָה,alatá,gayṭala,darkness,darkness,shared feminine ending → -a
 غُرَاب,ḡurāb,עוֹרֵב,'orév,gurayb,"crow, raven",raven,
 غُرْلَة,ḡurla,עָרְלָה,orlá,gurla,foreskin; prepuce,foreskin (also metaphorical),shared feminine ending → -a
@@ -1015,7 +1015,7 @@ arabic,arabic_romanization,hebrew,hebrew_romanization,pansemitic,arabic_meaning,
 ـهُمْ,-hum,הֵם,hem,hum,"them, their (masculine plural bound object pronoun)","they (the third-person masculine plural personal pronoun, masculine plural of הוא (hu'))",
 ـَات,-āt,־וֹת,-ót,ʔat,Suffix used to pluralize non-human nouns.,The feminine plural ending for adjectives (regardless of state).,
 ـَانِ,-āni,־וֹן,-on,ʔani,Suffix added to a noun or adjective to form the dual form.,A suffix used in words indicating order.,
-فَاخَ,fāḵa,פּוּחַ,púakh,puwaxa,to blow noisily (of the wind),"to blow, to puff",shared G-stem verb
+فَاخَ,fāḵa,פּוּחַ,púakh,puaxa,to blow noisily (of the wind),"to blow, to puff",shared G-stem verb
 فَانُوس,fānūs,פַּנָּס,panás,panas,lantern,a lamp,
 فَتَحَ,fataḥa,פֶּתַח,pétakh,pataxa,to open (“to make something accessible”),opening,
 فَتَحَ,fataḥa,פָּתַח,patákh,patax,to begin,to start,
@@ -1032,7 +1032,7 @@ arabic,arabic_romanization,hebrew,hebrew_romanization,pansemitic,arabic_meaning,
 فَصْفَص,faṣfaṣ,אַסְפֶּסֶת,aspéset,ʔaspastu,"lucerne, alfalfa (Medicago sativa and its produce)",alfalfa,
 فَعَلَ,faʕala,פָּעַל,pa'al,paʕala,to do,to do,shared G-stem verb
 فَعَلَ,faʕala,פֹּעַל,pó'al,paʕala,to do,verb,
-فَعَّلَ,faʕʕala,פָּעַל,pa'al,paʕʕala,to activate,to act; to work; to operate,
+فَعَّلَ,faʕʕala,פָּעַל,pa'al,paʕala,to activate,to act; to work; to operate,ar: D-stem (form II) degeminated
 فَلْفَلَ,falfala,פִּלְפֵּל,pilpél,pippali,to put pepper on,"to pepper, to spice with pepper",
 فَم,fam,פֶּה,pe,pay,mouth,mouth,
 فَيْلَسُوف,faylasūf,פִּילוֹסוֹף,pilosóf,pilasapas,philosopher,archaic form of פִילוֹסוֹף (filosof),
@@ -1049,7 +1049,7 @@ arabic,arabic_romanization,hebrew,hebrew_romanization,pansemitic,arabic_meaning,
 فُولَاذ,fūlāḏ,פְּלָדָה,pladá,palad,steel,"steel (an artificial metal produced from iron, harder and more elastic than elemental iron; used figuratively as a symbol of hardness)",
 فِبْرَايِر,fibrāyir,פֶבְּרוּאָר,fébruar,fibruarius,February (second month of the Gregorian calendar),"February (the short month following January and preceding March in the Roman, Julian, and Gregorian calendars, used in all three calendars for intercalation or addition of leap days)",
 فِرْسِك,firsik,אֲפַרְסֵק,afarsék,pirsik,peach (Prunus persica tree and fruit),"peach (any tree of species Prunus persica, native to China and now widely cultivated throughout temperate regions, having pink flowers and edible fruit)",
-فِرْعَوْن,firʕawn,פַּרְעֹה,par'ó,parʕa,a pharaoh (an ancient Egyptian ruler),pharaoh,
+فِرْعَوْن,firʕawn,פַּרְעֹה,par'ó,parʔa,a pharaoh (an ancient Egyptian ruler),pharaoh,
 فِصْح,fiṣḥ,פֶּסַח,pésakh,pisax,"Passover, Pesach",Passover (Jewish feast / festival / holiday),
 فِصْح,fiṣḥ,פַּסְחָא,páskha,psx,Easter,Easter (a Christian feast commemorating the resurrection of Jesus Christ),
 فِعْل,fiʕl,פָּעַל,pa'al,paʕala,"activity, action, work",to act; to work; to operate,ar: substituted cited base فَعَلَ (faʕala)
@@ -1077,7 +1077,7 @@ arabic,arabic_romanization,hebrew,hebrew_romanization,pansemitic,arabic_meaning,
 قَبَضَ,qabaḍa,קִבֵּץ,kibéts,qabaṣa,"to collect, to gather",to pack,
 قَبَضَ,qabaḍa,קִבּוּץ,kibútz,qabaṣa,"to collect, to gather","a gathering, community, collection",
 قَبَضَ,qabaḍa,קָבַץ,kaváts,qabaṣa,"to collect, to gather","to gather, to collect,",shared G-stem verb
-قَبْر,qabr,קְבוּרָה,k'vura,qabur,"tomb, grave, sepulcher",burial,he: feminine ending stripped
+قَبْر,qabr,קְבוּרָה,k'vura,qabara,"tomb, grave, sepulcher",burial,ar: substituted cited base قَبَرَ (qabara); he: feminine ending stripped
 قَبْر,qabr,קֶבֶר,kéver,qabara,"tomb, grave, sepulcher","grave, gravesite",ar: substituted cited base قَبَرَ (qabara)
 قَتَلَ,qatala,קֶטֶל,kétel,qatal,"to kill, to slay, to murder",killing,
 قَتَلَ,qatala,קָטַל,katál,qatal,"to kill, to slay, to murder","to kill, slay",
@@ -1119,7 +1119,7 @@ arabic,arabic_romanization,hebrew,hebrew_romanization,pansemitic,arabic_meaning,
 قَهْوَة,qahwa,קַהְוָה,kahvá,qahwa,coffee (the drink),coffee,
 قَهْوَة,qahwa,קָפֶה,kafé,qahwa,coffee (the drink),coffee,
 قَوْس,qaws,קֶשֶׁת,késhet,qawis,"bow, arch, vault",arch,
-قَيُّوم,qayyūm,קַיָּם,kayám,qayyam,"enduring, most real and lasting, established, certain to exist (said of God)",enduring,
+قَيُّوم,qayyūm,קַיָּם,kayám,kayam,"enduring, most real and lasting, established, certain to exist (said of God)",enduring,
 قَيْصَر,qayṣar,צָאר,tsár,tsar,"tsar, czar (title of Slavic monarchs)",tsar,
 قَيْصَر,qayṣar,קֵיסָר,kesár,kaisar,Kaiser (title of German emperors),"Kaiser, a title of German emperors",
 قَيْظ,qayẓ,קַיִץ,káyits,qayṣ,midsummer,summer,
@@ -1128,7 +1128,7 @@ arabic,arabic_romanization,hebrew,hebrew_romanization,pansemitic,arabic_meaning,
 قُدُس,qudus,קִדּוּשׁ,kidúsh,qudš,"sanctity, holiness",sanctification,
 قُدُس,qudus,קָדוֹשׁ,kadósh,qudš,"sanctity, holiness",A saint.,
 قُدّ,qudd,קוֹד,kód,kuda,cod (the fish),code,
-قُرّ,qurr,קֹר,kór,qurri,"cold, coolness, coldness, chilliness, frigidity","cold, coldness",
+قُرّ,qurr,קֹר,kór,qurr,"cold, coolness, coldness, chilliness, frigidity","cold, coldness",
 قُرْبَان,qurbān,קורבן,korbán,qurban,"sacrificial animal, victim","a ritual sacrifice, as of an animal",
 قُطْب,quṭb,הקוטב,hakótev,qaṭb,pole,the North Pole,
 قُطْب,quṭb,קֹטֶב,kótev,qaṭb,pole,pole,
@@ -1146,7 +1146,7 @@ arabic,arabic_romanization,hebrew,hebrew_romanization,pansemitic,arabic_meaning,
 كَابُتْشِينُو,kābutšīnū,קַפּוּצִ׳ינוֹ,kapuchino,kapputtšina,cappuccino.,cappuccino,
 كَاتِب,kātib,כְּתָב,k'táv,kataba,writer; author,"writing, script, handwriting",ar: substituted cited base كَتَبَ (kataba)
 كَاتِب,kātib,כָּתַב,katáv,kataba,writer; author,to write,ar: substituted cited base كَتَبَ (kataba)
-كَاتِب,kātib,כּוֹתֵב,kotév,katib,writer; author,A (male) writer or author.,shared active-participle preserved
+كَاتِب,kātib,כּוֹתֵב,kotév,kaatib,writer; author,A (male) writer or author.,ar: substituted cited base كَتَبَ (kataba); he: substituted cited base כָּתַב (katáv); shared active-participle → pansemitic template re-applied
 كَبِد,kabid,כָּבֵד,kavéd,kabid,liver (“organ”),liver (organ of the body),
 كَبْش,kabš,כֶּבֶשׂ,kéves,kabis,"ram, male sheep",sheep (an ovine animal),
 كَتَّبَ,kattaba,כָּתַב,katáv,katab,"to cause to write, to make someone write",to write,
@@ -1167,7 +1167,7 @@ arabic,arabic_romanization,hebrew,hebrew_romanization,pansemitic,arabic_meaning,
 كَلْخ,kalḵ,כֶּלֶךְ,kélekh,kalx,Ferula gen. et spp.,"Ferula, A taxonomic genus within the family Apiaceae.",
 كَمُّون,kammūn,כַּמּוֹן,kamón,kammana,cumin (Cuminum cyminum),cumin,
 كَنَف,kanaf,כָּנָף,kanáf,kanap,"the lateral propelling organ, the wing",wing,
-كَنَّة,kanna,כַּלָּה,kalá,kanna,female relative through marriage; sister-in-law or daughter-in-law,daughter-in-law,shared feminine ending → -a
+كَنَّة,kanna,כַּלָּה,kalá,xakanna,female relative through marriage; sister-in-law or daughter-in-law,daughter-in-law,he: cited masculine base: substituted cited base חָתָן (khatán); shared feminine ending → -a
 كَنِيس,kanīs,כְּנֶסֶת,knéset,kanisit,synagogue,"A synagogue, a congregation.",
 كَنِيسَة,kanīsa,כְּנֵסִיָּה,knesiyá,kanisiya,church (building and organization),church,shared feminine ending → -a
 كَنِيسَة,kanīsa,כְּנֶסֶת,knéset,kanisit,synagogue (building and organization),"A synagogue, a congregation.",ar: feminine ending stripped
@@ -1194,7 +1194,7 @@ arabic,arabic_romanization,hebrew,hebrew_romanization,pansemitic,arabic_meaning,
 كُونْلِي,konlī,קונלי,kónli,kanli,a transliteration of the English surname Conley,a transliteration of the English surname Conley,
 كُوَالَا لُمْبُور,kuwālā lumbūr,קוּאָלָה לוּמְפּוּר,kuala lumpur,kwala lumpar,Kuala Lumpur (a federal territory of Malaysia),Kuala Lumpur (a federal territory of Malaysia),
 كِتَاب,kitāb,כְּתָב,k'táv,kataba,"letter, note, paper, piece of writing, message","writing, script, handwriting",ar: substituted cited base كَتَبَ (kataba)
-كِتَابَة,kitāba,כְּתֹבֶת,k'tóvet,kitabit,writing,inscription,ar: feminine ending stripped
+كِتَابَة,kitāba,כְּתֹבֶת,k'tóvet,katabat,writing,inscription,ar: substituted cited base كَتَبَ (kataba); ar: feminine ending stripped
 كِرْبَاس,kirbās,כַּרְפַּס,karpás,karpasa,cotton-cloth,a type of expensive fabric made of cotton,
 كِنَّارَة,kinnāra,גִּיטָרָה,gitára,kinnar,lyre,guitar,
 كِنَّارَة,kinnāra,כִּנּוֹר,kinór,kinnar,lyre,lyre,
@@ -1219,7 +1219,7 @@ arabic,arabic_romanization,hebrew,hebrew_romanization,pansemitic,arabic_meaning,
 لَهْجَة,lahja,לַהַג,láhag,lahaj,dialect,"dialect, idiom",ar: feminine ending stripped
 لَوْ,,לוּ,lu,law,if only,"if only, I wish",
 لَوْح,lawḥ,לוּחַ,lúakh,luawx,"board, tablet, slab","board, tablet, blackboard",
-لَيْث,layṯ,לַיִשׁ,láyish,lays,lion,lion,
+لَيْث,layṯ,לַיִשׁ,láyish,layis,lion,lion,
 لَيْرَة,layra,לִירָה,líra,lira,lira (denomination of currency used in Turkey),"lira (current currency of Turkey and former currency of many countries, including Israel)",
 لَيْل,layl,לַיְלָה,láyla,layl,"nighttime, night",night (the time when the Sun is below the horizon when the sky is dark),
 لَيْل,layl,לַיִל,láyil,layl,"nighttime, night",night,
@@ -1240,7 +1240,7 @@ arabic,arabic_romanization,hebrew,hebrew_romanization,pansemitic,arabic_meaning,
 لِفْت,lift,לֶפֶת,léfet,lapt,turnip (Brassica rapa subsp. rapa),"turnip (the white root of a yellow-flowered plant, Brassica rapa, grown as a vegetable and as fodder for cattle)",
 لِمَا,limā,לָ֫מָּה,láma,lima,"for what (relative, not interrogative)",for which reason,he: feminine ending stripped
 لِمَاذَا,li-māḏā,לָמָּה זֶה,láma zé,limaza,why,why,word-count mismatch (ar 1 vs he 2); merged unsplit
-ميشال,mīšāl,מִיכָאֵל,mikha'él,mikaʔil,a male given name of French origin,"a male given name, equivalent to English Michael",
+ميشال,mīšāl,מִיכָאֵל,mikha'él,mixaʔil,a male given name of French origin,"a male given name, equivalent to English Michael",
 مَا,mā,מָה,ma,ma,"that which, what","that which, the thing that",
 مَاء,māʔ,מַיִם,máyim,may,water,(uncountable) water,
 مَاتَ,māta,מֵת,mét,mawut,to die,To die.,
@@ -1251,7 +1251,7 @@ arabic,arabic_romanization,hebrew,hebrew_romanization,pansemitic,arabic_meaning,
 مَالِح,māliḥ,מָלוּחַ,malúakh,maliax,"salty, saline.","salty, saline",
 مَاهَ,māha,מַיִם,máyim,may,to abound with water,(uncountable) water,
 مَايُو,māyū,מַאי,may,mayyus,May (fifth month of the Gregorian calendar),"May (the fifth month of the Gregorian calendar, following April and preceding June)",
-مَايْكَل,māykal,מִיכָאֵל,mikha'él,mikaʔil,"a male given name, equivalent to English Michael","a male given name, equivalent to English Michael",
+مَايْكَل,māykal,מִיכָאֵל,mikha'él,mixaʔil,"a male given name, equivalent to English Michael","a male given name, equivalent to English Michael",
 مَبْسُوط,mabsūṭ,מַבְּסוּט,mabsút,mabsuṭ,cheerful,"happy, satisfied",
 مَبْنًى,mabnan,מִבְנֶה,mivné,mabnan,building,"structure, building",
 مَتَى,matā,מָתַי,matái,matay,when (at what time?),when (at what time; at which time),
@@ -1261,7 +1261,7 @@ arabic,arabic_romanization,hebrew,hebrew_romanization,pansemitic,arabic_meaning,
 مَجْنُون,majnūn,מַגְ׳נוּן,majnún,majnun,"mad, crazy, insane, possessed","crazy, psycho",
 مَحَطَّة طَاقَة,maḥaṭṭat ṭāqa,תַּחֲנַת־כֹּחַ,takhanát-kóakh,pawir statian,"power station, power plant",A power station.,
 مَحَقَ,maḥaqa,מָחַק,makhák,maxaqa,"to efface, to blot out, to destroy, to annihilate, to ruin",to erase,shared G-stem verb
-مَحَّقَ,maḥḥaqa,מָחַק,makhák,maxxaqa,"to destroy entirely, to blot out entirely",to erase,
+مَحَّقَ,maḥḥaqa,מָחַק,makhák,maxaqa,"to destroy entirely, to blot out entirely",to erase,ar: D-stem (form II) degeminated
 مَحْق,maḥq,מָחַק,makhák,maxaqa,"effacement, obliteration",to erase,ar: substituted cited base مَحَقَ (maḥaqa)
 مَخْزَن,maḵzan,מַחְסָן,makhsán,maxzan,"depot, warehouse",warehouse,
 مَدِينَة,madīna,מְדִינָה,m'diná,mdiynta,jurisdiction,"province, district",
@@ -1274,8 +1274,8 @@ arabic,arabic_romanization,hebrew,hebrew_romanization,pansemitic,arabic_meaning,
 مَرْكَز,markaz,מֶרְכָּז,merkáz,markaz,"center, midst","center, centre",
 مَرْيَم,maryam,מִרְיָם,miryám,miryam,"a female given name, Maryam, equivalent to English Mary or Miriam, Latin Marīa, or French Marie, Miriam, sister of Moses and Aaron","a female given name, Miriam, Mary (biblical figure)",
 مَسَحَ,masaḥa,מָשַׁח,mashákh,masaxa,to anoint,to anoint with oil,shared G-stem verb
-مَسَّحَ,massaḥa,מָשַׁח,mashákh,massaxa,"to wipe off, to anoint",to anoint with oil,
-مَسِيح,masīḥ,מָשִׁיחַ,mashíakh,masix,anointed,anointed,
+مَسَّحَ,massaḥa,מָשַׁח,mashákh,masaxa,"to wipe off, to anoint",to anoint with oil,ar: D-stem (form II) degeminated
+مَسِيح,masīḥ,מָשִׁיחַ,mashíakh,masiax,anointed,anointed,
 مَسْجِد,masjid,מִסְגָּד,misgád,masjid,mosque,mosque,
 مَسْطُول,masṭūl,מַסְטוּל,mastúl,masṭul,"drugged, high, wasted, drunk (under the psychological effects of a mood-affecting drug)","drugged, high, wasted, drunk (under the psychological effects of a mood-affecting drug)",
 مَشْرِق,mašriq,מִזְרָח,mizrákh,mašriq,an eastern country,east,
@@ -1289,8 +1289,8 @@ arabic,arabic_romanization,hebrew,hebrew_romanization,pansemitic,arabic_meaning,
 مَعِين,maʕīn,מַעֲיָן,ma'ayán,maʔaʕin,"well, spring, water source","spring (water source), fountain",
 مَعْرَكَة,maʕraka,מַעֲרָכָה,ma'arakha,maʕaraka,battle,"A battle, a campaign; also used figuratively.",shared feminine ending → -a
 مَغَارَة,maḡāra,מְעָרָה,m'ará,magara,grotto,cave,shared feminine ending → -a
-مَغْرِب,maḡrib,המערב,hama'aráv,magrib,west,"The West, the Western world.",
-مَغْرِب,maḡrib,מַעֲרָב,ma'aráv,magrib,west,west,
+مَغْرِب,maḡrib,המערב,hama'aráv,magarib,west,"The West, the Western world.",
+مَغْرِب,maḡrib,מַעֲרָב,ma'aráv,magarib,west,west,
 مَقَام,maqām,מָקוֹם,makóm,maqama,"place, spot","place (location or position), place, locality, spot",ar: substituted cited base قَامَ (qāma)
 مَقْدِس,maqdis,מִקְדָּשׁ,mikdásh,maqdis,a holy place; a sanctuary,sanctuary,
 مَكَّة,makka,מֶכָּה,méka,makka,Mecca (a large city in Saudi Arabia),Mecca (city),
@@ -1304,8 +1304,8 @@ arabic,arabic_romanization,hebrew,hebrew_romanization,pansemitic,arabic_meaning,
 مَلِك,malik,מֶלֶךְ,mélekh,malk,"king, sovereign, monarch",king,
 مَلِيء,malīʔ,מָלֵא,malé,maliʔ,"full, filled, replete","Whole, total, full, complete.",
 مَلْت,malt,מַלְט,malt,malt,malt,malt,
-مَلْحَمَة,malḥama,מִלְחָמָה,milkhamá,malxama,"bloody battle, slaughter, massacre, bloodbath","war, battle",
-مَمْلَكَة,mamlaka,מַמְלָכָה,mamlakhá,mamlaka,kingdom,kingdom,
+مَلْحَمَة,malḥama,מִלְחָמָה,milkhamá,malxama,"bloody battle, slaughter, massacre, bloodbath","war, battle",shared feminine ending → -a
+مَمْلَكَة,mamlaka,מַמְלָכָה,mamlakhá,mamlaka,kingdom,kingdom,shared feminine ending → -a
 مَنَار,manār,מְנוֹרָה,m'norá,manar,lighthouse,"A light, a lamp.",he: feminine ending stripped
 مَنَارَة,manāra,מְנוֹרָה,m'norá,manara,menorah,The menorah as a symbol.,shared feminine ending → -a
 مَنَعَ,manaʕa,מָנַע,maná',manaʕa,"to hinder, to prevent, to repel",to prevent,shared G-stem verb
@@ -1322,7 +1322,7 @@ arabic,arabic_romanization,hebrew,hebrew_romanization,pansemitic,arabic_meaning,
 مُؤَذِّن,muʔaḏḏin,מוּאַזִּין,mu'azín,muʔazzin,"muezzin, announcer of the hour of prayer",muezzin,
 مُبَارَك,mubārak,בָּרוּךְ,barúkh,baraka,blessed,blessed,ar: substituted cited base بَارَكَ (bāraka)
 مُحَاسِب,muḥāsib,חַשָּׁב,khasháv,muxasib,"accountant, bookkeeper",an accountant,
-مُحَافَظَة,muḥāfaẓa,מָחוֹז,makhóz,muxafiṣ,a province; an administrative division of state territory,province,ar: cited masculine base: substituted cited base مُحَافِظ (muḥāfiẓ)
+مُحَافَظَة,muḥāfaẓa,מָחוֹז,makhóz,xafaṣa,a province; an administrative division of state territory,province,ar: cited masculine base: substituted cited base مُحَافِظ (muḥāfiẓ); ar: substituted cited base حَافَظَ (ḥāfaẓa)
 مُحَمَّد,muḥammad,מֻחַמַּד,mukhamad,muxammad,The 47th sura (chapter) of the Qur'an.,47th sura (chapter) of Quran,
 مُخَمَّس,muḵammas,מְחֻמָּשׁ,m'khumásh,muxammas,pentagon,pentagon,
 مُخّ,muḵḵ,מוֹחַ,móakh,muxx,cerebrum,brain,
@@ -1357,7 +1357,7 @@ arabic,arabic_romanization,hebrew,hebrew_romanization,pansemitic,arabic_meaning,
 مِصْيَدَة,miṣyada,מְצוּדָה,m'tsudá,miṣyada,"net, snare (for fishing or trapping, and also loosely like “traps for rain water”)","snare, trap",shared feminine ending → -a
 مِعًى,miʕan,מְעִי,m'í,miʕay,"gut, intestine","intestine, gut, innard, entrail, bowel",
 مِعًى,miʕan,מַעֲיָן,ma'ayán,miʕay,"gut, intestine",a well,
-مِفْتَاح,miftāḥ,מַפְתֵּחַ,maftéakh,miptax,key (to a door),"key (to a lock, to a code)",
+مِفْتَاح,miftāḥ,מַפְתֵּחַ,maftéakh,miftiax,key (to a door),"key (to a lock, to a code)",
 مِلَاط,milāṭ,מֶלֶט,mélet,milaṭ,"the binding agent used for constructing buildings, mortar, plaster","mortar, cement",
 مِلْح,milḥ,מֶלַח,mélaḥ,milx,salt,"salt, the common substance used as a condiment",
 مِلْيار,milyār,מִילְיַארְד,milyárd,milyar,billion (10⁹),"A (British) milliard or (American) billion: a thousand millions, a million to the power of one and a half. 10⁹.",
@@ -1367,10 +1367,10 @@ arabic,arabic_romanization,hebrew,hebrew_romanization,pansemitic,arabic_meaning,
 مِنْخَر,minḵar,נְחִיר,n'khír,minxar,"nostril, nose",nostril (either of the two orifices located on the nose (or on the beak of a bird); used as a passage for air and other gases to travel the nasal passages),
 مِنْخَل,minḵal,מוֹהַל,mohál,minxal,"sieve, sifter","sieve, searce",
 مِنْشَار,minšār,מַסּוֹר,masór,minsar,saw,A saw: a tool with a toothed blade for cutting hard substances.,
-مِيتَة,mīta,מִיתָה,mitá,mita,manner of death,death,
-مِيخَائِيل,mīḵāʔīl,מִיכָאֵל,mikha'él,mikaʔil,"a male given name from Hebrew, equivalent to English Michael","a male given name, equivalent to English Michael",
-مِيكَائِيل,mīkāʔīl,מִיכָאֵל,mikha'él,mikaʔil,"a male given name, equivalent to English Michael","a male given name, equivalent to English Michael",
-مِيكَال,mīkāl,מִיכָאֵל,mikha'él,mikaʔil,the archangel Michael,"a male given name, equivalent to English Michael",
+مِيتَة,mīta,מִיתָה,mitá,mita,manner of death,death,shared feminine ending → -a
+مِيخَائِيل,mīḵāʔīl,מִיכָאֵל,mikha'él,mixaʔil,"a male given name from Hebrew, equivalent to English Michael","a male given name, equivalent to English Michael",
+مِيكَائِيل,mīkāʔīl,מִיכָאֵל,mikha'él,mixaʔil,"a male given name, equivalent to English Michael","a male given name, equivalent to English Michael",
+مِيكَال,mīkāl,מִיכָאֵל,mikha'él,mixaʔil,the archangel Michael,"a male given name, equivalent to English Michael",
 مِيل,mīl,מִיל,míl,mil,mile,"A mile: any of various units of distance, mostly between 1.5 km and 2 km.",
 مِيم,mīm,מֶם,mem,mim,meme,meme,
 مِينَاء,mīnāʔ,נָמֵל,namél,limin,"port, harbor",port,
@@ -1410,7 +1410,7 @@ arabic,arabic_romanization,hebrew,hebrew_romanization,pansemitic,arabic_meaning,
 نَعَمَ,naʕama,נָעַם,na'ám,naʕam,to enjoy,to please,shared G-stem verb
 نَعَمَ,naʕama,נֹעַם,nó'am,naʕam,"to live in comfort, to be pleased",pleasantness,
 نَعَّلَ,naʕʕala,נַעַל,ná'al,naʕala,"to sole, to shoe",shoe,ar: D-stem (form II) degeminated
-نَعَّلَ,naʕʕala,נָעַל,na'ál,naʕʕala,"to sole, to shoe","to wear (a shoe, sandal, boot, etc.)",
+نَعَّلَ,naʕʕala,נָעַל,na'ál,naʕala,"to sole, to shoe","to wear (a shoe, sandal, boot, etc.)",ar: D-stem (form II) degeminated
 نَعَّمَ,naʕʕama,נָעַם,na'ám,naʕam,"to favor, to coddle, to pamper",to please,
 نَعْل,naʕl,נַעַל,ná'al,naʕala,a light shoe for human feet (such as a slipper),shoe,ar: substituted cited base نَعَلَ (naʕala)
 نَعْنَاع,naʕnāʕ,נַעְנַע,na'na',naʕnaʕ,mint,mint (the plant or its flavor),
@@ -1431,7 +1431,7 @@ arabic,arabic_romanization,hebrew,hebrew_romanization,pansemitic,arabic_meaning,
 نَوَّرَ,nawwara,נִיר,nir,nur,to shed light,Lamp,
 نَوَّرَ,nawwara,נוּר,nur,nur,to shed light,light,
 نَوْل,nawl,נוּל,núl,nawwla,loom,loom,
-نُحَاس,nuḥās,נְחֹשֶׁת,n'khóshet,nuxasat,copper,"copper (a reddish-brown metal, symbol Cu, and atomic number 29)",
+نُحَاس,nuḥās,נְחֹשֶׁת,n'khóshet,nixuxas,copper,"copper (a reddish-brown metal, symbol Cu, and atomic number 29)",
 نُسْخَة,nusḵa,נוּסָח,nusákh,nusax,transcript,"text, wording",ar: feminine ending stripped
 نُقْطَة,nuqṭa,נְקֻדָּה,n'kudá,nuquṭa,"dot, point",dot,shared feminine ending → -a
 نُوتْرُون,nutrūn,נֵיטְרוֹן,neitrón,nyutran,neutron,neutron (a subatomic particle forming part of the nucleus of an atom and having no charge; it is a combination of an up quark and two down quarks),
@@ -1473,7 +1473,7 @@ arabic,arabic_romanization,hebrew,hebrew_romanization,pansemitic,arabic_meaning,
 وَثِيق,waṯīq,וָתִיק,vatík,wasiq,"trustworthy, reliable","loyal, righteous, trustworthy",
 وَرَق,waraq,יֶרֶק,yérek,waraq,"foliage, leaves","vegetation, herbage, greenery",
 وَرَق,waraq,יָרָק,yarák,waraq,"foliage, leaves","herb, vegetable",
-وَرَّثَ,warraṯa,יָרַשׁ,yarásh,warrasa,"cause someone to inherit, to transfer by will, to bequeath",to inherit,
+وَرَّثَ,warraṯa,יָרַשׁ,yarásh,warasa,"cause someone to inherit, to transfer by will, to bequeath",to inherit,ar: D-stem (form II) degeminated
 وَرِثَ,wariṯa,יָרַשׁ,yarásh,warisa,to inherit,to inherit,shared G-stem verb
 وَرِك,warik,יָרֵךְ,yarékh,warik,"hip, thigh",thigh,
 وَرِيد,warīd,וְרִיד,v'rid,warid,vein,vein,
@@ -1486,15 +1486,15 @@ arabic,arabic_romanization,hebrew,hebrew_romanization,pansemitic,arabic_meaning,
 وَلَد,walad,לֵדָה,leydá,walad,"offspring, issue","birth, childbirth, delivery",he: feminine ending stripped
 وَلَدَ,walada,יָלַד,yalád,walad,"to bear, to beget","to give birth (""to child""; beget a descendant).",
 وَلَّدَ,wallada,הֻלֶּדֶת,hulédet,waladat,to give birth,birth,ar: D-stem (form II) degeminated
-وَلَّدَ,wallada,לֵדָה,leydá,wallada,to give birth,"birth, childbirth, delivery",he: feminine ending stripped
+وَلَّدَ,wallada,לֵדָה,leydá,walada,to give birth,"birth, childbirth, delivery",he: feminine ending stripped; ar: D-stem (form II) degeminated
 وَلِيد,walīd,יָלִיד,yalíd,walid,"the product of, the result of, occasioned by, engendered by, sprung from",product (of),
 وَٱللّٰهِ,wal-lāhi,וַאלְלַהּ,wálla,wa llahi,"really?, really!","Wow!, really?, you don't say!, no kidding!",
-وِلَادَة,wilāda,הֻלֶּדֶת,hulédet,huwilad,birth (process of childbearing),birth,ar: feminine ending stripped
+وِلَادَة,wilāda,הֻלֶּדֶת,hulédet,waladat,birth (process of childbearing),birth,ar: substituted cited base وَلَدَ (walada); ar: feminine ending stripped
 وِيسْكِي,wiskī,וִיסְקִי,víski,wiski,whiskey,whiskey,
 وِيكَامُوس,wīkāmūs,וִיקִימִלּוֹן,vikimilón,wikšanri,Wiktionary,Wiktionary,
 يَأْجُوج,yaʔjūj,גּוֹג,gog,gag,Gog (an evil tribe associated with Magog),Gog (a prince who attacked the nation of Israel in the book of Ezekiel).,
 يَأْجُوج,yaʔjūj,מָגוֹג,magóg,magag,Gog (an evil tribe associated with Magog),Magog (the second of the seven sons of Japheth),
-يَئِسَ,yaʔisa,הִתְיָאֵשׁ,hitya'ésh,hityaʔisa,"to give up hope, to despair, to be hopeless","To give up, to despair",
+يَئِسَ,yaʔisa,הִתְיָאֵשׁ,hitya'ésh,yaʔisa,"to give up hope, to despair, to be hopeless","To give up, to despair","he: tD-stem (hitpaʕel) hit- prefix stripped, degeminated"
 يَئِسَ,yaʔisa,יֵאֵשׁ,ye'ésh,yaʔisa,"to give up hope, to despair, to be hopeless",To despair,
 يَا,yā,יָא,yá,ya,"O; hey; you; vocative particle preceding a noun used in direct address, only rarely omitted in such contexts","Vocative particle preceding a noun, especially a slur or pejorative.",
 يَابِس,yābis,יָבֵשׁ,yavésh,yabis,dry,"Dry, boring, dull.",
@@ -1514,19 +1514,19 @@ arabic,arabic_romanization,hebrew,hebrew_romanization,pansemitic,arabic_meaning,
 يَمِين,yamīn,יָמִין,yamín,yamin,right hand,the right hand,
 يَمّ,yamm,יָם,yam,yamm,open sea,sea,
 يَنَايِر,yanāyir,יָנוּאָר,yánuar,yanuarius,January (first month of the Gregorian calendar),January,
-يَهُودَا,yahūdā,אִידִישׁ,'ídish,yahudah,Judea,Yiddish (the language),
-يَهُودَا,yahūdā,יְהוּדָה,y'hudá,yahudah,Judea,"Judah, Judea (the tribal grouping)",
-يَهُودِيّ,yahūdiyy,אִידִישׁ,'ídish,yahudah,Jew,Yiddish (the language),
-يَهُودِيّ,yahūdiyy,יְהוּדָה,y'hudá,yahudah,Jew,"Judah, Judea (the tribal grouping)",
-يَهُوذَا,yahūḏā,אִידִישׁ,'ídish,yahudah,Judah (biblical figure),Yiddish (the language),
-يَهُوذَا,yahūḏā,יְהוּדָה,y'hudá,yahudah,Judah (biblical figure),"Judah, Judea (the tribal grouping)",
+يَهُودَا,yahūdā,אִידִישׁ,'ídish,yihuda,Judea,Yiddish (the language),
+يَهُودَا,yahūdā,יְהוּדָה,y'hudá,yihuda,Judea,"Judah, Judea (the tribal grouping)",
+يَهُودِيّ,yahūdiyy,אִידִישׁ,'ídish,yihuda,Jew,Yiddish (the language),
+يَهُودِيّ,yahūdiyy,יְהוּדָה,y'hudá,yihuda,Jew,"Judah, Judea (the tribal grouping)",
+يَهُوذَا,yahūḏā,אִידִישׁ,'ídish,yihuda,Judah (biblical figure),Yiddish (the language),
+يَهُوذَا,yahūḏā,יְהוּדָה,y'hudá,yihuda,Judah (biblical figure),"Judah, Judea (the tribal grouping)",
 يَوْم,yawm,יוֹם,yom,yawm,"day, period from sunrise to sunset",Day: the period between dawn and dusk.,
 يَوْم الْغُفْرَان,yawm al-ḡufrān,יוֹם כִּיפּוּר,yom kipúr,yam kipur,"Yom Kippur, the Jewish Day of Atonement.","Yom Kippur (a particular Jewish holiday, the day of atonement, falling on the tenth day of the Hebrew month of Tishrei)",
 يَوْم الْكَفَّارَة,yawm al-kaffāra,יוֹם כִּיפּוּר,yom kipúr,yam kipur,"Yom Kippur, the Jewish Day of Atonement.","Yom Kippur (a particular Jewish holiday, the day of atonement, falling on the tenth day of the Hebrew month of Tishrei)",
 يُوحَنَّا,yūḥannā,יוֹחָנָן,yokhanán,yaxanan,"a male given name, equivalent to English John","a male given name, equivalent to English John",
 يُود,yūd,יוֹד,yod,yad,iodine,iodine (a chemical element (symbol: I) with an atomic number of 53; one of the halogens),
 يُورانيُوم,yurānyum,אוּרַנְיוּם,urányum,yuriniam,uranium,uranium (the element with atomic number 92 and symbol U),
-يُوسُف,yūsuf,יוֹסֵף,yoséf,yasip,The 12th sura (chapter) of the Qur'an.,12th sura of Quran,
+يُوسُف,yūsuf,יוֹסֵף,yoséf,yasif,The 12th sura (chapter) of the Qur'an.,12th sura of Quran,
 يُولْيُو,yūlyū,יוּלִי,yúli,yulius,July (seventh month of the Gregorian calendar),July,
 يُونَان,yūnān,יוֹנָה,yoná,yana,"Jonah, Jonas (prophet)",Jonah (a book of the Old Testament and the Hebrew Tanakh),
 يُونُس,yūnus,יוֹנָה,yoná,yana,"Jonah, Jonas (prophet)",Jonah (a book of the Old Testament and the Hebrew Tanakh),
