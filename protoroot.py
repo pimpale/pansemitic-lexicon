@@ -1,43 +1,22 @@
 #!/usr/bin/env python3
-"""Proto-Semitic root computation for a matched Arabic↔Hebrew pair.
+"""Root-radical letter maps for proto-root reconstruction.
 
-The root is computed *after* matching, when both words are in hand, by reducing
-each side to its consonantal radicals and running the existing joint
-reconstruction over just those radicals.  Doing it jointly (rather than mapping
-one language's root tag onto the other) is what makes the result a real
-Proto-Semitic root: the reconstruction reconciles the regular sound
-correspondences — Arabic ث / Hebrew שׁ → PS *θ, Arabic ش / Hebrew שׂ → the PS
-lateral, the het/ḥet and ʕayin/ġayin merges, etc. — using Arabic's more
-conservative phonology to break Hebrew's mergers.
+The actual root analysis (radical gathering, de-patterning, and the joint
+Proto-Semitic reconstruction) lives in the morphology layer (morphology.py),
+which owns a SINGLE root computation shared by the merge path and the
+shared-source path.  This module is the radical primitives that analyzer reuses:
+the conservative Arabic/Hebrew letter → IPA radical maps (so a root *tag* — the
+authority, complete even for weak ق-و-م and geminate ر-ب-ب roots — yields its
+radicals directly), plus the consonant-skeleton helper.
 
-Radical sources, in order of preference:
-  1. The Wiktionary root *tag* (a category like "…belonging to the root ق د م").
-     Authoritative and complete even for weak (ق-و-م) and geminate (ر-ب-ب)
-     roots, where the surface form hides a radical.  Hebrew tags are read from
-     the *script*, which preserves distinctions (שׁ vs שׂ, ט vs ת) that the
-     pronunciation merges.
-  2. Failing a tag, the surface form's bare consonant skeleton (caller-supplied
-     romanization).  Best-effort — affixing nominal templates can leak an affix
-     consonant; verb binyan gemination is collapsed.
-
-Unlike a correspondence-graph over root tags (which over-merges by transitive
-chaining), each pair's root is computed independently from its own radicals, so
-unrelated roots never fuse.
+Hebrew tags are read from the *script*, which preserves distinctions (שׁ vs שׂ,
+ט vs ת) that the pronunciation merges; the shin/sin dot is honoured so a bare
+shin keeps *š and a sin dot reassigns to *ś.
 """
 
 from __future__ import annotations
 
-import re
-
-from reconstruction import (
-    ArabicWord,
-    Consonant,
-    HebrewWord,
-    PansemiticWord,
-    Phoneme,
-    ReconstructionError,
-    reconstruct_from_words,
-)
+from reconstruction import Consonant, Phoneme
 
 # Arabic letter → IPA radical (conservative; Arabic keeps the PS inventory).
 _AR_LETTER_IPA: dict[str, str] = {
@@ -62,8 +41,6 @@ _HE_LETTER_IPA: dict[str, str] = {
 _HE_SHIN_DOT = "ׁ"  # שׁ → keep *š (ʃ)
 _HE_SIN_DOT = "ׂ"   # שׂ → reassign to *ś (→ s here; reconstruction laterals it)
 
-_VOWELS_AND_MARKS = re.compile(r"[aeiou]")
-
 
 def arabic_root_radicals(tag: str) -> list[str]:
     """Radicals (IPA) of an Arabic root tag, e.g. 'قدم' → ['q','d','m']."""
@@ -84,58 +61,20 @@ def hebrew_root_radicals(tag: str) -> list[str]:
     return out
 
 
-def _consonant_skeleton(ipa: str) -> list[str]:
+def consonant_skeleton(ipa: str) -> list[str]:
     """Consonant tokens of an IPA string, length/stress marks dropped and
-    adjacent duplicates collapsed — so a geminate (binyan D, batˤːala) yields a
-    single radical (tˤ), matching the un-geminated root-tag radicals."""
+    *adjacent* duplicates collapsed — so a surface geminate (binyan D, batˤːala)
+    yields a single radical (tˤ), matching the un-geminated root-tag radicals,
+    while a true geminate ROOT whose two like radicals are separated by a vowel
+    (the tag-joined rabab → r-b-b) keeps both.  A vowel breaks adjacency."""
     out: list[str] = []
+    prev: str | None = None
     for tok in Phoneme.parse(ipa):
         if isinstance(tok, Consonant):
             radical = tok.tok.replace("ː", "").replace("ˈ", "")
-            if not out or out[-1] != radical:
+            if radical != prev:
                 out.append(radical)
+            prev = radical
+        else:
+            prev = None  # an intervening vowel breaks consonant adjacency
     return out
-
-
-def stem_radicals(stem_ipa: str) -> list[str]:
-    """Radicals of an already-affix-stripped bare-stem IPA (e.g. a merge-trace
-    stem), reusing the morphology layer-stripping the reconstruction did."""
-    return _consonant_skeleton(stem_ipa)
-
-
-def surface_radicals(word: "object", romanization: str) -> list[str]:
-    """Best-effort radicals from a surface romanization (no root tag): its bare
-    consonant skeleton.  *word* is the language's Word class (ArabicWord /
-    HebrewWord) for the romanization→IPA conversion."""
-    if not romanization:
-        return []
-    try:
-        ipa = word.from_romanization(romanization).word  # type: ignore[attr-defined]
-    except ReconstructionError:
-        return []
-    return _consonant_skeleton(ipa)
-
-
-def proto_root(
-    ar_radicals: list[str], he_radicals: list[str],
-) -> tuple[str, str] | None:
-    """Joint PS reconstruction of two radical lists → (ipa_key, latin_label).
-
-    ``ipa_key`` is the canonical grouping key (consonant skeleton of the
-    reconstruction, in IPA); ``latin_label`` is the readable pansemitic-scholar
-    rendering.  None when either side has no radicals or reconstruction fails."""
-    if not ar_radicals or not he_radicals:
-        return None
-    try:
-        merged = reconstruct_from_words(
-            ArabicWord.from_ipa("a".join(ar_radicals)),
-            HebrewWord.from_ipa("a".join(he_radicals)),
-        )
-    except ReconstructionError:
-        return None
-    key = "".join(_consonant_skeleton(merged.word))
-    if not key:
-        return None
-    label = _VOWELS_AND_MARKS.sub(
-        "", PansemiticWord.from_word(merged).to_protosemitic_convention())
-    return key, label

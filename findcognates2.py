@@ -50,11 +50,8 @@ import orjson
 from loss import LossBreakdown, ipa_distance, triplet_loss_breakdown
 from kaikki import PartialSource, SharedSource, canonical_from_entry, _looks_romanized
 from morphology import (
-    Layer, MergeTrace, analyze_phrase, apply_verb_stem_ipa, merge, morphology_for,
-)
-from protoroot import (
-    arabic_root_radicals, hebrew_root_radicals, proto_root, stem_radicals,
-    surface_radicals,
+    Layer, MergeTrace, ProtoRoot, analyze_phrase, apply_verb_stem_ipa, merge,
+    morphology_for, reconstruct_proto_root, select_root_tag,
 )
 from reconstruction import (
     ArabicWord,
@@ -378,6 +375,13 @@ class CognateEntry:
     morphology: list[MergeTrace] | None = None  # per-word merge normalization trace
     verb_stem: str | None = None   # Proto-Semitic stem of a shared deverbal form
     derivation: str | None = None  # shared templatic category (participle, …)
+    # Canonical de-patterned proto-root, emitted by the merge (the single source
+    # of root analysis).  proto_root_ipa is the grouping key; the nominal_pattern
+    # fields record each side's wazn/mishqal melody for Phase-2 production.
+    proto_root_ipa: str | None = None
+    proto_root_label: str | None = None
+    nominal_pattern_ar: str | None = None
+    nominal_pattern_he: str | None = None
     ancestor: str | None = None
     pansemitic_form: str | None = None
     loss: LossBreakdown | None = None
@@ -1222,35 +1226,61 @@ def _evidence_dict(e: CognateEntry) -> dict[str, Any]:
     }
 
 
-def _trace_stems(e: CognateEntry) -> tuple[str | None, str | None]:
-    """The single-word merge-trace bare stems (ar, he), if this pair took the
-    morphology path and is one component — these have the affixes already
-    stripped, so they beat the raw surface for radical extraction."""
-    if e.morphology and len(e.morphology) == 1:
-        t = e.morphology[0]
-        return t.ar.stem, t.he.stem
-    return None, None
+def _is_semitic_source(lca: str) -> bool:
+    return lca.partition(":")[0] in SEMITIC_ANCESTOR_LANGS
 
 
-def _entry_proto_root(e: CognateEntry) -> tuple[str, str] | None:
-    """(ipa_key, latin_label) Proto-Semitic root for a pair, jointly
-    reconstructed from each side's radicals.  Radical source per side: the root
-    tag when present (Arabic phonology, Hebrew script); else the merge-trace
-    bare stem (affixes already stripped); else the raw surface skeleton."""
-    ar_stem, he_stem = _trace_stems(e)
-    if e.arabic.roots:
-        ar_rad = arabic_root_radicals(e.arabic.roots[0])
-    elif ar_stem:
-        ar_rad = stem_radicals(ar_stem)
-    else:
-        ar_rad = surface_radicals(ArabicWord, e.arabic.roman)
-    if e.hebrew.roots:
-        he_rad = hebrew_root_radicals(e.hebrew.roots[0])
-    elif he_stem:
-        he_rad = stem_radicals(he_stem)
-    else:
-        he_rad = surface_radicals(HebrewWord, e.hebrew.roman)
-    return proto_root(ar_rad, he_rad)
+def _pair_lca(e: CognateEntry) -> str | None:
+    """The pair's nearest shared etymology source (shallowest LCA), or None."""
+    sbs = e.shared_borrowing_sources
+    return next(iter(sbs)) if sbs else None
+
+
+def _borrowing_source(entries: list[CognateEntry], rep: CognateEntry) -> str | None:
+    """The non-Semitic source lemma a lexeme is borrowed from, or None if native.
+
+    Trust the *representative* pair first — its nearest shared source decides:
+    foreign → borrowing (en:golf); Semitic → native (قَرْن → sem-pro:*ḳarn-, so a
+    deep cross-family link like ine-pro:*(s)ker- on a junk low-similarity sibling
+    can't hijack it).  Only when the representative has no shared source at all
+    (e.g. it matched via a direct cognate ref, like كِنَّارَة↔כִּנּוֹר) fall back to
+    the shallowest foreign source among the siblings — recovering the Wanderwort
+    donor (qfa-hur-pro:*kinnar) that the sibling pairs do cite."""
+    rep_lca = _pair_lca(rep)
+    if rep_lca is not None:
+        return None if _is_semitic_source(rep_lca) else rep_lca
+
+    best: tuple[int, str] | None = None
+    for e in entries:
+        sbs = e.shared_borrowing_sources
+        if not sbs:
+            continue
+        lca, depth = next(iter(sbs.items()))
+        if _is_semitic_source(lca):
+            continue
+        d = sum(depth) if isinstance(depth, (list, tuple)) else 0
+        if best is None or d < best[0]:
+            best = (d, lca)
+    return best[1] if best else None
+
+
+def _native_proto_root(e: CognateEntry) -> tuple[str, str] | None:
+    """(ipa_key, scholar_label) Proto-Semitic root of a native pair.
+
+    Merge-path pairs read the root the merge already emitted (the single source
+    of root analysis).  Shared-source pairs bypass the merge, so their root is
+    computed by the same analyzer from each side's tag + surface IPA."""
+    if e.proto_root_ipa is not None:
+        return e.proto_root_ipa, e.proto_root_label or e.proto_root_ipa
+    # No merge-emitted root: a shared-source pair (bypassed the merge), a
+    # multi-word compound, or a single-word pair the merge couldn't root.  Run
+    # the same analyzer over each side's tag + surface IPA — the root TAG is
+    # still the authority, so a compound keys off its tagged radicals as before.
+    pr = reconstruct_proto_root(
+        select_root_tag(e.arabic.roots, e.arabic.ipa or "", "ar"), e.arabic.ipa or "",
+        select_root_tag(e.hebrew.roots, e.hebrew.ipa or "", "he"), e.hebrew.ipa or "",
+    )
+    return (pr.ipa, pr.label) if pr is not None else None
 
 
 def _build_lexicon(
@@ -1259,11 +1289,12 @@ def _build_lexicon(
     """Group reconstructed pairs into the Proto-Semitic-root lexicon (see header).
 
     Pairs are first collapsed into lexemes keyed by (Arabic lemma, POS, stem);
-    each lexeme's representative is then assigned a Proto-Semitic root computed
-    by jointly reconstructing both sides' radicals (see protoroot.proto_root).
-    The lexicon is indexed by that root — language-neutral, computed per pair
-    (so no transitive over-merge), and placing tag-less Arabic lemmas (بَطَّلَ)
-    via their Hebrew partner's radicals.  Lexemes whose root can't be computed
+    each lexeme's representative is then assigned its Proto-Semitic root — the
+    de-patterned root the merge already emitted (morphology.reconstruct_proto_root),
+    read back here via _native_proto_root rather than recomputed.  The lexicon is
+    indexed by that root — language-neutral, computed per pair (so no transitive
+    over-merge), and placing tag-less Arabic lemmas (بَطَّلَ) via their Hebrew
+    partner's radicals.  Lexemes whose root can't be computed
     (no radicals either side) fall to a flat 'standalone' list."""
     usable = [e for e in results
               if e.pansemitic_form and e.best_sense_match is not None]
@@ -1275,6 +1306,7 @@ def _build_lexicon(
     root_labels: dict[str, Counter] = defaultdict(Counter)
     root_ar_tags: dict[str, set[str]] = defaultdict(set)
     root_he_tags: dict[str, set[str]] = defaultdict(set)
+    root_source: dict[str, str | None] = {}
     standalone_out: list[dict[str, Any]] = []
     for subkey, entries in lex_groups.items():
         rep = _pick_representative(entries, subkey)
@@ -1287,15 +1319,20 @@ def _build_lexicon(
             for e in sorted(entries, key=_entry_similarity, reverse=True)
             if e is not rep
         ]
-        pr = _entry_proto_root(rep)
-        if pr is None:
-            lexeme["proto_root"] = None
-            standalone_out.append(lexeme)
-            continue
-        key, label = pr
+        source = _borrowing_source(entries, rep)
+        if source:
+            key, label = source, source.partition(":")[2].lstrip("*")
+        else:
+            pr = _native_proto_root(rep)
+            if pr is None:
+                lexeme["proto_root"] = None
+                standalone_out.append(lexeme)
+                continue
+            key, label = pr
         lexeme["proto_root"] = label
         root_lexemes[key].append(lexeme)
         root_labels[key][label] += 1
+        root_source[key] = source
         root_ar_tags[key].update(rep.arabic.roots)
         root_he_tags[key].update(rep.hebrew.roots)
 
@@ -1304,15 +1341,20 @@ def _build_lexicon(
         lexemes.sort(key=lambda L: (
             0 if L.get("stem") else 1, L.get("stem") or "",
             L.get("pansemitic_form") or ""))
+        source = root_source[key]
         roots_out.append({
+            # Borrowings anchor on the shared non-Semitic source lemma;
+            # native cognates on the reconstructed Proto-Semitic root.
             "proto_root": root_labels[key].most_common(1)[0][0],
-            "proto_root_ipa": key,
+            "proto_root_ipa": None if source else key,
+            "borrowed_from": source,
             "arabic_roots": sorted(root_ar_tags[key]),
             "hebrew_roots": sorted(root_he_tags[key]),
             "lexeme_count": len(lexemes),
             "lexemes": lexemes,
         })
-    roots_out.sort(key=lambda r: (r["proto_root"], r["proto_root_ipa"]))
+    roots_out.sort(key=lambda r: (
+        r["borrowed_from"] is None, r["proto_root"], r["proto_root_ipa"] or ""))
     standalone_out.sort(key=lambda L: L.get("pansemitic_form") or "")
 
     return {"roots": roots_out, "standalone": standalone_out}
@@ -1777,7 +1819,8 @@ def main():
     def _morph_reconstruct(
         ar_canonical: str, ar_roman: str, ar_ipa: str, ar_wd: WordData | None,
         he_canonical: str, he_roman: str, he_ipa: str, he_wd: WordData | None,
-    ) -> tuple[Word, PansemiticWord, str | None, str | None, list[MergeTrace]]:
+    ) -> tuple[Word, PansemiticWord, str | None, str | None,
+               list[MergeTrace], "ProtoRoot | None"]:
         """Morphology-aware surface merge (the no-shared-source path).
 
         Analyzes each side into its morphological structure (script/roman for
@@ -1785,10 +1828,11 @@ def main():
         morphology.merge, which strips every layer per-side in phoneme space,
         reconstructs word-by-word, and re-applies the shared layers.  Returns the
         (bare-stem) ancestor, the pansemitic form, the shared verb stem /
-        derivation category, and the per-word merge trace."""
+        derivation category, the per-word merge trace, and the emitted proto-root."""
         ar_phrase = analyze_phrase(
             "ar", ar_canonical, ar_roman, ar_ipa,
             pos=ar_wd.pos if ar_wd else frozenset(),
+            roots=ar_wd.roots if ar_wd else frozenset(),
             verb_forms=ar_wd.verb_forms if ar_wd else frozenset(),
             derivation=ar_wd.derivation if ar_wd else frozenset(),
             number=ar_wd.number if ar_wd else frozenset(),
@@ -1810,7 +1854,8 @@ def main():
         )
         result = merge(ar_phrase, he_phrase, _base_romanization, _component_meta)
         return (result.ancestor, result.pansemitic,
-                result.verb_stem, result.derivation, result.trace)
+                result.verb_stem, result.derivation, result.trace,
+                result.proto_root)
 
     # ── Build output ─────────────────────────────────────────────
     print(f"\nWriting {OUTPUT_FILE} …")
@@ -1870,7 +1915,7 @@ def main():
             lca_set = set(lcas)
             rest = sorted(
                 [s for s in pair.sources if s not in lca_set],
-                key=lambda s: sum(pair.sources[s]),
+                key=lambda s: (sum(pair.sources[s]), s[0], s[1]),
             )
             all_sorted = lcas + rest
             entry.shared_borrowing_sources = {
@@ -1922,10 +1967,16 @@ def main():
                             ancestor = type(ancestor)(word=stripped)
             else:
                 (ancestor, pansemitic_word, entry.verb_stem,
-                 entry.derivation, entry.morphology) = _morph_reconstruct(
+                 entry.derivation, entry.morphology,
+                 _proot) = _morph_reconstruct(
                     ar_canonical, ar_roman, ar_ipa or "", ar_wd,
                     he_canonical, he_roman, he_ipa or "", he_wd,
                 )
+                if _proot is not None:
+                    entry.proto_root_ipa = _proot.ipa
+                    entry.proto_root_label = _proot.label
+                    entry.nominal_pattern_ar = _proot.ar_pattern
+                    entry.nominal_pattern_he = _proot.he_pattern
             entry.ancestor = str(ancestor)
             # The morphology path produces its own pansemitic form (shared
             # affixes re-applied post-reduction); the shared-source path reduces
@@ -2002,16 +2053,16 @@ def main():
     print(f"Writing {GOOD_CSV_FILE} …")
     with open(GOOD_CSV_FILE, "w", encoding="utf-8", newline="") as f:
         writer = csv.writer(f)
-        writer.writerow(["proto_root", "arabic_roots", "hebrew_roots", "pos",
-                         "stem", "pansemitic", "arabic", "arabic_romanization",
-                         "hebrew", "hebrew_romanization", "arabic_meaning",
-                         "hebrew_meaning", "evidence_count"])
+        writer.writerow(["proto_root", "borrowed_from", "arabic_roots",
+                         "hebrew_roots", "pos", "stem", "pansemitic", "arabic",
+                         "arabic_romanization", "hebrew", "hebrew_romanization",
+                         "arabic_meaning", "hebrew_meaning", "evidence_count"])
 
-        def _lex_row(proot: str, ar_roots: str, he_roots: str,
+        def _lex_row(proot: str, source: str, ar_roots: str, he_roots: str,
                      L: dict[str, Any]) -> list[Any]:
             bm = L.get("best_sense_match") or {}
             return [
-                proot, ar_roots, he_roots,
+                proot, source, ar_roots, he_roots,
                 "/".join(L["arabic"].get("pos") or []),
                 L.get("stem") or "",
                 L.get("pansemitic_form") or "",
@@ -2025,9 +2076,10 @@ def main():
             ar_roots = "/".join(r["arabic_roots"])
             he_roots = "/".join(r["hebrew_roots"])
             for L in r["lexemes"]:
-                writer.writerow(_lex_row(r["proto_root"], ar_roots, he_roots, L))
+                writer.writerow(_lex_row(r["proto_root"], r["borrowed_from"] or "",
+                                         ar_roots, he_roots, L))
         for L in lexicon["standalone"]:
-            writer.writerow(_lex_row(L.get("proto_root") or "", "", "", L))
+            writer.writerow(_lex_row(L.get("proto_root") or "", "", "", "", L))
 
     tier1_available = sum(1 for obs in romanization_tier_obs.values() if obs.tier1)
     tier2_available = sum(1 for obs in romanization_tier_obs.values() if obs.tier2)

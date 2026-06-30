@@ -60,11 +60,17 @@ from enum import Enum
 from typing import Callable, ClassVar, Iterable
 
 from loss import Consonant, Phoneme
+from protoroot import (
+    arabic_root_radicals,
+    consonant_skeleton,
+    hebrew_root_radicals,
+)
 from reconstruction import (
     ArabicWord,
     HebrewWord,
     PansemiticWord,
     ReconstructedSemProWord,
+    ReconstructionError,
     Word,
     reconstruct_from_words,
 )
@@ -161,6 +167,7 @@ class AnalyzedPhrase:
     words: list[AnalyzedWord]
     ipa: str = ""                    # full phrase IPA (word_from_sharedsource)
     pos: frozenset[str] = frozenset()
+    roots: frozenset[str] = frozenset()        # consonantal root tag(s)
     verb_forms: frozenset[str] = frozenset()   # ar form (I..X) / he binyan (raw)
     verb_stem: frozenset[str] = frozenset()    # Proto-Semitic stem(s): G, D, Š, …
     derivation: frozenset[Derivation] = frozenset()  # templatic deverbal categories
@@ -185,10 +192,13 @@ class PlannedPair:
     proto-Semitic ancestor.
 
     ar_ipa/he_ipa are the morphology-stripped stems in phoneme space, ready to
-    align and reconstruct."""
+    align and reconstruct.  ``nominal`` is set when both sides reflect a shared
+    catalogued noun pattern: the pansemitic form is then synthesized from the
+    root + that pattern's compromise melody instead of from the aligned stem."""
     ar_ipa: str
     he_ipa: str
     layers: set[Layer] = field(default_factory=set)
+    nominal: NominalSynthesis | None = None
 
 
 @dataclass
@@ -212,6 +222,29 @@ class MergeTrace:
 
 
 @dataclass
+class ProtoRoot:
+    """The de-patterned, jointly-reconstructed Proto-Semitic root of a pair —
+    the canonical index label, computed once as a co-output of the merge.
+
+    ``ipa`` is the consonantal grouping key (e.g. ``ħdθ``); ``label`` is the
+    scholarly Proto-Semitic rendering (``ḥdṯ``).  The root is purely
+    consonantal — قَدَم/قَدِيم/قَدَّمَ all collapse to ``qdm``.  ``ar_pattern`` /
+    ``he_pattern`` record each side's nominal melody (wazn / mishqal) as an IPA
+    template with the radicals slotted out (``{0}{1}{2}``), e.g. maḵzan →
+    ``ma{0}{1}a{2}`` — the full VOCALIC melody, so Phase 2 can regenerate
+    qadam vs qidam vs qadim.  ``pan_radicals`` are those same reconstructed
+    radicals in the PANSEMITIC inventory (the consonant skeleton of the merged
+    root reduced to pansemitic), complete even for weak/geminate roots since the
+    root tag is authoritative (q-w-m → ``q w m``, r-b-b → ``r b b``) — Phase-2
+    nominal synthesis slots them into a shared pattern's compromise melody."""
+    ipa: str
+    label: str
+    ar_pattern: str | None = None
+    he_pattern: str | None = None
+    pan_radicals: list[str] = field(default_factory=list)
+
+
+@dataclass
 class MergeResult:
     """The reconstructed ancestor of a merged cognate pair.
 
@@ -219,12 +252,201 @@ class MergeResult:
     stem reduced to the pansemitic inventory with shared morphology re-applied.
     ``trace`` is the per-word normalization audit.  verb_stem/derivation carry
     the ancestor's verbal analysis when both sides share a stem/deverbal category;
-    None otherwise."""
+    None otherwise.  ``proto_root`` is the canonical de-patterned root (a single-
+    word lexeme property; None for multi-word compounds)."""
     ancestor: Word
     pansemitic: PansemiticWord
     trace: list[MergeTrace]
     verb_stem: str | None = None
     derivation: str | None = None
+    proto_root: ProtoRoot | None = None
+
+
+# ── Proto-root analysis ──────────────────────────────────────────────────
+# The morphology layer owns a SINGLE root computation (no second parallel
+# reconstruction): given each side's root tag and best stem IPA, it reduces both
+# sides to their bare radicals — the root TAG is the authority, complete even for
+# weak (ق-و-م) and geminate (ر-ب-ب) roots; a tagless side is de-patterned by
+# ALIGNING the other (tagged) side's radicals to its surface and keeping the
+# matched skeleton, dropping the templatic residue — then jointly reconstructs
+# them, reconciling the regular correspondences (Arabic's conservative phonology
+# breaks Hebrew's mergers).  The merge emits the result; the shared-source path
+# (which bypasses the merge) calls the same function with surface IPA.
+
+# Modifier letters stripped to a radical's base for alignment/equality.
+_RADICAL_MODIFIERS = re.compile(r"[ːˈˤʰʲʷˠ]")
+_ROOT_VOWELS = re.compile(r"[aeiou]")
+
+# Correspondence classes letting an authoritative radical (conservative IPA, from
+# a tag or the opposite side) align to a drifted surface consonant — Modern
+# Hebrew spirantization/mergers (b→v, p→f, k/ħ→x, r→ʁ), the sibilant/interdental
+# correspondences, the guttural merges.  Alignment is order-preserving, so edge
+# formatives (preformative m-, suffix -ān/-īm) never match an interior radical
+# and fall out as the melody residue.
+_RADICAL_EQUIV: tuple[frozenset[str], ...] = (
+    frozenset({"b", "v", "w"}),
+    frozenset({"p", "f"}),
+    frozenset({"k", "x", "χ", "q"}),
+    frozenset({"ħ", "x", "χ", "h"}),
+    frozenset({"ʕ", "ʔ", "ɣ", "ʁ"}),
+    frozenset({"r", "ʁ", "ʀ"}),
+    frozenset({"sˤ", "ts", "t͡s", "s"}),
+    frozenset({"dˤ", "sˤ", "d"}),
+    frozenset({"tˤ", "t"}),
+    frozenset({"ðˤ", "sˤ", "z"}),
+    frozenset({"θ", "t", "ʃ", "s"}),
+    frozenset({"ð", "d", "z"}),
+    frozenset({"z", "s"}),
+    frozenset({"ɬ", "ʃ", "s"}),
+    frozenset({"ʃ", "s"}),
+)
+
+_ROOT_RADICALS = {"ar": arabic_root_radicals, "he": hebrew_root_radicals}
+
+
+@dataclass
+class _SideRoot:
+    """One side's reconstruction radicals plus its recorded nominal melody."""
+    radicals: list[str]
+    pattern: str | None
+
+
+def _radical_base(tok: str) -> str:
+    return _RADICAL_MODIFIERS.sub("", tok)
+
+
+def _radicals_compatible(a: str, b: str) -> bool:
+    a, b = _radical_base(a), _radical_base(b)
+    if a == b:
+        return True
+    return any({a, b} <= cls for cls in _RADICAL_EQUIV)
+
+
+def _align_radicals(radicals: list[str], ipa: str) -> list[int] | None:
+    """Indices (into Phoneme.parse(ipa)) of the consonant tokens that *radicals*
+    align to, as an order-preserving fuzzy subsequence; None if any radical has
+    no compatible surface consonant."""
+    toks = list(Phoneme.parse(ipa))
+    cons = [(i, t.tok) for i, t in enumerate(toks) if isinstance(t, Consonant)]
+    idxs: list[int] = []
+    ci = 0
+    for r in radicals:
+        j = ci
+        while j < len(cons) and not _radicals_compatible(r, cons[j][1]):
+            j += 1
+        if j >= len(cons):
+            return None
+        idxs.append(cons[j][0])
+        ci = j + 1
+    return idxs
+
+
+def _melody(ipa: str, idxs: list[int]) -> str:
+    """Build a nominal-melody template: the surface IPA with the radical tokens
+    at *idxs* replaced by slots ({0}{1}{2}), everything else (vowels and any
+    templatic affix consonants) kept verbatim — the full vocalic melody."""
+    toks = list(Phoneme.parse(ipa))
+    slot = {pos: k for k, pos in enumerate(idxs)}
+    return "".join(f"{{{slot[i]}}}" if i in slot else t.tok
+                   for i, t in enumerate(toks))
+
+
+def _resolve_side(
+    tag_radicals: list[str] | None, ipa: str, guide: list[str] | None,
+) -> _SideRoot:
+    """Reduce one side to its reconstruction radicals + recorded melody.
+
+    The tag is authoritative: its radicals drive the reconstruction, and the
+    melody is recovered by aligning them to the surface.  A tagless side falls
+    back to its surface skeleton, but when the OTHER side is tagged it is
+    de-patterned by aligning that tag's radicals to this surface and keeping the
+    matched consonants (dropping preformatives/suffixes as melody residue)."""
+    if tag_radicals is not None:
+        idxs = _align_radicals(tag_radicals, ipa)
+        return _SideRoot(tag_radicals, _melody(ipa, idxs) if idxs else None)
+    skeleton = consonant_skeleton(ipa)
+    if guide is not None and len(skeleton) > len(guide):
+        idxs = _align_radicals(guide, ipa)
+        if idxs is not None:
+            toks = list(Phoneme.parse(ipa))
+            radicals = [_RADICAL_MODIFIERS.sub("", toks[i].tok).replace("ː", "")
+                        for i in idxs]
+            return _SideRoot(radicals, _melody(ipa, idxs))
+    # A surface geminate collapses the doubled final radical (gārar → g-r), but a
+    # geminate GUIDE (the tagged side's r-b-b) shows the root has it; restore the
+    # duplicate so both sides feed the same radical count and key consistently.
+    if (guide is not None and len(guide) >= 2 and guide[-1] == guide[-2]
+            and len(skeleton) == len(guide) - 1 and skeleton):
+        return _SideRoot(skeleton + [skeleton[-1]], None)
+    idxs = _align_radicals(skeleton, ipa)
+    return _SideRoot(skeleton, _melody(ipa, idxs) if idxs else None)
+
+
+def reconstruct_proto_root(
+    ar_tag: str | None, ar_ipa: str,
+    he_tag: str | None, he_ipa: str,
+) -> ProtoRoot | None:
+    """Jointly reconstruct a pair's de-patterned Proto-Semitic root from each
+    side's root tag (authority) and best stem IPA, recording each side's nominal
+    melody.  None when either side has no radicals or reconstruction fails."""
+    ar_tag_rad = _ROOT_RADICALS["ar"](ar_tag) if ar_tag else None
+    he_tag_rad = _ROOT_RADICALS["he"](he_tag) if he_tag else None
+    ar = _resolve_side(ar_tag_rad, ar_ipa, guide=he_tag_rad)
+    he = _resolve_side(he_tag_rad, he_ipa, guide=ar_tag_rad)
+    if not ar.radicals or not he.radicals:
+        return None
+    try:
+        merged = reconstruct_from_words(
+            ArabicWord.from_ipa("a".join(ar.radicals)),
+            HebrewWord.from_ipa("a".join(he.radicals)),
+        )
+    except ReconstructionError:
+        return None
+    key = "".join(consonant_skeleton(merged.word))
+    if not key:
+        return None
+    # The reconstructed SemPro word keeps the base scholar table (ħ→ḥ, θ→ṯ),
+    # unlike PansemiticWord which merges them — so this is the real PS root.
+    label = _ROOT_VOWELS.sub("", merged.to_protosemitic_convention())
+    # The same radicals in the pansemitic inventory (ħ→x, interdentals merged),
+    # so Phase-2 nominal synthesis slots pansemitic-shaped radicals into a
+    # compromise melody, consistent with the rest of the pansemitic form.
+    pan_radicals = consonant_skeleton(PansemiticWord.from_word(merged).word)
+    return ProtoRoot(ipa=key, label=label,
+                     ar_pattern=ar.pattern, he_pattern=he.pattern,
+                     pan_radicals=pan_radicals)
+
+
+def select_root_tag(tags: Iterable[str], ipa: str, lang: str) -> str | None:
+    """Deterministically choose a lexeme's root tag for de-patterning.
+
+    A lemma can carry SEVERAL root tags (e.g. قَرْيَة → قرر/قرو/قري); picking one by
+    set-iteration order is nondeterministic AND arbitrary.  Prefer the tag whose
+    radicals actually ALIGN to the surface (قري aligns to qarja; the geminate قرر
+    does not) — stable and more correct than either an arbitrary pick or blind
+    alphabetical order, which here would wrongly take the geminate.  Falls back to
+    the sorted-first tag when none align, so the result is always determined."""
+    radicals_fn = _ROOT_RADICALS.get(lang)
+    ordered = sorted(tags)
+    if not ordered or radicals_fn is None:
+        return ordered[0] if ordered else None
+    for tag in ordered:
+        rad = radicals_fn(tag)
+        if rad and _align_radicals(rad, ipa) is not None:
+            return tag
+    return ordered[0]
+
+
+def select_verb_stem(stems: Iterable[str]) -> str | None:
+    """Deterministically choose a lexeme's Proto-Semitic verb stem when kaikki
+    tags several binyan forms (e.g. آكَلَ = form I 'eat' + form IV 'feed' → {G, Š},
+    otherwise picked by set order).  Prefer the G base — the conservative reading
+    that doesn't assert a derivational exponent from an ambiguous lemma — else the
+    sorted-first stem."""
+    stems = set(stems)
+    if not stems:
+        return None
+    return "G" if "G" in stems else sorted(stems)[0]
 
 
 # Looks up the (canonical, romanization) of a base lexeme in the caller's
@@ -706,6 +928,108 @@ class HebrewMorphology(LangMorphology):
         return out if _letters(out) >= 2 else None
 
 
+# ── Proto-Semitic noun-pattern catalog (Phase 2) ─────────────────────────
+# Primary NOUNS are brought up to the verb standard: when BOTH sides' recorded
+# nominal melodies reflect the SAME Proto-Semitic noun pattern, the pansemitic
+# form is re-synthesized from the root + that pattern's single compromise melody
+# (mirroring how the binyan is re-applied for verbs), rather than left to the
+# surface aligner.  An asymmetric pair (no shared catalogued pattern) keeps the
+# surface-aligned form.
+#
+# Matching is by melody string: a pair reflects a pattern iff its ar_pattern is
+# among the pattern's ``ar`` melodies AND its he_pattern among the ``he`` ones.
+# The Arabic melody is the conservative witness — it preserves the segholate
+# vowel that Hebrew neutralizes to qetel (qatl/qitl/qutl all surface as the same
+# he ``{0}e{1}e{2}``) — so it disambiguates which segholate, while the shared he
+# melody only confirms membership.  Melodies are the radical-slotted templates
+# reconstruct_proto_root records; the compromise is the IPA melody the (complete,
+# tag-authoritative) pan_radicals slot into, so weak/geminate roots realize by
+# literal slotting (q-w-m + qatl → qawm, ħ-b-b + qatal → xabab).
+
+
+@dataclass(frozen=True)
+class NounPattern:
+    """One Proto-Semitic nominal pattern: its scholarly id, the single pansemitic
+    compromise melody (IPA, ``{0}{1}{2}`` radical slots), and the per-language
+    surface melodies that reflect it (matched against ProtoRoot.ar_pattern /
+    he_pattern)."""
+    psid: str
+    pansemitic: str
+    ar: frozenset[str]
+    he: frozenset[str]
+
+
+# Hebrew segholates collapse *qatl/*qitl/*qutl to qetel (``{0}e{1}e{2}``), so the
+# same he melody appears under all three; the Arabic vowel picks the entry.
+_HE_SEGHOLATE = frozenset({"{0}e{1}e{2}", "{0}a{1}a{2}", "{0}i{1}{2}",
+                           "{0}o{1}e{2}", "{0}e{1}a{2}"})
+
+NOUN_PATTERNS: tuple[NounPattern, ...] = (
+    # Segholates — Arabic faʿl/fiʿl/fuʿl keep the proto vowel; pansemitic keeps
+    # the conservative CVCC cluster (no Hebrew epenthesis).
+    NounPattern("qatl", "{0}a{1}{2}", frozenset({"{0}a{1}{2}"}), _HE_SEGHOLATE),
+    NounPattern("qitl", "{0}i{1}{2}", frozenset({"{0}i{1}{2}"}), _HE_SEGHOLATE),
+    NounPattern("qutl", "{0}u{1}{2}", frozenset({"{0}u{1}{2}"}), _HE_SEGHOLATE),
+    # Base triliteral noun *qatal (ar faʿal ↔ he qatal).
+    NounPattern("qatal", "{0}a{1}a{2}",
+                frozenset({"{0}a{1}a{2}"}), frozenset({"{0}a{1}a{2}"})),
+    # Adjective *qatīl (ar faʿīl ↔ he qātīl); pansemitic keeps the long ī.
+    NounPattern("qatiːl", "{0}a{1}iː{2}",
+                frozenset({"{0}a{1}iː{2}"}), frozenset({"{0}a{1}i{2}"})),
+    # Place/instrument *maqtal — only when BOTH sides carry the m-preformative
+    # (a half-with-m pair is asymmetric → falls back).
+    NounPattern("maqtal", "ma{0}{1}a{2}",
+                frozenset({"ma{0}{1}a{2}", "mi{0}{1}aː{2}", "mi{0}{1}a{2}"}),
+                frozenset({"ma{0}{1}e{2}", "mi{0}{1}a{2}", "ma{0}{1}a{2}"})),
+)
+
+# *qattāl intensive/agent (ar faʿʿāl) is detected from the ARABIC SURFACE, not the
+# recorded melody: the radical-alignment that builds ar_pattern absorbs the
+# doubled C2, and Modern Hebrew loses gemination too, so neither melody witnesses
+# it.  This is the one Arabic-WITNESSED (not bilaterally-shared) pattern — it
+# fires on Arabic geminate evidence with Hebrew only required to be a plausible
+# triconsonantal cognate.  Compromise: faʿʿāl with the geminate C2 + long ā, a
+# morphology-only exponent like the D-stem gemination.
+_QATTAL_PANSEMITIC = "{0}a{1}ːaː{2}"
+
+
+def match_noun_pattern(ar_pattern: str | None,
+                       he_pattern: str | None) -> NounPattern | None:
+    """The catalogued PS noun pattern a pair reflects, or None.  Shared = the
+    ar melody is among a pattern's ar melodies AND the he melody among its he
+    melodies (first match; the catalog's ar melodies are mutually exclusive)."""
+    if not ar_pattern or not he_pattern:
+        return None
+    for pat in NOUN_PATTERNS:
+        if ar_pattern in pat.ar and he_pattern in pat.he:
+            return pat
+    return None
+
+
+def arabic_intensive(ipa: str) -> bool:
+    """Whether an Arabic surface stem has the faʿʿāl shape: a triconsonantal
+    core whose second radical is geminated and is followed by a long ā (the
+    reliable witness of *qattāl, since the recorded melody absorbs the
+    gemination)."""
+    toks = list(Phoneme.parse(ipa))
+    cons = [i for i, t in enumerate(toks) if isinstance(t, Consonant)]
+    if len(cons) != 3:
+        return False
+    if "ː" not in toks[cons[1]].tok:
+        return False
+    return any(t.tok == "aː" for t in toks[cons[1] + 1:cons[2]])
+
+
+@dataclass(frozen=True)
+class NominalSynthesis:
+    """A resolved nominal pattern ready to produce: the compromise melody and the
+    (pansemitic-inventory) radicals to slot into it, plus the PS id for the
+    trace/report."""
+    psid: str
+    melody: str
+    radicals: tuple[str, ...]
+
+
 class PansemiticMorphology(LangMorphology):
     """The merged ancestor's morphology: how shared layers re-attach to a
     pansemitic stem.
@@ -784,18 +1108,11 @@ class PansemiticMorphology(LangMorphology):
         return "".join(toks)
 
     @classmethod
-    def produce_word(cls, stem: str, layers: set[Layer]) -> str:
-        """Re-attach the shared *layers* to a merged pansemitic *stem*.
-
-        Order: definite article, then verbal-stem prefix, then the stem (a
-        deverbal melody, else possibly geminated), then the single nominal
-        suffix.  Number (dual/plural) outranks nisba and bare feminine for that
-        suffix slot, and a feminine stem takes -at rather than -im."""
-        deverbal = next((L for L in cls._DEVERBAL_ORDER if L in layers), None)
-        if deverbal is not None:
-            stem = cls._apply_deverbal(stem, deverbal) or stem
-        elif Layer.GEMINATION in layers:
-            stem = cls._geminate_c2(stem)
+    def _wrap_affixes(cls, stem: str, layers: set[Layer]) -> str:
+        """Wrap a produced *stem* with the shared concatenative affixes: definite
+        article, verbal-stem prefix, and the single nominal suffix.  Number
+        (dual/plural) outranks nisba and bare feminine for that suffix slot, and a
+        feminine stem takes -at rather than -im."""
         stem_prefix = next((cls.stem_prefixes[L] for L in cls._STEM_PREFIX_ORDER
                             if L in layers), "")
         definite = (cls.produce_prefixes[Layer.DEFINITE]
@@ -810,6 +1127,32 @@ class PansemiticMorphology(LangMorphology):
         else:
             suffix = ""
         return definite + stem_prefix + stem + suffix
+
+    @classmethod
+    def produce_word(cls, stem: str, layers: set[Layer]) -> str:
+        """Re-attach the shared *layers* to a merged pansemitic *stem*.
+
+        The stem core is a deverbal melody (if a shared deverbal category) else
+        possibly geminated (D exponent); then the concatenative affixes wrap it."""
+        deverbal = next((L for L in cls._DEVERBAL_ORDER if L in layers), None)
+        if deverbal is not None:
+            stem = cls._apply_deverbal(stem, deverbal) or stem
+        elif Layer.GEMINATION in layers:
+            stem = cls._geminate_c2(stem)
+        return cls._wrap_affixes(stem, layers)
+
+    @classmethod
+    def produce_nominal(cls, radicals: tuple[str, ...], melody: str,
+                        layers: set[Layer]) -> str:
+        """Produce a pansemitic noun from the root + a shared pattern's compromise
+        *melody*, then wrap the shared concatenative affixes.
+
+        The (complete, tag-authoritative) *radicals* slot into the melody, so
+        weak/geminate roots realize by literal slotting (q-w-m + ``{0}a{1}{2}`` →
+        qawm; ħ-b-b + ``{0}a{1}a{2}`` → xabab).  This is the nominal analogue of
+        the binyan re-application: the shape is the pattern's, underived to the
+        root and rebuilt as one pansemitic compromise."""
+        return cls._wrap_affixes(melody.format(*radicals), layers)
 
 
 MORPHOLOGY_CONFIG: dict[str, type[LangMorphology]] = {
@@ -840,6 +1183,7 @@ def analyze_phrase(
     roman: str,
     ipa: str = "",
     pos: Iterable[str] = (),
+    roots: Iterable[str] = (),
     verb_forms: Iterable[str] = (),
     derivation: Iterable[str] = (),
     number: Iterable[str] = (),
@@ -864,6 +1208,7 @@ def analyze_phrase(
         words=[morph.analyze_word(s, r, i, pos, number)
                for s, r, i in morph.tokenize(script, roman, ipa)],
         pos=pos,
+        roots=frozenset(roots),
         verb_forms=verb_forms,
         verb_stem=frozenset(s for f in verb_forms
                             if (s := morph.verb_stem(f)) is not None),
@@ -984,7 +1329,14 @@ def _reconstruct_word_pairs(
             ArabicWord.from_ipa(pair.ar_ipa), HebrewWord.from_ipa(pair.he_ipa))
         anc_parts.append(merged.word)
         pan_stem = PansemiticWord.from_word(merged).word
-        final = PansemiticMorphology.produce_word(pan_stem, pair.layers)
+        # A shared catalogued noun pattern re-synthesizes the form from the root +
+        # the pattern's compromise melody (like the binyan for verbs); otherwise
+        # the aligned stem carries the (surface) melody.
+        if pair.nominal is not None:
+            final = PansemiticMorphology.produce_nominal(
+                pair.nominal.radicals, pair.nominal.melody, pair.layers)
+        else:
+            final = PansemiticMorphology.produce_word(pan_stem, pair.layers)
         pan_parts.append(final)
         steps.append((pan_stem, final))
     return (ReconstructedSemProWord(word=" ".join(anc_parts)),
@@ -1035,7 +1387,7 @@ def deep_parse(
             ipa = stem
             layers.add(Layer.NISBA)
 
-    num = next(iter({Layer.DUAL, Layer.PLURAL} & word.layers), None)
+    num = next((L for L in (Layer.DUAL, Layer.PLURAL) if L in word.layers), None)
     if num is not None:
         stem = _reduce_to_base(
             phrase, morph, ipa, num, phrase.singular_of, base_lookup)
@@ -1048,7 +1400,7 @@ def deep_parse(
     # shared); a plain finite verb's derived stem is reduced to the G base and
     # its exponent layer(s) recorded.
     cat = _deverbal_category(phrase)
-    vs = next(iter(phrase.verb_stem), None)
+    vs = select_verb_stem(phrase.verb_stem)
     if cat is not None:
         reduced = _reduce_verb_stem(phrase, ipa, base_lookup)
         if reduced is not None:
@@ -1095,6 +1447,51 @@ def _layer_names(layers: set[Layer]) -> list[str]:
     return sorted(layer.value for layer in layers)
 
 
+# Shared layers that mark a VERBAL derivation (a finite stem exponent or a
+# deverbal template) — their presence means the lexeme isn't a primary noun, so
+# nominal root-and-pattern synthesis stays out.
+_VERBAL_LAYERS = frozenset({
+    Layer.GEMINATION, Layer.N_PREFIX, Layer.CAUSATIVE, Layer.T_PREFIX,
+    Layer.ACTIVE_PARTICIPLE, Layer.PASSIVE_PARTICIPLE,
+    Layer.VERBAL_NOUN, Layer.INSTANCE_NOUN,
+})
+
+
+def _nominal_pair(arc: AnalyzedPhrase, hec: AnalyzedPhrase,
+                  shared: set[Layer]) -> bool:
+    """Whether a pair is a primary noun/adjective on both sides — the only kind
+    eligible for root-and-pattern noun synthesis.  Excludes verbs, deverbal
+    nominals (participles/verbal nouns), and any shared verbal exponent, so those
+    keep their already-principled (or surface-aligned) forms."""
+    if "verb" in arc.pos or "verb" in hec.pos:
+        return False
+    if not (arc.pos & _NOMINAL_BASE_POS) or not (hec.pos & _NOMINAL_BASE_POS):
+        return False
+    if _deverbal_category(arc) is not None or _deverbal_category(hec) is not None:
+        return False
+    return not (shared & _VERBAL_LAYERS)
+
+
+def _resolve_nominal(
+    arc: AnalyzedPhrase, hec: AnalyzedPhrase, ar_stem: str,
+    shared: set[Layer], proto_root: "ProtoRoot | None",
+) -> NominalSynthesis | None:
+    """Resolve a shared catalogued noun pattern for an eligible nominal pair, or
+    None (→ keep the surface-aligned form).  Requires a triconsonantal root (3
+    pansemitic radicals); tries the bilateral melody catalog first, then the
+    Arabic-witnessed faʿʿāl intensive."""
+    if (proto_root is None or len(proto_root.pan_radicals) != 3
+            or not _nominal_pair(arc, hec, shared)):
+        return None
+    radicals = tuple(proto_root.pan_radicals)
+    pat = match_noun_pattern(proto_root.ar_pattern, proto_root.he_pattern)
+    if pat is not None:
+        return NominalSynthesis(pat.psid, pat.pansemitic, radicals)
+    if arabic_intensive(ar_stem):
+        return NominalSynthesis("qattaːl", _QATTAL_PANSEMITIC, radicals)
+    return None
+
+
 def merge(
     ar: AnalyzedPhrase,
     he: AnalyzedPhrase,
@@ -1117,6 +1514,7 @@ def merge(
         merged_stem, final = steps[0]
         trace = [MergeTrace(WordTrace(ar.ipa, []), WordTrace(he.ipa, []),
                             merged_stem, [], final)]
+        # Word counts differ → a compound; the root is a single-word property.
         return MergeResult(ancestor=ancestor, pansemitic=pansemitic, trace=trace)
 
     pairs = _component_pairs(ar, he, meta_lookup)
@@ -1136,10 +1534,26 @@ def merge(
         word_pairs.append(PlannedPair(ar_stem, he_stem, layers=shared))
         parsed.append((ar_stem, ar_layers, he_stem, he_layers))
 
-        a_vs, h_vs = next(iter(arc.verb_stem), None), next(iter(hec.verb_stem), None)
+        a_vs, h_vs = select_verb_stem(arc.verb_stem), select_verb_stem(hec.verb_stem)
         verb_stems.append(a_vs if (a_vs is not None and a_vs == h_vs) else None)
         a_cat, h_cat = _deverbal_category(arc), _deverbal_category(hec)
         derivations.append(a_cat.value if (a_cat is not None and a_cat == h_cat) else None)
+
+    # The shared verb_stem / derivation / root are single-word lexeme properties.
+    verb_stem = None if multiword else verb_stems[0]
+    derivation = None if multiword else derivations[0]
+    proto_root = None
+    if not multiword:
+        proto_root = reconstruct_proto_root(
+            select_root_tag(ar.roots, word_pairs[0].ar_ipa, "ar"), word_pairs[0].ar_ipa,
+            select_root_tag(he.roots, word_pairs[0].he_ipa, "he"), word_pairs[0].he_ipa,
+        )
+        # A primary noun whose two sides share a catalogued pattern is
+        # re-synthesized from the root + that pattern's compromise melody (set
+        # here so _reconstruct_word_pairs produces it instead of the aligned stem).
+        arc0, hec0 = pairs[0]
+        word_pairs[0].nominal = _resolve_nominal(
+            arc0, hec0, word_pairs[0].ar_ipa, word_pairs[0].layers, proto_root)
 
     ancestor, pansemitic, steps = _reconstruct_word_pairs(word_pairs)
     trace = [
@@ -1152,8 +1566,6 @@ def merge(
         for (ar_stem, ar_layers, he_stem, he_layers), pp, (merged_stem, final)
         in zip(parsed, word_pairs, steps)
     ]
-    # The shared verb_stem / derivation are a single-word lexeme property.
-    verb_stem = None if multiword else verb_stems[0]
-    derivation = None if multiword else derivations[0]
     return MergeResult(ancestor=ancestor, pansemitic=pansemitic, trace=trace,
-                       verb_stem=verb_stem, derivation=derivation)
+                       verb_stem=verb_stem, derivation=derivation,
+                       proto_root=proto_root)
