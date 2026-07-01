@@ -1307,16 +1307,29 @@ class PansemiticWord(Word):
 
     # Gemination (ː) on a consonant token — a tie-bar affricate (d͡ʒ), an
     # emphatic (sˤ), or a plain consonant — left by the D/tD stem exponent.
-    # (from_word strips all lexical/vowel-length ː, so a surviving ː is always
-    # morphological consonant gemination.)
+    # from_word strips lexical/vowel-length ː during ordinary reduction, but
+    # catalogued noun-pattern melodies (e.g. qatīl) are spliced in afterwards
+    # and can carry a genuine vowel-length ː straight through; _VOWEL_MACRON
+    # below converts those before this regex runs, so any ː it sees here is
+    # morphological consonant gemination.
     _GEMINATE = re.compile(r"((?:[^ ]͡[^ ]|[^ ])ˤ?)ː")
+
+    # Vowel length renders as a macron, not a doubled letter.
+    _VOWEL_MACRON: list[tuple[str, str]] = [
+        ("aː", "ā"), ("iː", "ī"), ("uː", "ū"), ("eː", "ē"), ("oː", "ō"),
+    ]
 
     def to_protosemitic_convention(self) -> str:
         """Human-readable pansemitic rendering.  Uses a bespoke table: the
         generic scholar mapping would fold x → ḫ, but pansemitic keeps x."""
+        # Macron-ize vowel length first so _GEMINATE below only doubles
+        # consonants (it would otherwise double a long vowel too).
+        out = self.word
+        for src, dst in self._VOWEL_MACRON:
+            out = out.replace(src, dst)
         # Render gemination as a doubled consonant (jadːafa → jaddafa) before
         # the scholar mapping rewrites the token.
-        out = self._GEMINATE.sub(r"\1\1", self.word)
+        out = self._GEMINATE.sub(r"\1\1", out)
         for src, dst in _PANSEMITIC_IPA_TO_SCHOLAR:
             out = out.replace(src, dst)
 

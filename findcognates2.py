@@ -375,6 +375,9 @@ class CognateEntry:
     morphology: list[MergeTrace] | None = None  # per-word merge normalization trace
     verb_stem: str | None = None   # Proto-Semitic stem of a shared deverbal form
     derivation: str | None = None  # shared templatic category (participle, …)
+    # Compact recipe for the pansemitic form: base (verb stem / noun pattern / n)
+    # then surviving transforms, e.g. `G`, `D`, `maqtal`, `qatl+fem+pl`.
+    derivation_chain: str | None = None
     # Canonical de-patterned proto-root, emitted by the merge (the single source
     # of root analysis).  proto_root_ipa is the grouping key; the nominal_pattern
     # fields record each side's wazn/mishqal melody for Phase-2 production.
@@ -1820,7 +1823,7 @@ def main():
         ar_canonical: str, ar_roman: str, ar_ipa: str, ar_wd: WordData | None,
         he_canonical: str, he_roman: str, he_ipa: str, he_wd: WordData | None,
     ) -> tuple[Word, PansemiticWord, str | None, str | None,
-               list[MergeTrace], "ProtoRoot | None"]:
+               list[MergeTrace], "ProtoRoot | None", str | None]:
         """Morphology-aware surface merge (the no-shared-source path).
 
         Analyzes each side into its morphological structure (script/roman for
@@ -1855,7 +1858,7 @@ def main():
         result = merge(ar_phrase, he_phrase, _base_romanization, _component_meta)
         return (result.ancestor, result.pansemitic,
                 result.verb_stem, result.derivation, result.trace,
-                result.proto_root)
+                result.proto_root, result.derivation_chain)
 
     # ── Build output ─────────────────────────────────────────────
     print(f"\nWriting {OUTPUT_FILE} …")
@@ -1968,7 +1971,7 @@ def main():
             else:
                 (ancestor, pansemitic_word, entry.verb_stem,
                  entry.derivation, entry.morphology,
-                 _proot) = _morph_reconstruct(
+                 _proot, entry.derivation_chain) = _morph_reconstruct(
                     ar_canonical, ar_roman, ar_ipa or "", ar_wd,
                     he_canonical, he_roman, he_ipa or "", he_wd,
                 )
@@ -1993,6 +1996,12 @@ def main():
                     pansemitic_word = PansemiticWord.from_ipa(
                         apply_verb_stem_ipa(pansemitic_word.word, shared_stem))
                     entry.verb_stem = shared_stem
+                    entry.derivation_chain = shared_stem
+                # A shared-source lexeme is reduced directly (no typed derivation);
+                # a bare verb reduction with no re-applied binyan is a G stem.
+                if entry.derivation_chain is None and "verb" in (
+                        (ar_wd.pos if ar_wd else set()) & (he_wd.pos if he_wd else set())):
+                    entry.derivation_chain = "G"
             pansemitic = pansemitic_word.to_protosemitic_convention()
             if pansemitic:
                 entry.pansemitic_form = pansemitic
@@ -2030,7 +2039,7 @@ def main():
     print(f"Writing {CSV_FILE} …")
     with open(CSV_FILE, "w", encoding="utf-8", newline="") as f:
         writer = csv.writer(f)
-        writer.writerow(["arabic", "arabic_romanization", "hebrew", "hebrew_romanization", "pansemitic", "layers"])
+        writer.writerow(["arabic", "arabic_romanization", "hebrew", "hebrew_romanization", "pansemitic", "derivation", "layers"])
         for entry in results:
             writer.writerow([
                 entry.arabic.canonical,
@@ -2038,6 +2047,7 @@ def main():
                 entry.hebrew.canonical,
                 entry.hebrew.roman,
                 entry.pansemitic_form or "",
+                entry.derivation_chain or "",
                 ";".join(entry.match_layers),
             ])
 
@@ -2054,9 +2064,10 @@ def main():
     with open(GOOD_CSV_FILE, "w", encoding="utf-8", newline="") as f:
         writer = csv.writer(f)
         writer.writerow(["proto_root", "borrowed_from", "arabic_roots",
-                         "hebrew_roots", "pos", "stem", "pansemitic", "arabic",
-                         "arabic_romanization", "hebrew", "hebrew_romanization",
-                         "arabic_meaning", "hebrew_meaning", "evidence_count"])
+                         "hebrew_roots", "pos", "derivation", "pansemitic",
+                         "arabic", "arabic_romanization", "hebrew",
+                         "hebrew_romanization", "arabic_meaning", "hebrew_meaning",
+                         "evidence_count"])
 
         def _lex_row(proot: str, source: str, ar_roots: str, he_roots: str,
                      L: dict[str, Any]) -> list[Any]:
@@ -2064,7 +2075,7 @@ def main():
             return [
                 proot, source, ar_roots, he_roots,
                 "/".join(L["arabic"].get("pos") or []),
-                L.get("stem") or "",
+                L.get("derivation_chain") or "",
                 L.get("pansemitic_form") or "",
                 L["arabic"]["canonical"], L["arabic"].get("roman", ""),
                 L["hebrew"]["canonical"], L["hebrew"].get("roman", ""),
