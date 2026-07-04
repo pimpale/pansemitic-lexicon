@@ -651,6 +651,97 @@
     },
     {
       "arabic": {
+        "canonical": "أَبْلَعَ",
+        "roman": "ʔablaʕa",
+        "glosses": [
+          "to make swallow"
+        ],
+        "wiktionary": "https://en.wiktionary.org/wiki/%D8%A3%D8%A8%D9%84%D8%B9#Arabic",
+        "ipa": "ʔablaʕa",
+        "roots": [
+          "بلع"
+        ],
+        "pos": [
+          "verb"
+        ],
+        "stems": [
+          "Š"
+        ]
+      },
+      "hebrew": {
+        "canonical": "הִבְלִיעַ",
+        "roman": "hivlía",
+        "glosses": [
+          "to cause to swallow",
+          "to cover up; to cover one's tracks",
+          "to insinuate, hint; to allude to",
+          "to slur (words, etc.)"
+        ],
+        "wiktionary": "https://en.wiktionary.org/wiki/%D7%94%D7%91%D7%9C%D7%99%D7%A2#Hebrew",
+        "ipa": "hivlia",
+        "roots": [
+          "בלע"
+        ],
+        "pos": [
+          "verb"
+        ],
+        "stems": [
+          "Š"
+        ]
+      },
+      "match_layers": [
+        "slot_matched",
+        "root_family"
+      ],
+      "best_sense_match": {
+        "arabic_sense": "to make swallow",
+        "arabic_pos": "verb",
+        "hebrew_sense": "to cause to swallow",
+        "hebrew_pos": "verb",
+        "similarity": 0.9114
+      },
+      "morphology": [
+        {
+          "ar": {
+            "stem": "blaʕa",
+            "layers": [
+              "causative"
+            ]
+          },
+          "he": {
+            "stem": "vlia",
+            "layers": [
+              "causative"
+            ]
+          },
+          "merged_stem": "balaʕa",
+          "applied_layers": [
+            "causative"
+          ],
+          "final": "ʃablaʕa"
+        }
+      ],
+      "verb_stem": "Š",
+      "derivation_chain": "Š",
+      "proto_root_ipa": "blʕ",
+      "proto_root_label": "blʕ",
+      "nominal_pattern_ar": "{0}{1}a{2}a",
+      "nominal_pattern_he": "{0}{1}ia",
+      "base": "balaʕa",
+      "ancestor": "recon-sem-pro:balaʕa",
+      "pansemitic_form": "šablaʕa",
+      "loss": {
+        "arabic": 0.13571428571428573,
+        "hebrew": 0.5142857142857143,
+        "joint": 0.6500000000000001
+      },
+      "stem": "Š",
+      "evidence": [],
+      "borrowed_from": null,
+      "proto_root": "blʕ"
+    },
+    {
+      "arabic": {
         "canonical": "بَلَعَ",
         "roman": "balaʕa",
         "glosses": [
@@ -2007,6 +2098,94 @@
         "joint": 0.19666666666666666
       },
       "stem": null,
+      "evidence": [],
+      "borrowed_from": null,
+      "proto_root": "brq"
+    },
+    {
+      "arabic": {
+        "canonical": "أَبْرَقَ",
+        "roman": "ʔabraqa",
+        "glosses": [
+          "to make bolts of lightning"
+        ],
+        "wiktionary": "https://en.wiktionary.org/wiki/%D8%A3%D8%A8%D8%B1%D9%82#Arabic",
+        "ipa": "ʔabraqa",
+        "roots": [
+          "برق"
+        ],
+        "pos": [
+          "verb"
+        ],
+        "stems": [
+          "Š"
+        ]
+      },
+      "hebrew": {
+        "canonical": "הִבְרִיק",
+        "roman": "hivrík",
+        "glosses": [
+          "to lustre"
+        ],
+        "wiktionary": "https://en.wiktionary.org/wiki/%D7%94%D7%91%D7%A8%D7%99%D7%A7#Hebrew",
+        "ipa": "hivrik",
+        "roots": [
+          "ברק"
+        ],
+        "pos": [
+          "verb"
+        ],
+        "stems": [
+          "Š"
+        ]
+      },
+      "match_layers": [
+        "slot_matched",
+        "root_family"
+      ],
+      "best_sense_match": {
+        "arabic_sense": "to make bolts of lightning",
+        "arabic_pos": "verb",
+        "hebrew_sense": "to lustre",
+        "hebrew_pos": "verb",
+        "similarity": 0.8184
+      },
+      "morphology": [
+        {
+          "ar": {
+            "stem": "braqa",
+            "layers": [
+              "causative"
+            ]
+          },
+          "he": {
+            "stem": "vrik",
+            "layers": [
+              "causative"
+            ]
+          },
+          "merged_stem": "baraqa",
+          "applied_layers": [
+            "causative"
+          ],
+          "final": "ʃabraqa"
+        }
+      ],
+      "verb_stem": "Š",
+      "derivation_chain": "Š",
+      "proto_root_ipa": "brq",
+      "proto_root_label": "brq",
+      "nominal_pattern_ar": "{0}{1}a{2}a",
+      "nominal_pattern_he": "{0}{1}i{2}",
+      "base": "baraqa",
+      "ancestor": "recon-sem-pro:baraqa",
+      "pansemitic_form": "šabraqa",
+      "loss": {
+        "arabic": 0.13571428571428573,
+        "hebrew": 0.41428571428571426,
+        "joint": 0.55
+      },
+      "stem": "Š",
       "evidence": [],
       "borrowed_from": null,
       "proto_root": "brq"
@@ -6797,97 +6976,6 @@
     },
     {
       "arabic": {
-        "canonical": "أَبْلَعَ",
-        "roman": "ʔablaʕa",
-        "glosses": [
-          "to make swallow"
-        ],
-        "wiktionary": "https://en.wiktionary.org/wiki/%D8%A3%D8%A8%D9%84%D8%B9#Arabic",
-        "ipa": "ʔablaʕa",
-        "roots": [
-          "بلع"
-        ],
-        "pos": [
-          "verb"
-        ],
-        "stems": [
-          "Š"
-        ]
-      },
-      "hebrew": {
-        "canonical": "הִבְלִיעַ",
-        "roman": "hivlía",
-        "glosses": [
-          "to cause to swallow",
-          "to cover up; to cover one's tracks",
-          "to insinuate, hint; to allude to",
-          "to slur (words, etc.)"
-        ],
-        "wiktionary": "https://en.wiktionary.org/wiki/%D7%94%D7%91%D7%9C%D7%99%D7%A2#Hebrew",
-        "ipa": "hivlia",
-        "roots": [
-          "בלע"
-        ],
-        "pos": [
-          "verb"
-        ],
-        "stems": [
-          "Š"
-        ]
-      },
-      "match_layers": [
-        "slot_matched",
-        "root_family"
-      ],
-      "best_sense_match": {
-        "arabic_sense": "to make swallow",
-        "arabic_pos": "verb",
-        "hebrew_sense": "to cause to swallow",
-        "hebrew_pos": "verb",
-        "similarity": 0.9114
-      },
-      "morphology": [
-        {
-          "ar": {
-            "stem": "blaʕa",
-            "layers": [
-              "causative"
-            ]
-          },
-          "he": {
-            "stem": "vlia",
-            "layers": [
-              "causative"
-            ]
-          },
-          "merged_stem": "blaʕa",
-          "applied_layers": [
-            "causative"
-          ],
-          "final": "ʃablaʕa"
-        }
-      ],
-      "verb_stem": "Š",
-      "derivation_chain": "Š",
-      "proto_root_ipa": "blʕ",
-      "proto_root_label": "blʕ",
-      "nominal_pattern_ar": "{0}{1}a{2}a",
-      "nominal_pattern_he": "{0}{1}ia",
-      "base": "blaʕa",
-      "ancestor": "recon-sem-pro:blaʕa",
-      "pansemitic_form": "šablaʕa",
-      "loss": {
-        "arabic": 0.13571428571428573,
-        "hebrew": 0.5142857142857143,
-        "joint": 0.6500000000000001
-      },
-      "stem": "Š",
-      "evidence": [],
-      "borrowed_from": null,
-      "proto_root": "blʕ"
-    },
-    {
-      "arabic": {
         "canonical": "قَصُرَمَا",
         "roman": "qaṣuramā",
         "glosses": [
@@ -6961,94 +7049,6 @@
       "evidence": [],
       "borrowed_from": null,
       "proto_root": "qṣr"
-    },
-    {
-      "arabic": {
-        "canonical": "أَبْرَقَ",
-        "roman": "ʔabraqa",
-        "glosses": [
-          "to make bolts of lightning"
-        ],
-        "wiktionary": "https://en.wiktionary.org/wiki/%D8%A3%D8%A8%D8%B1%D9%82#Arabic",
-        "ipa": "ʔabraqa",
-        "roots": [
-          "برق"
-        ],
-        "pos": [
-          "verb"
-        ],
-        "stems": [
-          "Š"
-        ]
-      },
-      "hebrew": {
-        "canonical": "הִבְרִיק",
-        "roman": "hivrík",
-        "glosses": [
-          "to lustre"
-        ],
-        "wiktionary": "https://en.wiktionary.org/wiki/%D7%94%D7%91%D7%A8%D7%99%D7%A7#Hebrew",
-        "ipa": "hivrik",
-        "roots": [
-          "ברק"
-        ],
-        "pos": [
-          "verb"
-        ],
-        "stems": [
-          "Š"
-        ]
-      },
-      "match_layers": [
-        "slot_matched",
-        "root_family"
-      ],
-      "best_sense_match": {
-        "arabic_sense": "to make bolts of lightning",
-        "arabic_pos": "verb",
-        "hebrew_sense": "to lustre",
-        "hebrew_pos": "verb",
-        "similarity": 0.8184
-      },
-      "morphology": [
-        {
-          "ar": {
-            "stem": "braqa",
-            "layers": [
-              "causative"
-            ]
-          },
-          "he": {
-            "stem": "vrik",
-            "layers": [
-              "causative"
-            ]
-          },
-          "merged_stem": "braqa",
-          "applied_layers": [
-            "causative"
-          ],
-          "final": "ʃabraqa"
-        }
-      ],
-      "verb_stem": "Š",
-      "derivation_chain": "Š",
-      "proto_root_ipa": "brq",
-      "proto_root_label": "brq",
-      "nominal_pattern_ar": "{0}{1}a{2}a",
-      "nominal_pattern_he": "{0}{1}i{2}",
-      "base": "braqa",
-      "ancestor": "recon-sem-pro:braqa",
-      "pansemitic_form": "šabraqa",
-      "loss": {
-        "arabic": 0.13571428571428573,
-        "hebrew": 0.41428571428571426,
-        "joint": 0.55
-      },
-      "stem": "Š",
-      "evidence": [],
-      "borrowed_from": null,
-      "proto_root": "brq"
     },
     {
       "arabic": {
@@ -16043,6 +16043,91 @@
     },
     {
       "arabic": {
+        "canonical": "أَسْقَى",
+        "roman": "ʔasqā",
+        "glosses": [
+          "to give drink"
+        ],
+        "wiktionary": "https://en.wiktionary.org/wiki/%D8%A3%D8%B3%D9%82%D9%89#Arabic",
+        "ipa": "ʔasqaː",
+        "roots": [],
+        "pos": [
+          "verb"
+        ],
+        "stems": [
+          "Š"
+        ]
+      },
+      "hebrew": {
+        "canonical": "הִשְׁקָה",
+        "roman": "hishká",
+        "glosses": [
+          "to give drink to, to water"
+        ],
+        "wiktionary": "https://en.wiktionary.org/wiki/%D7%94%D7%A9%D7%A7%D7%94#Hebrew",
+        "ipa": "hiʃka",
+        "roots": [],
+        "pos": [
+          "verb"
+        ],
+        "stems": [
+          "Š"
+        ]
+      },
+      "match_layers": [
+        "direct_cognate_ar→he",
+        "direct_cognate_he→ar"
+      ],
+      "best_sense_match": {
+        "arabic_sense": "to give drink",
+        "arabic_pos": "verb",
+        "hebrew_sense": "to give drink to, to water",
+        "hebrew_pos": "verb",
+        "similarity": 0.9535
+      },
+      "morphology": [
+        {
+          "ar": {
+            "stem": "sqaː",
+            "layers": [
+              "causative"
+            ]
+          },
+          "he": {
+            "stem": "hiʃk",
+            "layers": [
+              "causative",
+              "feminine"
+            ]
+          },
+          "merged_stem": "hasaqa",
+          "applied_layers": [
+            "causative"
+          ],
+          "final": "ʃahsaqa"
+        }
+      ],
+      "verb_stem": "Š",
+      "derivation_chain": "Š",
+      "proto_root_ipa": "hsq",
+      "proto_root_label": "hsq",
+      "nominal_pattern_ar": "{0}{1}aː",
+      "nominal_pattern_he": "{0}i{1}{2}",
+      "base": "hasaqa",
+      "ancestor": "recon-sem-pro:hasaqa",
+      "pansemitic_form": "šahsaqa",
+      "loss": {
+        "arabic": 0.38571428571428573,
+        "hebrew": 0.4035714285714286,
+        "joint": 0.7892857142857144
+      },
+      "stem": "Š",
+      "evidence": [],
+      "borrowed_from": null,
+      "proto_root": "hsq"
+    },
+    {
+      "arabic": {
         "canonical": "هَيْكَل",
         "roman": "haykal",
         "glosses": [
@@ -16605,91 +16690,6 @@
       "evidence": [],
       "borrowed_from": null,
       "proto_root": "hrʔy"
-    },
-    {
-      "arabic": {
-        "canonical": "أَسْقَى",
-        "roman": "ʔasqā",
-        "glosses": [
-          "to give drink"
-        ],
-        "wiktionary": "https://en.wiktionary.org/wiki/%D8%A3%D8%B3%D9%82%D9%89#Arabic",
-        "ipa": "ʔasqaː",
-        "roots": [],
-        "pos": [
-          "verb"
-        ],
-        "stems": [
-          "Š"
-        ]
-      },
-      "hebrew": {
-        "canonical": "הִשְׁקָה",
-        "roman": "hishká",
-        "glosses": [
-          "to give drink to, to water"
-        ],
-        "wiktionary": "https://en.wiktionary.org/wiki/%D7%94%D7%A9%D7%A7%D7%94#Hebrew",
-        "ipa": "hiʃka",
-        "roots": [],
-        "pos": [
-          "verb"
-        ],
-        "stems": [
-          "Š"
-        ]
-      },
-      "match_layers": [
-        "direct_cognate_ar→he",
-        "direct_cognate_he→ar"
-      ],
-      "best_sense_match": {
-        "arabic_sense": "to give drink",
-        "arabic_pos": "verb",
-        "hebrew_sense": "to give drink to, to water",
-        "hebrew_pos": "verb",
-        "similarity": 0.9535
-      },
-      "morphology": [
-        {
-          "ar": {
-            "stem": "sqaː",
-            "layers": [
-              "causative"
-            ]
-          },
-          "he": {
-            "stem": "hiʃk",
-            "layers": [
-              "causative",
-              "feminine"
-            ]
-          },
-          "merged_stem": "hisqa",
-          "applied_layers": [
-            "causative"
-          ],
-          "final": "ʃahisqa"
-        }
-      ],
-      "verb_stem": "Š",
-      "derivation_chain": "Š",
-      "proto_root_ipa": "hsq",
-      "proto_root_label": "hsq",
-      "nominal_pattern_ar": "{0}{1}aː",
-      "nominal_pattern_he": "{0}i{1}{2}",
-      "base": "hisqa",
-      "ancestor": "recon-sem-pro:hisqaː",
-      "pansemitic_form": "šahisqa",
-      "loss": {
-        "arabic": 0.38571428571428573,
-        "hebrew": 0.32142857142857145,
-        "joint": 0.7071428571428572
-      },
-      "stem": "Š",
-      "evidence": [],
-      "borrowed_from": null,
-      "proto_root": "hsq"
     },
     {
       "arabic": {
@@ -20599,6 +20599,94 @@
     },
     {
       "arabic": {
+        "canonical": "أَكْتَبَ",
+        "roman": "ʔaktaba",
+        "glosses": [
+          "to dictate something to, to make someone write"
+        ],
+        "wiktionary": "https://en.wiktionary.org/wiki/%D8%A3%D9%83%D8%AA%D8%A8#Arabic",
+        "ipa": "ʔaktaba",
+        "roots": [
+          "كتب"
+        ],
+        "pos": [
+          "verb"
+        ],
+        "stems": [
+          "Š"
+        ]
+      },
+      "hebrew": {
+        "canonical": "הִכְתִּיב",
+        "roman": "hikhtív",
+        "glosses": [
+          "to dictate"
+        ],
+        "wiktionary": "https://en.wiktionary.org/wiki/%D7%94%D7%9B%D7%AA%D7%99%D7%91#Hebrew",
+        "ipa": "hiχtiv",
+        "roots": [
+          "כתב"
+        ],
+        "pos": [
+          "verb"
+        ],
+        "stems": [
+          "Š"
+        ]
+      },
+      "match_layers": [
+        "slot_matched",
+        "root_family"
+      ],
+      "best_sense_match": {
+        "arabic_sense": "to dictate something to, to make someone write",
+        "arabic_pos": "verb",
+        "hebrew_sense": "to dictate",
+        "hebrew_pos": "verb",
+        "similarity": 0.9205
+      },
+      "morphology": [
+        {
+          "ar": {
+            "stem": "ktaba",
+            "layers": [
+              "causative"
+            ]
+          },
+          "he": {
+            "stem": "χtiv",
+            "layers": [
+              "causative"
+            ]
+          },
+          "merged_stem": "kataba",
+          "applied_layers": [
+            "causative"
+          ],
+          "final": "ʃaktaba"
+        }
+      ],
+      "verb_stem": "Š",
+      "derivation_chain": "Š",
+      "proto_root_ipa": "ktb",
+      "proto_root_label": "ktb",
+      "nominal_pattern_ar": "{0}{1}a{2}a",
+      "nominal_pattern_he": "{0}{1}i{2}",
+      "base": "kataba",
+      "ancestor": "recon-sem-pro:kataba",
+      "pansemitic_form": "šaktaba",
+      "loss": {
+        "arabic": 0.13571428571428573,
+        "hebrew": 0.4714285714285714,
+        "joint": 0.6071428571428572
+      },
+      "stem": "Š",
+      "evidence": [],
+      "borrowed_from": null,
+      "proto_root": "ktb"
+    },
+    {
+      "arabic": {
         "canonical": "كَاتِب",
         "roman": "kātib",
         "glosses": [
@@ -23106,94 +23194,6 @@
       "evidence": [],
       "borrowed_from": "fr:crème",
       "proto_root": "krm"
-    },
-    {
-      "arabic": {
-        "canonical": "أَكْتَبَ",
-        "roman": "ʔaktaba",
-        "glosses": [
-          "to dictate something to, to make someone write"
-        ],
-        "wiktionary": "https://en.wiktionary.org/wiki/%D8%A3%D9%83%D8%AA%D8%A8#Arabic",
-        "ipa": "ʔaktaba",
-        "roots": [
-          "كتب"
-        ],
-        "pos": [
-          "verb"
-        ],
-        "stems": [
-          "Š"
-        ]
-      },
-      "hebrew": {
-        "canonical": "הִכְתִּיב",
-        "roman": "hikhtív",
-        "glosses": [
-          "to dictate"
-        ],
-        "wiktionary": "https://en.wiktionary.org/wiki/%D7%94%D7%9B%D7%AA%D7%99%D7%91#Hebrew",
-        "ipa": "hiχtiv",
-        "roots": [
-          "כתב"
-        ],
-        "pos": [
-          "verb"
-        ],
-        "stems": [
-          "Š"
-        ]
-      },
-      "match_layers": [
-        "slot_matched",
-        "root_family"
-      ],
-      "best_sense_match": {
-        "arabic_sense": "to dictate something to, to make someone write",
-        "arabic_pos": "verb",
-        "hebrew_sense": "to dictate",
-        "hebrew_pos": "verb",
-        "similarity": 0.9205
-      },
-      "morphology": [
-        {
-          "ar": {
-            "stem": "ktaba",
-            "layers": [
-              "causative"
-            ]
-          },
-          "he": {
-            "stem": "χtiv",
-            "layers": [
-              "causative"
-            ]
-          },
-          "merged_stem": "ktaba",
-          "applied_layers": [
-            "causative"
-          ],
-          "final": "ʃaktaba"
-        }
-      ],
-      "verb_stem": "Š",
-      "derivation_chain": "Š",
-      "proto_root_ipa": "ktb",
-      "proto_root_label": "ktb",
-      "nominal_pattern_ar": "{0}{1}a{2}a",
-      "nominal_pattern_he": "{0}{1}i{2}",
-      "base": "ktaba",
-      "ancestor": "recon-sem-pro:ktaba",
-      "pansemitic_form": "šaktaba",
-      "loss": {
-        "arabic": 0.13571428571428573,
-        "hebrew": 0.4714285714285714,
-        "joint": 0.6071428571428572
-      },
-      "stem": "Š",
-      "evidence": [],
-      "borrowed_from": null,
-      "proto_root": "ktb"
     },
     {
       "arabic": {
@@ -32937,7 +32937,7 @@
           "applied_layers": [
             "causative"
           ],
-          "final": "ʃamata"
+          "final": "ʃamta"
         }
       ],
       "verb_stem": "Š",
@@ -32948,11 +32948,11 @@
       "nominal_pattern_he": "{0}i{1}",
       "base": "mata",
       "ancestor": "recon-sem-pro:maːta",
-      "pansemitic_form": "šamata",
+      "pansemitic_form": "šamta",
       "loss": {
-        "arabic": 0.20833333333333334,
-        "hebrew": 0.37799999999999995,
-        "joint": 0.5863333333333333
+        "arabic": 0.27499999999999997,
+        "hebrew": 0.47859999999999997,
+        "joint": 0.7535999999999999
       },
       "stem": "Š",
       "evidence": [],
@@ -33797,7 +33797,7 @@
           "applied_layers": [
             "n-prefix"
           ],
-          "final": "namaxaqa"
+          "final": "namxaqa"
         }
       ],
       "verb_stem": "N",
@@ -33808,11 +33808,11 @@
       "nominal_pattern_he": "{0}{1}a{2}",
       "base": "maxaqa",
       "ancestor": "recon-sem-pro:maħaqa",
-      "pansemitic_form": "namaxaqa",
+      "pansemitic_form": "namxaqa",
       "loss": {
-        "arabic": 0.359375,
-        "hebrew": 0.271875,
-        "joint": 0.63125
+        "arabic": 0.44687499999999997,
+        "hebrew": 0.21071428571428572,
+        "joint": 0.6575892857142857
       },
       "stem": "N",
       "evidence": [],
@@ -56488,6 +56488,96 @@
     },
     {
       "arabic": {
+        "canonical": "أَقْدَمَ",
+        "roman": "ʔaqdama",
+        "glosses": [
+          "to dare",
+          "to undertake, to venture, to risk"
+        ],
+        "wiktionary": "https://en.wiktionary.org/wiki/%D8%A3%D9%82%D8%AF%D9%85#Arabic",
+        "ipa": "ʔaqdama",
+        "roots": [
+          "قدم"
+        ],
+        "pos": [
+          "verb"
+        ],
+        "stems": [
+          "Š"
+        ]
+      },
+      "hebrew": {
+        "canonical": "הִקְדִּים",
+        "roman": "hiqdīm",
+        "glosses": [
+          "to arrive early",
+          "to prepone, to antedate"
+        ],
+        "wiktionary": "https://en.wiktionary.org/wiki/%D7%94%D7%A7%D7%93%D7%99%D7%9D#Hebrew",
+        "ipa": "hiqdiːm",
+        "roots": [
+          "קדם"
+        ],
+        "pos": [
+          "verb"
+        ],
+        "stems": [
+          "Š"
+        ]
+      },
+      "match_layers": [
+        "slot_matched",
+        "root_family"
+      ],
+      "best_sense_match": {
+        "arabic_sense": "to dare",
+        "arabic_pos": "verb",
+        "hebrew_sense": "to arrive early",
+        "hebrew_pos": "verb",
+        "similarity": 0.7638
+      },
+      "morphology": [
+        {
+          "ar": {
+            "stem": "qdama",
+            "layers": [
+              "causative"
+            ]
+          },
+          "he": {
+            "stem": "qdiːm",
+            "layers": [
+              "causative"
+            ]
+          },
+          "merged_stem": "qadama",
+          "applied_layers": [
+            "causative"
+          ],
+          "final": "ʃaqdama"
+        }
+      ],
+      "verb_stem": "Š",
+      "derivation_chain": "Š",
+      "proto_root_ipa": "qdm",
+      "proto_root_label": "qdm",
+      "nominal_pattern_ar": "{0}{1}a{2}a",
+      "nominal_pattern_he": "{0}{1}iː{2}",
+      "base": "qadama",
+      "ancestor": "recon-sem-pro:qadama",
+      "pansemitic_form": "šaqdama",
+      "loss": {
+        "arabic": 0.13571428571428573,
+        "hebrew": 0.38571428571428573,
+        "joint": 0.5214285714285715
+      },
+      "stem": "Š",
+      "evidence": [],
+      "borrowed_from": null,
+      "proto_root": "qdm"
+    },
+    {
+      "arabic": {
         "canonical": "تَقَدَّمَ",
         "roman": "taqaddama",
         "glosses": [
@@ -59144,7 +59234,7 @@
           "applied_layers": [
             "causative"
           ],
-          "final": "ʃaqawama"
+          "final": "ʃaqwama"
         }
       ],
       "verb_stem": "Š",
@@ -59154,11 +59244,11 @@
       "nominal_pattern_he": "{0}i{1}",
       "base": "qawama",
       "ancestor": "recon-sem-pro:qawama",
-      "pansemitic_form": "šaqawama",
+      "pansemitic_form": "šaqwama",
       "loss": {
-        "arabic": 0.43125,
-        "hebrew": 0.571,
-        "joint": 1.00225
+        "arabic": 0.39285714285714285,
+        "hebrew": 0.5525714285714286,
+        "joint": 0.9454285714285715
       },
       "stem": "Š",
       "evidence": [],
@@ -60730,96 +60820,6 @@
       "evidence": [],
       "borrowed_from": null,
       "proto_root": "qṭp"
-    },
-    {
-      "arabic": {
-        "canonical": "أَقْدَمَ",
-        "roman": "ʔaqdama",
-        "glosses": [
-          "to dare",
-          "to undertake, to venture, to risk"
-        ],
-        "wiktionary": "https://en.wiktionary.org/wiki/%D8%A3%D9%82%D8%AF%D9%85#Arabic",
-        "ipa": "ʔaqdama",
-        "roots": [
-          "قدم"
-        ],
-        "pos": [
-          "verb"
-        ],
-        "stems": [
-          "Š"
-        ]
-      },
-      "hebrew": {
-        "canonical": "הִקְדִּים",
-        "roman": "hiqdīm",
-        "glosses": [
-          "to arrive early",
-          "to prepone, to antedate"
-        ],
-        "wiktionary": "https://en.wiktionary.org/wiki/%D7%94%D7%A7%D7%93%D7%99%D7%9D#Hebrew",
-        "ipa": "hiqdiːm",
-        "roots": [
-          "קדם"
-        ],
-        "pos": [
-          "verb"
-        ],
-        "stems": [
-          "Š"
-        ]
-      },
-      "match_layers": [
-        "slot_matched",
-        "root_family"
-      ],
-      "best_sense_match": {
-        "arabic_sense": "to dare",
-        "arabic_pos": "verb",
-        "hebrew_sense": "to arrive early",
-        "hebrew_pos": "verb",
-        "similarity": 0.7638
-      },
-      "morphology": [
-        {
-          "ar": {
-            "stem": "qdama",
-            "layers": [
-              "causative"
-            ]
-          },
-          "he": {
-            "stem": "qdiːm",
-            "layers": [
-              "causative"
-            ]
-          },
-          "merged_stem": "qdama",
-          "applied_layers": [
-            "causative"
-          ],
-          "final": "ʃaqdama"
-        }
-      ],
-      "verb_stem": "Š",
-      "derivation_chain": "Š",
-      "proto_root_ipa": "qdm",
-      "proto_root_label": "qdm",
-      "nominal_pattern_ar": "{0}{1}a{2}a",
-      "nominal_pattern_he": "{0}{1}iː{2}",
-      "base": "qdama",
-      "ancestor": "recon-sem-pro:qdama",
-      "pansemitic_form": "šaqdama",
-      "loss": {
-        "arabic": 0.13571428571428573,
-        "hebrew": 0.38571428571428573,
-        "joint": 0.5214285714285715
-      },
-      "stem": "Š",
-      "evidence": [],
-      "borrowed_from": null,
-      "proto_root": "qdm"
     },
     {
       "arabic": {
@@ -63858,6 +63858,99 @@
     },
     {
       "arabic": {
+        "canonical": "أَرَاحَ",
+        "roman": "ʔarāḥa",
+        "glosses": [
+          "to disburden",
+          "to free (someone مِن (min) from)",
+          "to gladden (someone بِ (bi) with)",
+          "to let (someone) rest",
+          "to release (someone مِن (min) from)",
+          "to soothe"
+        ],
+        "wiktionary": "https://en.wiktionary.org/wiki/%D8%A3%D8%B1%D8%A7%D8%AD#Arabic",
+        "ipa": "ʔaraːħa",
+        "roots": [
+          "روح"
+        ],
+        "pos": [
+          "verb"
+        ],
+        "stems": [
+          "Š"
+        ]
+      },
+      "hebrew": {
+        "canonical": "הִרְוִיחַ",
+        "roman": "hirvíakh",
+        "glosses": [
+          "to earn, to profit",
+          "to gain, to benefit"
+        ],
+        "wiktionary": "https://en.wiktionary.org/wiki/%D7%94%D7%A8%D7%95%D7%95%D7%99%D7%97#Hebrew",
+        "ipa": "hirviaχ",
+        "roots": [
+          "רוח"
+        ],
+        "pos": [
+          "verb"
+        ],
+        "stems": [
+          "Š"
+        ]
+      },
+      "match_layers": [
+        "slot_matched",
+        "root_family"
+      ],
+      "best_sense_match": {
+        "arabic_sense": "to disburden",
+        "arabic_pos": "verb",
+        "hebrew_sense": "to gain, to benefit",
+        "hebrew_pos": "verb",
+        "similarity": 0.7696
+      },
+      "morphology": [
+        {
+          "ar": {
+            "stem": "raːħa",
+            "layers": [
+              "causative"
+            ]
+          },
+          "he": {
+            "stem": "rviaχ",
+            "layers": [
+              "causative"
+            ]
+          },
+          "merged_stem": "rawaxa",
+          "applied_layers": [
+            "causative"
+          ],
+          "final": "ʃarwaxa"
+        }
+      ],
+      "verb_stem": "Š",
+      "derivation_chain": "Š",
+      "proto_root_ipa": "rwħ",
+      "proto_root_label": "rwḥ",
+      "nominal_pattern_he": "{0}{1}ia{2}",
+      "base": "rawaxa",
+      "ancestor": "recon-sem-pro:rawaħa",
+      "pansemitic_form": "šarwaxa",
+      "loss": {
+        "arabic": 0.42142857142857143,
+        "hebrew": 0.44642857142857145,
+        "joint": 0.8678571428571429
+      },
+      "stem": "Š",
+      "evidence": [],
+      "borrowed_from": null,
+      "proto_root": "rwḥ"
+    },
+    {
+      "arabic": {
         "canonical": "اَلرَّحْمٰن",
         "roman": "ar-raḥmān",
         "glosses": [
@@ -65715,7 +65808,7 @@
           "applied_layers": [
             "causative"
           ],
-          "final": "ʃarasˤawa"
+          "final": "ʃarsˤawa"
         }
       ],
       "verb_stem": "Š",
@@ -65725,11 +65818,11 @@
       "nominal_pattern_he": "{0}{1}",
       "base": "raṣawa",
       "ancestor": "recon-sem-pro:radˤawa",
-      "pansemitic_form": "šaraṣawa",
+      "pansemitic_form": "šarṣawa",
       "loss": {
-        "arabic": 0.63125,
-        "hebrew": 0.603125,
-        "joint": 1.234375
+        "arabic": 0.6214285714285713,
+        "hebrew": 0.5892857142857143,
+        "joint": 1.2107142857142856
       },
       "stem": "Š",
       "evidence": [],
@@ -67806,99 +67899,6 @@
       ],
       "borrowed_from": null,
       "proto_root": "rḥm"
-    },
-    {
-      "arabic": {
-        "canonical": "أَرَاحَ",
-        "roman": "ʔarāḥa",
-        "glosses": [
-          "to disburden",
-          "to free (someone مِن (min) from)",
-          "to gladden (someone بِ (bi) with)",
-          "to let (someone) rest",
-          "to release (someone مِن (min) from)",
-          "to soothe"
-        ],
-        "wiktionary": "https://en.wiktionary.org/wiki/%D8%A3%D8%B1%D8%A7%D8%AD#Arabic",
-        "ipa": "ʔaraːħa",
-        "roots": [
-          "روح"
-        ],
-        "pos": [
-          "verb"
-        ],
-        "stems": [
-          "Š"
-        ]
-      },
-      "hebrew": {
-        "canonical": "הִרְוִיחַ",
-        "roman": "hirvíakh",
-        "glosses": [
-          "to earn, to profit",
-          "to gain, to benefit"
-        ],
-        "wiktionary": "https://en.wiktionary.org/wiki/%D7%94%D7%A8%D7%95%D7%95%D7%99%D7%97#Hebrew",
-        "ipa": "hirviaχ",
-        "roots": [
-          "רוח"
-        ],
-        "pos": [
-          "verb"
-        ],
-        "stems": [
-          "Š"
-        ]
-      },
-      "match_layers": [
-        "slot_matched",
-        "root_family"
-      ],
-      "best_sense_match": {
-        "arabic_sense": "to disburden",
-        "arabic_pos": "verb",
-        "hebrew_sense": "to gain, to benefit",
-        "hebrew_pos": "verb",
-        "similarity": 0.7696
-      },
-      "morphology": [
-        {
-          "ar": {
-            "stem": "raːħa",
-            "layers": [
-              "causative"
-            ]
-          },
-          "he": {
-            "stem": "rviaχ",
-            "layers": [
-              "causative"
-            ]
-          },
-          "merged_stem": "rwiaxa",
-          "applied_layers": [
-            "causative"
-          ],
-          "final": "ʃarwiaxa"
-        }
-      ],
-      "verb_stem": "Š",
-      "derivation_chain": "Š",
-      "proto_root_ipa": "rwħ",
-      "proto_root_label": "rwḥ",
-      "nominal_pattern_he": "{0}{1}ia{2}",
-      "base": "rwiaxa",
-      "ancestor": "recon-sem-pro:rviaːħa",
-      "pansemitic_form": "šarwiaxa",
-      "loss": {
-        "arabic": 0.45625,
-        "hebrew": 0.303125,
-        "joint": 0.7593749999999999
-      },
-      "stem": "Š",
-      "evidence": [],
-      "borrowed_from": null,
-      "proto_root": "rwḥ"
     },
     {
       "arabic": {
@@ -71801,6 +71801,97 @@
       ],
       "borrowed_from": null,
       "proto_root": "ṯmm"
+    },
+    {
+      "arabic": {
+        "canonical": "أَسْمَنَ",
+        "roman": "ʔasmana",
+        "glosses": [
+          "to be caused to be fat or plump, to be well-nourished, to be full-figured",
+          "to cause a thing to be nourished, to feed or to fatten up, to make plump",
+          "to cause nourishment, to be nourishing",
+          "to possess or to be in a state of one possessing something that is fattened, plump, fleshy, lush, healthy, full in body or shape"
+        ],
+        "wiktionary": "https://en.wiktionary.org/wiki/%D8%A3%D8%B3%D9%85%D9%86#Arabic",
+        "ipa": "ʔasmana",
+        "roots": [
+          "سمن"
+        ],
+        "pos": [
+          "verb"
+        ],
+        "stems": [
+          "Š"
+        ]
+      },
+      "hebrew": {
+        "canonical": "הִשְׁמִין",
+        "roman": "hishmín",
+        "glosses": [
+          "to gain weight, to get fat"
+        ],
+        "wiktionary": "https://en.wiktionary.org/wiki/%D7%94%D7%A9%D7%9E%D7%99%D7%9F#Hebrew",
+        "ipa": "hiʃmin",
+        "roots": [
+          "שׁמן"
+        ],
+        "pos": [
+          "verb"
+        ],
+        "stems": [
+          "Š"
+        ]
+      },
+      "match_layers": [
+        "slot_matched",
+        "root_family"
+      ],
+      "best_sense_match": {
+        "arabic_sense": "to cause a thing to be nourished, to feed or to fatten up, to make plump",
+        "arabic_pos": "verb",
+        "hebrew_sense": "to gain weight, to get fat",
+        "hebrew_pos": "verb",
+        "similarity": 0.8546
+      },
+      "morphology": [
+        {
+          "ar": {
+            "stem": "smana",
+            "layers": [
+              "causative"
+            ]
+          },
+          "he": {
+            "stem": "ʃmin",
+            "layers": [
+              "causative"
+            ]
+          },
+          "merged_stem": "samana",
+          "applied_layers": [
+            "causative"
+          ],
+          "final": "ʃasmana"
+        }
+      ],
+      "verb_stem": "Š",
+      "derivation_chain": "Š",
+      "proto_root_ipa": "smn",
+      "proto_root_label": "smn",
+      "nominal_pattern_ar": "{0}{1}a{2}a",
+      "nominal_pattern_he": "{0}{1}i{2}",
+      "base": "samana",
+      "ancestor": "recon-sem-pro:samana",
+      "pansemitic_form": "šasmana",
+      "loss": {
+        "arabic": 0.13571428571428573,
+        "hebrew": 0.36428571428571427,
+        "joint": 0.5
+      },
+      "stem": "Š",
+      "evidence": [],
+      "borrowed_from": null,
+      "proto_root": "smn"
     },
     {
       "arabic": {
@@ -77827,97 +77918,6 @@
       ],
       "borrowed_from": null,
       "proto_root": "sʕr"
-    },
-    {
-      "arabic": {
-        "canonical": "أَسْمَنَ",
-        "roman": "ʔasmana",
-        "glosses": [
-          "to be caused to be fat or plump, to be well-nourished, to be full-figured",
-          "to cause a thing to be nourished, to feed or to fatten up, to make plump",
-          "to cause nourishment, to be nourishing",
-          "to possess or to be in a state of one possessing something that is fattened, plump, fleshy, lush, healthy, full in body or shape"
-        ],
-        "wiktionary": "https://en.wiktionary.org/wiki/%D8%A3%D8%B3%D9%85%D9%86#Arabic",
-        "ipa": "ʔasmana",
-        "roots": [
-          "سمن"
-        ],
-        "pos": [
-          "verb"
-        ],
-        "stems": [
-          "Š"
-        ]
-      },
-      "hebrew": {
-        "canonical": "הִשְׁמִין",
-        "roman": "hishmín",
-        "glosses": [
-          "to gain weight, to get fat"
-        ],
-        "wiktionary": "https://en.wiktionary.org/wiki/%D7%94%D7%A9%D7%9E%D7%99%D7%9F#Hebrew",
-        "ipa": "hiʃmin",
-        "roots": [
-          "שׁמן"
-        ],
-        "pos": [
-          "verb"
-        ],
-        "stems": [
-          "Š"
-        ]
-      },
-      "match_layers": [
-        "slot_matched",
-        "root_family"
-      ],
-      "best_sense_match": {
-        "arabic_sense": "to cause a thing to be nourished, to feed or to fatten up, to make plump",
-        "arabic_pos": "verb",
-        "hebrew_sense": "to gain weight, to get fat",
-        "hebrew_pos": "verb",
-        "similarity": 0.8546
-      },
-      "morphology": [
-        {
-          "ar": {
-            "stem": "smana",
-            "layers": [
-              "causative"
-            ]
-          },
-          "he": {
-            "stem": "ʃmin",
-            "layers": [
-              "causative"
-            ]
-          },
-          "merged_stem": "smana",
-          "applied_layers": [
-            "causative"
-          ],
-          "final": "ʃasmana"
-        }
-      ],
-      "verb_stem": "Š",
-      "derivation_chain": "Š",
-      "proto_root_ipa": "smn",
-      "proto_root_label": "smn",
-      "nominal_pattern_ar": "{0}{1}a{2}a",
-      "nominal_pattern_he": "{0}{1}i{2}",
-      "base": "smana",
-      "ancestor": "recon-sem-pro:smana",
-      "pansemitic_form": "šasmana",
-      "loss": {
-        "arabic": 0.13571428571428573,
-        "hebrew": 0.36428571428571427,
-        "joint": 0.5
-      },
-      "stem": "Š",
-      "evidence": [],
-      "borrowed_from": null,
-      "proto_root": "smn"
     },
     {
       "arabic": {
@@ -85345,7 +85345,7 @@
           "applied_layers": [
             "causative"
           ],
-          "final": "ʃawalada"
+          "final": "ʃawlada"
         }
       ],
       "verb_stem": "Š",
@@ -85356,11 +85356,11 @@
       "nominal_pattern_he": "{0}o{1}i{2}",
       "base": "walada",
       "ancestor": "recon-sem-pro:wolada",
-      "pansemitic_form": "šawalada",
+      "pansemitic_form": "šawlada",
       "loss": {
-        "arabic": 0.20625,
-        "hebrew": 0.57725,
-        "joint": 0.7835000000000001
+        "arabic": 0.13571428571428573,
+        "hebrew": 0.5597142857142857,
+        "joint": 0.6954285714285715
       },
       "stem": "Š",
       "evidence": [],
@@ -85913,7 +85913,7 @@
           "applied_layers": [
             "causative"
           ],
-          "final": "ʃawarasa"
+          "final": "ʃawrasa"
         }
       ],
       "verb_stem": "Š",
@@ -85924,11 +85924,11 @@
       "nominal_pattern_he": "{0}o{1}i{2}",
       "base": "warasa",
       "ancestor": "recon-sem-pro:woraθa",
-      "pansemitic_form": "šawarasa",
+      "pansemitic_form": "šawrasa",
       "loss": {
-        "arabic": 0.225,
-        "hebrew": 0.596,
-        "joint": 0.821
+        "arabic": 0.15714285714285717,
+        "hebrew": 0.5811428571428571,
+        "joint": 0.7382857142857142
       },
       "stem": "Š",
       "evidence": [],
@@ -90013,6 +90013,98 @@
     },
     {
       "arabic": {
+        "canonical": "أَخْلَدَ",
+        "roman": "ʔaḵlada",
+        "glosses": [
+          "to adhere",
+          "to age late",
+          "to incline towards",
+          "to make eternal, render lasting",
+          "to remain, to abide"
+        ],
+        "wiktionary": "https://en.wiktionary.org/wiki/%D8%A3%D8%AE%D9%84%D8%AF#Arabic",
+        "ipa": "ʔaxlada",
+        "roots": [
+          "خلد"
+        ],
+        "pos": [
+          "verb"
+        ],
+        "stems": [
+          "Š"
+        ]
+      },
+      "hebrew": {
+        "canonical": "הֶחְלִיד",
+        "roman": "hekhlíd",
+        "glosses": [
+          "to rust"
+        ],
+        "wiktionary": "https://en.wiktionary.org/wiki/%D7%94%D7%97%D7%9C%D7%99%D7%93#Hebrew",
+        "ipa": "heχlid",
+        "roots": [
+          "חלד"
+        ],
+        "pos": [
+          "verb"
+        ],
+        "stems": [
+          "Š"
+        ]
+      },
+      "match_layers": [
+        "slot_matched",
+        "root_family"
+      ],
+      "best_sense_match": {
+        "arabic_sense": "to age late",
+        "arabic_pos": "verb",
+        "hebrew_sense": "to rust",
+        "hebrew_pos": "verb",
+        "similarity": 0.801
+      },
+      "morphology": [
+        {
+          "ar": {
+            "stem": "xlada",
+            "layers": [
+              "causative"
+            ]
+          },
+          "he": {
+            "stem": "χlid",
+            "layers": [
+              "causative"
+            ]
+          },
+          "merged_stem": "xalada",
+          "applied_layers": [
+            "causative"
+          ],
+          "final": "ʃaxlada"
+        }
+      ],
+      "verb_stem": "Š",
+      "derivation_chain": "Š",
+      "proto_root_ipa": "xld",
+      "proto_root_label": "ḫld",
+      "nominal_pattern_ar": "{0}{1}a{2}a",
+      "nominal_pattern_he": "{0}{1}i{2}",
+      "base": "xalada",
+      "ancestor": "recon-sem-pro:xalada",
+      "pansemitic_form": "šaxlada",
+      "loss": {
+        "arabic": 0.13571428571428573,
+        "hebrew": 0.33828571428571425,
+        "joint": 0.474
+      },
+      "stem": "Š",
+      "evidence": [],
+      "borrowed_from": null,
+      "proto_root": "ḫld"
+    },
+    {
+      "arabic": {
         "canonical": "حَلَال",
         "roman": "ḥalāl",
         "glosses": [
@@ -90164,7 +90256,7 @@
           "applied_layers": [
             "causative"
           ],
-          "final": "ʃaxalala"
+          "final": "ʃaxlala"
         }
       ],
       "verb_stem": "Š",
@@ -90173,11 +90265,11 @@
       "proto_root_label": "ḫll",
       "base": "xalala",
       "ancestor": "recon-sem-pro:xalala",
-      "pansemitic_form": "šaxalala",
+      "pansemitic_form": "šaxlala",
       "loss": {
-        "arabic": 0.43125,
-        "hebrew": 0.5545,
-        "joint": 0.98575
+        "arabic": 0.39285714285714285,
+        "hebrew": 0.5337142857142857,
+        "joint": 0.9265714285714286
       },
       "stem": "Š",
       "evidence": [],
@@ -95859,7 +95951,7 @@
           "applied_layers": [
             "causative"
           ],
-          "final": "ʃaxajawa"
+          "final": "ʃaxjawa"
         }
       ],
       "verb_stem": "Š",
@@ -95869,11 +95961,11 @@
       "nominal_pattern_he": "{0}e{1}",
       "base": "xayawa",
       "ancestor": "recon-sem-pro:ħajawa",
-      "pansemitic_form": "šaxayawa",
+      "pansemitic_form": "šaxyawa",
       "loss": {
-        "arabic": 0.54375,
-        "hebrew": 0.46699999999999997,
-        "joint": 1.0107499999999998
+        "arabic": 0.5214285714285715,
+        "hebrew": 0.5122857142857143,
+        "joint": 1.0337142857142858
       },
       "stem": "Š",
       "evidence": [
@@ -97030,6 +97122,98 @@
           ]
         }
       ],
+      "borrowed_from": null,
+      "proto_root": "ḫṭʔ"
+    },
+    {
+      "arabic": {
+        "canonical": "أَخْطَأَ",
+        "roman": "ʔaḵṭaʔa",
+        "glosses": [
+          "to be mistaken; to err",
+          "to be wrong(?)",
+          "to make mistakes",
+          "to miss (to fail to hit)",
+          "to sin"
+        ],
+        "wiktionary": "https://en.wiktionary.org/wiki/%D8%A3%D8%AE%D8%B7%D8%A3#Arabic",
+        "ipa": "ʔaxtˤaʔa",
+        "roots": [
+          "خطء"
+        ],
+        "pos": [
+          "verb"
+        ],
+        "stems": [
+          "Š"
+        ]
+      },
+      "hebrew": {
+        "canonical": "הֶחְטִיא",
+        "roman": "hekhtí'",
+        "glosses": [
+          "to miss, be off target"
+        ],
+        "wiktionary": "https://en.wiktionary.org/wiki/%D7%94%D7%97%D7%98%D7%99%D7%90#Hebrew",
+        "ipa": "heχti",
+        "roots": [
+          "חטא"
+        ],
+        "pos": [
+          "verb"
+        ],
+        "stems": [
+          "Š"
+        ]
+      },
+      "match_layers": [
+        "slot_matched",
+        "root_family"
+      ],
+      "best_sense_match": {
+        "arabic_sense": "to miss (to fail to hit)",
+        "arabic_pos": "verb",
+        "hebrew_sense": "to miss, be off target",
+        "hebrew_pos": "verb",
+        "similarity": 0.9139
+      },
+      "morphology": [
+        {
+          "ar": {
+            "stem": "xtˤaʔa",
+            "layers": [
+              "causative"
+            ]
+          },
+          "he": {
+            "stem": "χti",
+            "layers": [
+              "causative"
+            ]
+          },
+          "merged_stem": "xatˤaʔa",
+          "applied_layers": [
+            "causative"
+          ],
+          "final": "ʃaxtˤaʔa"
+        }
+      ],
+      "verb_stem": "Š",
+      "derivation_chain": "Š",
+      "proto_root_ipa": "xtˤʔ",
+      "proto_root_label": "ḫṭʔ",
+      "nominal_pattern_ar": "{0}{1}a{2}a",
+      "nominal_pattern_he": "{0}{1}i",
+      "base": "xaṭaʔa",
+      "ancestor": "recon-sem-pro:xatˤaʔa",
+      "pansemitic_form": "šaxṭaʔa",
+      "loss": {
+        "arabic": 0.13571428571428573,
+        "hebrew": 0.5168571428571428,
+        "joint": 0.6525714285714286
+      },
+      "stem": "Š",
+      "evidence": [],
       "borrowed_from": null,
       "proto_root": "ḫṭʔ"
     },
@@ -99304,98 +99488,6 @@
     },
     {
       "arabic": {
-        "canonical": "أَخْلَدَ",
-        "roman": "ʔaḵlada",
-        "glosses": [
-          "to adhere",
-          "to age late",
-          "to incline towards",
-          "to make eternal, render lasting",
-          "to remain, to abide"
-        ],
-        "wiktionary": "https://en.wiktionary.org/wiki/%D8%A3%D8%AE%D9%84%D8%AF#Arabic",
-        "ipa": "ʔaxlada",
-        "roots": [
-          "خلد"
-        ],
-        "pos": [
-          "verb"
-        ],
-        "stems": [
-          "Š"
-        ]
-      },
-      "hebrew": {
-        "canonical": "הֶחְלִיד",
-        "roman": "hekhlíd",
-        "glosses": [
-          "to rust"
-        ],
-        "wiktionary": "https://en.wiktionary.org/wiki/%D7%94%D7%97%D7%9C%D7%99%D7%93#Hebrew",
-        "ipa": "heχlid",
-        "roots": [
-          "חלד"
-        ],
-        "pos": [
-          "verb"
-        ],
-        "stems": [
-          "Š"
-        ]
-      },
-      "match_layers": [
-        "slot_matched",
-        "root_family"
-      ],
-      "best_sense_match": {
-        "arabic_sense": "to age late",
-        "arabic_pos": "verb",
-        "hebrew_sense": "to rust",
-        "hebrew_pos": "verb",
-        "similarity": 0.801
-      },
-      "morphology": [
-        {
-          "ar": {
-            "stem": "xlada",
-            "layers": [
-              "causative"
-            ]
-          },
-          "he": {
-            "stem": "χlid",
-            "layers": [
-              "causative"
-            ]
-          },
-          "merged_stem": "xlada",
-          "applied_layers": [
-            "causative"
-          ],
-          "final": "ʃaxlada"
-        }
-      ],
-      "verb_stem": "Š",
-      "derivation_chain": "Š",
-      "proto_root_ipa": "xld",
-      "proto_root_label": "ḫld",
-      "nominal_pattern_ar": "{0}{1}a{2}a",
-      "nominal_pattern_he": "{0}{1}i{2}",
-      "base": "xlada",
-      "ancestor": "recon-sem-pro:xlada",
-      "pansemitic_form": "šaxlada",
-      "loss": {
-        "arabic": 0.13571428571428573,
-        "hebrew": 0.33828571428571425,
-        "joint": 0.474
-      },
-      "stem": "Š",
-      "evidence": [],
-      "borrowed_from": null,
-      "proto_root": "ḫld"
-    },
-    {
-      "arabic": {
         "canonical": "حُلْم",
         "roman": "ḥulm",
         "glosses": [
@@ -100191,98 +100283,6 @@
       ],
       "borrowed_from": "peo:𐎧𐏁𐎹𐎠𐎼𐏁𐎠",
       "proto_root": "ḫšyrš"
-    },
-    {
-      "arabic": {
-        "canonical": "أَخْطَأَ",
-        "roman": "ʔaḵṭaʔa",
-        "glosses": [
-          "to be mistaken; to err",
-          "to be wrong(?)",
-          "to make mistakes",
-          "to miss (to fail to hit)",
-          "to sin"
-        ],
-        "wiktionary": "https://en.wiktionary.org/wiki/%D8%A3%D8%AE%D8%B7%D8%A3#Arabic",
-        "ipa": "ʔaxtˤaʔa",
-        "roots": [
-          "خطء"
-        ],
-        "pos": [
-          "verb"
-        ],
-        "stems": [
-          "Š"
-        ]
-      },
-      "hebrew": {
-        "canonical": "הֶחְטִיא",
-        "roman": "hekhtí'",
-        "glosses": [
-          "to miss, be off target"
-        ],
-        "wiktionary": "https://en.wiktionary.org/wiki/%D7%94%D7%97%D7%98%D7%99%D7%90#Hebrew",
-        "ipa": "heχti",
-        "roots": [
-          "חטא"
-        ],
-        "pos": [
-          "verb"
-        ],
-        "stems": [
-          "Š"
-        ]
-      },
-      "match_layers": [
-        "slot_matched",
-        "root_family"
-      ],
-      "best_sense_match": {
-        "arabic_sense": "to miss (to fail to hit)",
-        "arabic_pos": "verb",
-        "hebrew_sense": "to miss, be off target",
-        "hebrew_pos": "verb",
-        "similarity": 0.9139
-      },
-      "morphology": [
-        {
-          "ar": {
-            "stem": "xtˤaʔa",
-            "layers": [
-              "causative"
-            ]
-          },
-          "he": {
-            "stem": "χti",
-            "layers": [
-              "causative"
-            ]
-          },
-          "merged_stem": "xtˤaʔa",
-          "applied_layers": [
-            "causative"
-          ],
-          "final": "ʃaxtˤaʔa"
-        }
-      ],
-      "verb_stem": "Š",
-      "derivation_chain": "Š",
-      "proto_root_ipa": "xtˤʔ",
-      "proto_root_label": "ḫṭʔ",
-      "nominal_pattern_ar": "{0}{1}a{2}a",
-      "nominal_pattern_he": "{0}{1}i",
-      "base": "xṭaʔa",
-      "ancestor": "recon-sem-pro:xtˤaʔa",
-      "pansemitic_form": "šaxṭaʔa",
-      "loss": {
-        "arabic": 0.13571428571428573,
-        "hebrew": 0.5168571428571428,
-        "joint": 0.6525714285714286
-      },
-      "stem": "Š",
-      "evidence": [],
-      "borrowed_from": null,
-      "proto_root": "ḫṭʔ"
     },
     {
       "arabic": {
@@ -103785,6 +103785,97 @@
     },
     {
       "arabic": {
+        "canonical": "أَذْكَرَ",
+        "roman": "ʔaḏkara",
+        "glosses": [
+          "to give birth to a male",
+          "to remind, to call to mind"
+        ],
+        "wiktionary": "https://en.wiktionary.org/wiki/%D8%A3%D8%B0%D9%83%D8%B1#Arabic",
+        "ipa": "ʔaðkara",
+        "roots": [
+          "ذكر"
+        ],
+        "pos": [
+          "verb"
+        ],
+        "stems": [
+          "Š"
+        ]
+      },
+      "hebrew": {
+        "canonical": "הִזְכִּיר",
+        "roman": "hizkír",
+        "glosses": [
+          "to mention",
+          "to remind (i.e. to cause to remember)",
+          "to resemble"
+        ],
+        "wiktionary": "https://en.wiktionary.org/wiki/%D7%94%D7%96%D7%9B%D7%99%D7%A8#Hebrew",
+        "ipa": "hizkiʁ",
+        "roots": [
+          "זכר"
+        ],
+        "pos": [
+          "verb"
+        ],
+        "stems": [
+          "Š"
+        ]
+      },
+      "match_layers": [
+        "direct_cognate_ar→he",
+        "slot_matched"
+      ],
+      "best_sense_match": {
+        "arabic_sense": "to remind, to call to mind",
+        "arabic_pos": "verb",
+        "hebrew_sense": "to remind (i.e. to cause to remember)",
+        "hebrew_pos": "verb",
+        "similarity": 0.9302
+      },
+      "morphology": [
+        {
+          "ar": {
+            "stem": "ðkara",
+            "layers": [
+              "causative"
+            ]
+          },
+          "he": {
+            "stem": "zkiʁ",
+            "layers": [
+              "causative"
+            ]
+          },
+          "merged_stem": "zakara",
+          "applied_layers": [
+            "causative"
+          ],
+          "final": "ʃazkara"
+        }
+      ],
+      "verb_stem": "Š",
+      "derivation_chain": "Š",
+      "proto_root_ipa": "ðkr",
+      "proto_root_label": "ḏkr",
+      "nominal_pattern_ar": "{0}{1}a{2}a",
+      "nominal_pattern_he": "{0}{1}i{2}",
+      "base": "zakara",
+      "ancestor": "recon-sem-pro:ðakara",
+      "pansemitic_form": "šazkara",
+      "loss": {
+        "arabic": 0.15714285714285717,
+        "hebrew": 0.3857142857142857,
+        "joint": 0.5428571428571428
+      },
+      "stem": "Š",
+      "evidence": [],
+      "borrowed_from": null,
+      "proto_root": "ḏkr"
+    },
+    {
+      "arabic": {
         "canonical": "ذَكَرَ",
         "roman": "ḏakara",
         "glosses": [
@@ -105980,97 +106071,6 @@
       "evidence": [],
       "borrowed_from": null,
       "proto_root": "ḏʔb"
-    },
-    {
-      "arabic": {
-        "canonical": "أَذْكَرَ",
-        "roman": "ʔaḏkara",
-        "glosses": [
-          "to give birth to a male",
-          "to remind, to call to mind"
-        ],
-        "wiktionary": "https://en.wiktionary.org/wiki/%D8%A3%D8%B0%D9%83%D8%B1#Arabic",
-        "ipa": "ʔaðkara",
-        "roots": [
-          "ذكر"
-        ],
-        "pos": [
-          "verb"
-        ],
-        "stems": [
-          "Š"
-        ]
-      },
-      "hebrew": {
-        "canonical": "הִזְכִּיר",
-        "roman": "hizkír",
-        "glosses": [
-          "to mention",
-          "to remind (i.e. to cause to remember)",
-          "to resemble"
-        ],
-        "wiktionary": "https://en.wiktionary.org/wiki/%D7%94%D7%96%D7%9B%D7%99%D7%A8#Hebrew",
-        "ipa": "hizkiʁ",
-        "roots": [
-          "זכר"
-        ],
-        "pos": [
-          "verb"
-        ],
-        "stems": [
-          "Š"
-        ]
-      },
-      "match_layers": [
-        "direct_cognate_ar→he",
-        "slot_matched"
-      ],
-      "best_sense_match": {
-        "arabic_sense": "to remind, to call to mind",
-        "arabic_pos": "verb",
-        "hebrew_sense": "to remind (i.e. to cause to remember)",
-        "hebrew_pos": "verb",
-        "similarity": 0.9302
-      },
-      "morphology": [
-        {
-          "ar": {
-            "stem": "ðkara",
-            "layers": [
-              "causative"
-            ]
-          },
-          "he": {
-            "stem": "zkiʁ",
-            "layers": [
-              "causative"
-            ]
-          },
-          "merged_stem": "zkara",
-          "applied_layers": [
-            "causative"
-          ],
-          "final": "ʃazkara"
-        }
-      ],
-      "verb_stem": "Š",
-      "derivation_chain": "Š",
-      "proto_root_ipa": "ðkr",
-      "proto_root_label": "ḏkr",
-      "nominal_pattern_ar": "{0}{1}a{2}a",
-      "nominal_pattern_he": "{0}{1}i{2}",
-      "base": "zkara",
-      "ancestor": "recon-sem-pro:ðkara",
-      "pansemitic_form": "šazkara",
-      "loss": {
-        "arabic": 0.15714285714285717,
-        "hebrew": 0.3857142857142857,
-        "joint": 0.5428571428571428
-      },
-      "stem": "Š",
-      "evidence": [],
-      "borrowed_from": null,
-      "proto_root": "ḏkr"
     },
     {
       "arabic": {
@@ -121004,7 +121004,7 @@
           "applied_layers": [
             "causative"
           ],
-          "final": "ʃaʔimana"
+          "final": "ʃaʔmana"
         }
       ],
       "verb_stem": "Š",
@@ -121015,11 +121015,11 @@
       "nominal_pattern_he": "{0}e{1}i{2}",
       "base": "ʔimana",
       "ancestor": "recon-sem-pro:emana",
-      "pansemitic_form": "šaʔimana",
+      "pansemitic_form": "šaʔmana",
       "loss": {
-        "arabic": 0.3375,
-        "hebrew": 0.3,
-        "joint": 0.6375
+        "arabic": 0.2857142857142857,
+        "hebrew": 0.424,
+        "joint": 0.7097142857142857
       },
       "stem": "Š",
       "evidence": [],
@@ -125615,7 +125615,7 @@
           "applied_layers": [
             "causative"
           ],
-          "final": "ʃaʕalaja"
+          "final": "ʃaʕlaja"
         }
       ],
       "verb_stem": "Š",
@@ -125625,11 +125625,11 @@
       "nominal_pattern_he": "{0}e{1}",
       "base": "ʕalaya",
       "ancestor": "recon-sem-pro:ʕalaja",
-      "pansemitic_form": "šaʕalaya",
+      "pansemitic_form": "šaʕlaya",
       "loss": {
-        "arabic": 0.51875,
-        "hebrew": 0.5795,
-        "joint": 1.0982500000000002
+        "arabic": 0.4928571428571429,
+        "hebrew": 0.6837142857142856,
+        "joint": 1.1765714285714286
       },
       "stem": "Š",
       "evidence": [
@@ -129149,7 +129149,7 @@
           "applied_layers": [
             "causative"
           ],
-          "final": "ʃaʕazaza"
+          "final": "ʃaʕzaza"
         }
       ],
       "verb_stem": "Š",
@@ -129158,11 +129158,11 @@
       "proto_root_label": "ʕzz",
       "base": "ʕazaza",
       "ancestor": "recon-sem-pro:ʕazaza",
-      "pansemitic_form": "šaʕazaza",
+      "pansemitic_form": "šaʕzaza",
       "loss": {
-        "arabic": 0.43125,
-        "hebrew": 0.667,
-        "joint": 1.0982500000000002
+        "arabic": 0.39285714285714285,
+        "hebrew": 0.6622857142857143,
+        "joint": 1.0551428571428572
       },
       "stem": "Š",
       "evidence": [],
@@ -130561,7 +130561,7 @@
           "applied_layers": [
             "causative"
           ],
-          "final": "ʃaʕimada"
+          "final": "ʃaʕmada"
         }
       ],
       "verb_stem": "Š",
@@ -130572,11 +130572,11 @@
       "nominal_pattern_he": "{0}e{1}i{2}",
       "base": "ʕimada",
       "ancestor": "recon-sem-pro:ʕemada",
-      "pansemitic_form": "šaʕimada",
+      "pansemitic_form": "šaʕmada",
       "loss": {
-        "arabic": 0.20625,
-        "hebrew": 0.425,
-        "joint": 0.63125
+        "arabic": 0.13571428571428573,
+        "hebrew": 0.5668571428571428,
+        "joint": 0.7025714285714286
       },
       "stem": "Š",
       "evidence": [],

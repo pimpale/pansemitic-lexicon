@@ -1670,7 +1670,7 @@
         "applied_layers": [
           "causative"
         ],
-        "final": "ʃaʔimana"
+        "final": "ʃaʔmana"
       }
     ],
     "verb_stem": "Š",
@@ -1681,11 +1681,11 @@
     "nominal_pattern_he": "{0}e{1}i{2}",
     "base": "ʔimana",
     "ancestor": "recon-sem-pro:emana",
-    "pansemitic_form": "šaʔimana",
+    "pansemitic_form": "šaʔmana",
     "loss": {
-      "arabic": 0.3375,
-      "hebrew": 0.3,
-      "joint": 0.6375
+      "arabic": 0.2857142857142857,
+      "hebrew": 0.424,
+      "joint": 0.7097142857142857
     }
   },
   {
@@ -4026,7 +4026,7 @@
             "causative"
           ]
         },
-        "merged_stem": "braqa",
+        "merged_stem": "baraqa",
         "applied_layers": [
           "causative"
         ],
@@ -4039,8 +4039,8 @@
     "proto_root_label": "brq",
     "nominal_pattern_ar": "{0}{1}a{2}a",
     "nominal_pattern_he": "{0}{1}i{2}",
-    "base": "braqa",
-    "ancestor": "recon-sem-pro:braqa",
+    "base": "baraqa",
+    "ancestor": "recon-sem-pro:baraqa",
     "pansemitic_form": "šabraqa",
     "loss": {
       "arabic": 0.13571428571428573,
@@ -4530,7 +4530,7 @@
             "causative"
           ]
         },
-        "merged_stem": "blaʕa",
+        "merged_stem": "balaʕa",
         "applied_layers": [
           "causative"
         ],
@@ -4543,8 +4543,8 @@
     "proto_root_label": "blʕ",
     "nominal_pattern_ar": "{0}{1}a{2}a",
     "nominal_pattern_he": "{0}{1}ia",
-    "base": "blaʕa",
-    "ancestor": "recon-sem-pro:blaʕa",
+    "base": "balaʕa",
+    "ancestor": "recon-sem-pro:balaʕa",
     "pansemitic_form": "šablaʕa",
     "loss": {
       "arabic": 0.13571428571428573,
@@ -8233,7 +8233,7 @@
         "applied_layers": [
           "causative"
         ],
-        "final": "ʃaxajawa"
+        "final": "ʃaxjawa"
       }
     ],
     "verb_stem": "Š",
@@ -8243,11 +8243,11 @@
     "nominal_pattern_he": "{0}e{1}",
     "base": "xayawa",
     "ancestor": "recon-sem-pro:ħajawa",
-    "pansemitic_form": "šaxayawa",
+    "pansemitic_form": "šaxyawa",
     "loss": {
-      "arabic": 0.54375,
-      "hebrew": 0.46699999999999997,
-      "joint": 1.0107499999999998
+      "arabic": 0.5214285714285715,
+      "hebrew": 0.5122857142857143,
+      "joint": 1.0337142857142858
     }
   },
   {
@@ -8790,7 +8790,7 @@
         "applied_layers": [
           "causative"
         ],
-        "final": "ʃaxalala"
+        "final": "ʃaxlala"
       }
     ],
     "verb_stem": "Š",
@@ -8799,11 +8799,11 @@
     "proto_root_label": "ḫll",
     "base": "xalala",
     "ancestor": "recon-sem-pro:xalala",
-    "pansemitic_form": "šaxalala",
+    "pansemitic_form": "šaxlala",
     "loss": {
-      "arabic": 0.43125,
-      "hebrew": 0.5545,
-      "joint": 0.98575
+      "arabic": 0.39285714285714285,
+      "hebrew": 0.5337142857142857,
+      "joint": 0.9265714285714286
     }
   },
   {
@@ -9205,7 +9205,7 @@
             "causative"
           ]
         },
-        "merged_stem": "xtˤaʔa",
+        "merged_stem": "xatˤaʔa",
         "applied_layers": [
           "causative"
         ],
@@ -9218,8 +9218,8 @@
     "proto_root_label": "ḫṭʔ",
     "nominal_pattern_ar": "{0}{1}a{2}a",
     "nominal_pattern_he": "{0}{1}i",
-    "base": "xṭaʔa",
-    "ancestor": "recon-sem-pro:xtˤaʔa",
+    "base": "xaṭaʔa",
+    "ancestor": "recon-sem-pro:xatˤaʔa",
     "pansemitic_form": "šaxṭaʔa",
     "loss": {
       "arabic": 0.13571428571428573,
@@ -9451,7 +9451,7 @@
             "causative"
           ]
         },
-        "merged_stem": "xlada",
+        "merged_stem": "xalada",
         "applied_layers": [
           "causative"
         ],
@@ -9464,8 +9464,8 @@
     "proto_root_label": "ḫld",
     "nominal_pattern_ar": "{0}{1}a{2}a",
     "nominal_pattern_he": "{0}{1}i{2}",
-    "base": "xlada",
-    "ancestor": "recon-sem-pro:xlada",
+    "base": "xalada",
+    "ancestor": "recon-sem-pro:xalada",
     "pansemitic_form": "šaxlada",
     "loss": {
       "arabic": 0.13571428571428573,
@@ -9838,7 +9838,7 @@
             "causative"
           ]
         },
-        "merged_stem": "zkara",
+        "merged_stem": "zakara",
         "applied_layers": [
           "causative"
         ],
@@ -9851,8 +9851,8 @@
     "proto_root_label": "ḏkr",
     "nominal_pattern_ar": "{0}{1}a{2}a",
     "nominal_pattern_he": "{0}{1}i{2}",
-    "base": "zkara",
-    "ancestor": "recon-sem-pro:ðkara",
+    "base": "zakara",
+    "ancestor": "recon-sem-pro:ðakara",
     "pansemitic_form": "šazkara",
     "loss": {
       "arabic": 0.15714285714285717,
@@ -10127,11 +10127,11 @@
             "causative"
           ]
         },
-        "merged_stem": "rwiaxa",
+        "merged_stem": "rawaxa",
         "applied_layers": [
           "causative"
         ],
-        "final": "ʃarwiaxa"
+        "final": "ʃarwaxa"
       }
     ],
     "verb_stem": "Š",
@@ -10139,13 +10139,13 @@
     "proto_root_ipa": "rwħ",
     "proto_root_label": "rwḥ",
     "nominal_pattern_he": "{0}{1}ia{2}",
-    "base": "rwiaxa",
-    "ancestor": "recon-sem-pro:rviaːħa",
-    "pansemitic_form": "šarwiaxa",
+    "base": "rawaxa",
+    "ancestor": "recon-sem-pro:rawaħa",
+    "pansemitic_form": "šarwaxa",
     "loss": {
-      "arabic": 0.45625,
-      "hebrew": 0.303125,
-      "joint": 0.7593749999999999
+      "arabic": 0.42142857142857143,
+      "hebrew": 0.44642857142857145,
+      "joint": 0.8678571428571429
     }
   },
   {
@@ -11763,7 +11763,7 @@
         "applied_layers": [
           "causative"
         ],
-        "final": "ʃarasˤawa"
+        "final": "ʃarsˤawa"
       }
     ],
     "verb_stem": "Š",
@@ -11773,11 +11773,11 @@
     "nominal_pattern_he": "{0}{1}",
     "base": "raṣawa",
     "ancestor": "recon-sem-pro:radˤawa",
-    "pansemitic_form": "šaraṣawa",
+    "pansemitic_form": "šarṣawa",
     "loss": {
-      "arabic": 0.63125,
-      "hebrew": 0.603125,
-      "joint": 1.234375
+      "arabic": 0.6214285714285713,
+      "hebrew": 0.5892857142857143,
+      "joint": 1.2107142857142856
     }
   },
   {
@@ -12849,11 +12849,11 @@
             "feminine"
           ]
         },
-        "merged_stem": "hisqa",
+        "merged_stem": "hasaqa",
         "applied_layers": [
           "causative"
         ],
-        "final": "ʃahisqa"
+        "final": "ʃahsaqa"
       }
     ],
     "verb_stem": "Š",
@@ -12862,13 +12862,13 @@
     "proto_root_label": "hsq",
     "nominal_pattern_ar": "{0}{1}aː",
     "nominal_pattern_he": "{0}i{1}{2}",
-    "base": "hisqa",
-    "ancestor": "recon-sem-pro:hisqaː",
-    "pansemitic_form": "šahisqa",
+    "base": "hasaqa",
+    "ancestor": "recon-sem-pro:hasaqa",
+    "pansemitic_form": "šahsaqa",
     "loss": {
       "arabic": 0.38571428571428573,
-      "hebrew": 0.32142857142857145,
-      "joint": 0.7071428571428572
+      "hebrew": 0.4035714285714286,
+      "joint": 0.7892857142857144
     }
   },
   {
@@ -13103,7 +13103,7 @@
             "causative"
           ]
         },
-        "merged_stem": "smana",
+        "merged_stem": "samana",
         "applied_layers": [
           "causative"
         ],
@@ -13116,8 +13116,8 @@
     "proto_root_label": "smn",
     "nominal_pattern_ar": "{0}{1}a{2}a",
     "nominal_pattern_he": "{0}{1}i{2}",
-    "base": "smana",
-    "ancestor": "recon-sem-pro:smana",
+    "base": "samana",
+    "ancestor": "recon-sem-pro:samana",
     "pansemitic_form": "šasmana",
     "loss": {
       "arabic": 0.13571428571428573,
@@ -13875,11 +13875,11 @@
             "causative"
           ]
         },
-        "merged_stem": "sˤliaxa",
+        "merged_stem": "sˤalaxa",
         "applied_layers": [
           "causative"
         ],
-        "final": "ʃasˤliaxa"
+        "final": "ʃasˤlaxa"
       }
     ],
     "verb_stem": "Š",
@@ -13888,13 +13888,13 @@
     "proto_root_label": "ṣlḥ",
     "nominal_pattern_ar": "{0}{1}a{2}a",
     "nominal_pattern_he": "{0}{1}ia{2}",
-    "base": "ṣliaxa",
-    "ancestor": "recon-sem-pro:sˤliaħa",
-    "pansemitic_form": "šaṣliaxa",
+    "base": "ṣalaxa",
+    "ancestor": "recon-sem-pro:sˤalaħa",
+    "pansemitic_form": "šaṣlaxa",
     "loss": {
-      "arabic": 0.23125,
-      "hebrew": 0.340625,
-      "joint": 0.571875
+      "arabic": 0.1642857142857143,
+      "hebrew": 0.48928571428571427,
+      "joint": 0.6535714285714286
     }
   },
   {
@@ -14188,7 +14188,7 @@
         "applied_layers": [
           "causative"
         ],
-        "final": "ʃaʕazaza"
+        "final": "ʃaʕzaza"
       }
     ],
     "verb_stem": "Š",
@@ -14197,11 +14197,11 @@
     "proto_root_label": "ʕzz",
     "base": "ʕazaza",
     "ancestor": "recon-sem-pro:ʕazaza",
-    "pansemitic_form": "šaʕazaza",
+    "pansemitic_form": "šaʕzaza",
     "loss": {
-      "arabic": 0.43125,
-      "hebrew": 0.667,
-      "joint": 1.0982500000000002
+      "arabic": 0.39285714285714285,
+      "hebrew": 0.6622857142857143,
+      "joint": 1.0551428571428572
     }
   },
   {
@@ -14359,7 +14359,7 @@
         "applied_layers": [
           "causative"
         ],
-        "final": "ʃaʕalaja"
+        "final": "ʃaʕlaja"
       }
     ],
     "verb_stem": "Š",
@@ -14369,11 +14369,11 @@
     "nominal_pattern_he": "{0}e{1}",
     "base": "ʕalaya",
     "ancestor": "recon-sem-pro:ʕalaja",
-    "pansemitic_form": "šaʕalaya",
+    "pansemitic_form": "šaʕlaya",
     "loss": {
-      "arabic": 0.51875,
-      "hebrew": 0.5795,
-      "joint": 1.0982500000000002
+      "arabic": 0.4928571428571429,
+      "hebrew": 0.6837142857142856,
+      "joint": 1.1765714285714286
     }
   },
   {
@@ -14791,7 +14791,7 @@
         "applied_layers": [
           "causative"
         ],
-        "final": "ʃaʕimada"
+        "final": "ʃaʕmada"
       }
     ],
     "verb_stem": "Š",
@@ -14802,11 +14802,11 @@
     "nominal_pattern_he": "{0}e{1}i{2}",
     "base": "ʕimada",
     "ancestor": "recon-sem-pro:ʕemada",
-    "pansemitic_form": "šaʕimada",
+    "pansemitic_form": "šaʕmada",
     "loss": {
-      "arabic": 0.20625,
-      "hebrew": 0.425,
-      "joint": 0.63125
+      "arabic": 0.13571428571428573,
+      "hebrew": 0.5668571428571428,
+      "joint": 0.7025714285714286
     }
   },
   {
@@ -15337,7 +15337,7 @@
         "applied_layers": [
           "causative"
         ],
-        "final": "ʃaqawama"
+        "final": "ʃaqwama"
       }
     ],
     "verb_stem": "Š",
@@ -15347,11 +15347,11 @@
     "nominal_pattern_he": "{0}i{1}",
     "base": "qawama",
     "ancestor": "recon-sem-pro:qawama",
-    "pansemitic_form": "šaqawama",
+    "pansemitic_form": "šaqwama",
     "loss": {
-      "arabic": 0.43125,
-      "hebrew": 0.571,
-      "joint": 1.00225
+      "arabic": 0.39285714285714285,
+      "hebrew": 0.5525714285714286,
+      "joint": 0.9454285714285715
     }
   },
   {
@@ -15999,7 +15999,7 @@
             "causative"
           ]
         },
-        "merged_stem": "qdama",
+        "merged_stem": "qadama",
         "applied_layers": [
           "causative"
         ],
@@ -16012,8 +16012,8 @@
     "proto_root_label": "qdm",
     "nominal_pattern_ar": "{0}{1}a{2}a",
     "nominal_pattern_he": "{0}{1}iː{2}",
-    "base": "qdama",
-    "ancestor": "recon-sem-pro:qdama",
+    "base": "qadama",
+    "ancestor": "recon-sem-pro:qadama",
     "pansemitic_form": "šaqdama",
     "loss": {
       "arabic": 0.13571428571428573,
@@ -17954,7 +17954,7 @@
             "causative"
           ]
         },
-        "merged_stem": "ktaba",
+        "merged_stem": "kataba",
         "applied_layers": [
           "causative"
         ],
@@ -17967,8 +17967,8 @@
     "proto_root_label": "ktb",
     "nominal_pattern_ar": "{0}{1}a{2}a",
     "nominal_pattern_he": "{0}{1}i{2}",
-    "base": "ktaba",
-    "ancestor": "recon-sem-pro:ktaba",
+    "base": "kataba",
+    "ancestor": "recon-sem-pro:kataba",
     "pansemitic_form": "šaktaba",
     "loss": {
       "arabic": 0.13571428571428573,
@@ -21131,7 +21131,7 @@
         "applied_layers": [
           "causative"
         ],
-        "final": "ʃamata"
+        "final": "ʃamta"
       }
     ],
     "verb_stem": "Š",
@@ -21142,11 +21142,11 @@
     "nominal_pattern_he": "{0}i{1}",
     "base": "mata",
     "ancestor": "recon-sem-pro:maːta",
-    "pansemitic_form": "šamata",
+    "pansemitic_form": "šamta",
     "loss": {
-      "arabic": 0.20833333333333334,
-      "hebrew": 0.37799999999999995,
-      "joint": 0.5863333333333333
+      "arabic": 0.27499999999999997,
+      "hebrew": 0.47859999999999997,
+      "joint": 0.7535999999999999
     }
   },
   {
@@ -24673,7 +24673,7 @@
         "applied_layers": [
           "causative"
         ],
-        "final": "ʃawarasa"
+        "final": "ʃawrasa"
       }
     ],
     "verb_stem": "Š",
@@ -24684,11 +24684,11 @@
     "nominal_pattern_he": "{0}o{1}i{2}",
     "base": "warasa",
     "ancestor": "recon-sem-pro:woraθa",
-    "pansemitic_form": "šawarasa",
+    "pansemitic_form": "šawrasa",
     "loss": {
-      "arabic": 0.225,
-      "hebrew": 0.596,
-      "joint": 0.821
+      "arabic": 0.15714285714285717,
+      "hebrew": 0.5811428571428571,
+      "joint": 0.7382857142857142
     }
   },
   {
@@ -25055,11 +25055,11 @@
             "causative"
           ]
         },
-        "merged_stem": "wqaʕia",
+        "merged_stem": "waqaʕa",
         "applied_layers": [
           "causative"
         ],
-        "final": "ʃawqaʕia"
+        "final": "ʃawqaʕa"
       }
     ],
     "verb_stem": "Š",
@@ -25068,13 +25068,13 @@
     "proto_root_label": "wqʕ",
     "nominal_pattern_ar": "{0}{1}a{2}a",
     "nominal_pattern_he": "{0}o{1}ia",
-    "base": "wqaʕia",
-    "ancestor": "recon-sem-pro:wqaʕia",
-    "pansemitic_form": "šawqaʕia",
+    "base": "waqaʕa",
+    "ancestor": "recon-sem-pro:waqaʕa",
+    "pansemitic_form": "šawqaʕa",
     "loss": {
-      "arabic": 0.20625,
-      "hebrew": 0.617875,
-      "joint": 0.824125
+      "arabic": 0.13571428571428573,
+      "hebrew": 0.6882857142857143,
+      "joint": 0.8240000000000001
     }
   },
   {
@@ -25527,7 +25527,7 @@
         "applied_layers": [
           "causative"
         ],
-        "final": "ʃawalada"
+        "final": "ʃawlada"
       }
     ],
     "verb_stem": "Š",
@@ -25538,11 +25538,11 @@
     "nominal_pattern_he": "{0}o{1}i{2}",
     "base": "walada",
     "ancestor": "recon-sem-pro:wolada",
-    "pansemitic_form": "šawalada",
+    "pansemitic_form": "šawlada",
     "loss": {
-      "arabic": 0.20625,
-      "hebrew": 0.57725,
-      "joint": 0.7835000000000001
+      "arabic": 0.13571428571428573,
+      "hebrew": 0.5597142857142857,
+      "joint": 0.6954285714285715
     }
   },
   {
@@ -47790,7 +47790,7 @@
         "applied_layers": [
           "n-prefix"
         ],
-        "final": "namaxaqa"
+        "final": "namxaqa"
       }
     ],
     "verb_stem": "N",
@@ -47801,11 +47801,11 @@
     "nominal_pattern_he": "{0}{1}a{2}",
     "base": "maxaqa",
     "ancestor": "recon-sem-pro:maħaqa",
-    "pansemitic_form": "namaxaqa",
+    "pansemitic_form": "namxaqa",
     "loss": {
-      "arabic": 0.359375,
-      "hebrew": 0.271875,
-      "joint": 0.63125
+      "arabic": 0.44687499999999997,
+      "hebrew": 0.21071428571428572,
+      "joint": 0.6575892857142857
     }
   },
   {

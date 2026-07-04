@@ -26,7 +26,7 @@ arabic,arabic_romanization,hebrew,hebrew_romanization,pansemitic,derivation,laye
 آكَلَ,ʔākala,אׇכְלָה,okhlá,,,root_family
 آكَلَ,ʔākala,מַאֲכָל,ma'akhál,,,root_family
 آكَلَ,ʔākala,נֶאֱכַל,ne'ekhál,,,root_family
-آمَنَ,ʔāmana,הֶאֱמִין,he'emín,šaʔimana,Š,direct_cognate_ar→he;direct_cognate_he→ar
+آمَنَ,ʔāmana,הֶאֱמִין,he'emín,šaʔmana,Š,direct_cognate_ar→he;direct_cognate_he→ar
 آمُون,ʔāmūn,אָמוֹן,amon,yamanuw,,shared_borrowing_source
 آمُون,ʔāmūn,יָמִין,yamín,yamin,,shared_borrowing_source
 آمِر,ʔāmir,אָמוּר,amúr,ʔamir,n,root_family
@@ -131,14 +131,14 @@ arabic,arabic_romanization,hebrew,hebrew_romanization,pansemitic,derivation,laye
 أَحْنَكَ,ʔaḥnaka,הִתְחַנֵּךְ,hitkhanékh,,,root_family
 أَحْنَكَ,ʔaḥnaka,חוּנַּךְ,khunákh,,,root_family
 أَحْوَر,ʔaḥwar,חָרִיף,kharíf,ʔaxwar,n,root_family
-أَحْيَا,ʔaḥyā,הֶחֱיָה,hekheyá,šaxayawa,Š,direct_cognate_ar→he;slot_matched
+أَحْيَا,ʔaḥyā,הֶחֱיָה,hekheyá,šaxyawa,Š,direct_cognate_ar→he;slot_matched
 أَحْيَا,ʔaḥyā,חִיּוּת,khiyút,xiyat,n,root_family
 أَحْيَا,ʔaḥyā,תְּחִיָּה,t'khiyá,txiya,n,root_family
 أَخ,ʔaḵ,אָח,ákh,ʔaxw,,shared_borrowing_source;lemma_promoted
 أَخ,ʔaḵ,אָחִי,akhí,ʔaxi,n,direct_cognate_he→ar
 أَخَذَ,ʔaḵaḏa,אָחַז,akház,ʔaxaza,G,direct_cognate_ar→he;direct_cognate_he→ar
 أَخَذَ,ʔaḵaḏa,אָחָז,akház,,,direct_cognate_he→ar
-أَخَلَّ,ʔaḵalla,הֵחֵל,hekhél,šaxalala,Š,slot_matched;root_family
+أَخَلَّ,ʔaḵalla,הֵחֵל,hekhél,šaxlala,Š,slot_matched;root_family
 أَخَلَّ,ʔaḵalla,חִלֵּל,khilél,,,root_family
 أَخَّرَ,ʔaḵḵara,אִחֵר,ikhér,ʔaxxara,D,slot_matched;root_family
 أَخَّرَ,ʔaḵḵara,אַחַר,achár,,,direct_cognate_ar→he
@@ -159,7 +159,7 @@ arabic,arabic_romanization,hebrew,hebrew_romanization,pansemitic,derivation,laye
 أَذْكَرَ,ʔaḏkara,זִכָּרוֹן,zikarón,,,root_family
 أَذْكَرَ,ʔaḏkara,מַזְכֶּרֶת,mazkéret,,,root_family
 أَذْكَرَ,ʔaḏkara,נִזְכַּר,nizkár,,,root_family
-أَرَاحَ,ʔarāḥa,הִרְוִיחַ,hirvíakh,šarwiaxa,Š,slot_matched;root_family
+أَرَاحَ,ʔarāḥa,הִרְוִיחַ,hirvíakh,šarwaxa,Š,slot_matched;root_family
 أَرَاحَ,ʔarāḥa,רְוָחָה,revakhá,,,root_family
 أَرَزَّ,ʔarazza,אֶרֶז,érez,,,shared_borrowing_source
 أَرَزَّ,ʔarazza,אָרַז,aráz,,,shared_borrowing_source
@@ -184,7 +184,7 @@ arabic,arabic_romanization,hebrew,hebrew_romanization,pansemitic,derivation,laye
 أَرْز,ʔarz,אֶרֶז,érez,ʔarza,,direct_cognate_ar→he;direct_cognate_he→ar;shared_borrowing_source
 أَرْز,ʔarz,אָרַז,aráz,,,shared_borrowing_source
 أَرْض,ʔarḍ,אֶרֶץ,érets,ʔarṣ,,direct_cognate_ar→he;shared_borrowing_source
-أَرْضَى,ʔarḍā,הִרְצָה,hirtsá,šaraṣawa,Š,slot_matched;root_family
+أَرْضَى,ʔarḍā,הִרְצָה,hirtsá,šarṣawa,Š,slot_matched;root_family
 أَرْضَى,ʔarḍā,רִצָּה,ritsá,,,root_family
 أَرْضِي ّ شَوْكِيّ,ʔarḍiyy šawkiyy,אַרְטִישׁוֹק,artishók,ʔartišakka,,shared_borrowing_source
 أَرْضِي ّ شَوْكِيّ,ʔarḍiyy šawkiyy,חֻרְשָׁף,khursháf,xaršup,,shared_borrowing_source
@@ -201,7 +201,7 @@ arabic,arabic_romanization,hebrew,hebrew_romanization,pansemitic,derivation,laye
 أَسَرَّ,ʔasarra,אָסַר,asár,,,lemma_promoted
 أَسِير,ʔasīr,אָסִיר,asír,ʔasir,,shared_borrowing_source
 أَسْر,ʔasr,אָסַר,asár,,,shared_borrowing_source
-أَسْقَى,ʔasqā,הִשְׁקָה,hishká,šahisqa,Š,direct_cognate_ar→he;direct_cognate_he→ar
+أَسْقَى,ʔasqā,הִשְׁקָה,hishká,šahsaqa,Š,direct_cognate_ar→he;direct_cognate_he→ar
 أَسْكَنَ,ʔaskana,שָׁכַן,shakhán,,,root_family
 أَسْلَم,ʔaslam,אִסְלָאם,islám,ʔislam,,lemma_promoted
 أَسْلَمَ,ʔaslama,אִסְלָאם,islám,,,lemma_promoted
@@ -216,18 +216,18 @@ arabic,arabic_romanization,hebrew,hebrew_romanization,pansemitic,derivation,laye
 أَصْفَر,ʔaṣfar,סִפְרָה,sifrá,ʔaṣifar,n,lemma_promoted
 أَصْفَرَ,ʔaṣfara,סִפְרָה,sifrá,,,lemma_promoted
 أَصْفَهَان,ʔaṣfahān,אֶסְפָהָאן,esfahan,ʔisfahan,,shared_borrowing_source
-أَصْلَحَ,ʔaṣlaḥa,הִצְלִיחַ,hitslíakh,šaṣliaxa,Š,direct_cognate_ar→he
+أَصْلَحَ,ʔaṣlaḥa,הִצְלִיחַ,hitslíakh,šaṣlaxa,Š,direct_cognate_ar→he
 أَصْهَب,ʔaṣhab,צָהֹב,tsahóv,ʔaṣhab,n,direct_cognate_ar→he
 أَضْحَك,ʔaḍḥak,מַצְחִיק,matskhík,ʔaṣxak,n,root_family
 أَطَرَ,ʔaṭara,אָטַר,atár,ʔaṭara,G,direct_cognate_he→ar
-أَعَزَّ,ʔaʕazza,הֵעֵז,he'ez,šaʕazaza,Š,slot_matched;root_family
+أَعَزَّ,ʔaʕazza,הֵעֵז,he'ez,šaʕzaza,Š,slot_matched;root_family
 أَعْزَب,ʔaʕzab,עָזוּב,azúv,ʔaʕzab,n,root_family
-أَعْلَى,ʔaʕlā,הֶעֱלָה,he'elá,šaʕalaya,Š,slot_matched;root_family
+أَعْلَى,ʔaʕlā,הֶעֱלָה,he'elá,šaʕlaya,Š,slot_matched;root_family
 أَعْلَى,ʔaʕlā,מְעֻלֶּה,m'ulé,maʕala,n,root_family
 أَعْلَى,ʔaʕlā,נַעֲלֶה,na'alé,ʕaʔala,G,root_family
 أَعْلَى,ʔaʕlā,עֲלִיָּה,aliyá,ʕalay,n,root_family
 أَعْلَى,ʔaʕlā,עֶלְיוֹן,'elyón,ʕilyan,n,root_family
-أَعْمَدَ,ʔaʕmada,הֶעֱמִיד,he'emíd,šaʕimada,Š,slot_matched;root_family
+أَعْمَدَ,ʔaʕmada,הֶעֱמִיד,he'emíd,šaʕmada,Š,slot_matched;root_family
 أَغُسْطُس,ʔaḡusṭus,אוֹגוּסְט,ogúst,ʔaugustus,,shared_borrowing_source
 أَغُسْطُس,ʔaḡusṭus,סֶפְּטֶמְבֶּר,septémber,ʔaugustus,,shared_borrowing_source
 أَغْوَى,ʔaḡwā,עִוָּה,ʿiva,,,direct_cognate_he→ar
@@ -236,7 +236,7 @@ arabic,arabic_romanization,hebrew,hebrew_romanization,pansemitic,derivation,laye
 أَفْعًى,ʔafʕan,אֶפְעֶה,ef'é,ʔapʕaw,,direct_cognate_he→ar;shared_borrowing_source
 أَقَامَ,ʔaqāma,הֲקָמָה,hakamá,,,root_family
 أَقَامَ,ʔaqāma,הִתְקוֹמֵם,hitkomem,,,root_family
-أَقَامَ,ʔaqāma,הֵקִים,hekím,šaqawama,Š,direct_cognate_ar→he;slot_matched
+أَقَامَ,ʔaqāma,הֵקִים,hekím,šaqwama,Š,direct_cognate_ar→he;slot_matched
 أَقَامَ,ʔaqāma,הוּקַם,hukám,,,root_family
 أَقَامَ,ʔaqāma,מָקוֹם,makóm,,,lemma_promoted
 أَقْبَرَ,ʔaqbara,נִקְבַּר,nikbár,,,root_family
@@ -330,7 +330,7 @@ arabic,arabic_romanization,hebrew,hebrew_romanization,pansemitic,derivation,laye
 أَلْوَة,ʔalwa,אָהָל,ahál,ʔakil,,shared_borrowing_source
 أَلْوَة,ʔalwa,אֹהֶל,óhel,ʔakil,,shared_borrowing_source
 أَلْيَة,ʔalya,אַלְיָה,'alyá,ʔalyat,,direct_cognate_ar→he;shared_borrowing_source
-أَمَاتَ,ʔamāta,הֵמִית,hemít,šamata,Š,direct_cognate_ar→he
+أَمَاتَ,ʔamāta,הֵמִית,hemít,šamta,Š,direct_cognate_ar→he
 أَمَة,ʔama,אָמָה,amá,ʔamat,,shared_borrowing_source
 أَمَرَ,ʔamara,אִמֵּר,imér,,,direct_cognate_ar→he;direct_cognate_he→ar
 أَمَرَ,ʔamara,אָמַר,amár,ʔamara,G,direct_cognate_ar→he;direct_cognate_he→ar
@@ -388,14 +388,14 @@ arabic,arabic_romanization,hebrew,hebrew_romanization,pansemitic,derivation,laye
 أَوْحَد,ʔawḥad,חַד,khad-,ʔawxad,n,root_family
 أَوْحَد,ʔawḥad,מְאֻחָד,m'ukhád,ʔawuxad,n,root_family
 أَوْرَانِيَا,ʔawrāniyā,אוּרַנְיָה,uránya,ʔurania,,shared_borrowing_source
-أَوْرَثَ,ʔawraṯa,הוֹרִישׁ,horish,šawarasa,Š,direct_cognate_ar→he;slot_matched
+أَوْرَثَ,ʔawraṯa,הוֹרִישׁ,horish,šawrasa,Š,direct_cognate_ar→he;slot_matched
 أَوْرَثَ,ʔawraṯa,יְרֻשָּׁה,y'rushá,,,root_family
 أَوْرَثَ,ʔawraṯa,יָרַשׁ,yarásh,,,root_family
 أَوْرَثَ,ʔawraṯa,תּוֹרָשָׁה,torashá,,,root_family
 أَوْصَى,ʔawṣā,מִצְוָה,mitsvá,,,root_family
 أَوْصَى,ʔawṣā,צַו,tsáv,,,root_family
 أَوْصَى,ʔawṣā,צַוָּאָה,tzava'á,,,root_family
-أَوْقَعَ,ʔawqaʕa,הוֹקִיעַ,hokía,šawqaʕia,Š,direct_cognate_he→ar
+أَوْقَعَ,ʔawqaʕa,הוֹקִיעַ,hokía,šawqaʕa,Š,direct_cognate_he→ar
 أَوْل,ʔawl,אֱיָל,eyal,ʔil,,lemma_promoted
 أَوْل,ʔawl,אֱלוֹהַּ,elóah,ʔil,,shared_borrowing_source
 أَوْل,ʔawl,אֲללַּהּ,alláh,ʔil,,shared_borrowing_source
@@ -403,7 +403,7 @@ arabic,arabic_romanization,hebrew,hebrew_romanization,pansemitic,derivation,laye
 أَوْل,ʔawl,אַיִל,áyil,ʔil,,lemma_promoted
 أَوْل,ʔawl,אַיָּל,ayál,ʔil,,lemma_promoted
 أَوْل,ʔawl,א־ל,ʾ-l,,,shared_borrowing_source
-أَوْلَدَ,ʔawlada,הוֹלִיד,holíd,šawalada,Š,slot_matched;root_family
+أَوْلَدَ,ʔawlada,הוֹלִיד,holíd,šawlada,Š,slot_matched;root_family
 أَوْلَدَ,ʔawlada,לֵדָה,leydá,,,root_family
 أَوْلَدَ,ʔawlada,נוֹלַד,nolád,,,root_family
 أَيَّار,ʔayyār,אִיֵּר,iyér,,,lemma_promoted
@@ -777,7 +777,7 @@ arabic,arabic_romanization,hebrew,hebrew_romanization,pansemitic,derivation,laye
 اِلْتَهَبَ,iltahaba,לַהַב,láhav,,,root_family
 اِلْتِهَاب,iltihāb,הִתְלַהֲבוּת,hitlahavút,ʔiltihabut,n,root_family
 اِلْتِهَاب,iltihāb,לַהַב,láhav,ʔiltihab,n,root_family
-اِمَّحَقَ,immaḥaqa,נִמְחַק,nimkhák,namaxaqa,N,slot_matched;root_family
+اِمَّحَقَ,immaḥaqa,נִמְחַק,nimkhák,namxaqa,N,slot_matched;root_family
 اِمْتَنَعَ,imtanaʕa,מָנַע,maná',,,root_family
 اِمْتَنَعَ,imtanaʕa,נִמְנַע,nimná,,,root_family
 اِمْرَأَة,imraʔa,נָשִׁים,nashím,naʔimraʔ,n,direct_cognate_ar→he;lemma_promoted

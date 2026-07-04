@@ -6,6 +6,7 @@ lexeme,bala,noun,,,bala,بالُون,bālūn,בָּלוֹן,balón,balloon,ballo
 lexeme,balatin,noun,,n,balatin,بَلَاتِين,balātīn,פְּלָטִינָה,platína,platinum,platinum,bltn,es:platina,0
 lexeme,balawa,verb,G,G,balawa,بَلَا,balā,בָּלָה,balá,"to test, to try",to wear out,blw,,0
 lexeme,balawa,verb,G,G,balawa,بَلِيَ,baliya,בָּלָה,balá,to wear out,to wear out,blw,,0
+lexeme,balaʕa,verb,Š,Š,šablaʕa,أَبْلَعَ,ʔablaʕa,הִבְלִיעַ,hivlía,to make swallow,to cause to swallow,blʕ,,0
 lexeme,balaʕa,verb,G,G,balaʕa,بَلَعَ,balaʕa,בָּלַע,balá,to swallow,to swallow,blʕ,,0
 lexeme,bali,noun,,,bali,بَالِيه,bālēh,בָּלֵט,balét,ballet,ballet (a classical form of dance),blh,fr:ballet,0
 lexeme,balsaman,noun,,,balsaman,بَيْلَسَان,baylasān,אֲפַרְסְמוֹן,afarsemón,"Myroxylon, especially Myroxylon balsamum",balsam,bʀśmn,grc:βάλσαμον,2
@@ -20,6 +21,7 @@ lexeme,bar,noun,,,bar,بَار,bār,בָּאר,bár,bar (place where alcoholic b
 lexeme,barad,noun,,qatal,barad,بَرَد,barad,בָּרָד,barád,"hail, hailstones",hail,brd,,0
 lexeme,barak,noun,,n+fem,baraka,بَرَكَة,baraka,בְּרָכָה,b'rakhá,"bliss, blessing, boon","blessing, congratulation",brk,,0
 lexeme,baraq,noun,,,baraq,بَرْق,barq,בָּרָק,barák,flash of lightning,lightning (atmospheric flash of light),brq,,0
+lexeme,baraqa,verb,Š,Š,šabraqa,أَبْرَقَ,ʔabraqa,הִבְרִיק,hivrík,to make bolts of lightning,to lustre,brq,,0
 lexeme,baraʔ,adj/noun,,n,baraʔ,بَرَاء,barāʔ,בַּר,bar,"free, not affected, exempt","clean, pure",brʔ,,1
 lexeme,baraʔa,verb,G,G,baraʔa,بَرَأَ,baraʔa,בָּרָא,bará,"to create, to bring into being",To create (when act of a deity).,brʔ,,1
 lexeme,baraʔa,verb,G,G,baraʔa,بَرِئَ,bariʔa,בָּרַר,barár,to recover,"to select, to pick, to sort",brʔ,,0
@@ -78,9 +80,7 @@ lexeme,biskuit,noun,,,biskuit,بَسْكَوِيت,baskawīt,בִּיסְקְו�
 lexeme,bit lixim,name,,,bit lixim,بَيْت لَحْم,bayt laḥm,בֵּית לֶחֶם,bet lékhem,"Bethlehem (a city in the West Bank, Palestine)","Bethlehem (a city in the West Bank, Palestine, believed to be the birthplace of Jesus)",bytlḥm,,0
 lexeme,biʔr,noun,,,biʔr,بِئْر,biʔr,בְּאֵר,be'ér,"well, spring, water-pit",well (hole sunk into the ground),bʔr,,0
 lexeme,biṭal,noun,,n+fem,biṭala,بِطَالَة,biṭāla,בַּטָּלָה,batalá,idleness,idleness,bṭl,,3
-lexeme,blaʕa,verb,Š,Š,šablaʕa,أَبْلَعَ,ʔablaʕa,הִבְלִיעַ,hivlía,to make swallow,to cause to swallow,blʕ,,0
 lexeme,bqaṣurama,adv,,n,bqaṣurama,قَصُرَمَا,qaṣuramā,בְּקִצּוּר,b'kitsúr,seldomly,"briefly, in short, in brief",qṣr,,0
-lexeme,braqa,verb,Š,Š,šabraqa,أَبْرَقَ,ʔabraqa,הִבְרִיק,hivrík,to make bolts of lightning,to lustre,brq,,0
 lexeme,britannia,name,,,britannia,بِرِطَانِيَة,biriṭāniya,בְּרִיטַנְיָה,británya,"Britain (an island of Northern Europe), Britannia","Great Britain (a large island (sometimes also including some of the surrounding smaller islands) off the north-west coast of Western Europe, made up of England, Scotland, and Wales)",brṭny,la:Britannia,0
 lexeme,britannia,name,,,britannia,بِرِيطانِيَا,birīṭāniyā,בְּרִיטַנְיָה,británya,"Britain (great Britain, a large island (sometimes also including some of the surrounding smaller islands) off the north-west coast of Western Europe, made up of England, Scotland, and Wales; especially (but not exclusively) during antiquity)","Great Britain (a large island (sometimes also including some of the surrounding smaller islands) off the north-west coast of Western Europe, made up of England, Scotland, and Wales)",brṭny,la:Britannia,0
 lexeme,bunyan,noun,,n,bunyan,بُنْيَان,bunyān,בִּנְיָן,binyɔn,"building, structure (edifice)","building, construction",bny,,0
@@ -192,6 +192,7 @@ lexeme,gurub,noun,,n,gurub,غُرُوب,ḡurūb,עֶרֶב,érev,sunset,"evenin
 lexeme,hal,particle,,n,hal,هَلْ,hal,הֲ־,ha-,introduces a positive yes-no question,"An interrogative particle, introducing a yes-no question.",hl,,0
 lexeme,halak,verb,G,G,halak,هَلَكَ,halaka,הָלַךְ,halákh,"to ruin, to annihilate, to destroy","gone, wasted, damaged in an irreparable manner",hlk,,0
 lexeme,handasa,noun,,,handasa,هَنْدَسَة,handasa,הַנְדָּסָה,handasá,geometry,Geometry.,hnds,,2
+lexeme,hasaqa,verb,Š,Š,šahsaqa,أَسْقَى,ʔasqā,הִשְׁקָה,hishká,to give drink,"to give drink to, to water",hsq,,0
 lexeme,haykal,name/noun,,,haykal,هَيْكَل,haykal,הֵיכָל,hekhál,temple,the Holy Temple,hykl,,0
 lexeme,hayl,noun,,,hayl,هَيْل,hayl,הֶל,hel,cardamom,"cardamom (Seed of Elettaria cardamomum, used as a medicine and spice, especially in curry powder)",hyl,,0
 lexeme,haza,pron,,n,haza,هٰذَا,hāḏā,זֶה,ze,this,"this, this one.",hḏ,,0
@@ -199,7 +200,6 @@ lexeme,hibni,noun,,,hibni,أَبْنُوس,ʔabnūs,הׇבְנֶה,hovné,ebony 
 lexeme,hiduš,name,,,hiduš,الْهِنْد,al-hind,הֹדּוּ,hódu,India (country in Asia),India (a country in South Asia),lhnd,peo:𐏃𐎡𐎯𐎢𐏁,0
 lexeme,hiduš,noun,,,hiduš,هِنْدُوس,hindūs,הֹדּוּ,hódu,Hindus,India (a country in South Asia),hnds,peo:𐏃𐎡𐎯𐎢𐏁,0
 lexeme,hirʔa,verb,Š,Š,šahirʔa,أَرَى,ʔarā,הֶרְאָה,her'á,to show,show,hrʔy,,0
-lexeme,hisqa,verb,Š,Š,šahisqa,أَسْقَى,ʔasqā,הִשְׁקָה,hishká,to give drink,"to give drink to, to water",hsq,,0
 lexeme,histana,verb,tD,tD,tahisstana,تَثَنَّى,taṯannā,הִשְׁתַּנָּה,hishtaná,to be doubled up,"to change, become different",hṯny,,0
 lexeme,hitqiyamut,noun,,n,hitqiyamut,قِيَامَة,qiyāma,הִתְקוֹמְמוּת,hitkomemut,"turmoil, upheaval, tumult, chaos, uproar, mayhem","insurrection, revolt, rebellion, uprising",htqwmt,,0
 lexeme,hiwil,name,,,hiwil,هَابِيل,hābīl,הֶבֶל,hével,Abel (biblical son of Adam),Abel (the son of Adam and Eve who was killed by his brother Cain),hbl,,0
@@ -251,6 +251,7 @@ lexeme,kartis,noun,,,kartis,خَرِيطَة,ḵarīṭa,כַּרְטִיס,kart
 lexeme,kartis,noun,,,kartis,خَرْطُوش,ḵarṭūš,כַּרְטִיס,kartís,"cartridge, cartridges",card,ḫrṭś,grc:χάρτης,0
 lexeme,kasa,verb,G,G,kasa,كَسَا,kasā,כָּסָה,kasá,to cover,to be covered (participle),ks,,0
 lexeme,kata,name,,,kata,كِيُوتُو,kiyōtō,קְיוֹטוֹ,kyoto,"Kyoto (the capital city of Kyoto Prefecture, Japan)","Kyoto (the capital city of Kyoto Prefecture, Japan)",kyt,ja:京都,0
+lexeme,kataba,verb,Š,Š,šaktaba,أَكْتَبَ,ʔaktaba,הִכְתִּיב,hikhtív,"to dictate something to, to make someone write",to dictate,ktb,,0
 lexeme,katib,adj/noun,,G+pcpl.act,kātib,كَاتِب,kātib,כּוֹתֵב,kotév,writer; author,A (male) writer or author.,ktb,,2
 lexeme,katip,noun,,,katip,كَتِف,katif,כָּתֵף,katéf,"the shoulder, the shoulder joint",shoulder,ktp,,0
 lexeme,kayafa,verb,tD,tD,takayyafa,تَكَيَّفَ,takayyafa,הִתְכַּיֵּף,hitkayéf,"to be or become in high spirits, cheerful, gay, to amuse, enjoy oneself, to have fun, good time, to revel","to have fun, enjoy",kyf,,0
@@ -280,7 +281,6 @@ lexeme,kiya,conj/prep,,,kiya,كَيْ,kay,כִּי,ki,in order that (followed by
 lexeme,klarin,noun,,,klarin,كُلُور,kulūr,כְּלוֹר,klór,chlorine,"chlorine (a toxic, green, gaseous chemical element (symbol Cl) with an atomic number of 17)",klr,en:chlorine,1
 lexeme,kram,noun,,,kram,كْرُوم,krōm,כְּרוֹם,króm,chromium,"chromium (a chemical element (symbol Cr) with an atomic number of 24: a steely-grey, lustrous, hard and brittle transition metal)",krm,fr:chrome,0
 lexeme,krim,noun,,,krim,كْرِيم,krēm,קְרֵם,k'rem,cream,cream,krm,fr:crème,0
-lexeme,ktaba,verb,Š,Š,šaktaba,أَكْتَبَ,ʔaktaba,הִכְתִּיב,hikhtív,"to dictate something to, to make someone write",to dictate,ktb,,0
 lexeme,kuda,noun,,,kuda,قُدّ,qudd,קוֹד,kód,cod (the fish),code,qd,enm:code,0
 lexeme,kuly,noun,,qutl+fem,kulya,كُلْيَة,kulya,כִּלְיָה,kilyá,kidney,kidney,kly,,0
 lexeme,kupa,noun,,,kupa,كُوب,kūb,קאפּ,káp,"glass, cup",cup (bra),kb,la:cūpa,0
@@ -396,7 +396,7 @@ lexeme,maslul,adj,,n,maslul,مَسْلُول,maslūl,שְׁלִילִי,sh'lilí
 lexeme,masqal,noun,,maqtal,masqal,مِثْقَال,miṯqāl,מִשְׁקָל,mishkál,weight,weight,ṯql,,1
 lexeme,masʔal,noun,,maqtal+fem,masʔala,مَسْأَلَة,masʔala,מִשְׁאָלָה,mish'alá,"request, begging","wish, desire, request",sʔl,,1
 lexeme,masṭul,adj,,,masṭul,مَسْطُول,masṭūl,מַסְטוּל,mastúl,"drugged, high, wasted, drunk (under the psychological effects of a mood-affecting drug)","drugged, high, wasted, drunk (under the psychological effects of a mood-affecting drug)",msṭl,,0
-lexeme,mata,verb,Š,Š,šamata,أَمَاتَ,ʔamāta,הֵמִית,hemít,to cause to die,"to kill, put to death",mt,,0
+lexeme,mata,verb,Š,Š,šamta,أَمَاتَ,ʔamāta,הֵמִית,hemít,to cause to die,"to kill, put to death",mt,,0
 lexeme,matay,adv/prep,,n,matay,مَتَى,matā,מָתַי,matái,when (at what time?),when (at what time; at which time),mty,,1
 lexeme,matulunga,noun,,,matulunga,تُرُنْج,turunj,אֶתְרוֹג,etróg,citron (Citrus medica fruit and tree),citron (the fruit of a citron tree),trng,sa:मातुलुङ्ग,0
 lexeme,mawilid,noun,,n,mawilid,مَوْلِد,mawlid,מוֹלֶדֶת,molédet,birthplace,"birthplace, homeland",mwld,,0
@@ -406,7 +406,7 @@ lexeme,mawʕid,noun,,n,mawʕid,مَوْعِد,mawʕid,מוֹעֵד,mo'éd,appoin
 lexeme,maxabb,noun,,n+fem,maxabba,مَحَبَّة,maḥabba,חִבָּה,khibá,love,affection,ḥbb,,1
 lexeme,maxabub,adj/noun,,n,maxabub,مَحْبُوب,maḥbūb,חָבִיב,khavív,"beloved, dear","beloved, important",ḥbb,,0
 lexeme,maxallan,noun,,n,maxallan,مَحَلّ,maḥall,חַלּוֹן,khalón,time and opportunity,a free period,ḥll,,0
-lexeme,maxaqa,verb,N,N,namaxaqa,اِمَّحَقَ,immaḥaqa,נִמְחַק,nimkhák,"to be or become annihilated, to perish",to be erased,mḥq,,0
+lexeme,maxaqa,verb,N,N,namxaqa,اِمَّحَقَ,immaḥaqa,נִמְחַק,nimkhák,"to be or become annihilated, to perish",to be erased,mḥq,,0
 lexeme,maxaqa,verb,G,G,maxaqa,مَحَقَ,maḥaqa,מָחַק,makhák,"to efface, to blot out, to destroy, to annihilate, to ruin",to erase,mḥq,,0
 lexeme,maximmir,adj/noun,,n,maximmir,خَمِير,ḵamīr,מַחְמִיר,makhmír,"fermented, leavened","strict, stringent",ḫmr,,0
 lexeme,maxiq,noun,,n,maxiq,مَحْق,maḥq,מְחִיקָה,m'khika,"effacement, obliteration",deletion,mḥq,,1
@@ -678,6 +678,7 @@ lexeme,qabara,verb,G,G,qabara,قَبَرَ,qabara,קָבַר,kavár,"to bury, to
 lexeme,qabaṣa,verb,tD,tD,taqabbaṣa,تَقَبَّضَ,taqabbaḍa,הִתְקַבֵּץ,hitkabéts,"to be made closed like a hand, to contract, to be grasped together, to be bunched, to clench, to be shut","to be collected, to be assembled, to be agglomerated, to be gathered",qbḍ,,0
 lexeme,qabaṣa,verb,G,G,qabaṣa,قَبَضَ,qabaḍa,קָבַץ,kaváts,"to collect, to gather","to gather, to collect,",qbḍ,,0
 lexeme,qabr,noun,,qatl,qabr,قَبْر,qabr,קֶבֶר,kéver,"tomb, grave, sepulcher","grave, gravesite",qbr,,1
+lexeme,qadama,verb,Š,Š,šaqdama,أَقْدَمَ,ʔaqdama,הִקְדִּים,hiqdīm,to dare,to arrive early,qdm,,0
 lexeme,qadama,verb,tD,tD,taqaddama,تَقَدَّمَ,taqaddama,הִתְקַדֵּם,hitkadém,to proceed,"to advance, to proceed, to progress, to make progress, to move forward",qdm,,0
 lexeme,qadama,verb,G,G,qadama,قَدَمَ,qadama,קָדַם,kadám,to precede,"to precede, to come before",qdm,,0
 lexeme,qaddām,adj/noun,,qattaːl,qaddām,قُدَّام,quddām,קָדוּם,kadúm,masculine plural of قَادِم (qādim),"ancient, old, antique, immemorial, former, primitive",qdm,,0
@@ -707,7 +708,7 @@ lexeme,qary,noun,,qatl+fem,qarya,قَرْيَة,qarya,קִרְיָה,kiryá,an u
 lexeme,qarīr,adj,,qatiːl,qarīr,قَرِير,qarīr,קָרִיר,karír,"cool, fresh","cool, cold in a pleasant way",qrr,,1
 lexeme,qat,noun,,,qat,قَات,qāt,גָּת,gat,khat (Catha edulis),khat (Catha edulis),qt,,1
 lexeme,qatal,verb,G,G,qatal,قَتَلَ,qatala,קָטַל,katál,"to kill, to slay, to murder","to kill, slay",qtl,,0
-lexeme,qawama,verb,Š,Š,šaqawama,أَقَامَ,ʔaqāma,הֵקִים,hekím,"to set up, to erect","To erect, establish.",qwm,,0
+lexeme,qawama,verb,Š,Š,šaqwama,أَقَامَ,ʔaqāma,הֵקִים,hekím,"to set up, to erect","To erect, establish.",qwm,,0
 lexeme,qawama,verb,G,G,qawama,قَامَ,qāma,קָם,qɔm,to stand up (to rise from lying or sitting position); to get up,"to rise, stand up",qwm,,0
 lexeme,qaws,noun,,qatl,qaws,قَوْس,qaws,קֶשֶׁת,késhet,"bow, arch, vault",arch,qws,,1
 lexeme,qaydam,noun,,n,qaydam,قَيْدَام,qaydām,הַקְדָּמָה,hakdamá,front,"foreword, preface",qdm,,0
@@ -726,7 +727,6 @@ lexeme,qaṭafa,verb,G,G,qaṭafa,قَطَفَ,qaṭafa,קָטַף,katáf,"to pl
 lexeme,qaṭb,noun,,,qaṭb,قَطْب,qaṭb,קֹטֶב,kótev,puncture-vine (Tribulus spp.),puncture-vine (Tribulus spp.),qṭb,,1
 lexeme,qaṭb,noun,,,qaṭb,قُطْب,quṭb,קֹטֶב,kótev,pole,pole,qṭb,,1
 lexeme,qaṭipa,noun,,,qaṭipa,قَطِيفَة,qaṭīfa,קְטִיפָה,k'tifá,"satin, velvet",velvet,qṭp,,0
-lexeme,qdama,verb,Š,Š,šaqdama,أَقْدَمَ,ʔaqdama,הִקְדִּים,hiqdīm,to dare,to arrive early,qdm,,0
 lexeme,qiriš,noun,,n,qiriš,قِرْش,qirš,כָּרִישׁ,karísh,shark,shark,qrš,la:grossus,1
 lexeme,qiṭar,noun,,n,qiṭar,قِطَار,qiṭār,קַטָּר,katár,train,A locomotive (The power unit of a train),qṭr,,3
 lexeme,qiṭṭul,noun,,n,qiṭṭul,قِطّ,qiṭṭ,חָתוּל,khatúl,"cat, tomcat",cat,qṭl,,0
@@ -765,6 +765,7 @@ lexeme,raqaṣa,verb,G,G,raqaṣa,رَقَصَ,raqaṣa,רָקַד .,raqád,to d
 lexeme,raqiq,adj,,n,raqiq,رَقِيق,raqīq,רַךְ,rakh,"soft, sensitive, sentimental",soft,rqq,,0
 lexeme,rasama,verb,G,G,rasama,رَسَمَ,rasama,רָשַׁם,rashám,"to record, to enter, to mark, to indicate","To inscribe, to write down, to note, to make a note.",rsm,,0
 lexeme,rasmiyy,adj/noun,,,rasmiyy,رَسْمِيّ,rasmiyy,רִשְׁמִי,rishmí,formal,formal,rsmy,,0
+lexeme,rawaxa,verb,Š,Š,šarwaxa,أَرَاحَ,ʔarāḥa,הִרְוִיחַ,hirvíakh,to disburden,"to gain, to benefit",rwḥ,,0
 lexeme,raxaman,name,,n+def,hal raxaman,اَلرَّحْمٰن,ar-raḥmān,הָרַחֲמָן,haraḥaman,"God, the Most Merciful (one of the 99 Names of Allah)","Epithet for God, often translated as the Merciful One",rḥm,,0
 lexeme,raxaṣa,verb,G,G,raxaṣa,رَحَضَ,raḥaḍa,רָחַץ,rakháts,"to wash, to clean","To wash, to clean by washing, as an object or a body part.",rḥḍ,,0
 lexeme,raxb,adj,,qatl,raxb,رَحْب,raḥb,רָחָב,rakháv,"wide, spacious, roomy",wide (broad from side to side),rḥb,,1
@@ -784,7 +785,7 @@ lexeme,raʔš,noun,,,raʔš,رَأْس,raʔs,רֹאשׁ,rosh,head,head,rʔs,,7
 lexeme,raʕada,verb,G,G,raʕada,رَعَدَ,raʕada,רָעַד,ra'ád,to thunder,"to tremble, shake, quake",rʕd,,0
 lexeme,raʕin,noun,,n,raʕin,رَاعٍ,rāʕin,רֹעֶה,ro'é,shepherd,shepherd,rwʕ,,0
 lexeme,raʕš,noun,,qatl,raʕš,رَعْشَة,raʕša,רַעַשׁ,rá'ash,tremor,earthquake,rʕš,,0
-lexeme,raṣawa,verb,Š,Š,šaraṣawa,أَرْضَى,ʔarḍā,הִרְצָה,hirtsá,"to satisfy, to please",to lecture,rḍw,,0
+lexeme,raṣawa,verb,Š,Š,šarṣawa,أَرْضَى,ʔarḍā,הִרְצָה,hirtsá,"to satisfy, to please",to lecture,rḍw,,0
 lexeme,raṣawa,verb,G,G,raṣawa,رَضِيَ,raḍiya,רָצָה,ratsá,to desire,To want.,rḍw,,0
 lexeme,raṣin,adj,,n,raṣin,رَاضٍ,rāḍin,רָצוּי,ratsúy,"satisfying, pleasant, comfortable","Desired, desirable, wanted.",rḍw,,1
 lexeme,raṭab,adj,,n,raṭab,رَطْب,raṭb,רָטֹב,ratóv,"humid, moist","wet (of an object: covered with or impregnated with liquid), moist, sapful (sap of plants)",rṭb,,1
@@ -807,7 +808,6 @@ lexeme,rumax,noun,,n,rumax,رُمْح,rumḥ,רֹמַח,rómakh,spear,spear,rm�
 lexeme,rux,noun,,,rux,رُوح,rūḥ,רוּחַ,rúakh,"breath, movement of air",breath,rwḥ,,2
 lexeme,ruxan,adj/noun,,n+nisba,ruxani,رُوحَانِيّ,rūḥāniyy,רוּחָנִי,rukhaní,"spiritual, immaterial, spiritualistic, incorporeal, ghostly, animistic",spiritual,rwḥ,,1
 lexeme,ruxm,noun,,qutl,ruxm,رُحْم,ruḥm,רַחֲמִים,rakhamím,"mercy, commiseration",mercy,rḥm,,1
-lexeme,rwiaxa,verb,Š,Š,šarwiaxa,أَرَاحَ,ʔarāḥa,הִרְוִיחַ,hirvíakh,to disburden,"to gain, to benefit",rwḥ,,0
 lexeme,sabab,noun,,n,sabab,سَبَب,sabab,סִבָּה,sibá,"cause, grounds, aetiological reason",cause (source or reason of an event or action),sbb,,0
 lexeme,sabaya,verb,G,G,sabaya,سَبَى,sabā,שָׁבָה,shavá,"to captivate, to captive",to capture (took captive).,sby,,2
 lexeme,sabiaxa,verb,D,D,sabbiaxa,سَبَّحَ,sabbaḥa,שִׁבֵּחַ,shibéakh,"to praise, to glorify","to praise (a person, an organization, an action, etc.)",sbḥ,,0
@@ -850,6 +850,7 @@ lexeme,salām,intj/noun,,qataːl,salām,سَلَام,salām,שָׁלוֹם,shal�
 lexeme,salīṭ,adj/noun,,qatiːl,salīṭ,سَلِيط,salīṭ,שַׁלִּיט,shalít,"fierce, bold, cheeky, sharp","ruling, governing",slṭ,,1
 lexeme,sam,name/noun,,n,sam,سَام,sām,שֵׁם,shem,Shem,Shem,sm,,0
 lexeme,samama,adv/verb,G,G,samama,ثَمَّ,ṯamma,שָׁם,sham,there,there (somewhere at some distance from the speaker),ṯmm,,1
+lexeme,samana,verb,Š,Š,šasmana,أَسْمَنَ,ʔasmana,הִשְׁמִין,hishmín,"to cause a thing to be nourished, to feed or to fatten up, to make plump","to gain weight, to get fat",smn,,0
 lexeme,samaniy,num,,,samaniy,ثَمَانِيَة,ṯamāniya,שְׁמוֹנָה,sh'moná,eight,eight,ṯmn,,0
 lexeme,samar,verb,G,G,samar,ثَمَلَ,ṯamala,שָׁמַר,shamár,"to stay, remain staying",to keep,ṯml,,0
 lexeme,samaran,name,,n,samaran,سَمَر,samar,שׁוֹמְרוֹן,šōmərōn,"a female given name, Samar",Samaria,smr,,4
@@ -920,7 +921,6 @@ lexeme,sitaʔ,noun,,n,sitaʔ,شِتَاء,šitāʔ,סְתָו,s'táv,winter,wint
 lexeme,siyaga,noun,,,siyaga,سِيَاج,siyāj,סְיָג,sə'yág,fence,"restriction, a protective condition, fence, safeguard",syg,,0
 lexeme,sišqalun,noun,,n,sišqalun,ثِقَل,ṯiqal,מִשְׁקָל,mishkál,heaviness,weight,ṯql,,2
 lexeme,siʕr,noun,,qitl,siʕr,سِعْر,siʕr,שַׁעַר,shá'ar,price,market value,sʕr,,1
-lexeme,smana,verb,Š,Š,šasmana,أَسْمَنَ,ʔasmana,הִשְׁמִין,hishmín,"to cause a thing to be nourished, to feed or to fatten up, to make plump","to gain weight, to get fat",smn,,0
 lexeme,spangas,noun,,,spangas,إِسْفَنْج,ʔisfanj,סְפוֹג,sfog,sponge,sponge,spng,grc:σπόγγος,1
 lexeme,sr,name/noun,,,sr,صُور,ṣūr,צוֹר,tsór,Tyre (a city in Lebanon),Tyre,ṣwr,phn:𐤑𐤓,0
 lexeme,stadian,noun,,,stadian,إِسْتَاد,ʔistād,אִצְטַדְיוֹן,itstadyón,stadium,stadium,ʔstdyn,grc:στάδιον,1
@@ -1010,13 +1010,13 @@ lexeme,wadiaʕ,adj,,n,wadiaʕ,وَدِيع,wadīʕ,יָדוּעַ,yadúa',"mansu
 lexeme,wadidut,adj,,n,wadidut,وَدِيد,wadīd,יְדִידוּתִי,yedidutí,"one who loves, one who has affection","Friendly, amenable; especially in extended senses.",wddt,,1
 lexeme,walad,noun,,n,walad,وَلَد,walad,יֶלֶד,yéled,child (“son or daughter of any age”),"An immature adult; kid, child.",wld,,3
 lexeme,walad,verb,G,G,walad,وَلَدَ,walada,יָלַד,yalád,"to bear, to beget","to give birth (""to child""; beget a descendant).",wld,,1
-lexeme,walada,verb,Š,Š,šawalada,أَوْلَدَ,ʔawlada,הוֹלִיד,holíd,"to make children to, to cause to give birth","To sire, to father, to beget.",wld,,0
+lexeme,walada,verb,Š,Š,šawlada,أَوْلَدَ,ʔawlada,הוֹלִיד,holíd,"to make children to, to cause to give birth","To sire, to father, to beget.",wld,,0
 lexeme,walid,noun,,n,walid,وَالِد,wālid,יִלּוֹד,yilód,parent,newborn,wld,,2
 lexeme,walīd,adj/noun,,qatiːl,walīd,وَلِيد,walīd,יָלִיד,yalíd,"the product of, the result of, occasioned by, engendered by, sprung from",product (of),wld,,0
 lexeme,waqaʕa,verb,G,G,waqaʕa,وَقَعَ,waqaʕa,יָקַע,yaká,to desist,"to become estranged, alienated",wqʕ,,0
 lexeme,waqur,adj,,n,waqur,وَقُور,waqūr,יָקָר,yakár,"dignified, staid","dear, precious",wqr,,0
 lexeme,waraq,noun,,,waraq,وَرَق,waraq,יָרָק,yarák,"foliage, leaves","herb, vegetable",wrq,,3
-lexeme,warasa,verb,Š,Š,šawarasa,أَوْرَثَ,ʔawraṯa,הוֹרִישׁ,horish,to make inherit,"to bequeath, to will (to leave something to someone in their will)",wrṯ,,0
+lexeme,warasa,verb,Š,Š,šawrasa,أَوْرَثَ,ʔawraṯa,הוֹרִישׁ,horish,to make inherit,"to bequeath, to will (to leave something to someone in their will)",wrṯ,,0
 lexeme,warid,noun,,,warid,وَرِيد,warīd,וְרִיד,v'rid,vein,vein,wrd,,0
 lexeme,warik,noun,,n,warik,وَرِك,warik,יָרֵךְ,yarékh,"hip, thigh",thigh,wrk,,0
 lexeme,warisa,adj/noun,,n,warisa,وَارِث,wāriṯ,יְרֻשָּׁה,y'rushá,"heir, inheritor",inheritance,wrṯ,,2
@@ -1061,8 +1061,9 @@ lexeme,xakann,noun,,n+fem,xakanna,كَنَّة,kanna,כַּלָּה,kalá,female
 lexeme,xakim,adj/noun,,n,xakim,حَكِيم,ḥakīm,חָכָם,khakhám,wise,"wise, smart",ḥkm,,0
 lexeme,xalab,name/noun,,,xalab,حَلَب,ḥalab,חַאלַבּ,khálab,"Aleppo (the capital city of Aleppo governorate, Syria)","Aleppo (the capital city of Aleppo Governorate, Syria)",ḥlb,,0
 lexeme,xalaba,verb,G,G,xalaba,حَلَبَ,ḥalaba,חָלַב,khaláv,to milk,to milk,ḥlb,,0
+lexeme,xalada,verb,Š,Š,šaxlada,أَخْلَدَ,ʔaḵlada,הֶחְלִיד,hekhlíd,to age late,to rust,ḫld,,0
 lexeme,xalal,adj/noun,,n,xalal,حَلَال,ḥalāl,חִלּוֹנִי,khiloní,"lawful, legal, licit, legitimate.","secular, irreligious",ḥll,,0
-lexeme,xalala,verb,Š,Š,šaxalala,أَخَلَّ,ʔaḵalla,הֵחֵל,hekhél,to disturb,"to begin, to start",ḫll,,0
+lexeme,xalala,verb,Š,Š,šaxlala,أَخَلَّ,ʔaḵalla,הֵחֵל,hekhél,to disturb,"to begin, to start",ḫll,,0
 lexeme,xalala,verb,D,D,xallala,حَلَّلَ,ḥallala,חִלֵּל,khilél,"to solve, to dissolve","to desecrate, violate",ḥll,,0
 lexeme,xalaṣ,intj/noun,,,xalaṣ,خَلَاص,ḵalāṣ,חָלָס,ḥálas,cut it out! stop it!,stop it! enough!,ḫlṣ,,0
 lexeme,xalib,noun,,,xalib,حَلِيب,ḥalīb,חָלָב,khaláv,milk,milk (a white liquid produced by the mammary glands of female mammals to nourish their young),ḥlb,,0
@@ -1129,7 +1130,7 @@ lexeme,xawil,noun,,n,xawil,حَوْل,ḥawl,חַיִל,kháyil,strength,army,�
 lexeme,xawx,noun,,n,xawx,خَوْخَة,ḵawḵa,חוֹחַ,khóakh,"wicket, aperture, sluice gate, canal lock (in a passage)","aperture, cleft",ḫwḫ,,0
 lexeme,xaxam,noun,,,xaxam,حَاخَام,ḥāḵām,חָכָם,khakhám,rabbi,rabbi,ḥḫm,,0
 lexeme,xayah,noun,,n,xayah,حَيَاة,ḥayāh,חַיִּים,khayím,life,life (state of being alive),ḥyh,,1
-lexeme,xayawa,adj/verb,Š,Š,šaxayawa,أَحْيَا,ʔaḥyā,הֶחֱיָה,hekheyá,"to restore to life, to revive; to restore, to reinstitute","To revive, to resuscitate, to revitalize, to quicken",ḥyw,,2
+lexeme,xayawa,adj/verb,Š,Š,šaxyawa,أَحْيَا,ʔaḥyā,הֶחֱיָה,hekheyá,"to restore to life, to revive; to restore, to reinstitute","To revive, to resuscitate, to revitalize, to quicken",ḥyw,,2
 lexeme,xayawa,verb,G,G,xayawa,حَيِيَ,ḥayiya,חַי,kháy,to live,"to live (to be alive, to have life)",ḥyw,,2
 lexeme,xayawan,noun,,n,xayawan,حَيَوَان,ḥayawān,חַיָּה,khayá,"animals, living creatures",animal (organism other than man),ḥyw,,2
 lexeme,xayil,noun,,n,xayil,حَيْل,ḥayl,חַיִל,kháyil,"strength, force",army,ḥyl,,1
@@ -1143,6 +1144,7 @@ lexeme,xašin,adj,,n,xašin,خَشِن,ḵašin,אָשׁוּן,ashún,tough (lif
 lexeme,xašiš,noun,,,xašiš,حَشِيش,ḥašīš,חֲשִׁישׁ,khashísh,"hemp, cannabis, hashish",hashish (dried leaves of the Indian hemp plant),ḥšš,,0
 lexeme,xaṣibit,noun,,n,xaṣibit,حَصْبَة,ḥaṣba,חַצֶּבֶת,khatsévet,measles,measles,ḥṣbt,,0
 lexeme,xaṭaʔ,adj/noun,,n,xaṭaʔ,خَطَأ,ḵaṭaʔ,חֵטְא,khet,"mistake, error","an unintentional sin, done unknowingly",ḫṭʔ,,1
+lexeme,xaṭaʔa,verb,Š,Š,šaxṭaʔa,أَخْطَأَ,ʔaḵṭaʔa,הֶחְטִיא,hekhtí',to miss (to fail to hit),"to miss, be off target",ḫṭʔ,,0
 lexeme,xaṭib,adj/noun,,n,xaṭib,خَاطِب,ḵāṭib,כָּתוּב,katúv,"betrothed, engaged",written,ḫṭb,,0
 lexeme,xaṭifa,verb,G,G,xaṭifa,خَطِفَ,ḵaṭifa,חָטַף,chatáf,"to abduct, to kidnap",to kidnap,ḫṭf,,0
 lexeme,xaṭiʔ,adj/noun,,n,xaṭiʔ,خَاطِئَة,ḵāṭiʔa,חַטָּאת,khatát,"sin, sinfulness",A sin.,ḫṭʔ,,2
@@ -1169,7 +1171,6 @@ lexeme,xiziam,noun,,n,xiziam,حِزَام,ḥizām,מְזִיחַ,mezíakh,girdl
 lexeme,xiṣrim,noun,,n,xiṣrim,حِصْرِم,ḥiṣrim,חַרְצָן,ḥarṣā́n,"unripe grapes, sour grapes, grapes green and acid due to lacking maturity","sour grape, vine fruit green and acid due to lacking maturity",ḥrṣr,,1
 lexeme,xiṭmiyy,noun,,n,xiṭmiyy,خِطْمِيّ,ḵiṭmiyy,חֶלְמִית,khelmít,a confectionery marshmallow,mallow,ḫṭmy,,0
 lexeme,xiṭʔ,noun,,n,xiṭʔ,خِطْء,ḵiṭʔ,חֵטְא,khet,sin,sin,ḫṭʔ,,2
-lexeme,xlada,verb,Š,Š,šaxlada,أَخْلَدَ,ʔaḵlada,הֶחְלִיד,hekhlíd,to age late,to rust,ḫld,,0
 lexeme,xulam,noun,,n,xulam,حُلْم,ḥulm,חֲלוֹם,khalóm,a dream (something experienced during sleep); vision,dream,ḥlm,,0
 lexeme,xulb,noun,,qutl+fem,xulba,حُلْبَة,ḥulba,חִלְבָּה,khilbá,fenugreek,fenugreek,ḥlb,,0
 lexeme,xuld,noun,,qutl,xuld,خُلْد,ḵuld,חֹלֶד,khóled,"blind mole-rat., mole-rat",mole-rat,ḫld,,2
@@ -1179,7 +1180,6 @@ lexeme,xurṭum,noun,,n,xurṭum,خُرْطُوم,ḵurṭūm,חַרְטוֹם,k
 lexeme,xusban,noun,,n,xusban,حُسْبَان,ḥusbān,חֶשְׁבּוֹן,kheshbón,"calculation, computation","arithmetic, mathematics",ḥsbn,,0
 lexeme,xuwirr,adj,,n,xuwirr,حُرّ,ḥurr,חִוֵּר,khivér,free,pale,ḥvr,,2
 lexeme,xšayarša,name,,,xšayarša,خْشَايَارْشَا,ḵšāyāršā,חְשַׁיָארְשָׁ,kh'shayársha,"Xerxes, Ahasuerus",Xerxes,ḫšyrš,peo:𐎧𐏁𐎹𐎠𐎼𐏁𐎠,1
-lexeme,xṭaʔa,verb,Š,Š,šaxṭaʔa,أَخْطَأَ,ʔaḵṭaʔa,הֶחְטִיא,hekhtí',to miss (to fail to hit),"to miss, be off target",ḫṭʔ,,0
 lexeme,ya,particle,,,ya,يَا,yā,יָא,yá,"O; hey; you; vocative particle preceding a noun used in direct address, only rarely omitted in such contexts","Vocative particle preceding a noun, especially a slur or pejorative.",y,,0
 lexeme,ya llah,intj,,,ya llah,يَاٱللَّٰه,yāllāh,יַאלְלָה,yálla,"come on, c’mon","come on, c’mon",ylˤh,,0
 lexeme,yabasa,verb,tD,tD,tayabbasa,تَيَبَّسَ,tayabbasa,הִתְיַבֵּשׁ,hityabésh,"to dry up, get dry","To dry, to dry out: to become dry.",ybs,,0
@@ -1226,6 +1226,7 @@ lexeme,za,noun/pron,,,za,ذَا,ḏā,זֶה,ze,this,"this, this one.",ḏ,,0
 lexeme,zabaxa,verb,G,G,zabaxa,ذَبَحَ,ḏabaḥa,זָבַח,zavákh,"to slaughter, to butcher","To slaughter, to kill",ḏbḥ,,0
 lexeme,zahab,noun,,qatal,zahab,ذَهَب,ḏahab,זָהָב,zaháv,gold,gold (metal),ḏhb,,0
 lexeme,zakar,adj,,n+nisba,zakari,ذَكَرِيّ,ḏakariyy,זִכְרִי,zikhrí,masculine,masculine,ḏkr,,1
+lexeme,zakara,verb,Š,Š,šazkara,أَذْكَرَ,ʔaḏkara,הִזְכִּיר,hizkír,"to remind, to call to mind",to remind (i.e. to cause to remember),ḏkr,,0
 lexeme,zakara,verb,G,G,zakara,ذَكَرَ,ḏakara,זָכַר,zakhár,"to remember, to recall",to remember,ḏkr,,0
 lexeme,zakiran,noun,,n,zakiran,ذَاكِرَة,ḏākira,זִכָּרוֹן,zikarón,memory,"memory, computer memory",ḏkr,,1
 lexeme,zana,verb,G,G,zana,زَنَى,zanā,זָנָה,zaná,"to commit adultery, to fornicate","to lust, fornicate, commit adultery",zn,,0
@@ -1253,7 +1254,6 @@ lexeme,zikr,noun,,qitl,zikr,ذِكْر,ḏikr,זֵכֶר,zékher,"recollection, 
 lexeme,zinan,noun,,n,zinan,زِنًى,zinan,זְנוּת,z'nut,"adultery, fornication, lust",prostitution; harlotry,zny,,0
 lexeme,zinaʔ,noun,,n,zinaʔ,زِنَاء,zināʔ,זְנוּת,z'nut,"adultery, fornication",prostitution; harlotry,zny,,0
 lexeme,ziʔb,noun,,,ziʔb,ذِئْب,ḏiʔb,זְאֵב,zəʔeḇ,wolf,wolf,ḏʔb,,0
-lexeme,zkara,verb,Š,Š,šazkara,أَذْكَرَ,ʔaḏkara,הִזְכִּיר,hizkír,"to remind, to call to mind",to remind (i.e. to cause to remember),ḏkr,,0
 lexeme,zmaragdas,noun,,,zmaragdas,زَبَرْجَد,zabarjad,אִזְמַרְגָּד,izmargád,aquamarine,emerald,zbrgd,grc:σμάραγδος,0
 lexeme,zmaragdas,noun,,,zmaragdas,زُمُرُّد,zumurrud,אִזְמַרְגָּד,izmargád,emerald,emerald,zmrgd,grc:σμάραγδος,0
 lexeme,zmili,noun,,,zmili,إِزْمِيل,ʔizmīl,אִזְמֵל,izmél,"chisel, scraper, shoe-knife","knife, scalpel.",ʔzml,grc:σμίλη,0
@@ -1440,7 +1440,7 @@ lexeme,ʔila,prep,,,ʔila,إِلَى,ʔilā,אֶל,el,"to, towards","to, towards
 lexeme,ʔilla,conj/prep,,n,ʔilla,إِلَّا,ʔillā,אֶלָּא,elá,"no more than; nothing more than; nothing but or no one but; only, but","but, except",ʔl,,0
 lexeme,ʔiltihabut,noun,,n,ʔiltihabut,اِلْتِهَاب,iltihāb,הִתְלַהֲבוּת,hitlahavút,burning,Catching fire: the event of igniting.,lhb,,1
 lexeme,ʔimam,noun,,,ʔimam,إِمَام,ʔimām,אִימָאם,imám,imam,imam (one who leads the salat prayers in a mosque),ʔmm,,0
-lexeme,ʔimana,verb,Š,Š,šaʔimana,آمَنَ,ʔāmana,הֶאֱמִין,he'emín,to believe,to believe,mn,,0
+lexeme,ʔimana,verb,Š,Š,šaʔmana,آمَنَ,ʔāmana,הֶאֱמִין,he'emín,to believe,to believe,mn,,0
 lexeme,ʔimaʕa,prep,,n,ʔimaʕa,مَعَ,maʕa,עִם,im,"with, together with, accompanied by, in the company of","With: used to indicate togetherness, being together.",mʕ,,0
 lexeme,ʔimm,noun,,,ʔimm,أُمّ,ʔumm,אִמָּא,'íma,mother,mother,ʔmm,,3
 lexeme,ʔimmar,adj/noun,,n,ʔimmar,إِمَّر,ʔimmar,אָמוּר,amúr,"simple-minded, stupid","supposed to, meant to, should, believed",ʔmr,,0
@@ -1495,7 +1495,7 @@ lexeme,ʕadan,name/noun,,,ʕadan,عَدَن,ʕadan,עַדֶּן,áden,"Aden (a p
 lexeme,ʕadasa,noun,,n,ʕadasa,عَدَس,ʕadas,עֲדָשָׁה,adashá,lentils,"lentil, lens",ʕds,,0
 lexeme,ʕadasa,noun,,n,ʕadasa,عَدَسَة,ʕadasa,עֲדָשָׁה,adashá,lentil,"lentil, lens",ʕds,,0
 lexeme,ʕalaqa,noun,,n,ʕalaqa,عَلَقَة,ʕalaqa,עֲלוּקָה,ʿălūqâ,leech,leech,ʕlq,,0
-lexeme,ʕalaya,adj/noun/verb,Š,Š,šaʕalaya,أَعْلَى,ʔaʕlā,הֶעֱלָה,he'elá,"to raise, make higher","to raise, lift",ʕly,,4
+lexeme,ʕalaya,adj/noun/verb,Š,Š,šaʕlaya,أَعْلَى,ʔaʕlā,הֶעֱלָה,he'elá,"to raise, make higher","to raise, lift",ʕly,,4
 lexeme,ʕali,adj/name,,n,ʕali,عَلِيّ,ʕaliyy,עֵלִי,eli,"a male given name, Ali","a male given name, Eli",ʕlw,,0
 lexeme,ʕalin,adj/noun,,n,ʕalin,عَالٍ,ʕālin,עֲלִיָּה,aliyá,The upper part of something,"ascent, ascending, going up",ʕly,,0
 lexeme,ʕaliyaʔ,name/noun,,n,ʕaliyaʔ,عَلْيَاء,ʕalyāʔ,עֲלִיָּה,aliyá,"elevation, highness","ascent, ascending, going up",ʕly,,2
@@ -1536,7 +1536,7 @@ lexeme,ʕayn,noun,,,ʕayn,عَيْن,ʕayn,עַיִן,áyin,spring (of water),"s
 lexeme,ʕayr,noun,,,ʕayr,عَيْر,ʕayr,עַיִר,áyir,a donkey; a wild ass; an onager,donkey foal,ʕyr,,0
 lexeme,ʕazab,verb,G,G,ʕazab,عَزَبَ,ʕazaba,עָזַב,azáv,"to escape, to slip out","to leave, leave behind, depart",ʕzb,,0
 lexeme,ʕazara,verb,G,G,ʕazara,عَزَرَ,ʕazara,עָזַר,'azár,"to aid, to assist, to strengthen","to help, to assist",ʕzr,,0
-lexeme,ʕazaza,verb,Š,Š,šaʕazaza,أَعَزَّ,ʔaʕazza,הֵעֵז,he'ez,to respect,to dare,ʕzz,,0
+lexeme,ʕazaza,verb,Š,Š,šaʕzaza,أَعَزَّ,ʔaʕazza,הֵעֵז,he'ez,to respect,to dare,ʕzz,,0
 lexeme,ʕaziz,adj/name/noun,,n,ʕaziz,عَزِيز,ʕazīz,עַז,áz,"powerful, mighty","mighty, strong",ʕzz,,0
 lexeme,ʕaziz,adj/name/noun,,,ʕaziz,عَزِيز,ʕazīz,עָזִיז,,"a male given name, Aziz","a male given name, Aziz, from Arabic",ʕzz,,0
 lexeme,ʕazzaz,verb,G,G,ʕazzaz,عَزَّ,ʕazza,עָזַז,azáz,"to be powerful, to overpower","to become strong, to prevail",ʕzz,,0
@@ -1552,7 +1552,7 @@ lexeme,ʕid milad,noun,,n n+def,ʕid hal milad,عِيد الْمِيلَاد,ʕ�
 lexeme,ʕigl,noun,,,ʕigl,عِجْل,ʕijl,עֵגֶל,égel,calf (young head of cattle),male calf,ʕgl,,2
 lexeme,ʕilam,adj,,n+nisba,ʕilami,عِلْمِيّ,ʕilmiyy,עוֹלָמִי,olamí,related to knowledge,world (adjective); global,ʕlm,,0
 lexeme,ʕimad,name/noun,,n,ʕimad,عِمَاد,ʕimād,עַמּוּד,amúd,"column, pillar","pillar, column, post",ʕmd,,0
-lexeme,ʕimada,verb,Š,Š,šaʕimada,أَعْمَدَ,ʔaʕmada,הֶעֱמִיד,he'emíd,"to propose, to lead, to aim",to help (someone) to their feet,ʕmd,,0
+lexeme,ʕimada,verb,Š,Š,šaʕmada,أَعْمَدَ,ʔaʕmada,הֶעֱמִיד,he'emíd,"to propose, to lead, to aim",to help (someone) to their feet,ʕmd,,0
 lexeme,ʕiraq,name,,,ʕiraq,الْعِرَاق,al-ʕirāq,עיראק,'irák,Iraq (a country in Asia),Iraq (a country in West Asia in the Middle East; official name: הרפובליקה העיראקית (harepublika ha'irakit)),ʔlʕrq,,0
 lexeme,ʕisiruna,adj/num,,n,ʕisiruna,عِشْرُونَ,ʕišrūna,עֲשִׂירִי,asirí,twentieth,tenth,ʕśr,,0
 lexeme,ʕisru,adj/num,,,ʕisru,عِشْرُونَ,ʕišrūna,עֶשְׂרִים,'esrím,twenty,twenty,ʕśr,,0

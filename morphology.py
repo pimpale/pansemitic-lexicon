@@ -1642,6 +1642,28 @@ class PansemiticMorphology(LangMorphology):
             suffix = ""
         return definite + stem_prefix + stem + suffix
 
+    # Prefixal stems that trigger onset syncope of the base's first SHORT vowel:
+    # the Proto-Semitic causative/N shapes cluster C1C2 after the prefix (Š
+    # *ša-qtil — ar ʔaqtala, he hiqtīl; N ar infaʕala, he niqtal), so ša +
+    # baraqa → šabraqa, not the unfaithful šabaraqa.  The t-stems do NOT
+    # syncopate (ar tafaʕʕala, he hitqaṭṭēl keep the theme vowel).
+    _SYNCOPE_PREFIXES = frozenset({Layer.CAUSATIVE, Layer.N_PREFIX})
+
+    @classmethod
+    def _syncopate_onset(cls, stem: str) -> str:
+        """Drop the stem's first vowel for a prefixal stem exponent — only when
+        it is short (a hollow base's qaːma keeps its long vowel → šaqaːma,
+        matching ʔaqaːma) and the result is a legal two-consonant onset (an
+        already-clustered stem passes through unchanged)."""
+        ps = list(Phoneme.parse(stem))
+        if (len(ps) >= 4
+                and isinstance(ps[0], Consonant)
+                and ps[1].tok in cls._PAN_VOWELS       # short vowel only
+                and isinstance(ps[2], Consonant)
+                and not isinstance(ps[3], Consonant)):  # no CCC after the drop
+            return "".join(p.tok for p in (ps[0], *ps[2:]))
+        return stem
+
     @classmethod
     def deep_parse(cls, phrase: AnalyzedPhrase, base_lookup: BaseLookup) -> Derivation:
         """Pansemitic is the merge TARGET, not a parse source — it is only ever
@@ -1668,6 +1690,8 @@ class PansemiticMorphology(LangMorphology):
                 if t.geminates:
                     form = cls._geminate_c2(form)
                 if t.prefix:
+                    if t.layer in cls._SYNCOPE_PREFIXES:
+                        form = cls._syncopate_onset(form)
                     form = t.prefix + form
             elif t.layer is not None:  # concatenative
                 conc.add(t.layer)
@@ -2074,19 +2098,32 @@ def _gen_g(radicals: list[str]) -> str:
     return "a".join(radicals) + "a"
 
 
+def _cluster_free(ipa: str) -> bool:
+    """No two adjacent consonant tokens — the shape test for a well-formed G
+    base (a geminate is ONE token, so ħabːa passes; the prefix-strip residue
+    braqa fails on its b-r onset)."""
+    toks = list(Phoneme.parse(ipa))
+    return not any(isinstance(a, Consonant) and isinstance(b, Consonant)
+                   for a, b in zip(toks, toks[1:]))
+
+
 def _generative_verb_base(
     anc_word: str, pan_stem: str, pr: ProtoRoot,
 ) -> tuple[str, str]:
     """Return (ancestor, pan_stem) for a finite verb with the root made visible.
 
     Identity ONLY when the surface reconstruction is already the clean
-    triliteral G base — exactly three consonants, all aligning to the root — so
-    its reconciled thematic vowels are kept (sound G verbs: kataba, bitˤala).
-    Otherwise regenerate from the authoritative radicals as the *qatala melody
-    (C1aC2aC3a), which fixes BOTH deficiencies that break ancestor≡proto_root:
+    triliteral G base — exactly three consonants, all aligning to the root, in
+    a cluster-free (CVCVC) shape — so its reconciled thematic vowels are kept
+    (sound G verbs: kataba, bitˤala).  Otherwise regenerate from the
+    authoritative radicals as the *qatala melody (C1aC2aC3a), which fixes the
+    deficiencies that break ancestor≡proto_root:
       - a MISSING radical (weak/geminate contraction: qwm qaːma → qawama);
       - an EXTRA consonant (a derived-stem preformative that _STEM_LAYERS doesn't
-        reduce — form VIII/X ista-/-t-, passive hu-/pu- : istaðkara → ðakara).
+        reduce — form VIII/X ista-/-t-, passive hu-/pu- : istaðkara → ðakara);
+      - a MISSING theme vowel (the residue of a stem-prefix strip: form IV
+        ʔabraqa strips to braqa, which carries no G theme vowel → baraqa; the
+        Š realization re-syncopates it, so the surface stays šabraqa).
     The ancestor uses the recon-sem-pro radicals; the pansemitic stem uses the
     pansemitic-inventory radicals.  A same-length correspondence disagreement
     (surface s vs tag sˤ, or a metathesis) still aligns at 3 consonants and is
@@ -2095,7 +2132,8 @@ def _generative_verb_base(
     if len(pr.pan_radicals) != 3 or len(pr.radicals) != 3:
         return anc_word, pan_stem
     surface_cons = consonant_skeleton(pan_stem)
-    if len(surface_cons) == 3 and _align_radicals(pr.pan_radicals, pan_stem) is not None:
+    if (len(surface_cons) == 3 and _cluster_free(pan_stem)
+            and _align_radicals(pr.pan_radicals, pan_stem) is not None):
         return anc_word, pan_stem      # clean triliteral G base: keep surface vowels
     return _gen_g(pr.radicals), _gen_g(pr.pan_radicals)
 
