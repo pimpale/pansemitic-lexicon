@@ -353,44 +353,58 @@ class CognatePair:
     sources: dict[tuple[str, str], tuple[int, int]] = field(default_factory=dict)
 
 
-# POS compatibility classes for sense matching.  Gloss embeddings can't tell
-# "to write" from "writing" apart, so cross-POS sense pairs routinely outscore
-# the true same-POS correspondence; constraining the match keeps lexeme
-# categories honest.  noun/name/num form one nominal class; adj is soft-
-# compatible with the nominal class (Wiktionary tagging blurs them, especially
-# for Hebrew); everything else must match exactly.
-_POS_CLASS = {"noun": "N", "name": "N", "num": "N", "adj": "A", "verb": "V"}
-
-# Soft-compatible class pairs.  Beyond adj~nominal, temporal nouns/adverbs
-# (أَمْس noun ↔ אֶמֶשׁ adv, both 'yesterday') and adverb/adposition function
-# words (تَحْتُ adv ↔ תַּחַת prep, both 'under') are tagging-convention splits
-# of the same lexical category, not real POS crossings.
-_POS_SOFT = ({"A", "N"}, {"N", "adv"}, {"adv", "prep"})
-
-
-def _pos_class(pos: str) -> str:
-    return _POS_CLASS.get(pos, pos)
+# ── Headword gating (nominal-coarse slot correspondence) ─────────────────
+# A pair may mint a pansemitic LEXEME (a headword, reconstructed into a
+# pansemitic form) only when its two sides occupy corresponding derivational
+# slots at the POS-CLASS level: nouns/names/numerals/adjectives form ONE
+# nominal class — cognate nominals scatter across mishqalim (including
+# lexicalized maṣdars/participles: بَرْق↔בָּרָק), so the gloss gate decides
+# sameness within the class; VERBS correspond only stem-to-stem (an untagged
+# verb reads as G — base verbs often carry no binyan tag, derived stems always
+# do); any other POS must match exactly, except the tagging-convention splits
+# (temporal noun↔adverb أَمْس/אֶמֶשׁ, adverb↔adposition تَحْتُ/תַּחַת).
+# A pair failing the gate is a CROSS-REFERENCE: a real root-level cognate link
+# (قَيْء noun ↔ הֵקִיא verb) kept as evidence, but never merged into one
+# pansemitic lexeme — reconstruction is skipped entirely.
+_HEADWORD_CLASS = {"noun": "N", "name": "N", "num": "N", "adj": "N", "verb": "V"}
+_HEADWORD_SOFT = ({"N", "adv"}, {"adv", "prep"})
 
 
-def _pos_compatible(ar_pos: str, he_pos: str) -> bool:
-    a, b = _pos_class(ar_pos), _pos_class(he_pos)
-    return a == b or {a, b} in _POS_SOFT
+def _effective_stems(lang: str, wd: "WordData | None") -> set[str]:
+    """A verb lexeme's Proto-Semitic stems, an untagged verb reading as G."""
+    stems = set(_word_stems(lang, wd))
+    if stems:
+        return stems
+    return {"G"} if wd is not None and "verb" in wd.pos else set()
+
+
+def _headword_eligible(ar_wd: "WordData | None", he_wd: "WordData | None") -> bool:
+    """Whether a pair's lexeme POS classes correspond (see block comment).
+
+    A side with no POS metadata at all passes — unknown is not a mismatch."""
+    if ar_wd is None or he_wd is None or not ar_wd.pos or not he_wd.pos:
+        return True
+    ar_cls = {_HEADWORD_CLASS.get(p, p) for p in ar_wd.pos}
+    he_cls = {_HEADWORD_CLASS.get(p, p) for p in he_wd.pos}
+    shared = ar_cls & he_cls
+    if "V" in shared and _effective_stems("ar", ar_wd) & _effective_stems("he", he_wd):
+        return True
+    if shared - {"V"}:
+        return True
+    return any({a, h} in _HEADWORD_SOFT for a in ar_cls for h in he_cls)
 
 
 @dataclass
 class SenseMatch:
-    """Best-matching sense pair between an Arabic and Hebrew word.
-
-    pos_match is True when the pair was drawn from the POS-compatible pool
-    (see _pos_compatible); False means no compatible sense pair existed and
-    the match fell back to the unconstrained best — kept as evidence but
-    never used as a lexeme representative."""
+    """Best-matching sense pair between an Arabic and Hebrew word — the
+    highest-dot-product gloss pair (pointer/defective glosses filtered).
+    POS honesty is enforced at the LEXEME level by the headword gate
+    (_headword_eligible), not per sense."""
     arabic_sense: str
     arabic_pos: str
     hebrew_sense: str
     hebrew_pos: str
     similarity: float
-    pos_match: bool = True
 
 @dataclass
 class LangEntry:
@@ -418,12 +432,20 @@ class CognateEntry:
     # then surviving transforms, e.g. `G`, `D`, `maqtal`, `qatl+fem+pl`.
     derivation_chain: str | None = None
     # Canonical de-patterned proto-root, emitted by the merge (the single source
-    # of root analysis).  proto_root_ipa is the grouping key; the nominal_pattern
+    # of root analysis) — a per-lexeme debug annotation.  The nominal_pattern
     # fields record each side's wazn/mishqal melody for Phase-2 production.
     proto_root_ipa: str | None = None
     proto_root_label: str | None = None
     nominal_pattern_ar: str | None = None
     nominal_pattern_he: str | None = None
+    # The realized BASE of the pansemitic form (protosemitic-convention render
+    # of MergeResult.base): the deepest vocalized shared level — the lexicon's
+    # organizing key.
+    base: str | None = None
+    # Cross-reference flag (True only when set): the pair's lexeme POS classes
+    # don't correspond (see _headword_eligible), so it is a root-level cognate
+    # LINK kept as evidence — never reconstructed, never a headword.
+    cross_reference: bool | None = None
     # Root-inflation flag (True only when set; omitted otherwise): both sides were
     # tagged yet their joint reconstruction is longer than either tag's radicals,
     # so the correspondence is incoherent (metathesis / false root).  Kept as
@@ -1196,16 +1218,16 @@ def _tiers_differ(obs: RomanizationTierObservation) -> bool:
     return len(available) >= 2 and len(set(available)) > 1
 
 
-# ── Root-anchored lexicon assembly ───────────────────────────────────────
+# ── Base-keyed lexicon assembly ──────────────────────────────────────────
 # A lexeme groups all cognate-pair evidence for one derived word and surfaces a
-# single representative reconstruction.  Lexemes are indexed under the Arabic
-# root (the spine — robust to a Hebrew partner lacking its own root tag).  Verbs
-# are keyed by (root, stem) so each binyan is its own paradigm slot and the
-# representative must come from a *same-stem* pair (strict binyan matching);
-# nominals are keyed by the Arabic lemma and their representative must come
-# from a POS-compatible sense pair (strict POS matching — see SenseMatch.
-# pos_match).  The representative is the highest sense-similarity pair in its
-# eligible pool; the rest are retained as evidence.
+# single representative reconstruction.  The lexicon is FLAT, keyed by each
+# lexeme's BASE — the deepest vocalized shared form the merge reconstructed
+# (MergeResult.base) — with the de-patterned proto-root demoted to a per-lexeme
+# debug annotation.  Verbs split by (lemma, stem) so each binyan is its own
+# paradigm slot and the representative must come from a *same-stem* pair.
+# Cross-class pairs (headword gate) were never reconstructed; the good ones
+# surface in a separate cross_references list.  The representative is the
+# highest sense-similarity pair in its eligible pool; the rest are evidence.
 
 def _entry_is_verb(e: CognateEntry) -> bool:
     return "verb" in e.arabic.pos
@@ -1259,44 +1281,26 @@ def _pick_representative(
 ) -> CognateEntry | None:
     """Representative pair for a lexeme slot.
 
-    Verbs match strictly by stem (binyan): the representative must come from a
-    same-stem pair (D-D, tD-tD, Š-Š, …; an untagged Hebrew verb counts as G).
-    A verb with no same-stem partner gets no headword — its cross-stem pairs
-    are left in the flat dump rather than merged across binyanim (which would
-    pair e.g. an Arabic D with a Hebrew Š).
-
-    Nominals match strictly by POS the same way — the representative must come
-    from a pair whose matched senses are POS-compatible (pos_match) — EXCEPT
-    when the lexeme has no POS-compatible pair at all: then the best cross-POS
-    pair represents it, flagged ``pos_bridged`` by the caller.  The typical
-    bridged lexeme is an Arabic maṣdar/participle kaikki tags only as noun
-    (ذَبْح 'slaughter', مُهَاجِر 'migrant') whose sole Hebrew witness is the same
-    root's verb (זָבַח, הִגֵּר) — a real cognate lexeme that strictness alone
-    would silently delete.  The strict rule still bites whenever a compatible
-    witness exists: the bridge only rescues, it never outranks.
+    Class honesty is enforced upstream: cross-class pairs never reach the
+    lexeme groups (the headword gate skipped their reconstruction), so the
+    only remaining strictness here is the verb stem — the representative for a
+    verb lexeme must come from a same-stem pair (D-D, tD-tD, Š-Š, …; an
+    untagged Hebrew verb counts as G).  A verb with no same-stem partner gets
+    no headword: its cross-stem pairs stay in the flat dump rather than being
+    merged across binyanim (which would pair an Arabic D with a Hebrew Š).
+    A root-inflated pair is kept as evidence but never represents a lexeme
+    (its "root" is a merge artifact).
 
     Within the eligible pool the highest sense similarity wins, but ties within
     _REP_SIM_MARGIN are broken on form quality (lowest reconstruction loss),
     then on similarity — so a near-equal but cleaner reconstruction is preferred."""
-    # A root-inflated pair is kept as evidence but never represents a lexeme (its
-    # "root" is a merge artifact).
-    entries = [e for e in entries if not e.root_mismatch]
+    entries = [e for e in entries
+               if not e.root_mismatch and e.best_sense_match is not None]
     if subkey[1] == "verb":
         stem = subkey[2]
         pool = [e for e in entries if stem in _he_effective_stems(e)]
     else:
-        pos_pool = [e for e in entries
-                    if e.best_sense_match is not None and e.best_sense_match.pos_match]
-        pool = pos_pool or [e for e in entries if e.best_sense_match is not None]
-        # The bridge also outranks a strict pool that cannot clear the
-        # good-file bar when a cross-POS pair can (مُهَاجِر's weak same-POS
-        # partner vs its 0.89 verb witness) — better a flagged bridged
-        # headword than none.
-        if pos_pool and pool is pos_pool \
-                and max(map(_entry_similarity, pos_pool)) <= GOOD_SIMILARITY_THRESHOLD:
-            cross = [e for e in entries if e.best_sense_match is not None]
-            if max(map(_entry_similarity, cross)) > GOOD_SIMILARITY_THRESHOLD:
-                pool = cross
+        pool = entries
     if not pool:
         return None
     top_sim = max(_entry_similarity(e) for e in pool)
@@ -1382,28 +1386,26 @@ def _native_proto_root(e: CognateEntry) -> tuple[str, str] | None:
 def _build_lexicon(
     results: list[CognateEntry], threshold: float,
 ) -> dict[str, Any]:
-    """Group reconstructed pairs into the Proto-Semitic-root lexicon (see header).
+    """Group reconstructed pairs into the flat base-keyed lexicon (see header).
 
-    Pairs are first collapsed into lexemes keyed by (Arabic lemma, POS, stem);
-    each lexeme's representative is then assigned its Proto-Semitic root — the
-    de-patterned root the merge already emitted (morphology.reconstruct_proto_root),
-    read back here via _native_proto_root rather than recomputed.  The lexicon is
-    indexed by that root — language-neutral, computed per pair (so no transitive
-    over-merge), and placing tag-less Arabic lemmas (بَطَّلَ) via their Hebrew
-    partner's radicals.  Lexemes whose root can't be computed
-    (no radicals either side) fall to a flat 'standalone' list."""
-    usable = [e for e in results
-              if e.pansemitic_form and e.best_sense_match is not None]
+    Pairs are collapsed into lexemes keyed by (Arabic lemma, POS, stem); each
+    lexeme is minted by its representative pair and the flat ``lexemes`` list is
+    sorted by the representative's BASE — the deepest vocalized shared form the
+    merge reconstructed (the G verb base, a catalogued noun pattern's synthesis,
+    or the merged surface stem).  The de-patterned proto-root and any borrowing
+    source are per-lexeme annotations (debug/etymology, not structure).
+
+    Cross-class pairs (cross_reference — never reconstructed) can't mint or
+    witness a lexeme; the ones clearing the full similarity bar are returned in
+    a flat ``cross_references`` list, root-annotated, so cross-POS cognate
+    links stay visible without minting false lexemes."""
+    scored = [e for e in results if e.best_sense_match is not None]
     lex_groups: dict[tuple[str, str, str], list[CognateEntry]] = defaultdict(list)
-    for e in usable:
-        lex_groups[_lexeme_subkey(e)].append(e)
+    for e in scored:
+        if not e.cross_reference and e.pansemitic_form:
+            lex_groups[_lexeme_subkey(e)].append(e)
 
-    root_lexemes: dict[str, list[dict[str, Any]]] = defaultdict(list)
-    root_labels: dict[str, Counter] = defaultdict(Counter)
-    root_ar_tags: dict[str, set[str]] = defaultdict(set)
-    root_he_tags: dict[str, set[str]] = defaultdict(set)
-    root_source: dict[str, str | None] = {}
-    standalone_out: list[dict[str, Any]] = []
+    lexemes_out: list[dict[str, Any]] = []
     for subkey, entries in lex_groups.items():
         rep = _pick_representative(entries, subkey)
         if rep is None:
@@ -1417,57 +1419,33 @@ def _build_lexicon(
             continue
         lexeme = rep.to_dict()
         lexeme["stem"] = subkey[2] if subkey[1] == "verb" else None
-        # A nominal lexeme with NO POS-compatible pair is represented by its
-        # best cross-POS pair (see _pick_representative) — mark it so consumers
-        # can tell a bridged headword (Hebrew column shows the root's verb)
-        # from a POS-clean one.
-        if (subkey[1] != "verb" and rep.best_sense_match is not None
-                and not rep.best_sense_match.pos_match):
-            lexeme["pos_bridged"] = True
         lexeme["evidence"] = [
             _evidence_dict(e)
             for e in sorted(entries, key=_entry_similarity, reverse=True)
             if e is not rep
         ]
         source = _borrowing_source(entries, rep)
-        if source:
-            key, label = source, source.partition(":")[2].lstrip("*")
-        else:
-            pr = _native_proto_root(rep)
-            if pr is None:
-                lexeme["proto_root"] = None
-                standalone_out.append(lexeme)
-                continue
-            key, label = pr
-        lexeme["proto_root"] = label
-        root_lexemes[key].append(lexeme)
-        root_labels[key][label] += 1
-        root_source[key] = source
-        root_ar_tags[key].update(rep.arabic.roots)
-        root_he_tags[key].update(rep.hebrew.roots)
+        pr = _native_proto_root(rep)
+        lexeme["borrowed_from"] = source
+        lexeme["proto_root"] = pr[1] if pr is not None else None
+        lexemes_out.append(lexeme)
+    lexemes_out.sort(key=lambda L: (
+        L.get("base") or L.get("pansemitic_form") or "",
+        L["arabic"]["canonical"], L["hebrew"]["canonical"]))
 
-    roots_out: list[dict[str, Any]] = []
-    for key, lexemes in root_lexemes.items():
-        lexemes.sort(key=lambda L: (
-            0 if L.get("stem") else 1, L.get("stem") or "",
-            L.get("pansemitic_form") or ""))
-        source = root_source[key]
-        roots_out.append({
-            # Borrowings anchor on the shared non-Semitic source lemma;
-            # native cognates on the reconstructed Proto-Semitic root.
-            "proto_root": root_labels[key].most_common(1)[0][0],
-            "proto_root_ipa": None if source else key,
-            "borrowed_from": source,
-            "arabic_roots": sorted(root_ar_tags[key]),
-            "hebrew_roots": sorted(root_he_tags[key]),
-            "lexeme_count": len(lexemes),
-            "lexemes": lexemes,
-        })
-    roots_out.sort(key=lambda r: (
-        r["borrowed_from"] is None, r["proto_root"], r["proto_root_ipa"] or ""))
-    standalone_out.sort(key=lambda L: L.get("pansemitic_form") or "")
+    xrefs_out: list[dict[str, Any]] = []
+    for e in scored:
+        if not e.cross_reference or _entry_similarity(e) <= threshold:
+            continue
+        pr = _native_proto_root(e)
+        xref = _evidence_dict(e)
+        xref["proto_root"] = pr[1] if pr is not None else None
+        xrefs_out.append(xref)
+    xrefs_out.sort(key=lambda x: (
+        x.get("proto_root") or "", -(x.get("similarity") or 0.0),
+        x["arabic"], x["hebrew"]))
 
-    return {"roots": roots_out, "standalone": standalone_out}
+    return {"lexemes": lexemes_out, "cross_references": xrefs_out}
 
 
 def _print_loss_statistics(results: list[CognateEntry]) -> None:
@@ -1840,24 +1818,13 @@ def main():
         ar_emb = embeddings[ar_idxs]  # (A, D)
         he_emb = embeddings[he_idxs]  # (H, D)
         dots = ar_emb @ he_emb.T      # (A, H)
-
-        # Prefer the best POS-compatible sense pair; only when no compatible
-        # pair exists fall back to the unconstrained best (pos_match=False).
-        compat = np.array(
-            [[_pos_compatible(a["pos"], h["pos"]) for h in he_senses]
-             for a in ar_senses],
-            dtype=bool,
-        )
-        pos_match = bool(compat.any())
-        scored = np.where(compat, dots, -np.inf) if pos_match else dots
-        best = np.unravel_index(scored.argmax(), scored.shape)
+        best = np.unravel_index(dots.argmax(), dots.shape)
         return SenseMatch(
             arabic_sense=ar_senses[best[0]]["gloss"],
             arabic_pos=ar_senses[best[0]]["pos"],
             hebrew_sense=he_senses[best[1]]["gloss"],
             hebrew_pos=he_senses[best[1]]["pos"],
             similarity=round(float(dots[best]), 4),
-            pos_match=pos_match,
         )
 
     def _surface_source(lang: str, canonical: str, norm: str, roman: str) -> SharedSource:
@@ -2012,18 +1979,16 @@ def main():
                 he_wd = he_words.get(he_c)
                 he_norm = he_wd.norm if he_wd else he_c
                 sm = _sense(ar_c, ar_norm, he_c, he_norm)
-                # The similarity here is POS-constrained when a compatible
-                # sense pool exists (see _best_sense_pair), which already
-                # prunes the "to write" × "writing" cross-POS over-generation
-                # this expansion is prone to.  A pair with NO compatible pool
-                # falls back to unconstrained similarity and is kept as
-                # pos_match=False evidence — a family may legitimately witness
-                # a cognate only across POS (قَيْء noun ↔ הֵקִיא verb) — but
-                # the strict-POS representative rule keeps it out of headwords.
+                # The "to write" × "writing" cross-POS over-generation this
+                # expansion is prone to is handled downstream by the headword
+                # gate (_headword_eligible): a cross-class pair is demoted to a
+                # cross-reference (never reconstructed, never a headword),
+                # while a family may still legitimately witness a cognate only
+                # across POS (قَيْء noun ↔ הֵקִיא verb) — kept as evidence.
                 if sm is None:
                     continue
                 slot = None
-                if proven and sm.pos_match:
+                if proven:
                     ar_slot = _word_slot("ar", ar_c, ar_wd, fam_rad)
                     if ar_slot is not None \
                             and ar_slot == _word_slot("he", he_c, he_wd, fam_rad):
@@ -2123,7 +2088,7 @@ def main():
         ar_canonical: str, ar_roman: str, ar_ipa: str, ar_wd: WordData | None,
         he_canonical: str, he_roman: str, he_ipa: str, he_wd: WordData | None,
     ) -> tuple[Word, PansemiticWord, str | None, str | None,
-               list[MergeTrace], "ProtoRoot | None", str | None]:
+               list[MergeTrace], "ProtoRoot | None", str | None, str | None]:
         """Morphology-aware surface merge (the no-shared-source path).
 
         Analyzes each side into its morphological structure (script/roman for
@@ -2142,7 +2107,7 @@ def main():
         result = merge(ar_phrase, he_phrase, _base_romanization, _component_meta)
         return (result.ancestor, result.pansemitic,
                 result.verb_stem, result.derivation, result.trace,
-                result.proto_root, result.derivation_chain)
+                result.proto_root, result.derivation_chain, result.base)
 
     # ── Build output ─────────────────────────────────────────────
     print(f"\nWriting {OUTPUT_FILE} …")
@@ -2222,6 +2187,14 @@ def main():
             entry.shared_borrowing_sources = {
                 f"{s[0]}:{s[1]}": pair.sources[s] for s in all_sorted
             }
+        # Headword gate: a cross-class pair (lexeme POS classes don't
+        # correspond) is a CROSS-REFERENCE — a real root-level cognate link
+        # kept as evidence, but never merged into one pansemitic lexeme, so
+        # reconstruction is skipped entirely.
+        if not _headword_eligible(ar_wd, he_wd):
+            entry.cross_reference = True
+            results.append(entry)
+            continue
         lca_sources: list[SharedSource] = []
         for s in lcas:
             citation = SharedSource.from_citation(s[0], s[1], template_tr_index.get(s))
@@ -2269,10 +2242,13 @@ def main():
             else:
                 (ancestor, pansemitic_word, entry.verb_stem,
                  entry.derivation, entry.morphology,
-                 _proot, entry.derivation_chain) = _morph_reconstruct(
+                 _proot, entry.derivation_chain, _base_ipa) = _morph_reconstruct(
                     ar_canonical, ar_roman, ar_ipa or "", ar_wd,
                     he_canonical, he_roman, he_ipa or "", he_wd,
                 )
+                if _base_ipa:
+                    entry.base = (PansemiticWord(word=_base_ipa)
+                                  .to_protosemitic_convention() or None)
                 if _proot is not None:
                     entry.proto_root_ipa = _proot.ipa
                     entry.proto_root_label = _proot.label
@@ -2284,6 +2260,9 @@ def main():
             # the resolved ancestor lexeme directly.
             if pansemitic_word is None:
                 pansemitic_word = PansemiticWord.from_word(ancestor)
+                # The shared-source base is the reduced ancestor BEFORE any
+                # binyan re-application — the deepest shared level this path has.
+                entry.base = pansemitic_word.to_protosemitic_convention() or None
                 # Shared-source verbs bypass merge, so re-apply a shared derived
                 # binyan here (Semitic-ancestor-gated — binyan is a Semitic
                 # system).  Both sides must share the same non-G stem, e.g.
@@ -2367,45 +2346,51 @@ def main():
             ])
 
     lexicon = _build_lexicon(results, GOOD_SIMILARITY_THRESHOLD)
-    n_lexemes = sum(len(r["lexemes"]) for r in lexicon["roots"])
-    n_evidence = sum(len(L["evidence"]) for r in lexicon["roots"] for L in r["lexemes"])
+    n_lexemes = len(lexicon["lexemes"])
+    n_evidence = sum(len(L["evidence"]) for L in lexicon["lexemes"])
     print(f"Writing {GOOD_OUTPUT_FILE} "
-          f"({len(lexicon['roots'])} proto-roots, {n_lexemes} rooted lexemes, "
-          f"{len(lexicon['standalone'])} standalone, {n_evidence} evidence pairs) …")
+          f"({n_lexemes} lexemes, {n_evidence} evidence pairs, "
+          f"{len(lexicon['cross_references'])} cross-references) …")
     with open(GOOD_OUTPUT_FILE, "wb") as f:
         f.write(orjson.dumps(lexicon, option=orjson.OPT_INDENT_2))
 
     print(f"Writing {GOOD_CSV_FILE} …")
     with open(GOOD_CSV_FILE, "w", encoding="utf-8", newline="") as f:
         writer = csv.writer(f)
-        writer.writerow(["proto_root", "borrowed_from", "arabic_roots",
-                         "hebrew_roots", "pos", "derivation", "pansemitic",
-                         "arabic", "arabic_romanization", "hebrew",
-                         "hebrew_romanization", "arabic_meaning", "hebrew_meaning",
+        writer.writerow(["kind", "base", "pos", "stem", "derivation",
+                         "pansemitic", "arabic", "arabic_romanization",
+                         "hebrew", "hebrew_romanization", "arabic_meaning",
+                         "hebrew_meaning", "proto_root", "borrowed_from",
                          "evidence_count"])
-
-        def _lex_row(proot: str, source: str, ar_roots: str, he_roots: str,
-                     L: dict[str, Any]) -> list[Any]:
+        for L in lexicon["lexemes"]:
             bm = L.get("best_sense_match") or {}
-            return [
-                proot, source, ar_roots, he_roots,
+            writer.writerow([
+                "lexeme",
+                L.get("base") or "",
                 "/".join(L["arabic"].get("pos") or []),
+                L.get("stem") or "",
                 L.get("derivation_chain") or "",
                 L.get("pansemitic_form") or "",
                 L["arabic"]["canonical"], L["arabic"].get("roman", ""),
                 L["hebrew"]["canonical"], L["hebrew"].get("roman", ""),
                 bm.get("arabic_sense", ""), bm.get("hebrew_sense", ""),
+                L.get("proto_root") or "", L.get("borrowed_from") or "",
                 len(L["evidence"]),
-            ]
-
-        for r in lexicon["roots"]:
-            ar_roots = "/".join(r["arabic_roots"])
-            he_roots = "/".join(r["hebrew_roots"])
-            for L in r["lexemes"]:
-                writer.writerow(_lex_row(r["proto_root"], r["borrowed_from"] or "",
-                                         ar_roots, he_roots, L))
-        for L in lexicon["standalone"]:
-            writer.writerow(_lex_row(L.get("proto_root") or "", "", "", "", L))
+            ])
+        for x in lexicon["cross_references"]:
+            # Both sides' stems, kept distinct: "L/Š↔D" = ar forms III/IV
+            # vs he piel (the very mismatch that made the pair an xref).
+            ar_stems = "/".join(x.get("arabic_stem") or [])
+            he_stems = "/".join(x.get("hebrew_stem") or [])
+            writer.writerow([
+                "xref", "", "",
+                f"{ar_stems}↔{he_stems}" if (ar_stems or he_stems) else "",
+                "", "",
+                x["arabic"], x.get("arabic_roman", ""),
+                x["hebrew"], x.get("hebrew_roman", ""),
+                x.get("arabic_meaning", ""), x.get("hebrew_meaning", ""),
+                x.get("proto_root") or "", "", "",
+            ])
 
     tier1_available = sum(1 for obs in romanization_tier_obs.values() if obs.tier1)
     tier2_available = sum(1 for obs in romanization_tier_obs.values() if obs.tier2)

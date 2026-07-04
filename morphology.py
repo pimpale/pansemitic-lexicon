@@ -319,7 +319,9 @@ class MergeTrace:
     re-applied, and the produced pansemitic word."""
     ar: WordTrace
     he: WordTrace
-    merged_stem: str            # merged pansemitic stem, before affixes
+    merged_stem: str            # realized shared base (pansemitic stem before
+                                # transforms/affixes; pattern-synthesized when
+                                # a catalogued noun pattern fired)
     applied_layers: list[str]   # the shared layers re-applied
     final: str                  # produced pansemitic word for this component
 
@@ -378,6 +380,13 @@ class MergeResult:
     # base (verb stem / noun pattern / n) then surviving transforms, space-joined
     # across the words of a compound.
     derivation_chain: str | None = None
+    # The realized BASE of the pansemitic form (pansemitic-inventory IPA,
+    # space-joined for compounds): the deepest shared derivational level the pair
+    # merged at — the vocalized G verb base (qawama), a catalogued noun pattern's
+    # synthesis (zikr), or the merged surface stem — before any transforms or
+    # affixes.  The lexicon's organizing key (a vocalized base, unlike the purely
+    # consonantal proto_root, which stays a debug annotation).
+    base: str | None = None
 
 
 # ── Proto-root analysis ──────────────────────────────────────────────────
@@ -1368,8 +1377,11 @@ class NounPattern:
 
 # Hebrew segholates collapse *qatl/*qitl/*qutl to qetel (``{0}e{1}e{2}``), so the
 # same he melody appears under all three; the Arabic vowel picks the entry.
+# ``{0}e{1}a`` is the guttural-final segholate whose third radical is silent in
+# Modern Hebrew IPA (בֶּצַע /ˈbetsa/ ← *biṣʕ) — two slots, but synthesis always
+# formats the PANSEMITIC melody, so no radical is lost.
 _HE_SEGHOLATE = frozenset({"{0}e{1}e{2}", "{0}a{1}a{2}", "{0}i{1}{2}",
-                           "{0}o{1}e{2}", "{0}e{1}a{2}"})
+                           "{0}o{1}e{2}", "{0}e{1}a{2}", "{0}e{1}a"})
 
 NOUN_PATTERNS: tuple[NounPattern, ...] = (
     # Segholates — Arabic faʿl/fiʿl/fuʿl keep the proto vowel; pansemitic keeps
@@ -1388,6 +1400,29 @@ NOUN_PATTERNS: tuple[NounPattern, ...] = (
     NounPattern("maqtal", "ma{0}{1}a{2}",
                 frozenset({"ma{0}{1}a{2}", "mi{0}{1}aː{2}", "mi{0}{1}a{2}"}),
                 frozenset({"ma{0}{1}e{2}", "mi{0}{1}a{2}", "ma{0}{1}a{2}"})),
+    # Abstract/collective *qatāl (ar faʿāl ↔ he qātōl via the Canaanite ā→ō
+    # shift, or qātāl — Modern Hebrew IPA is lengthless, so ``{0}a{1}a{2}``
+    # witnesses both *qatal and *qatāl and only the Arabic melody separates
+    # them).  The Arabic ``{0}a{1}aː{2}`` melody ALSO shows on *qattāl agent
+    # nouns (radical alignment absorbs the C2 gemination), so _resolve_nominal
+    # checks the intensive surface witness before this entry.
+    NounPattern("qataːl", "{0}a{1}aː{2}",
+                frozenset({"{0}a{1}aː{2}"}),
+                frozenset({"{0}a{1}o{2}", "{0}a{1}a{2}"})),
+    # Passive adjective *qatūl (ar faʿūl ↔ he qātūl, the paʿul mishqal).
+    NounPattern("qatuːl", "{0}a{1}uː{2}",
+                frozenset({"{0}a{1}uː{2}"}), frozenset({"{0}a{1}u{2}"})),
+    # Verbal-abstract *qitāl (ar fiʿāl ↔ he qətāl, whose pretonic shva drops in
+    # Modern IPA: כְּתָב /ktav/ → ``{0}{1}a{2}``).
+    NounPattern("qitaːl", "{0}i{1}aː{2}",
+                frozenset({"{0}i{1}aː{2}"}), frozenset({"{0}{1}a{2}"})),
+    # Agent *qātil lexicalized as a primary nominal (ar fāʿil ↔ he qōtēl) —
+    # tagged participles slot as deverbals before this entry is consulted.
+    NounPattern("qaːtil", "{0}aː{1}i{2}",
+                frozenset({"{0}aː{1}i{2}"}), frozenset({"{0}o{1}e{2}"})),
+    # *qātal (ar fāʿal ↔ he qōtāl via the Canaanite shift: عَالَم ↔ עוֹלָם).
+    NounPattern("qaːtal", "{0}aː{1}a{2}",
+                frozenset({"{0}aː{1}a{2}"}), frozenset({"{0}o{1}a{2}"})),
 )
 
 # *qattāl intensive/agent (ar faʿʿāl) is detected from the ARABIC SURFACE, not the
@@ -2000,8 +2035,10 @@ def _reconstruct_word_pairs(
     re-attached on the pansemitic side, after the stem is reduced to the
     pansemitic inventory, so the compromise affixes (hal-, -i, -im/-at, -a) live
     in pansemitic phonology rather than being glued onto the ancestor.  Also
-    returns, per pair, the (merged pansemitic stem, produced final word) for the
-    merge trace."""
+    returns, per pair, the (realized base stem, produced final word) for the
+    merge trace — the base is the deepest shared level's realization (the
+    catalogued-pattern synthesis for a shared noun pattern, else the merged
+    pansemitic stem)."""
     anc_parts: list[str] = []
     pan_parts: list[str] = []
     steps: list[tuple[str, str]] = []
@@ -2026,7 +2063,7 @@ def _reconstruct_word_pairs(
         final = PansemiticMorphology.realize(
             Derivation(base, _chain_from_layers(pair.layers)))
         pan_parts.append(final)
-        steps.append((pan_stem, final))
+        steps.append((base.realize(), final))
     return (ReconstructedSemProWord(word=" ".join(anc_parts)),
             PansemiticWord(word=" ".join(pan_parts)), steps)
 
@@ -2133,17 +2170,20 @@ def _resolve_nominal(
 ) -> NominalSynthesis | None:
     """Resolve a shared catalogued noun pattern for an eligible nominal pair, or
     None (→ keep the surface-aligned form).  Requires a triconsonantal root (3
-    pansemitic radicals); tries the bilateral melody catalog first, then the
-    Arabic-witnessed faʿʿāl intensive."""
+    pansemitic radicals).  The Arabic-witnessed faʿʿāl intensive is checked
+    BEFORE the bilateral melody catalog: radical alignment absorbs the doubled
+    C2, so a *qattāl* word's recorded melody is the same ``{0}a{1}aː{2}`` that
+    names *qatāl* — the surface gemination is the more specific evidence and
+    must not be shadowed by the melody entry."""
     if (proto_root is None or len(proto_root.pan_radicals) != 3
             or not _nominal_pair(arc, hec, shared)):
         return None
     radicals = tuple(proto_root.pan_radicals)
+    if ArabicMorphology.intensive(ar_stem):
+        return NominalSynthesis("qattaːl", _QATTAL_PANSEMITIC, radicals)
     pat = match_noun_pattern(proto_root.ar_pattern, proto_root.he_pattern)
     if pat is not None:
         return NominalSynthesis(pat.psid, pat.pansemitic, radicals)
-    if ArabicMorphology.intensive(ar_stem):
-        return NominalSynthesis("qattaːl", _QATTAL_PANSEMITIC, radicals)
     return None
 
 
@@ -2173,7 +2213,8 @@ def merge(
                             merged_stem, [], final)]
         # Word counts differ → a compound; the root is a single-word property.
         return MergeResult(ancestor=ancestor, pansemitic=pansemitic, trace=trace,
-                           derivation_chain=derivation_label(fallback))
+                           derivation_chain=derivation_label(fallback),
+                           base=merged_stem or None)
 
     pairs = _component_pairs(ar, he, meta_lookup)
     multiword = len(pairs) > 1
@@ -2260,6 +2301,7 @@ def merge(
         in zip(parsed, word_pairs, steps)
     ]
     chain = " ".join(derivation_label(pp) for pp in word_pairs)
+    base = " ".join(s[0] for s in steps).strip() or None
     return MergeResult(ancestor=ancestor, pansemitic=pansemitic, trace=trace,
                        verb_stem=verb_stem, derivation=derivation,
-                       proto_root=proto_root, derivation_chain=chain)
+                       proto_root=proto_root, derivation_chain=chain, base=base)
