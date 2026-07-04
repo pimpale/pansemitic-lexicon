@@ -1,0 +1,15 @@
+{
+  "_comment": "Confirmed TRUE cognate root correspondences that the automatic root-inflation check would otherwise demote (metathesis and other irregular-but-real correspondences). A listed (ar_root, he_root) pair is trusted: it may seed root-family expansion and its pairs are not flagged root_mismatch. Promote entries here from the root-inflation review report after checking the literature; bans live in false-positives.json.",
+  "_wsy_note": "Arabic w-ṣ-y 'enjoin, bequeath' ↔ Hebrew ṣ-w-h 'command' (מצוה, צואה): standard comparison (Gesenius, Klein) with root metathesis; the inflation check cannot align the transposed radicals.",
+  "roots": [
+    [
+      "وصي",
+      "צוה"
+    ],
+    [
+      "غطل",
+      "עלט"
+    ]
+  ],
+  "_ghtl_note": "Arabic ġ-ṭ-l (غَيْطَلَة 'darkness, dense murk') ↔ Hebrew ʕ-l-ṭ (עֲלָטָה 'darkness'): same sense, regular ġ↔ʕ correspondence with root metathesis (ġ-ṭ-l ~ ʕ-l-ṭ); the inflation check cannot align the transposed radicals."
+}

@@ -1,0 +1,26 @@
+{
+  "_comment": "Known false-positive bans. 'pairs': surface (ar_norm, he_norm) bans (dropped in _ensure_pair); 'roots': (ar_root, he_root) correspondence bans (never seed a root family, and drop candidate pairs with those selected tags); 'edges': (word, 'lang:word') etymology-edge deletions from the borrow graph, applied before the shared-source layer. Confirmed true correspondences (the inverse curation) live in true-positives.json.",
+  "_qalb_note": "Arabic qalb 'heart' is not cognate with the Hebrew lev/levav family. Two leaks need different bans: (1) qalb's etymology only MENTIONS Proto-Semitic *libb- for comparison but it was ingested as a real borrow edge, so qalb and everything transitively reaching *libb- through it got paired with the lev family via the shared-source layer -- the 'edge' deletion kills all of those (the 'root' ban is belt-and-braces for root families); (2) qalaba/qullab 'to turn' (rootless in kaikki) also carry a direct cog reference to lev -- a surface leak the edge can't reach, so the 'pairs' bans stay.",
+  "pairs": [
+    [
+      "قلب",
+      "לב"
+    ],
+    [
+      "قلب",
+      "לבב"
+    ]
+  ],
+  "roots": [
+    [
+      "قلب",
+      "לבב"
+    ]
+  ],
+  "edges": [
+    [
+      "قلب",
+      "sem-pro:*libb-"
+    ]
+  ]
+}

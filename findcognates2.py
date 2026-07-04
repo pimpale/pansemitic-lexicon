@@ -50,8 +50,10 @@ import orjson
 from loss import LossBreakdown, ipa_distance, triplet_loss_breakdown
 from kaikki import PartialSource, SharedSource, canonical_from_entry, _looks_romanized
 from morphology import (
-    Layer, MergeTrace, ProtoRoot, analyze_phrase, apply_verb_stem_ipa, merge,
-    morphology_for, reconstruct_proto_root, select_root_tag,
+    Layer, MergeTrace, ProtoRoot, Provenance, RootHypothesis, analyze_lexeme,
+    analyze_phrase, apply_verb_stem_ipa, merge, morphology_for,
+    reconstruct_proto_root, root_correspondence, select_root_tag,
+    select_verb_stem,
 )
 from reconstruction import (
     ArabicWord,
@@ -76,10 +78,17 @@ CSV_FILE = Path("cognates2.csv")
 GOOD_OUTPUT_FILE = Path("cognates_good.json")
 GOOD_CSV_FILE = Path("cognates_good.csv")
 GOOD_SIMILARITY_THRESHOLD = 0.83
+# Lower meaning gate for pairs occupying the SAME paradigm slot of an
+# established root correspondence (same PS verb stem, or same catalogued noun
+# pattern): morphology vouches for the pairing, so the gloss test only guards
+# against outright semantic drift — recovering same-slot cognates whose glosses
+# diverged ("open" vs "begin") that the flat 0.83 gate kills.
+SLOT_SIMILARITY_THRESHOLD = 0.75
 ROMANIZATION_TIER_DIFFS_FILE = Path("romanization_tier_differences.csv")
 SENSES_FILE = Path("senses.json")
 EMBEDDINGS_FILE = Path("embeddings.npy")
-FALSE_POSITIVES_FILE = Path("false-positives.txt")
+FALSE_POSITIVES_FILE = Path("false-positives.json")
+TRUE_POSITIVES_FILE = Path("true-positives.json")
 
 ETYMON_SEM_PRO = re.compile(r"sem-pro:([^<>\s]+)")
 ETYMON_LANG_WORD = re.compile(r"([a-z]{2,}(?:-[a-z]+)*):([^<>\s:]+)")
@@ -344,14 +353,44 @@ class CognatePair:
     sources: dict[tuple[str, str], tuple[int, int]] = field(default_factory=dict)
 
 
+# POS compatibility classes for sense matching.  Gloss embeddings can't tell
+# "to write" from "writing" apart, so cross-POS sense pairs routinely outscore
+# the true same-POS correspondence; constraining the match keeps lexeme
+# categories honest.  noun/name/num form one nominal class; adj is soft-
+# compatible with the nominal class (Wiktionary tagging blurs them, especially
+# for Hebrew); everything else must match exactly.
+_POS_CLASS = {"noun": "N", "name": "N", "num": "N", "adj": "A", "verb": "V"}
+
+# Soft-compatible class pairs.  Beyond adj~nominal, temporal nouns/adverbs
+# (أَمْس noun ↔ אֶמֶשׁ adv, both 'yesterday') and adverb/adposition function
+# words (تَحْتُ adv ↔ תַּחַת prep, both 'under') are tagging-convention splits
+# of the same lexical category, not real POS crossings.
+_POS_SOFT = ({"A", "N"}, {"N", "adv"}, {"adv", "prep"})
+
+
+def _pos_class(pos: str) -> str:
+    return _POS_CLASS.get(pos, pos)
+
+
+def _pos_compatible(ar_pos: str, he_pos: str) -> bool:
+    a, b = _pos_class(ar_pos), _pos_class(he_pos)
+    return a == b or {a, b} in _POS_SOFT
+
+
 @dataclass
 class SenseMatch:
-    """Best-matching sense pair between an Arabic and Hebrew word."""
+    """Best-matching sense pair between an Arabic and Hebrew word.
+
+    pos_match is True when the pair was drawn from the POS-compatible pool
+    (see _pos_compatible); False means no compatible sense pair existed and
+    the match fell back to the unconstrained best — kept as evidence but
+    never used as a lexeme representative."""
     arabic_sense: str
     arabic_pos: str
     hebrew_sense: str
     hebrew_pos: str
     similarity: float
+    pos_match: bool = True
 
 @dataclass
 class LangEntry:
@@ -385,6 +424,11 @@ class CognateEntry:
     proto_root_label: str | None = None
     nominal_pattern_ar: str | None = None
     nominal_pattern_he: str | None = None
+    # Root-inflation flag (True only when set; omitted otherwise): both sides were
+    # tagged yet their joint reconstruction is longer than either tag's radicals,
+    # so the correspondence is incoherent (metathesis / false root).  Kept as
+    # evidence but demoted — never seeds a root family or represents a lexeme.
+    root_mismatch: bool | None = None
     ancestor: str | None = None
     pansemitic_form: str | None = None
     loss: LossBreakdown | None = None
@@ -429,6 +473,30 @@ SEMITIC_LANGS = frozenset(SEMITIC_LANG_CONFIG)
 def _is_defective_gloss(gloss: str) -> bool:
     """True for a "defective spelling of X" redirect gloss (any capitalization)."""
     return "defective spelling of" in gloss.lower()
+
+
+# Form-of POINTER glosses: grammatical redirects ("alternative form of حَيِيَ",
+# "verbal noun of صَفَرَ", "Second-person masculine singular future of מ־ל־א")
+# describe a relation to another lemma, not a meaning — the sense-embedding
+# model can only hallucinate a similarity for them (ṣafīr's "verbal noun of
+# ṣafara" landing next to "sapphire").  Filtered out of sense matching only;
+# scan-time WordData handling is unaffected.
+_POINTER_GLOSS = re.compile(
+    r"(?i)^(?:(?:alternative|obsolete|archaic|rare|dated|nonstandard|defective)\s+)?"
+    r"(?:form|spelling)\s+of\b"
+    r"|^(?:verbal\s+noun|active\s+participle|passive\s+participle|masdar|"
+    r"singular|plural|dual|feminine|masculine|construct(?:\s+state)?)\s+of\b"
+    # Person/gender-number inflection descriptions count only when the gloss
+    # OPENS with them and cites a lemma ("Second-person … of מ־ל־א").  A
+    # pronoun's content gloss mentions the same vocabulary mid-gloss — "they
+    # (the third-person … plural of הוא)" — and must stay a meaning.
+    r"|^(?:first|second|third)-person\b(?=.*\bof\b)"
+    r"|^(?:masculine|feminine)\s+(?:singular|plural)\b(?=.*\bof\b)"
+)
+
+
+def _is_pointer_gloss(gloss: str) -> bool:
+    return bool(_POINTER_GLOSS.search(gloss))
 
 
 def _word_stems(lang: str, wd: "WordData | None") -> list[str]:
@@ -1133,10 +1201,11 @@ def _tiers_differ(obs: RomanizationTierObservation) -> bool:
 # single representative reconstruction.  Lexemes are indexed under the Arabic
 # root (the spine — robust to a Hebrew partner lacking its own root tag).  Verbs
 # are keyed by (root, stem) so each binyan is its own paradigm slot and the
-# representative is drawn from a *same-stem* pair when one exists (strict binyan
-# matching, falling back to the best cross-stem pair otherwise); nominals are
-# keyed by the Arabic lemma.  The representative is the highest sense-similarity
-# pair in its pool; the rest are retained as evidence.
+# representative must come from a *same-stem* pair (strict binyan matching);
+# nominals are keyed by the Arabic lemma and their representative must come
+# from a POS-compatible sense pair (strict POS matching — see SenseMatch.
+# pos_match).  The representative is the highest sense-similarity pair in its
+# eligible pool; the rest are retained as evidence.
 
 def _entry_is_verb(e: CognateEntry) -> bool:
     return "verb" in e.arabic.pos
@@ -1196,16 +1265,40 @@ def _pick_representative(
     are left in the flat dump rather than merged across binyanim (which would
     pair e.g. an Arabic D with a Hebrew Š).
 
+    Nominals match strictly by POS the same way — the representative must come
+    from a pair whose matched senses are POS-compatible (pos_match) — EXCEPT
+    when the lexeme has no POS-compatible pair at all: then the best cross-POS
+    pair represents it, flagged ``pos_bridged`` by the caller.  The typical
+    bridged lexeme is an Arabic maṣdar/participle kaikki tags only as noun
+    (ذَبْح 'slaughter', مُهَاجِر 'migrant') whose sole Hebrew witness is the same
+    root's verb (זָבַח, הִגֵּר) — a real cognate lexeme that strictness alone
+    would silently delete.  The strict rule still bites whenever a compatible
+    witness exists: the bridge only rescues, it never outranks.
+
     Within the eligible pool the highest sense similarity wins, but ties within
     _REP_SIM_MARGIN are broken on form quality (lowest reconstruction loss),
     then on similarity — so a near-equal but cleaner reconstruction is preferred."""
+    # A root-inflated pair is kept as evidence but never represents a lexeme (its
+    # "root" is a merge artifact).
+    entries = [e for e in entries if not e.root_mismatch]
     if subkey[1] == "verb":
         stem = subkey[2]
         pool = [e for e in entries if stem in _he_effective_stems(e)]
-        if not pool:
-            return None
     else:
-        pool = entries
+        pos_pool = [e for e in entries
+                    if e.best_sense_match is not None and e.best_sense_match.pos_match]
+        pool = pos_pool or [e for e in entries if e.best_sense_match is not None]
+        # The bridge also outranks a strict pool that cannot clear the
+        # good-file bar when a cross-POS pair can (مُهَاجِر's weak same-POS
+        # partner vs its 0.89 verb witness) — better a flagged bridged
+        # headword than none.
+        if pos_pool and pool is pos_pool \
+                and max(map(_entry_similarity, pos_pool)) <= GOOD_SIMILARITY_THRESHOLD:
+            cross = [e for e in entries if e.best_sense_match is not None]
+            if max(map(_entry_similarity, cross)) > GOOD_SIMILARITY_THRESHOLD:
+                pool = cross
+    if not pool:
+        return None
     top_sim = max(_entry_similarity(e) for e in pool)
     contenders = [e for e in pool if _entry_similarity(e) >= top_sim - _REP_SIM_MARGIN]
     return min(contenders, key=lambda e: (_entry_loss(e), -_entry_similarity(e)))
@@ -1313,10 +1406,24 @@ def _build_lexicon(
     standalone_out: list[dict[str, Any]] = []
     for subkey, entries in lex_groups.items():
         rep = _pick_representative(entries, subkey)
-        if rep is None or _entry_similarity(rep) <= threshold:
+        if rep is None:
+            continue
+        # A slot-vouched representative (same PS stem / same catalogued noun
+        # pattern within an established root correspondence) clears the lower
+        # slot threshold; everything else needs the full similarity bar.
+        rep_threshold = (SLOT_SIMILARITY_THRESHOLD
+                         if "slot_matched" in rep.match_layers else threshold)
+        if _entry_similarity(rep) <= rep_threshold:
             continue
         lexeme = rep.to_dict()
         lexeme["stem"] = subkey[2] if subkey[1] == "verb" else None
+        # A nominal lexeme with NO POS-compatible pair is represented by its
+        # best cross-POS pair (see _pick_representative) — mark it so consumers
+        # can tell a bridged headword (Hebrew column shows the root's verb)
+        # from a POS-clean one.
+        if (subkey[1] != "verb" and rep.best_sense_match is not None
+                and not rep.best_sense_match.pos_match):
+            lexeme["pos_bridged"] = True
         lexeme["evidence"] = [
             _evidence_dict(e)
             for e in sorted(entries, key=_entry_similarity, reverse=True)
@@ -1407,17 +1514,37 @@ def _print_loss_statistics(results: list[CognateEntry]) -> None:
 def main():
     t_total = time.monotonic()
 
+    # false-positives.json carries typed bans in three arrays of [x, y] rows
+    # (keys prefixed "_" are documentation, ignored):
+    #   "pairs": [[ar_norm, he_norm], …]  — ban a surface pair (dropped in
+    #                                        _ensure_pair)
+    #   "roots": [[ar_root, he_root], …]  — ban a root correspondence (never seeds
+    #                                        a family, and drops candidate pairs
+    #                                        any of whose tag combinations hit it)
+    #   "edges": [[word, "lang:word"], …] — delete a bogus etymology edge from the
+    #                                        borrow graph before the shared-source
+    #                                        layer expands it
     false_pos: set[tuple[str, str]] = set()
+    banned_roots: set[tuple[str, str]] = set()
+    edge_bans: list[tuple[str, str]] = []
     if FALSE_POSITIVES_FILE.exists():
-        with open(FALSE_POSITIVES_FILE) as f:
-            for line in f:
-                line = line.strip()
-                if not line or line.startswith("#"):
-                    continue
-                parts = line.split()
-                if len(parts) == 2:
-                    false_pos.add((parts[0], parts[1]))
-        print(f"  {len(false_pos)} false positive pairs loaded")
+        spec = orjson.loads(FALSE_POSITIVES_FILE.read_bytes())
+        false_pos = {(ar, he) for ar, he in spec.get("pairs", [])}
+        banned_roots = {(ar, he) for ar, he in spec.get("roots", [])}
+        edge_bans = [(word, source) for word, source in spec.get("edges", [])]
+        print(f"  false positives: {len(false_pos)} pairs, "
+              f"{len(banned_roots)} roots, {len(edge_bans)} edges")
+
+    # true-positives.json is the inverse curation: "roots" lists CONFIRMED
+    # cognate root correspondences (metathesis etc.) that the automatic
+    # root-inflation check would otherwise demote — they may seed root-family
+    # expansion and their pairs are not flagged root_mismatch.  Promote entries
+    # from the root-inflation review report printed at the end of a run.
+    confirmed_roots: set[tuple[str, str]] = set()
+    if TRUE_POSITIVES_FILE.exists():
+        spec = orjson.loads(TRUE_POSITIVES_FILE.read_bytes())
+        confirmed_roots = {(ar, he) for ar, he in spec.get("roots", [])}
+        print(f"  true positives: {len(confirmed_roots)} confirmed roots")
 
     # ── Single pass through all-languages file ────────────────────
     print(f"\nScanning {ALL_WORDS_FILE.name} …")
@@ -1441,6 +1568,28 @@ def main():
     # sem-pro *ʕaśar-).
     _seed_borrow_sources_from_descendants(ar_words, "ar", scan.descendant_index)
     _seed_borrow_sources_from_descendants(he_words, "he", scan.descendant_index)
+
+    # Delete bogus etymology edges (false-positives.json `edges` entries) BEFORE the
+    # borrow indexes / transitive expansion, so both the direct edge and any
+    # transitive path through it die (e.g. קלב → قلب → *libb-).  The word matches an
+    # Arabic/Hebrew lexeme by canonical or unpointed norm; the source is a
+    # (lang, word) borrow key in the same normalized form borrow_sources uses.
+    if edge_bans:
+        removed = 0
+        for word, source_str in edge_bans:
+            src_lang, _, src_word = source_str.partition(":")
+            source = (src_lang, _normalize_citation_word(src_word))
+            for lang, words in (("ar", ar_words), ("he", he_words)):
+                for canonical, wd in words.items():
+                    if wd.norm != word and canonical != word:
+                        continue
+                    if source in wd.borrow_sources:
+                        wd.borrow_sources.discard(source)
+                        removed += 1
+                    for node in ((lang, canonical), (lang, wd.norm)):
+                        if node in borrow_graph:
+                            borrow_graph[node].discard(source)
+        print(f"  deleted {removed} bogus borrow edge(s)")
     scan_time = time.monotonic() - t0
 
     # Build standalone cognate/borrow indexes keyed by canonical form
@@ -1509,6 +1658,16 @@ def main():
             return None
         if (ar_n, he_n) in false_pos:
             return None
+        # Drop a candidate ANY of whose root-tag combinations forms a banned
+        # correspondence (belt-and-braces alongside the `edge` bans).  All
+        # combinations, not a selected tag: a ban is a ban whichever of a
+        # multi-tagged word's roots carries it, and checking the full product
+        # keeps this consistent with correspondence seeding, which also fans
+        # out over all tag combinations.
+        if banned_roots and ar_wd and he_wd and ar_wd.roots and he_wd.roots:
+            if any((ar_rt, he_rt) in banned_roots
+                   for ar_rt in ar_wd.roots for he_rt in he_wd.roots):
+                return None
         key = (ar_c, he_c)
         if key not in pair_data:
             pair_data[key] = CognatePair(ar_canonical=ar_c, he_canonical=he_c)
@@ -1661,11 +1820,18 @@ def main():
         ar_senses = _get_senses("ar", ar_canonical, ar_norm)
         he_senses = _get_senses("he", he_canonical, he_norm)
         # Never rank on a "defective spelling of X" redirect: it's a pointer
-        # string (with a foreign word in it), not a meaning, and the sense
-        # embedding model isn't multilingual — it can't interpret it.  Drop
-        # those senses; if a side has none left, there's no real match.
+        # string, not a meaning, and the sense embedding model can't interpret
+        # it.  Drop those senses; if a side has none left, there's no real
+        # match.  Form-of POINTER glosses ("verbal noun of X") are filtered
+        # SOFTLY: they never outscore a real gloss, but a word glossed only by
+        # pointers keeps them — a pronoun/numeral's grammatical description is
+        # its meaning, and hum↔הֵם must not die for being well-tagged.
         ar_senses = [s for s in ar_senses if not _is_defective_gloss(s["gloss"])]
         he_senses = [s for s in he_senses if not _is_defective_gloss(s["gloss"])]
+        ar_senses = ([s for s in ar_senses if not _is_pointer_gloss(s["gloss"])]
+                     or ar_senses)
+        he_senses = ([s for s in he_senses if not _is_pointer_gloss(s["gloss"])]
+                     or he_senses)
         if not ar_senses or not he_senses:
             return None
 
@@ -1675,66 +1841,24 @@ def main():
         he_emb = embeddings[he_idxs]  # (H, D)
         dots = ar_emb @ he_emb.T      # (A, H)
 
-        best = np.unravel_index(dots.argmax(), dots.shape)
+        # Prefer the best POS-compatible sense pair; only when no compatible
+        # pair exists fall back to the unconstrained best (pos_match=False).
+        compat = np.array(
+            [[_pos_compatible(a["pos"], h["pos"]) for h in he_senses]
+             for a in ar_senses],
+            dtype=bool,
+        )
+        pos_match = bool(compat.any())
+        scored = np.where(compat, dots, -np.inf) if pos_match else dots
+        best = np.unravel_index(scored.argmax(), scored.shape)
         return SenseMatch(
             arabic_sense=ar_senses[best[0]]["gloss"],
             arabic_pos=ar_senses[best[0]]["pos"],
             hebrew_sense=he_senses[best[1]]["gloss"],
             hebrew_pos=he_senses[best[1]]["pos"],
             similarity=round(float(dots[best]), 4),
+            pos_match=pos_match,
         )
-
-    # ── Root-family alignment ────────────────────────────────────
-    # A seed pair whose both sides carry a root tag establishes an
-    # (ar_root, he_root) correspondence; we then expand that correspondence to
-    # the full family — every Arabic word of ar_root × every Hebrew word of
-    # he_root — keeping the new combinations whose best sense match clears the
-    # similarity threshold.  Root co-membership alone over-generates, so the
-    # gloss embeddings prune same-root/different-meaning false friends.
-    print("\nAligning root families …")
-    t0 = time.monotonic()
-    root_to_ar: dict[str, list[str]] = defaultdict(list)
-    root_to_he: dict[str, list[str]] = defaultdict(list)
-    for c, wd in ar_words.items():
-        for r in wd.roots:
-            root_to_ar[r].append(c)
-    for c, wd in he_words.items():
-        for r in wd.roots:
-            root_to_he[r].append(c)
-
-    correspondences: set[tuple[str, str]] = set()
-    seed_with_roots = 0
-    for (ar_c, he_c) in list(pair_data):
-        ar_wd, he_wd = ar_words.get(ar_c), he_words.get(he_c)
-        if ar_wd and he_wd and ar_wd.roots and he_wd.roots:
-            seed_with_roots += 1
-            for ar_r in ar_wd.roots:
-                for he_r in he_wd.roots:
-                    correspondences.add((ar_r, he_r))
-
-    family_kept = 0
-    for (ar_r, he_r) in correspondences:
-        for ar_c in root_to_ar.get(ar_r, ()):
-            ar_wd = ar_words.get(ar_c)
-            ar_norm = ar_wd.norm if ar_wd else ar_c
-            for he_c in root_to_he.get(he_r, ()):
-                if (ar_c, he_c) in pair_data:
-                    continue  # already matched by a stronger layer
-                he_wd = he_words.get(he_c)
-                he_norm = he_wd.norm if he_wd else he_c
-                sm = _best_sense_pair(ar_c, ar_norm, he_c, he_norm)
-                if sm is None or sm.similarity < GOOD_SIMILARITY_THRESHOLD:
-                    continue
-                pair = _ensure_pair(ar_c, he_c)
-                if pair is None:
-                    continue
-                if "root_family" not in pair.layers:
-                    pair.layers.append("root_family")
-                    family_kept += 1
-    print(f"  {len(correspondences)} root correspondences from "
-          f"{seed_with_roots} rooted seeds; {family_kept} family pairs kept "
-          f"({len(pair_data)} pairs total)")
-    print(f"  ⏱ {time.monotonic() - t0:.1f}s")
 
     def _surface_source(lang: str, canonical: str, norm: str, roman: str) -> SharedSource:
         """Build a SharedSource for the Arabic/Hebrew surface form itself."""
@@ -1752,6 +1876,182 @@ def main():
             return word_from_sharedsource(source).to_ipa() or None
         except ReconstructionError:
             return None
+
+    # ── Root-family alignment ────────────────────────────────────
+    # Two-level matching: a root correspondence is FAMILY-level evidence
+    # (established by any seed pair with tags on both sides), and pairing then
+    # happens per paradigm SLOT within the family.  Expansion covers every
+    # Arabic word of ar_root × every Hebrew word of he_root; a candidate whose
+    # two sides occupy the SAME slot (PS verb stem, or catalogued noun pattern
+    # — de-patterned under the word's own tag or the family proto-root) is
+    # morphology-vouched and passes at SLOT_SIMILARITY_THRESHOLD; slot-unknown
+    # or slot-mismatched candidates need the full GOOD_SIMILARITY_THRESHOLD.
+    # Root co-membership alone over-generates, so the gloss embeddings always
+    # have the last word — the slot only calibrates how sure they must be.
+    print("\nAligning root families …")
+    t0 = time.monotonic()
+    root_to_ar: dict[str, list[str]] = defaultdict(list)
+    root_to_he: dict[str, list[str]] = defaultdict(list)
+    for c, wd in ar_words.items():
+        for r in wd.roots:
+            root_to_ar[r].append(c)
+    for c, wd in he_words.items():
+        for r in wd.roots:
+            root_to_he[r].append(c)
+
+    # A correspondence is skipped when it is explicitly banned (`root` entry) or
+    # root-inflated — the two tag roots jointly reconstruct to MORE radicals than
+    # either carries, so the alignment is incoherent (وصي↔צוה metathesis, etc.).
+    # root_correspondence is a pure function of the two root tags, so it is
+    # cached by correspondence.
+    _inflation_cache: dict[tuple[str, str], bool] = {}
+
+    def _root_inflated(ar_r: str, he_r: str) -> bool:
+        k = (ar_r, he_r)
+        if k not in _inflation_cache:
+            pr = root_correspondence(ar_r, he_r)
+            # A FAILED joint reconstruction of two bare tag radical sets means
+            # the radicals are outright incompatible (حرر↔חרף) — incoherent,
+            # same as inflation.  (Confirmed roots bypass this check entirely.)
+            _inflation_cache[k] = pr is None or pr.root_mismatch
+        return _inflation_cache[k]
+
+    # Family proto-root per correspondence (cached — pure function of the tags);
+    # its radicals are the FAMILY-rung de-patterning guide for tagless members.
+    _family_root_cache: dict[tuple[str, str], "ProtoRoot | None"] = {}
+
+    def _family_root(ar_r: str, he_r: str) -> "ProtoRoot | None":
+        k = (ar_r, he_r)
+        if k not in _family_root_cache:
+            _family_root_cache[k] = root_correspondence(ar_r, he_r)
+        return _family_root_cache[k]
+
+    # A word's paradigm slot within its family: verbs by PS stem (untagged =
+    # G), nominals by the catalogued noun pattern its melody classifies to,
+    # de-patterned under its own root tag or the family proto-root (the
+    # validated FAMILY rung).  None = slot unknown (multi-word surface, no
+    # IPA, uncatalogued melody) → the candidate gets no slot discount.
+    _slot_cache: dict[tuple[str, str, tuple[str, ...]], str | None] = {}
+
+    def _word_slot(lang: str, canonical: str, wd: WordData | None,
+                   fam_rad: tuple[str, ...]) -> str | None:
+        if wd is None:
+            return None
+        if "verb" in wd.pos:
+            return f"V:{select_verb_stem(_word_stems(lang, wd)) or 'G'}"
+        if not (wd.pos & {"noun", "adj", "name", "num"}):
+            return None
+        key = (lang, canonical, fam_rad)
+        if key in _slot_cache:
+            return _slot_cache[key]
+        slot = None
+        morph = morphology_for(lang)
+        ipa = _surface_ipa(_surface_source(lang, canonical, wd.norm, wd.romanization))
+        if morph is not None and ipa and " " not in ipa:
+            hyp = morph.root_hypothesis(wd.roots, ipa)
+            if hyp is None and fam_rad:
+                hyp = RootHypothesis(fam_rad, Provenance.FAMILY)
+            psid = morph.classify_melody(morph.depattern(ipa, hyp).pattern)
+            if psid is not None:
+                slot = f"N:{psid}"
+        _slot_cache[key] = slot
+        return slot
+
+    correspondences: set[tuple[str, str]] = set()
+    seed_with_roots = 0
+    for (ar_c, he_c) in list(pair_data):
+        ar_wd, he_wd = ar_words.get(ar_c), he_words.get(he_c)
+        if ar_wd and he_wd and ar_wd.roots and he_wd.roots:
+            seed_with_roots += 1
+            for ar_r in ar_wd.roots:
+                for he_r in he_wd.roots:
+                    if (ar_r, he_r) in banned_roots:
+                        continue
+                    # A confirmed correspondence (true-positives.json) may seed
+                    # even when the inflation check can't align it (metathesis).
+                    if ((ar_r, he_r) not in confirmed_roots
+                            and _root_inflated(ar_r, he_r)):
+                        continue
+                    correspondences.add((ar_r, he_r))
+
+    # Family confirmation: the slot discount is only earned by a family pair
+    # (root correspondence) PROVEN semantically — at least one cross-family
+    # pair, any slot, clearing the full similarity bar.  Tag co-occurrence on
+    # a weak seed alone must not unlock 0.75-gated expansion (أَعَزَّ 'respect'
+    # ↔ הֵעֵז 'dare' shouldn't confirm عزز↔עזז by itself).
+    _sense_cache: dict[tuple[str, str], SenseMatch | None] = {}
+
+    def _sense(ar_c: str, ar_norm: str, he_c: str, he_norm: str) -> SenseMatch | None:
+        k = (ar_c, he_c)
+        if k not in _sense_cache:
+            _sense_cache[k] = _best_sense_pair(ar_c, ar_norm, he_c, he_norm)
+        return _sense_cache[k]
+
+    def _family_proven(ar_r: str, he_r: str) -> bool:
+        for ar_c in root_to_ar.get(ar_r, ()):
+            ar_wd = ar_words.get(ar_c)
+            ar_norm = ar_wd.norm if ar_wd else ar_c
+            for he_c in root_to_he.get(he_r, ()):
+                he_wd = he_words.get(he_c)
+                sm = _sense(ar_c, ar_norm, he_c, he_wd.norm if he_wd else he_c)
+                if sm is not None and sm.similarity >= GOOD_SIMILARITY_THRESHOLD:
+                    return True
+        return False
+
+    family_kept = slot_kept = 0
+    proven_families = 0
+    for (ar_r, he_r) in sorted(correspondences):
+        pr = _family_root(ar_r, he_r)
+        fam_rad = tuple(pr.radicals) if pr is not None else ()
+        proven = _family_proven(ar_r, he_r)
+        proven_families += proven
+        for ar_c in root_to_ar.get(ar_r, ()):
+            ar_wd = ar_words.get(ar_c)
+            ar_norm = ar_wd.norm if ar_wd else ar_c
+            for he_c in root_to_he.get(he_r, ()):
+                he_wd = he_words.get(he_c)
+                he_norm = he_wd.norm if he_wd else he_c
+                sm = _sense(ar_c, ar_norm, he_c, he_norm)
+                # The similarity here is POS-constrained when a compatible
+                # sense pool exists (see _best_sense_pair), which already
+                # prunes the "to write" × "writing" cross-POS over-generation
+                # this expansion is prone to.  A pair with NO compatible pool
+                # falls back to unconstrained similarity and is kept as
+                # pos_match=False evidence — a family may legitimately witness
+                # a cognate only across POS (قَيْء noun ↔ הֵקִיא verb) — but
+                # the strict-POS representative rule keeps it out of headwords.
+                if sm is None:
+                    continue
+                slot = None
+                if proven and sm.pos_match:
+                    ar_slot = _word_slot("ar", ar_c, ar_wd, fam_rad)
+                    if ar_slot is not None \
+                            and ar_slot == _word_slot("he", he_c, he_wd, fam_rad):
+                        slot = ar_slot
+                already = (ar_c, he_c) in pair_data
+                if already and slot is None:
+                    continue  # already matched by a stronger layer
+                gate = (SLOT_SIMILARITY_THRESHOLD if slot is not None
+                        else GOOD_SIMILARITY_THRESHOLD)
+                if sm.similarity < gate:
+                    continue
+                pair = _ensure_pair(ar_c, he_c)
+                if pair is None:
+                    continue
+                # slot_matched is recorded even on pairs other layers already
+                # found: the lexicon lets a slot-vouched representative clear
+                # the lower slot threshold.
+                if slot is not None and "slot_matched" not in pair.layers:
+                    pair.layers.append("slot_matched")
+                    slot_kept += 1
+                if not already and "root_family" not in pair.layers:
+                    pair.layers.append("root_family")
+                    family_kept += 1
+    print(f"  {len(correspondences)} root correspondences "
+          f"({proven_families} semantically proven) from {seed_with_roots} "
+          f"rooted seeds; {family_kept} family pairs kept, "
+          f"{slot_kept} slot-matched ({len(pair_data)} pairs total)")
+    print(f"  ⏱ {time.monotonic() - t0:.1f}s")
 
     def _base_romanization(
         lang: str, norms: frozenset[str],
@@ -1832,29 +2132,13 @@ def main():
         reconstructs word-by-word, and re-applies the shared layers.  Returns the
         (bare-stem) ancestor, the pansemitic form, the shared verb stem /
         derivation category, the per-word merge trace, and the emitted proto-root."""
-        ar_phrase = analyze_phrase(
-            "ar", ar_canonical, ar_roman, ar_ipa,
-            pos=ar_wd.pos if ar_wd else frozenset(),
-            roots=ar_wd.roots if ar_wd else frozenset(),
-            verb_forms=ar_wd.verb_forms if ar_wd else frozenset(),
-            derivation=ar_wd.derivation if ar_wd else frozenset(),
-            number=ar_wd.number if ar_wd else frozenset(),
-            gender=ar_wd.gender if ar_wd else frozenset(),
-            derived_from=ar_wd.derived_from if ar_wd else frozenset(),
-            singular_of=ar_wd.singular_of if ar_wd else frozenset(),
-            masculine_of=ar_wd.masculine_of if ar_wd else frozenset(),
-        )
-        he_phrase = analyze_phrase(
-            "he", he_canonical, he_roman, he_ipa,
-            pos=he_wd.pos if he_wd else frozenset(),
-            verb_forms=he_wd.verb_forms if he_wd else frozenset(),
-            derivation=he_wd.derivation if he_wd else frozenset(),
-            number=he_wd.number if he_wd else frozenset(),
-            gender=he_wd.gender if he_wd else frozenset(),
-            derived_from=he_wd.derived_from if he_wd else frozenset(),
-            singular_of=he_wd.singular_of if he_wd else frozenset(),
-            masculine_of=he_wd.masculine_of if he_wd else frozenset(),
-        )
+        ar_phrase = analyze_lexeme("ar", ar_canonical, ar_roman, ar_ipa, ar_wd)
+        he_phrase = analyze_lexeme("he", he_canonical, he_roman, he_ipa, he_wd)
+        # Known divergence: Hebrew root tags are WITHHELD from the merge — the
+        # original call never passed them, and passing them now changes output
+        # (the merge would reuse tagged Hebrew de-patternings and reconstruct
+        # with both tags).  Fix separately, gated on an output diff review.
+        he_phrase.roots = frozenset()
         result = merge(ar_phrase, he_phrase, _base_romanization, _component_meta)
         return (result.ancestor, result.pansemitic,
                 result.verb_stem, result.derivation, result.trace,
@@ -1913,6 +2197,20 @@ def main():
             shared_borrowing_sources=None,  # filled in below after LCA
             best_sense_match=_best_sense_pair(ar_canonical, ar_norm, he_canonical, he_norm),
         )
+        # Root-inflation flag: both sides tagged, and their selected root tags
+        # jointly reconstruct to more radicals than either carries — an incoherent
+        # correspondence (metathesis / false root).  Computed from the raw tags via
+        # root_correspondence (the same check the seeding exclusion uses); the
+        # merge itself treats Hebrew as tagless, so its proto_root can't witness
+        # it.  A correspondence confirmed in true-positives.json is trusted and
+        # never flagged.
+        if ar_wd and he_wd and ar_wd.roots and he_wd.roots:
+            ar_rt = select_root_tag(ar_wd.roots, ar_ipa or "", "ar")
+            he_rt = select_root_tag(he_wd.roots, he_ipa or "", "he")
+            if (ar_rt is not None and he_rt is not None
+                    and (ar_rt, he_rt) not in confirmed_roots
+                    and _root_inflated(ar_rt, he_rt)):
+                entry.root_mismatch = True
         lcas = _find_lcas(pair.sources, borrow_graph) if pair.sources else []
         if pair.sources:
             lca_set = set(lcas)
@@ -2035,6 +2333,23 @@ def main():
         f.write(orjson.dumps(
             [e.to_dict() for e in results], option=orjson.OPT_INDENT_2,
         ))
+
+    # Root-inflation review report: the distinct flagged (ar_root, he_root)
+    # correspondences and how many pairs each covers — candidates a human can
+    # promote into false-positives.json as `roots` bans.
+    flagged = Counter()
+    for e in results:
+        if not e.root_mismatch:
+            continue
+        ar_rt = select_root_tag(e.arabic.roots, e.arabic.ipa or "", "ar")
+        he_rt = select_root_tag(e.hebrew.roots, e.hebrew.ipa or "", "he")
+        flagged[(ar_rt, he_rt)] += 1
+    if flagged:
+        n_flagged = sum(flagged.values())
+        print(f"\n  Root-inflation review: {n_flagged} pairs across "
+              f"{len(flagged)} root correspondences (kept as evidence, demoted):")
+        for (ar_rt, he_rt), n in sorted(flagged.items(), key=lambda x: (-x[1], x[0])):
+            print(f"    {ar_rt} ↔ {he_rt}  ×{n}")
 
     print(f"Writing {CSV_FILE} …")
     with open(CSV_FILE, "w", encoding="utf-8", newline="") as f:

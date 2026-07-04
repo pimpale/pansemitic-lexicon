@@ -197,7 +197,7 @@ zšn,egy:zšn,,שׁשׁן,name/noun,,sašan,سَوْسَن,sawsan,שׁוֹשָׁ
 सिन्धु,sa:सिन्धु,,,name,,sindu,السِّنْد,as-sind,הֹדּוּ,hódu,"Indus (a river in the provinces of Sindh, Punjab and Khyber Pakhtunkhwa and the administrative territory of Gilgit-Baltistan in Pakistan, the union territory of Ladakh in India and the autonomous region of Tibet in China)","India (a region of South Asia, traditionally delimited by the Himalayas and the Indus river; the Indian subcontinent)",2
 შოლტი,oge:შოლტი,,שׁוט,noun,,šalṭi,سَوْط,sawṭ,שׁוֹט,shot,"scourge, switch, whip",whip,0
 ḏbꜣt,egy:ḏbꜣt,,,noun,,jibat,تَابُوت,tābūt,תֵּבָה,tevá,"coffin, casket, sarcophagus","coffin, casket",0
-ḏbꜥwt,egy:ḏbꜥwt,ختم,חתם,noun,n,xatam,خَاتَم,ḵātam,חָתַם,ḥɔṯam,"signet, seal ring","to sign, to affix a seal",1
+ḏbꜥwt,egy:ḏbꜥwt,ختم,,noun,,jibaut,خَاتَم,ḵātam,טַבַּעַת,tabá'at,ring,"ring (a circumscribing object, (roughly) circular and hollow, looking like an annual ring, earring, finger ring etc)",1
 Ἀθῆναι,grc:Ἀθῆναι,,,name,,ʔatinai,أَثِينَا,ʔaṯīnā,אָתוּנָה,atúna,Athens (the capital city of Greece),Athens (the capital city of Greece),0
 Ἀλέξανδρος,grc:Ἀλέξανδρος,,,name,,ʔaliksandras,أَلِكْسَنْدَرُوس,ʔaliksandarūs,אָלֶכְּסָנְדֶר,aleksánder,"a male given name from Ancient Greek, equivalent to English Alexander",Alexander: a male given name.,0
 Ἀλέξανδρος,grc:Ἀλέξανδρος,,,name,,ʔaliksandras,الْإِسْكَنْدَر,al-ʔiskandar,אָלֶכְּסָנְדֶר,aleksánder,Alexander,Alexander: a male given name.,0
@@ -234,6 +234,7 @@ bk,,,בכה,verb,G,baka,بَكَى,bakā,בָּכָה,bakhá,"to cry, to weep (o
 bkr,,,,noun,n,bikar,بِكْر,bikr,בְּכוֹר,b'khór,firstborn child,firstborn,1
 bl,,,,prep,n,bila,بِلَا,bilā,בְּלֹא,b'ló,without,without,0
 blsmn,,,,noun,,basam,بَلْسَم,balsam,אֲפַרְסְמוֹן,afarsemón,"the resin obtained of such a plant, balsam, balm",balsam,2
+blw,,بلو,בלה,verb,G,balawa,بَلَا,balā,בָּלָה,balá,"to test, to try",to wear out,0
 blw,,بلو,בלה,verb,G,balawa,بَلِيَ,baliya,בָּלָה,balá,to wear out,to wear out,2
 blʕ,,بلع,בלע,verb,G,balaʕa,بَلَعَ,balaʕa,בָּלַע,balá,to swallow,to swallow,2
 blʕ,,بلع,בלע,verb,Š,šablaʕa,أَبْلَعَ,ʔablaʕa,הִבְלִיעַ,hivlía,to make swallow,to cause to swallow,0
@@ -256,15 +257,17 @@ brk,,برك,ברך,verb,G,birk,بَرَكَ,baraka,בָּרַךְ,barákh,to kne
 brk,,برك,ברך,noun,n+fem,baraka,بَرَكَة,baraka,בְּרָכָה,b'rakhá,"bliss, blessing, boon","blessing, congratulation",0
 brk,,برك,ברך,noun,n+fem,birika,بِرْكَة,birka,בְּרֵכָה,brekhá,pond,"a pond, a pool",1
 brk,,برك,ברך,noun,,birk,رُكْبَة,rukba,בֶּרֶךְ,bérekh,knee,knee,1
+brq,,برق,ברק,verb,Š,šabraqa,أَبْرَقَ,ʔabraqa,הִבְרִיק,hivrík,to make bolts of lightning,to lustre,1
 brq,,برق,ברק,noun,,baraq,بَرْق,barq,בָּרָק,barák,flash of lightning,lightning (atmospheric flash of light),1
 brq,,برق,ברק,noun,,barqiyya,بَرْقِيَّة,barqiyya,מִבְרָק,mivrák,telegram,telegram,0
 brq,,برق,ברק,adj,qattaːl,barrāq,بَرَّاق,barrāq,מַבְרִיק,mavrík,shining; lustrous,glossy,0
 brr,,برر/موه,ברר,adj,n,barmaʔ,بَرْمَائِيّ,barmāʔiyy,בַּר,bar,amphibian,"clean, pure",0
-brr,,برر/موه,ברר,adj/noun,,barr,بَرّ,barr,בַּר,bar,"true, sincere","clean, pure",1
+brr,,برر/موه,ברר,adj/noun,,barr,بَرّ,barr,בַּר,bar,"true, sincere","clean, pure",0
 bry,,بري/ودد,ידד,noun,G,mubarahwiddiyya,مُبَارَاة وِدِّيَّة,mubārāh widdiyya,יְדִידוּת,y'didút,friendly match,friendship (state of being friends),0
 brɣy,,,ברג,noun,,burgiyy,بُرْغِيّ,burḡiyy,בֹּרֶג,bóreg,"screw, bolt, a threaded metal fastener","A screw, a bolt: a threaded fastener.",0
 brɣṯ,,,פרעשׁ,noun,,purgus,بُرْغُوث,burḡūṯ,פַּרְעוֹשׁ,par'ósh,flea,flea,0
-brʔ,,برء,ברר,verb,G,baraʔa,بَرَأَ,baraʔa,בָּרָא,bará,"to create, to bring into being",To create (when act of a deity).,7
+brʔ,,برء,ברר,verb,G,baraʔa,بَرَأَ,baraʔa,בָּרָא,bará,"to create, to bring into being",To create (when act of a deity).,8
+brʔ,,برء,ברר,verb,G,baraʔa,بَرِئَ,bariʔa,בָּרַר,barár,to recover,"to select, to pick, to sort",0
 brʔ,,برء,ברר,adj/noun,n,baraʔ,بَرَاء,barāʔ,בַּר,bar,"free, not affected, exempt","clean, pure",1
 brʔ,,برء,ברר,adj,n,bariʔ,بَرِيء,barīʔ,בַּר,bar,"pure, guiltless, innocent","clean, pure",1
 brḥ,,,ברח,verb,G,barixa,بَرِحَ,bariḥa,בָּרַח,barákh,"to leave, to depart",to run away,0
@@ -295,6 +298,7 @@ bʔs,,بءس,,noun,,baʔsaʔ,بَأْسَاء,baʔsāʔ,בָּאסָה,bása,"ad
 bʕl,,,בעל,name/noun,,baʕl,بَعْل,baʕl,בַּעַל,bá'al,"lord, master, owner, possessor","master, owner",1
 bṣl,,,בצל,noun,qatal,baṣal,بَصَل,baṣal,בָּצָל,batsál,onion,onion,0
 bṭl,,بطل,בטל,verb,D,baṭṭal,بَطَّلَ,baṭṭala,בִּטֵּל,bitél,"to nullify, to invalidate, to render ineffective, to rescind, to repeal, to revoke","to cancel, annul (a decision, a decree, or the like)",3
+bṭl,,بطل,בטל,verb,tD,tabaṭṭala,تَبَطَّلَ,tabaṭṭala,הִתְבַּטֵּל,hitbatél,to be lazy,to be canceled,0
 bṭl,,بطل,בטל,adj/noun,,baṭal,بَطَل,baṭal,בָּטֵל,batél,"heroic, courageous","worthless, valueless",0
 bṭl,,بطل,בטל,noun,n+fem,biṭala,بِطَالَة,biṭāla,בַּטָּלָה,batalá,idleness,idleness,3
 bṭn,,بطن,בטן,noun,qatl,baṭn,بَطْن,baṭn,בֶּטֶן,béten,"stomach, abdomen","abdomen, belly",0
@@ -317,18 +321,18 @@ dmʕ,,دمع,דמע,noun,n,damʕ,دَمْع,damʕ,דִּמְעָה,dim'á,tears,
 dmʕ,,دمع,דמע,noun,n+fem,damʕa,دَمْعَة,damʕa,דִּמְעָה,dim'á,a tear (drop of salty liquid resulting from crying),"tear (a drop of clear, salty liquid produced from the eyes by crying or irritation)",0
 dn,,,דין,noun,n,din,دِين,dīn,דִּין,din,"judgement, decision, ruling, requital, compensation, indemnification",judgement; law (a written or understood rule),2
 dql,,,דקל,noun,n,daqal,دَقَل,daqal,דֶּקֶל,dékel,a variety of dates (fruit and tree),"date (the fruit of the date palm, Phoenix dactylifera, somewhat in the shape of an olive, containing a soft, sweet pulp and enclosing a hard kernel)",2
-dqq,,دقق,דקק,adj/noun,n,daqiq,دَقِيق,daqīq,דַּק,dak,"little, small, tiny, minute","small, diminutive",0
+dqq,,دقق,דקק,adj/noun,n,daqiq,دَقِيق,daqīq,דַּק,dak,"little, small, tiny, minute","small, diminutive",1
 dqq,,دقق,דקק,noun,n+fem,daqiqa,دَقِيقَة,daqīqa,דַּקָּה,daká,minute (unit of time),minute,2
 dqq,,دقق,דקק,noun,n,daqq,دَقّ,daqq,דַּקּוֹת,dakót,verbal noun of دَقَّ (daqqa) (form I),plural indefinite form of דַּקָּה (daká),0
-dqq,,دقق,דקק,adj,n,diqaq,دِقَاق,diqāq,דַּקִּיק,dakík,"inflection of دَقِيق (daqīq):, feminine plural",alternative form of דָּקִיק,1
-dqq,,دقق,דקק,adj,n,ʔadaqq,أَدَقّ,ʔadaqq,דַּק,dak,"elative degree of دَقِيق (daqīq):, smaller; smallest","small, diminutive",1
+dqq,,دقق,דקק,adj,n,diqaq,دِقَاق,diqāq,דַּקִּיק,dakík,"inflection of دَقِيق (daqīq):, feminine plural",alternative form of דָּקִיק,0
+dqq,,دقق,דקק,adj,n,ʔadaqq,أَدَقّ,ʔadaqq,דַּק,dak,"elative degree of دَقِيق (daqīq):, smaller; smallest","small, diminutive",0
 drk,,درك,,noun,qatal,darak,دَرَك,darak,דֶּרֶךְ,dérekh,path one takes to reach a goal,"a road, a path, a way",1
 dss,,دسس/دوس,דשׁא,noun,,dasʔ,دِيس,dīs,דֶּשֶׁא,déshe,certain papery plants within the grass order (Poales),a plant of the family Poaceae,1
 dwd,,,דוד,name,,dawid,دَاوُد,dāwud,דָּוִד,davíd,"a male given name, Daoud, Dawud, or Davoud, equivalent to English David","a male given name, David",0
 dwd,,,דוד,name,,dawid,دَاوُود,dāwūd,דָּוִד,davíd,"a male given name, Daoud, Dawud, or Davoud, equivalent to English David","a male given name, David",0
 dwh,,,,noun,n,dawah,دَوَاة,dawāh,דְּיוֹ,dyó,"inkstand, inkwell","ink (a pigment (or dye)-based fluid used for writing, printing etc)",0
 dwn,,دون/دين,דון,verb,G,dawana,دَانَ,dāna,דָּן,dan,to judge,To judge.,4
-dyn,,دين,דין,adj/noun,qattaːl,dayyān,دَيَّان,dayyān,דַּיָּן,dayán,judge (said of God),"judge, jurist",3
+dyn,,دين,דין,adj/noun,qattaːl,dayyān,دَيَّان,dayyān,דַּיָּן,dayán,judge (said of God),"judge, jurist",2
 dzrf,,,,noun,,zarapa,زَرَافَة,zarāfa,גִ׳ירָפָה,jiráfa,giraffe (mammal),a (female) giraffe,0
 dʕw,,دعو,ידע,adj/noun,n,muddaʕan,مُدَّعًى عَلَيْهِ,muddaʕan ʕalayhi,מוּדָע,mudá,defendant,"conscious, aware",1
 dḥw,,دحو,דחה,verb,G,daxawa,دَحَا,daḥā,דָּחָה,dakhá,to push,"to push away, push aside",0
@@ -355,10 +359,11 @@ gnn,,جنن,גנה/גנן,noun,n+fem,ganna,جَنَّة,janna,גִּנָּה,gin
 gnnt,,جنن,גנן,noun,n,ganinut,جَنِين,janīn,גַּנָּנוּת,gananút,seed germ,"horticulture, gardening",1
 grm,,جرم,גרן,noun,n,gurin,جُرْن,jurn,גֹּרֶן,góren,"threshing-floor, surface where grain sheaves or where dates are collected, heap of harvest",threshing floor,0
 grr,,جرر,גרר,verb,G,garrar,جَرَّ,jarra,גָּרַר,garár,"to pull, to draw, to drag, to attract",to drag,1
-grr,,جرر,גרר,noun,n,garrar,جَرّ,jarr,גָּרַר,garár,"dragging, drag, towage, hauling",to drag,3
+grr,,جرر,גרר,noun,n,gararr,جَرّ,jarr,גּוֹרֵר,gorér,"dragging, drag, towage, hauling",tow truck,3
 grr,,جرر,גרר,noun,qattaːl+fem,garrāra,جَرَّارَة,jarrāra,גְּרִירָה,grirá,tractor,towing,3
 grr,,جرر,גרר,adj/noun,n+nisba,majari,مَجَرِيّ,majariyy,גְּרוֹנִי,groní,Hungarian,"guttural, throaty",0
 grr,,جرر,גרר,adj,n+nisba,majarri,مَجَرِّيّ,majarriyy,גְּרוֹנִי,groní,galactic,"guttural, throaty",0
+gwr,,جور,גור,verb,G,gawara,جَارَ,jāra,גָּר,gar,"to encroach, to make inroads",to assail,0
 gwr,,جور,גור,noun,n,garw,جَرْو,jarw,גּוּר,gur,cub; puppy,"A cub, pup, kit, calf, puppy, kitten, or similar: a juvenile of any mammal species.",2
 gwr,,جور,גור,adj,n,mugawir,مُجَاوِر,mujāwir,גֵּר,gér,"adjacent, neighboring",adventitious,0
 gḏʕ,,,גזע,noun,n,gizaʕ,جِذْع,jiḏʕ,גֶּזַע,géza',"a tree trunk, body, stock, torso","trunk, stock (of a tree)",0
@@ -386,11 +391,13 @@ hykl,,,,name/noun,,haykal,هَيْكَل,haykal,הֵיכָל,hekhál,temple,the 
 hyl,,هيل,,noun,,hayl,هَيْل,hayl,הֶל,hel,cardamom,"cardamom (Seed of Elettaria cardamomum, used as a medicine and spice, especially in curry powder)",0
 hšbh,,شبه,שׁוה,noun,n,tašbih,تَشْبِيه,tašbīh,הַשְׁוָאָה,hashva'á,"likening, comparison","Comparison: the act of comparing, or a specific instance of such.",1
 hḏ,,,,pron,n,haza,هٰذَا,hāḏā,זֶה,ze,this,"this, this one.",3
+hṯny,,ثني,שׁנה/שׁתן,verb,tD,tahisstana,تَثَنَّى,taṯannā,הִשְׁתַּנָּה,hishtaná,to be doubled up,"to change, become different",0
 jblʔt,,جبل,,noun,,jabal,جَبَل,jabal,גָ׳בְּלָאוֹת,jabla'ót,mountain,hills,0
 jbn,,جبن,גבן,noun,qattaːl,jabbān,جَبَّان,jabbān,גְּבִינָה,g'viná,cheese dealer,cheese,0
 jbn,,جبن,גבן,noun,n,jubin,جُبْن,jubn,גְּבִינָה,g'viná,cheese,cheese,0
 jbn,,جبن,גבן,noun,n+fem,jubina,جُبْنَة,jubna,גְּבִינָה,g'viná,"a cheese, a piece of cheese, one cut of cheese",cheese,0
-jbr,,,,adj/noun,qattaːl,jabbār,جَبَّار,jabbār,גִּבּוֹר,gibór,"mighty, powerful","strong, powerful; heroic, brave",0
+jbr,,جبر,גבר,verb,G,jabara,جَبَرَ,jabara,גָּבַר,gavár,"to force, to compel","to become stronger, gain power",2
+jbr,,جبر,גבר,adj/noun,qattaːl,jabbār,جَبَّار,jabbār,גִּבּוֹר,gibór,"mighty, powerful","strong, powerful; heroic, brave",0
 jbrl,,,אל/גבר,name,,gawriʔil,جِبْرِيل,jibrīl,גַּבְרִיאֵל,gavri'él,The archangel Gabriel,Gabriel (an archangel associated with carrying messages from God.),0
 jby,,جبي,גבה,adj,n,mujtaban,مُجْتَبًى,mujtaban,גָּבֹהַ,gavóah,chosen,"high, large",0
 jdf,,,גדף,verb,D,jaddafa,جَدَّفَ,jaddafa,גִּדֵּף,gidéf,to blaspheme,"to blaspheme, insult (God; either by words or indirectly by one's actions)",0
@@ -439,6 +446,7 @@ ksks,,,,noun,,kuskus,كُسْكُس,kuskus,כּוּסְכּוּס,kuskus,couscou
 ktb,,كتب,כתב,verb,Š,šaktaba,أَكْتَبَ,ʔaktaba,הִכְתִּיב,hikhtív,"to dictate something to, to make someone write",to dictate,0
 ktb,,كتب,כתב,noun,n,kixtab,كِتَاب,kitāb,מִכְתָּב,mikhtáv,"letter, note, paper, piece of writing, message",letter (written message),5
 ktb,,كتب,כתב,adj/noun,G+pcpl.act,kātib,كَاتِب,kātib,כּוֹתֵב,kotév,writer; author,A (male) writer or author.,3
+ktb,,كتب,כתב,noun,maqtal,maktab,مَكْتَب,maktab,מִכְתָּב,mikhtáv,office,letter (written message),0
 ktb,,كتب,כתב,noun,n,takatub,تَكَاتُب,takātub,מִכְתָּב,mikhtáv,"communication, writing back and forth, exchanging letters",letter (written message),0
 ktbt,,,כתב,noun,n,kitabit,كِتَابَة,kitāba,כְּתֹבֶת,k'tóvet,writing,inscription,1
 ktp,,,כתף,noun,,katip,كَتِف,katif,כָּתֵף,katéf,"the shoulder, the shoulder joint",shoulder,0
@@ -446,7 +454,7 @@ kvr,,,,noun,,kapra,كَفَر,kavar,כִּפֵּר,kippér,"cover, case",to cove
 kwr,,,כור,noun,,kini,كُور,kūr,כּוּר,kur,"furnace, smelting furnace, forge",A furnace for melting metals.,0
 ky,,,,conj/prep,,kiya,كَيْ,kay,כִּי,ki,in order that (followed by the subjunctive),"because, for, since",0
 kyf,,كيف,כיף,verb,tD,takayyafa,تَكَيَّفَ,takayyafa,הִתְכַּיֵּף,hitkayéf,"to be or become in high spirits, cheerful, gay, to amuse, enjoy oneself, to have fun, good time, to revel","to have fun, enjoy",0
-kyf,,كيف,כיף,noun,n,kayif,كَيْف,kayf,הִתְכַּיֵּף,hitkayéf,"pleasure, well-being, good humor, enjoyment","to have fun, enjoy",1
+kyp,,كيف,כיף,noun,,kayp,كَيْف,kayf,כֵּיף,kef,mood,fun,1
 kzbr,,,,noun,,kuzbara,كُزْبَرَة,kuzbara,כֻּסְבָּרָה,kúsbara,"coriander, cilantro","coriander, cilantro",0
 kʔb,,كءب,,verb,G,kaʔiba,كَئِبَ,kaʔiba,כָּאַב,ka'áv,to be sad,"to hurt, ache",1
 kʔs,,,כאס/כוס,noun,,kaʔs,كَأْس,kaʔs,כּוֹס,kos,a cup trophy,cup,1
@@ -514,7 +522,7 @@ mlk,,ملك,מלך,adj/name/noun,n,malxik,مَالِك,mālik,מַלְכוּת,m
 mlk,,ملك,מלך,adj/name/noun,n,malxik,مَالِك,mālik,מַלְכוּתִי,malkhutí,"owning, possessing, holding",Royal: of or pertaining to royalty.,1
 mlk,,ملك,מלך,noun,n+fem,mamlaka,مَمْلَكَة,mamlaka,מַמְלָכָה,mamlakhá,kingdom,kingdom,1
 mlq,,,,name,,malaqa,مَالَقَة,Mālaqa,מָלָגָה,Malága,"Malaga (a province of Andalusia, Spain, around the city)","Malaga (a province of Andalusia, Spain, around the city)",3
-mlʔ,,ملء,מלא,verb,G,malaʔa,مَلَأَ,malaʔa,מָלֵא,malé,to fill,"To fill, to become full.",7
+mlʔ,,ملء,מלא,verb,G,malaʔa,مَلَأَ,malaʔa,מָלֵא,malé,to fill,"To fill, to become full.",10
 mlʔ,,ملء,מלא,verb,tD,tamallaʔa,تَمَلَّأَ,tamallaʔa,הִתְמַלֵּא,hitmalé,to be or become filled or full,"To fill up, to become full, to fill out physically.",5
 mlʔ,,ملء,מלא,adj,n,maliʔ,مَلِيء,malīʔ,מָלֵא,malé,"full, filled, replete","Whole, total, full, complete.",0
 mlḥ,,ملح,מלח,noun,,malaxum,مَلَّاح,mallāḥ,מַלָּח,mallā́ḥ,"mariner, shipman, sailor, helmsman","sailor, mariner",0
@@ -530,14 +538,14 @@ mnn,,منن,מנה,noun,n,manni,مَنّ,mann,מָנֶה,mané,manna,mina,0
 mnn,,منن,מנה,name,n,minan,مِنًى,minan,מָנֶה,mané,Mina (a valley near Mecca),mina,2
 mnśr,,,נסר,adj/noun,n,mansur,مَنْشُور,manšūr,מִנְסָרָה,minsará,prism,prism (diffractor),0
 mnʕ,,منع,מנע,verb,G,manaʕa,مَنَعَ,manaʕa,מָנַע,maná',"to hinder, to prevent, to repel",to prevent,0
-mnʕ,,منع,מנע,noun,n,manaʕ,مَنْع,manʕ,מָנַע,maná',prevention,to prevent,1
 mnʕ,,منع,מנע,adj,n,maniaʕ,مَنِيع,manīʕ,מוֹנֵעַ,monéa',"strong, fortified, impregnable, invincible, impenetrable, indomitable",preventative,0
+mnʕ,,منع,מנע,noun,n,maniaʕ,مَنْع,manʕ,מוֹנֵעַ,monéa',prevention,preventative,1
 mnḥ,,منح,מנח/נחה,noun,qitl+fem,minxa,مِنْحَة,minḥa,מִנְחָה,minkhá,gift,an offering,0
 mnḫr,,,נחר,noun,n,minxar,مِنْخَر,minḵar,נְחִיר,n'khír,"nostril, nose",nostril (either of the two orifices located on the nose (or on the beak of a bird); used as a passage for air and other gases to travel the nasal passages),0
 mr,,,מרא/מרר,adj/noun,n,murr,مُرّ,murr,מַר,mar,bitter,bitter (having an acrid taste),0
 mr,,,מרא/מרר,adj/noun,n,murr,مُرّ,murr,מֹר,mór,"myrrh, the plant Commiphora myrrha",myrrh,0
 mrd,,مرد,מרד,verb,G,marada,مَرَدَ,marada,מָרַד,marád,to be rebellious,"to revolt, to rebel",1
-mrd,,مرد,מרד,adj/noun,n,marid,مَارِد,mārid,מָרַד,marád,"rebel, insurgent, mutineer","to revolt, to rebel",1
+mrd,,مرد,מרד,adj/noun,n,marid,مَارِد,mārid,מוֹרֵד,moréd,"rebel, insurgent, mutineer",a rebel,1
 mrkb,,,רכב,adj/noun,n,murakkab,مُرَكَّب,murakkab,מֻרְכָּב,murkáv,"compound, composed of multiple parts","made of, composed of, consists of",0
 mrkš,,,,name,,murrakuš,مُرَّاكُش,murrākuš,מָרוֹקוֹ,maróko,Morocco (a country in North Africa),Morocco (a country in North Africa),0
 mrq,,مرق,מרק,noun,qatal,maraq,مَرَقَة,maraqa,מָרָק,marák,"broth, stock, gravy, sauce","soup, broth",0
@@ -559,7 +567,7 @@ mt,,,,verb,Š,šamata,أَمَاتَ,ʔamāta,הֵמִית,hemít,to cause to di
 mtgyś,,جيش,גיס,noun,n,mitgayis,جَيْش,jayš,מִתְגַּיֵּס,mitgayes,"an army, a military force",recruit; conscript,3
 mtrgm,,ترجم,תרגם,adj,n,mutargam,مُتَرْجَم,mutarjam,מְתֻרְגָּם,m'turgám,translated,translated,0
 mtrgm,,ترجم,תרגם,noun,n,mutargim,مُتَرْجِم,mutarjim,מְתַרְגֵּם,m'targém,translator; interpreter,a translator,4
-mty,,,,adv/prep,n,matay,مَتَى,matā,מָתַי,matái,when (at what time?),when (at what time; at which time),1
+mty,,,,adv/prep,n,matay,مَتَى,matā,מָתַי,matái,when (at what time?),when (at what time; at which time),2
 mwh,,موه/ميه,מים,noun,,may,مَاء,māʔ,מַיִם,máyim,water,(uncountable) water,0
 mwld,,,ילד,noun,n,mawilid,مَوْلِد,mawlid,מוֹלֶדֶת,molédet,birthplace,"birthplace, homeland",0
 mwt,,موت,מות,verb,G,mawut,مَاتَ,māta,מֵת,mét,to die,To die.,2
@@ -585,7 +593,7 @@ mḍḥk,,ضحك,צחק,adj,n,ṣatsxuk,ضَحُوك,ḍaḥūk,מַצְחִיק
 mḥfṯ̣,,,,adj/noun,n,muxafiṣ,مُحَافَظَة,muḥāfaẓa,מָחוֹז,makhóz,a province; an administrative division of state territory,province,0
 mḥq,,محق,מחק,verb,G,maxaqa,مَحَقَ,maḥaqa,מָחַק,makhák,"to efface, to blot out, to destroy, to annihilate, to ruin",to erase,2
 mḥq,,محق,מחק,verb,N,namaxaqa,اِمَّحَقَ,immaḥaqa,נִמְחַק,nimkhák,"to be or become annihilated, to perish",to be erased,0
-mḥq,,محق,מחק,noun,n,maxaq,مَحْق,maḥq,מָחַק,makhák,"effacement, obliteration",to erase,2
+mḥq,,محق,מחק,noun,n,maxiq,مَحْق,maḥq,מְחִיקָה,m'khika,"effacement, obliteration",deletion,3
 mḫms,,,חמשׁ,adj/noun,n,muxammas,مُخَمَّس,muḵammas,מְחֻמָּשׁ,m'khumásh,pentagon,pentagon,0
 mḫʔl,,,,name,,mixaʔil,مِيخَائِيل,mīḵāʔīl,מִיכָאֵל,mikha'él,"a male given name from Hebrew, equivalent to English Michael","a male given name, equivalent to English Michael",0
 mḫṭb,,,כתב,noun,n,mixiṭab,خِطَاب,ḵiṭāb,מִכְתָּב,mikhtáv,letter,letter (written message),0
@@ -603,6 +611,7 @@ mṯl,,مثل,משׁל,adj,n,ʔamsalt,أَمْثَل,ʔamṯal,מֶמְשַׁל�
 mṯny,,ثني,שׁנה/שׁתן,adj,n,misanawi,ثَانَوِيّ,ṯānawiyy,מִשְׁתַּנֶּה,mishtané,"secondary, minor",variable (mathematics: having no fixed quantitative value),1
 n,,,,suffix,n,ʔani,ـَانِ,-āni,־וֹן,-on,Suffix added to a noun or adjective to form the dual form.,A suffix used in words indicating order.,1
 nbw,,نبو/نيب,ניב,noun,n,nab,نَاب,nāb,נִיב,niv,canine tooth,"canine tooth, fang",0
+nbʔ,,نبء,נבא,verb,D,nabbaʔ,نَبَّأَ,nabbaʔa,נִבֵּא,nibé,"to inform, to give news, to notify, to bode, to announce",to prophesy; to predict,0
 nbʔ,,نبء,נבא,verb,tD,tanabbaʔa,تَنَبَّأَ,tanabbaʔa,הִתְנַבֵּא,hitnabé,"to predict, to foresee",to prophesy,3
 nbʔ,,نبء,נבא,noun,n,nabiyy,نَبِيّ,nabiyy,נָבִיא,naví,prophet,prophet (someone who speaks by divine inspiration),5
 nbʔ,,نبء,נבא,noun,n+fem,nubuʔa,نُبُوءَة,nubūʔa,נְבוּאָה,n'vu'á,"a prophecy, a prediction",prophecy,4
@@ -617,6 +626,7 @@ nhq,,نهق,נהק,verb,G,nahaqa,نَهَقَ,nahaqa,נָהַק,nahák,to bray,t
 nhr,,,,verb,G,nahar,نَهَرَ,nahara,נָהַר,nahár,"to flow forth upon, to betide",to flow,2
 nhr,,,,noun,,nahar,نَهْر,nahr,נָהָר,nahár,river,"river (especially the Nile, Euphrates, etc.)",2
 njl,,,נכד,noun,qatl,najl,نَجْل,najl,נֶכֶד,nékhed,"offspring, child",grandson,1
+nkr,,نكر,כיר/נכר,verb,tD,tanakkara,تَنَكَّرَ,tanakkara,הִתְנַכֵּר,hitnakér,"to shut oneself off, to behave dismissingly","to act as a stranger to, estrange, disown, ignore",0
 nkr,,نكر,כיר/נכר,noun,n,nakir,نَكِرَة,nakira,מַכִּיר,makír,unknown person,acquaintance,2
 nm,,,נום,verb,G,nama,نَامَ,nāma,נָם,nám,to sleep,to slumber,0
 nml,,,,noun,qatl,naml,نَمْل,naml,נְמָלָה,nemalá,ants,ant,0
@@ -648,7 +658,7 @@ nwr,,نور,ניר,noun,,nur,نَار,nār,נוּר,nur,fire,shining fire,4
 nyr,,,ניר,noun,,niru,نِير,nīr,מָנוֹר,manór,"beam, a transverse piece of wood in a loom","beam (ploughbeam), the beam of a loom",0
 nzḥ,,نزح,זנח,verb,G,nazaxa,نَزَحَ,nazaḥa,זָנַח,zanákh,"to depart, to leave","to abandon, to desert, to leave",1
 nśr,,نشر,נסר,noun,maqtal,mansar,مِنْشَار,minšār,מִנְסָרָה,minsará,saw,sawmill,3
-nśr,,نشر,נסר,noun,n,nasir,نَشْر,našr,נִסֵּר,nisér,sawing,to saw,3
+nśr,,نشر,נסר,noun,n,nasarit,نَشْر,našr,נְסֹרֶת,n'sóret,sawing,sawdust,3
 nśr,,نشر,נסר,noun,n,nusarit,نُشَارَة,nušāra,נְסֹרֶת,n'sóret,sawdust,sawdust,1
 nśʔ,,,,verb,G,nasaʔ,نَشَأَ,našaʔa,נָשָׂא,nasá,"to be raised, to be lifted, to rise up",to lift,2
 nɣm,,,נעם,noun,n,nagim,نَغْم,naḡm,נְעִימָה,ne'imá,"tune, air, melody; voice, part; timbre, tone color; sound, tone",tune,1
@@ -656,18 +666,20 @@ nʔ,,,נוא,adj,n,niʔ,نِيء,nīʔ,נָא,ná,"raw, uncooked",undercooked,0
 nʕl,,نعل,נעל,verb,G,naʕala,نَعَلَ,naʕala,נָעַל,na'ál,"to sole, to shoe","to wear (a shoe, sandal, boot, etc.)",1
 nʕl,,نعل,נעל,noun,qatl,naʕl,نَعْل,naʕl,נַעַל,ná'al,a light shoe for human feet (such as a slipper),shoe,1
 nʕm,,نعم,נעם,verb,G,naʕam,نَعَمَ,naʕama,נָעַם,na'ám,to enjoy,to please,3
-nʕm,,نعم,נעם,noun,n,naʕim,نَعِيم,naʕīm,נֹעַם,nó'am,"bliss, delight",pleasantness,1
+nʕm,,نعم,נעם,noun,n,naʕim,نَعِيم,naʕīm,נֹעַם,nó'am,"bliss, delight",pleasantness,2
 nʕm,,نعم,נעם,noun,n,niʕam,نِعْمَة,niʕma,נֹעַם,nó'am,"blessing, grace, benefit",pleasantness,1
 nʕm,,نعم,נעם,name/noun,n,ʔinaʕam,إِنْعَام,ʔinʕām,נֹעַם,nó'am,"favor, grace, gratuity",pleasantness,1
 nʕm,,نعم,נעם,name/noun,n,ʔinʕami,إِنْعَام,ʔinʕām,נׇעֳמִי,no'omí,a female given name,"a female given name, equivalent to English Naomi",1
 nʕnʕ,,,נענע,noun,n,naʕnaʕ,نَعْنَاع,naʕnāʕ,נַעְנַע,na'na',mint,mint (the plant or its flavor),0
-nḥl,,نحل,נחל,noun,n,naxil,نَحْل,naḥl,נְחִיל,n'khil,"bees, bee",swarm,0
+nḥl,,نحل,נחל,verb,tD,tanaxxala,تَنَحَّلَ,tanaḥḥala,הִתְנַחֵל,hitnakhél,"to borrow, to adopt",to inhabit,0
+nḥl,,نحل,נחל,noun,n,naxil,نَحْل,naḥl,נְחִיל,n'khil,"bees, bee",swarm,1
 nḥn,,,,pron,,nixnu,نَحْنُ,naḥnu,נַחְנוּ,nákhnu,we (subject pronoun),We; the subject form of the first-person plural personal pronoun.,1
 nḥs,,نحس,נחס,noun,,naxs,نَحْس,naḥs,נַחְס,nákhs,"bad luck, misfortune","bad luck, misfortune",4
 nḥst,,,נחשׁ,noun,n,nixuxas,نُحَاس,nuḥās,נְחֹשֶׁת,n'khóshet,copper,"copper (a reddish-brown metal, symbol Cu, and atomic number 29)",1
 nḫl,,نخل,,noun,n,minxal,مِنْخَل,minḵal,מוֹהַל,mohál,"sieve, sifter","sieve, searce",0
 nṣr,,,,adj/noun,n+nisba,naṣiri,نَاصِرِيّ,nāṣiriyy,נוֹצְרִי,notsrí,Nazarene,Nazarene (of or referring to Nazareth),0
 nṣrn,,,,adj/noun,n+nisba,naṣrani,نَصْرَانِيّ,naṣrāniyy,נוֹצְרִי,notsrí,a Christian,Christian,0
+pdy,,فدي,פדה,verb,G,padaya,فَدَى,fadā,פָּדָה,padá,to free (someone) from captivity or from danger by paying a sum of money or by giving away something to buy him back; to ransom (someone),"to redeem, ransom",0
 pdy,,فدي,פדה,noun,n,pidyan,فِدْيَة,fidya,פִּדְיוֹן,pidyón,ransom,ransom,1
 pdy,,فدي,פדה,noun,n,pidyaʔ,فِدَاء,fidāʔ,פִּדְיוֹן,pidyón,ransom,ransom,1
 pl,,,,noun,n,pil,فِيل,fīl,פִּיל,píl,elephant,elephant,0
@@ -696,9 +708,11 @@ qbr,,قبر,קבר,verb,G,qabara,قَبَرَ,qabara,קָבַר,kavár,"to bury,
 qbr,,قبر,קבר,noun,qatl,qabr,قَبْر,qabr,קֶבֶר,kéver,"tomb, grave, sepulcher","grave, gravesite",2
 qbʕ,,,כבע,noun,n,qubbaʕ,قُبَّعَة,qubbaʕa,כּוֹבַע,kóva,hat,hat,0
 qbḍ,,قبض,קבץ,verb,G,qabaṣa,قَبَضَ,qabaḍa,קָבַץ,kaváts,"to collect, to gather","to gather, to collect,",4
+qbḍ,,قبض,קבץ,verb,tD,taqabbaṣa,تَقَبَّضَ,taqabbaḍa,הִתְקַבֵּץ,hitkabéts,"to be made closed like a hand, to contract, to be grasped together, to be bunched, to clench, to be shut","to be collected, to be assembled, to be agglomerated, to be gathered",0
 qbḍ,,قبض,קבץ,noun,n,ʔinqibaṣ,اِنْقِبَاض,inqibāḍ,קִבּוּץ,kibútz,contraction (of muscles),"flexion, spasm",0
 qdm,,قدم,קדם,verb,G,qadama,قَدَمَ,qadama,קָדַם,kadám,to precede,"to precede, to come before",5
 qdm,,قدم,קדם,verb,tD,taqaddama,تَقَدَّمَ,taqaddama,הִתְקַדֵּם,hitkadém,to proceed,"to advance, to proceed, to progress, to make progress, to move forward",3
+qdm,,قدم,קדם,verb,Š,šaqdama,أَقْدَمَ,ʔaqdama,הִקְדִּים,hiqdīm,to dare,to arrive early,0
 qdm,,قدم,קדם,noun,n+fem,muqaddima,مُقَدِّمَة,muqaddima,הַקְדָּמָה,hakdamá,"introduction, preface, prelude","foreword, preface",1
 qdm,,قدم,קדם,adj,n,mutaqaddim,مُتَقَدِّم,mutaqaddim,מִתְקַדֵּם,mitkadém,advanced,Advanced: having reached an advanced stage.,7
 qdm,,قدم,קדם,adj/noun,qattaːl,qaddām,قُدَّام,quddām,קָדוּם,kadúm,masculine plural of قَادِم (qādim),"ancient, old, antique, immemorial, former, primitive",0
@@ -707,13 +721,14 @@ qdm,,قدم,קדם,adj,n,qadim,قَدِيم,qadīm,קָדוּם,kadúm,"old, anc
 qdm,,قدم,קדם,noun,n,qaydam,قَيْدَام,qaydām,הַקְדָּמָה,hakdamá,front,"foreword, preface",0
 qdm,,قدم,קדם,noun,n,qaydum,قَيْدُوم,qaydūm,הַקְדָּמָה,hakdamá,front,"foreword, preface",0
 qdm,,قدم,קדם,adj,n,ʔaqdam,أَقْدَم,ʔaqdam,מֻקְדָּם,muqdɔm,earlier; earliest,early,4
-qdm,,قدم,קדם,noun,n,ʔiqadam,إِقْدَام,ʔiqdām,הִתְקַדֵּם,hitkadém,"going forward, advancing","to advance, to proceed, to progress, to make progress, to move forward",3
+qdm,,قدم,קדם,noun,n,ʔitqadamut,إِقْدَام,ʔiqdām,הִתְקַדְּמוּת,hitkadmút,"going forward, advancing",advancement,3
 qds,,قدس,קדשׁ,noun,n,maqdis,مَقْدِس,maqdis,מִקְדָּשׁ,mikdásh,a holy place; a sanctuary,sanctuary,0
 qds,,قدس,קדשׁ,noun,,qudš,قُدُس,qudus,קִדּוּשׁ,kidúsh,"sanctity, holiness",sanctification,1
 qfz,,قفز,קפץ,verb,G,qafaza,قَفَزَ,qafaza,קָפַץ,kafáts,"to jump, to leap",to jump,3
 qfz,,قفز,קפץ,noun,n+fem,qafiza,قَفْزَة,qafza,קְפִיצָה,qfitsá,jump,"leap, spring, jump, jumping",4
 qhy,,قهي,,noun,,qahwa,قَهْوَة,qahwa,קַהְוָה,kahvá,coffee (the drink),coffee,2
 qld,,,,noun,,qlidaʔ,إِقْلِيد,ʔiqlīd,קְלִיד,k'lid,key,key (part of a piano or musical keyboard),1
+qll,,قلل,קלל,verb,D,qallala,قَلَّلَ,qallala,קִלֵּל,kilél,"to lessen, to decrease, to reduce, to diminish","to curse, to cuss, to damn",0
 qll,,قلل,קלל,adj/noun,n,qalil,قَلِيل,qalīl,קַל,kal,"few, little",light (of low importance),1
 qll,,قلل,קלל,noun,n+fem,qlilla,قِلَّة,qilla,קְלָלָה,k'lalá,"lack, want, poverty",misfortune,1
 qpḏ,,,קפד,noun,,qupda,قُنْفُذ,qunfuḏ,קִפּוֹד,qippṓḏ,hedgehog,hedgehog,0
@@ -725,12 +740,12 @@ qrb,,,כרב,noun,,qarnabiṭ,قَرْنَبِيط,qarnabīṭ,כְּרוּבִ�
 qrbn,,,,noun,n,qurban,قُرْبَان,qurbān,קורבן,korbán,"sacrificial animal, victim","a ritual sacrifice, as of an animal",0
 qrn,,,קרן,name,,qarax,قَارُون,qārūn,קֹרַח,kórakh,Korah (biblical character),Korah,0
 qrn,,,קרן,noun,,qarn,قَرْن,qarn,קֶרֶן,kéren,horn,"horn, bugle (Any of several musical wind instruments.)",2
-qrr,,قرر,קור/קרה/קרר,adj,n,muqirr,مُقِرّ,muqirr,מְקוֹרִי,m'kori,"confessing, acknowledging",original,1
-qrr,,قرر,קור/קרה/קרר,adj/noun,n,qarr,قَرّ,qarr,קֹר,kór,"coldness, cold","cold, coldness",6
-qrr,,قرر,קור/קרה/קרר,adj/noun,n,qarr,قَرّ,qarr,קַר,qar,"cool, cold, chilly",cold,2
-qrr,,قرر,קור/קרה/קרר,adj/noun,n+fem,qarra,قَارَّة,qārra,קָרָה,qará,feminine singular of قَارّ (qārr),feminine singular indefinite form of קַר (qár): cold.,0
-qrr,,قرر,קור/קרה/קרר,adj,n,qarrir,قَارّ,qārr,קָרִיר,karír,cold,"cool, cold in a pleasant way",1
-qrr,,قرر,קור/קרה/קרר,adj,qatiːl,qarīr,قَرِير,qarīr,קָרִיר,karír,"cool, fresh","cool, cold in a pleasant way",1
+qrr,,قرر,קור/קרר,verb,D,qarrara,قَرَّرَ,qarrara,קֵרֵר,kerér,"to decide, to resolve","to cool, to refrigerate",0
+qrr,,قرر,קור/קרר,adj,n,muqirr,مُقِرّ,muqirr,מְקוֹרִי,m'kori,"confessing, acknowledging",original,1
+qrr,,قرر,קור/קרר,adj/noun,n,qarr,قَرّ,qarr,קֹר,kór,"coldness, cold","cold, coldness",6
+qrr,,قرر,קור/קרר,adj/noun,n,qarr,قَرّ,qarr,קַר,qar,"cool, cold, chilly",cold,2
+qrr,,قرر,קור/קרר,adj,n,qarrir,قَارّ,qārr,קָרִיר,karír,cold,"cool, cold in a pleasant way",1
+qrr,,قرر,קור/קרר,adj,qatiːl,qarīr,قَرِير,qarīr,קָרִיר,karír,"cool, fresh","cool, cold in a pleasant way",1
 qry,,قرر/قرو/قري,,noun,qatl+fem,qarya,قَرْيَة,qarya,קִרְיָה,kiryá,an urban area or community (such as a town or a city),"city, town",1
 qrʔ,,,קרא,verb,G,qaraʔ,قَرَأَ,qaraʔa,קָרָא,kará,to read,to read,0
 qrʔ,,,קרא,name,,qurʔan,الْقُرْآن,al-qurʔān,קֻרְאָן,kur'án,the Qur’an,Qur'an,0
@@ -745,7 +760,7 @@ qwm,,قوم,קום,verb,Š,šaqawama,أَقَامَ,ʔaqāma,הֵקִים,hekím
 qwm,,قوم,קום,noun,n,maqam,مَقَام,maqām,מָקוֹם,makóm,"place, spot","place (location or position), place, locality, spot",1
 qwm,,قوم,קום,adj/noun,n+nisba,mqawmi,قَوْمِيّ,qawmiyy,מְקוֹמִי,m'komí,national,"Local: of, from, or in a given place.",0
 qwm,,قوم,קום,adj/noun,n,mustaqim,مُسْتَقِيم,mustaqīm,מְקוֹמִי,m'komí,"even, regular","Local: of, from, or in a given place.",0
-qwm,,قوم,קום,adj,n,qāwim,قَائِم,qāʔim,מְקוֹמִי,m'komí,"vertical, erect, upright","Local: of, from, or in a given place.",0
+qwm,,قوم,קום,adj,n,qaʔim,قَائِم,qāʔim,מְקוֹמִי,m'komí,"vertical, erect, upright","Local: of, from, or in a given place.",0
 qws,,,,noun,qatl,qaws,قَوْس,qaws,קֶשֶׁת,késhet,"bow, arch, vault",arch,1
 qym,,,,adj,,kayam,قَيُّوم,qayyūm,קַיָּם,kayám,"enduring, most real and lasting, established, certain to exist (said of God)",enduring,1
 qyn,,,,name,,kayin,قَايِين,qāyīn,קַיִן,káyin,Cain (biblical son of Adam),Cain (the son of Adam and Eve who killed his brother Abel),0
@@ -753,8 +768,8 @@ qytṯ̣,,,,noun,,qayṣ,قَيْظ,qayẓ,קַיִץ,káyits,midsummer,summer,0
 qyʔ,,قيء,קיא,noun,n,qayʔi,قَيْء,qayʔ,הֵקִיא,hekí,vomitus,to vomit,0
 qyʔ,,قيء,קיא,noun,n,quyaʔ,قُيَاء,quyāʔ,הֵקִיא,hekí,vomit,to vomit,0
 qš,,,קשׁשׁ,noun,n,qašš,قَشّ,qašš,קַשׁ,kash,"stubble, straw",straw,0
+qḍy,,قضي,קצה,adj/noun,n,qaṣin,قَاضٍ,qāḍin,קִיצוֹנִי,kitsoní,"fatal, lethal, deadly","Extreme: far, intense, abnormal.",0
 qḍy,,قضي,קצה,noun,n,qaṣiyy,قَضِيَّة,qaḍiyya,קָצִין,katsín,"order, command",commissioned officer,0
-qḍy,,قضي,קצה,adj/noun,n,qāṣiy,قَاضٍ,qāḍin,קִיצוֹנִי,kitsoní,"fatal, lethal, deadly","Extreme: far, intense, abnormal.",0
 qṣb,,قصب,,noun,qattaːl,qaṣṣāb,قَصَّاب,qaṣṣāb,קַצָּב,katsáv,"butcher, slaughterer",butcher,1
 qṣr,,قصر,קצר,verb,D,qaṣṣara,قَصَّرَ,qaṣṣara,קִצֵּר,kitsér,to shorten; to abbreviate,"To shorten (something), to make (something) shorter.",4
 qṣr,,قصر,קצר,adv,n,bqaṣurama,قَصُرَمَا,qaṣuramā,בְּקִצּוּר,b'kitsúr,seldomly,"briefly, in short, in brief",0
@@ -773,7 +788,6 @@ rb,,,,adj/adv,,rabb,رُبَّ,rubba,רַב,ráv,many,"Many, much.",2
 rbb,,ربب,,verb,G,rabb,رَبَّ,rabba,רַב,ráv,"to grow, to increase, to become greater","To multiply, to become many.",5
 rbw,,ربو,רבב,noun,,murabba,مُرَبَّى,murabbā,רִבָּה,ribá,"jam, preserved fruit",jam (sweet mixture of fruit boiled with sugar),0
 rbw,,ربو,רבב,adj,n,murabbani,مُرَبًّى,murabban,רבני,rabani,"raised, brought up","rabbinic, rabbinical",0
-rbw,,ربو,רבב,adj/noun,n,murabbini,مُرَبِّيَة,murabbiya,רבני,rabani,feminine singular of مُرَبٍّ (murabbin),"rabbinic, rabbinical",0
 rbw,,ربو,רבב,adj,n,mutarabbini,مُتَرَبٍّ,mutarabbin,רבני,rabani,well-bred,"rabbinic, rabbinical",0
 rbw,,ربو,רבב,noun,n,ribat,رِبًا,riban,רִבִּית,ribít,interest,interest (price of credit),0
 rbʕ,,ربع/عشر,רבע,adj/noun,n,murabbaʕ,مُرَبَّع,murabbaʕ,מְרֻבָּע,m'rubá',"tetragonal, quadrangular",quadrilateral (having four sides),1
@@ -809,6 +823,7 @@ rsm,,,,verb,G,rasama,رَسَمَ,rasama,רָשַׁם,rashám,"to record, to ent
 rsmy,,,,adj/noun,,rasmiyy,رَسْمِيّ,rasmiyy,רִשְׁמִי,rishmí,formal,formal,0
 rwq,,روق,רקק,noun,n,riq,رِيق,rīq,רֹק,roq,"saliva, spittle",saliva,1
 rwʕ,,روع,,noun,n,raʕin,رَاعٍ,rāʕin,רֹעֶה,ro'é,shepherd,shepherd,0
+rwḥ,,روح,רוח,verb,Š,šarwiaxa,أَرَاحَ,ʔarāḥa,הִרְוִיחַ,hirvíakh,to disburden,"to gain, to benefit",1
 rwḥ,,روح,רוח,adj,n,muriax,مُرِيح,murīḥ,רוֹוֵחַ,rovéakh,comfortable (of a thing),"common, widespread, popular, prevailing, prevalent",1
 rwḥ,,روح,רוח,adj,n,muritax,مُرْتَاح,murtāḥ,רוֹוֵחַ,rovéakh,comfortable (of a person),"common, widespread, popular, prevailing, prevalent",1
 rwḥ,,روح,רוח,noun,n,riax,رِيح,rīḥ,רוּחַ,rúakh,wind,breath,0
@@ -825,8 +840,10 @@ rʔs,,رءس,ראשׁ,adj/noun,n,raʔis,رَئِيس,raʔīs,רִאשׁוֹנִ�
 rʔs,,رءس,ראשׁ,adj/noun,n,raʔis,رَئِيس,raʔīs,רָאשׁוּת,rashút,chairman,leadership; presidency; chairmanship,1
 rʔs,,رءس,ראשׁ,noun,,raʔš,رَأْس,raʔs,רֹאשׁ,rosh,head,head,7
 rʔssn,,,,name,,raš hašana,رَأْس السَّنَة,raʔs as-sana,רֹאשׁ הַשָּׁנָה,rosh-hashaná,"Rosh Hashanah, Jewish New Year","Rosh Hashanah (the Jewish holiday marking the start of the liturgical year, taking place on the first two days of Tishrei, 163 days after the first day of Passover)",0
+rʕd,,رعد,רעד,verb,G,raʕada,رَعَدَ,raʕada,רָעַד,ra'ád,to thunder,"to tremble, shake, quake",0
 rʕš,,رعش,רעשׁ,noun,qatl,raʕš,رَعْشَة,raʕša,רַעַשׁ,rá'ash,tremor,earthquake,1
 rḍw,,رضو/رضي,רוץ/רצה,verb,G,raṣawa,رَضِيَ,raḍiya,רָצָה,ratsá,to desire,To want.,3
+rḍw,,رضو/رضي,רוץ/רצה,verb,Š,šaraṣawa,أَرْضَى,ʔarḍā,הִרְצָה,hirtsá,"to satisfy, to please",to lecture,1
 rḍw,,رضو/رضي,רוץ/רצה,name,n,murataṣa,مُرْتَضَى,murtaḍā,רָצוֹן,ratzón,a male given name,a male given name,0
 rḍw,,رضو/رضي,רוץ/רצה,adj,n,raṣin,رَاضٍ,rāḍin,רָצוּי,ratsúy,"satisfying, pleasant, comfortable","Desired, desirable, wanted.",1
 rḍw,,رضو/رضي,רוץ/רצה,noun,n,riṣan,رِضًا,riḍan,רִצָּה,ritsá,"contentedness, satisfaction, fulfillment, being well pleased","to satisfy, to please, to placate",0
@@ -848,15 +865,14 @@ sbb,,,,noun,n,sabab,سَبَب,sabab,סִבָּה,sibá,"cause, grounds, aetiolo
 sbl,,سبل,שׁבל,noun,n,sabil,سَبِيل,sabīl,שְׁבִיל,sh'víl,"way, path, road","A trail, a path.",0
 sbl,,سبل,שׁבל,noun,,šunbulat,سُنْبُل,sunbul,שִׁבֹּלֶת,shibólet,"ear, spike (of a crop)","an ear of wheat, a spike",0
 sbt,,سبت,שׁבת,noun,,šabat,السَّبْت,as-sabt,שַׁבָּת,shabát,the Sabbath,Saturday,1
-sby,,سبي,שׁבה,verb,G,sabaya,سَبَى,sabā,שָׁבָה,shavá,"to captivate, to captive",to capture (took captive).,6
+sby,,سبي,שׁבה,verb,G,sabaya,سَبَى,sabā,שָׁבָה,shavá,"to captivate, to captive",to capture (took captive).,5
 sby,,سبي,שׁבה,noun,n,sabiyy,سَبِيّ,sabiyy,שֶׁבִי,shévi,captive,"captivity, a state of being captured",0
 sby,,سبي,שׁבה,noun,n,sabyi,سَبْي,saby,שֶׁבִי,shévi,captivity,"captivity, a state of being captured",0
-sbʕ,,سبع/عشر,שׁבע/שׂבע,adj,n,sabiʕ,سَابِع,sābiʕ,שְׁבִיעִי,sh'vi'í,seventh,seventh,1
-sbʕ,,سبع/عشر,שׁבע/שׂבע,adj,G,sabiʕaʕašara,سَابِعَ عَشَرَ,sābiʕa ʕašara,שְׁבִיעִי,sh'vi'í,seventeenth,seventh,2
-sbʕ,,سبع/عشر,שׁבע/שׂבע,num,n,sabʕa,سَبْع,sabʕ,שֶׁבַע,shéva',"masculine of سَبْعَة (sabʕa, “seven”)","feminine of שִׁבְעָה (shiv'á, “seven”)",0
-sbʕ,,سبع/عشر,שׁבע/שׂבע,num,G,sabʕataʕašara,سَبْعَةَ عَشَرَ,sabʕata ʕašara,שִׁבְעָה,shiv'á,seventeen,seven,0
-sbʕ,,سبع/عشر,שׁבע/שׂבע,num,,šabʕ,سَبْعَة,sabʕa,שִׁבְעָה,shiv'á,seven,seven,2
-sbʕ,,سبع/عشر,שׁבע/שׂבע,noun,n,ʔusabuaʕ,أُسْبُوع,ʔusbūʕ,שָׁבוּעַ,shavúa',week (unit of time),"week, period of seven days",1
+sbʕ,,سبع/عشر,שׁבע,adj,n,sabiʕ,سَابِع,sābiʕ,שְׁבִיעִי,sh'vi'í,seventh,seventh,1
+sbʕ,,سبع/عشر,שׁבע,adj,G,sabiʕaʕašara,سَابِعَ عَشَرَ,sābiʕa ʕašara,שְׁבִיעִי,sh'vi'í,seventeenth,seventh,2
+sbʕ,,سبع/عشر,שׁבע,num,G,sabʕataʕašara,سَبْعَةَ عَشَرَ,sabʕata ʕašara,שִׁבְעָה,shiv'á,seventeen,seven,0
+sbʕ,,سبع/عشر,שׁבע,num,,šabʕ,سَبْعَة,sabʕa,שִׁבְעָה,shiv'á,seven,seven,2
+sbʕ,,سبع/عشر,שׁבע,noun,n,ʔusabuaʕ,أُسْبُوع,ʔusbūʕ,שָׁבוּעַ,shavúa',week (unit of time),"week, period of seven days",1
 sbḥ,,سبح,שׁבח,verb,D,sabbiaxa,سَبَّحَ,sabbaḥa,שִׁבֵּחַ,shibéakh,"to praise, to glorify","to praise (a person, an organization, an action, etc.)",1
 sbḥ,,سبح,שׁבח,noun,qatl,sabx,سَبْح,sabḥ,שֶׁבַח,shévakh,"praise, laudation",praise,1
 sbḥ,,سبح,שׁבח,noun,n,subaxan,سُبْحَان,subḥān,שֶׁבַח,shévakh,praise,praise,1
@@ -877,8 +893,8 @@ skr,,سكر,סכר/שׁכר,noun,n,sakar,سَكَر,sakar,שִׁכּוֹר,shik�
 skr,,سكر,סכר/שׁכר,adj/noun,n,sakaran,سَكْرَان,sakrān,שִׁכּוֹר,shikór,"drunk, intoxicated, inebriated","drunk, intoxicated, inebriated",1
 skr,,سكر,סכר/שׁכר,adj,n,sakir,سَكِر,sakir,שִׁכּוֹר,shikór,drunk,"drunk, intoxicated, inebriated",5
 skr,,سكر,סכר/שׁכר,adj,n,sikkir,سِكِّير,sikkīr,שִׁכּוֹר,shikór,"drunkard, alcoholic","drunk, intoxicated, inebriated",1
+skr,,سكر,סכר/שׁכר,noun,n,sukar,سُكْر,sukr,שִׁכּוֹר,shikór,"drunkenness, intoxication, inebriety",drunkard,5
 skr,,سكر,סכר/שׁכר,noun,,sukkar,سُكَّر,sukkar,סֻכָּר,sukár,sugar,sugar,4
-skr,,سكر,סכר/שׁכר,noun,,šikar,سُكْر,sukr,שִׁכֵּר,shikér,"drunkenness, intoxication, inebriety",to inebriate,5
 skt,,,,verb,G,sakata,سَكَتَ,sakata,שָׁקַט,shakát,to be silent,"rest, be in peace",0
 sl,,,סלל,noun,n,sill,سَلَّة,salla,סַל,sal,basket,basket,0
 slbḥ,,,,noun,n,silabax,سِلْبَاح,silbāḥ,צְלוֹפָח,tslofákh,eel,eel,0
@@ -929,6 +945,7 @@ spn,,سفن,ספן,noun,qattaːl,sappān,سَفَّان,saffān,סַפָּן,sap
 sqy,,سقي/سوق,,noun,n,saq,سَاق,sāq,שׁוֹק,shok,shank,shin,3
 srr,,سرر,סור/סרר,verb,G,sarara,سَرَّ,sarra,סָר,sar,to pass,to depart,0
 sry,,سري/سير,סור/סרר,verb,G,saraya,سَارَ,sāra,סָר,sar,"to cause to depart, cause to travel",to depart,1
+sry,,سري/سير,סור/סרר,verb,G,saraya,سَرَى,sarā,סָר,sar,to travel by night,to depart,0
 srṭn,,,סרטן,noun,n,saraṭan,سَرَطَان,saraṭān,סַרְטָן,sartán,"cancer, carcinoma",cancer (a disease in which the cells of a tissue undergo uncontrolled (and often rapid) proliferation),1
 sth,,,שׁשׁה,num,,šids,سِتَّة,sitta,שִׁישָּׁה,shishá,six,six,1
 str,,ستر,,noun,qutl,sutr,سُتْرَة,sutra,סֵתֶר,séter,"anything by which a person is covered, concealed or protected or sheltered","hideaway, hiding place",1
@@ -939,12 +956,12 @@ syf,,سيف,,noun,n,sayif,سَيْف,sayf,סַיִף,sáyif,"sword, sabre, foil,
 syg,,,,noun,,siyaga,سِيَاج,siyāj,סְיָג,sə'yág,fence,"restriction, a protective condition, fence, safeguard",0
 syr,,سير,סור/שׁיר,noun,n+fem,masira,مَسِيرَة,masīra,הֲסָרָה,hasara,departure,removal,1
 syr,,سير,סור/שׁיר,name,,sara,سَارَة,sāra,שָׂרָה,sará,"Sarah, wife of Abraham and mother of Isaac",Sarah (the wife of Abraham and mother of Isaac in the Bible),4
-sʔl,,سءل/سيل,שׁאל,verb,G,saʔala,سَأَلَ,saʔala,שָׁאַל,sha'ál,"to ask, inquire","to ask (a question), to query",4
-sʔl,,سءل/سيل,שׁאל,adj/noun,n,masaʔul,مَسْؤُول,masʔūl,שָׁאוּל,sha'úl,"responsible, in charge, accountable",borrowed,0
-sʔl,,سءل/سيل,שׁאל,noun,maqtal+fem,masʔala,مَسْأَلَة,masʔala,מִשְׁאָלָה,mish'alá,"request, begging","wish, desire, request",3
-sʔl,,سءل/سيل,שׁאל,noun,n,saʔil,سَائِل,sāʔil,שָׁאַל,sha'ál,"questioner, petitioner, asker","to ask (a question), to query",1
-sʔl,,سءل/سيل,שׁאל,adj,qattaːl,saʔʔāl,سَآّل,saʔʔāl,שָׁאוּל,sha'úl,excessively demanding or asking for things,borrowed,0
-sʔl,,سءل/سيل,שׁאל,noun,n,suʔal,سُؤَال,suʔāl,שְׁאֵלָה,sh'elá,question,question,4
+sʔl,,سءل,שׁאל,verb,G,saʔala,سَأَلَ,saʔala,שָׁאַל,sha'ál,"to ask, inquire","to ask (a question), to query",4
+sʔl,,سءل,שׁאל,adj/noun,n,masaʔul,مَسْؤُول,masʔūl,שָׁאוּל,sha'úl,"responsible, in charge, accountable",borrowed,0
+sʔl,,سءل,שׁאל,noun,maqtal+fem,masʔala,مَسْأَلَة,masʔala,מִשְׁאָלָה,mish'alá,"request, begging","wish, desire, request",3
+sʔl,,سءل,שׁאל,adj,qattaːl,saʔʔāl,سَآّل,saʔʔāl,שָׁאוּל,sha'úl,excessively demanding or asking for things,borrowed,0
+sʔl,,سءل,שׁאל,noun,n,suʔal,سُؤَال,suʔāl,שְׁאֵלָה,sh'elá,question,question,4
+sʔlt,,سءل/سيل,שׁאל,noun,n,saʔilt,سَائِل,sāʔil,שְׁאִילְתָה,sh'ílta,"questioner, petitioner, asker","inquiry, query",1
 sʕ,,,,noun,,šaʕta,سَاعَة,sāʕa,שָׁעָה,sha'á,hour (unit of time),hour (a unit of time of one twenty-fourth of a day (sixty minutes)),0
 sʕr,,سعر,סער/שׁער/שׂער,name/noun,n,saʕir,سَعِير,saʕīr,סַעַר,sá'ar,hell,gale,1
 sʕr,,سعر,סער/שׁער/שׂער,noun,qitl,siʕr,سِعْر,siʕr,שַׁעַר,shá'ar,price,market value,2
@@ -982,8 +999,11 @@ tḥt,,تحت,תחת,prep,n,taxta,تَحْتَ,taḥta,תַּחַת,tákhat,unde
 tḥt,,تحت,תחת,adj,n,taxtan,تَحْتَانِيّ,taḥtāniyy,תַּחְתּוֹן,takhtón,"lower, inferior, under-",lower,0
 wdd,,ودد,ידד,name/noun,n,waddid,وَدّ,wadd,יָדִיד,yadíd,"love, affection, friendship","darling, beloved",1
 wddt,,ودد,ידד,adj,n,wadidut,وَدِيد,wadīd,יְדִידוּתִי,yedidutí,"one who loves, one who has affection","Friendly, amenable; especially in extended senses.",1
+wdʕ,,ودع,ידע,verb,D,waddaʕ,وَدَّعَ,waddaʕa,יִדֵּעַ,yidéa,to forsake,to make definite,4
+wdʕ,,ودع,ידע,verb,G,wadaʕ,وَدَعَ,wadaʕa,יָדַע,yadá,"to let, to let be, to suffer","To know, to have sex with.",4
 wdʕ,,ودع,ידע,adj,n,wadiaʕ,وَدِيع,wadīʕ,יָדוּעַ,yadúa',"mansuetudinous, gentle-hearted","known, famous",1
 wld,,ولد,ילד,verb,G,walad,وَلَدَ,walada,יָלַד,yalád,"to bear, to beget","to give birth (""to child""; beget a descendant).",7
+wld,,ولد,ילד,verb,Š,šawalada,أَوْلَدَ,ʔawlada,הוֹלִיד,holíd,"to make children to, to cause to give birth","To sire, to father, to beget.",2
 wld,,ولد,ילד,name/noun,n,milad,مِيلَاد,mīlād,מוֹלָד,molád,birth,nativity,5
 wld,,ولد,ילד,noun,n,tawallud,تَوَلُّد,tawallud,יִלּוֹד,yilód,generation,newborn,2
 wld,,ولد,ילד,noun,n,walad,وَلَد,walad,יֶלֶד,yéled,child (“son or daughter of any age”),"An immature adult; kid, child.",5
@@ -993,13 +1013,15 @@ wld,,ولد,ילד,noun,n,wilad,وِلَادَة,wilāda,יִלּוֹד,yilód,b
 wldt,,ولد,ילד,adj,n,muwalldad,مُوَلَّد,muwallad,יַלְדוּתִי,yaldutí,"born, begotten","juvenile, immature",0
 wlˤh,,,,intj,,wa llahi,وَٱللّٰهِ,wal-lāhi,וַאלְלַהּ,wálla,"really?, really!","Wow!, really?, you don't say!, no kidding!",0
 wqr,,وقر,יקר,adj,n,waqur,وَقُور,waqūr,יָקָר,yakár,"dignified, staid","dear, precious",0
+wqʕ,,وقع,יקע,verb,G,waqaʕa,وَقَعَ,waqaʕa,יָקַע,yaká,to desist,"to become estranged, alienated",1
 wrd,,ورد,ורד,noun,,warid,وَرِيد,warīd,וְרִיד,v'rid,vein,vein,0
 wrk,,,ירך,noun,n,warik,وَرِك,warik,יָרֵךְ,yarékh,"hip, thigh",thigh,0
 wrq,,,,noun,,waraq,وَرَق,waraq,יָרָק,yarák,"foliage, leaves","herb, vegetable",4
 wrṯ,,ورث,ירשׁ,verb,G,warisa,وَرِثَ,wariṯa,יָרַשׁ,yarásh,to inherit,to inherit,3
+wrṯ,,ورث,ירשׁ,verb,Š,šawarasa,أَوْرَثَ,ʔawraṯa,הוֹרִישׁ,horish,to make inherit,"to bequeath, to will (to leave something to someone in their will)",3
 wrṯ,,ورث,ירשׁ,noun,n,mirasa,مِيرَاث,mīrāṯ,מוֹרָשָׁה,morashá,"inheritance, the property conceived by the law of succession","legacy, heritage",3
 wrṯ,,ورث,ירשׁ,noun,n,turasa,تُرَاث,turāṯ,תּוֹרָשָׁה,torashá,"inheritance, hereditary estate, bequeathed or ancestral property",heredity,3
-wrṯ,,ورث,ירשׁ,adj/noun,n,waris,وَارِث,wāriṯ,יָרַשׁ,yarásh,"heir, inheritor",to inherit,3
+wrṯ,,ورث,ירשׁ,adj/noun,n,warisa,وَارِث,wāriṯ,יְרֻשָּׁה,y'rushá,"heir, inheritor",inheritance,3
 wrṯ,,ورث,ירשׁ,noun,n,wirasa,وِرَاثَة,wirāṯa,יְרֻשָּׁה,y'rushá,inheritance,inheritance,3
 wrṯ,,ورث,ירשׁ,noun,n,ʔirasa,إِرْث,ʔirṯ,תּוֹרָשָׁה,torashá,inheritance,heredity,3
 wsn,,وسن,ישׁן,noun,n+fem,sina,سِنَة,sina,שֵׁנָה,sheiná,slumber; nap,sleep: a state or period of being asleep,0
@@ -1008,13 +1030,13 @@ wtr,,,יתר,noun,n,watar,وَتَر,watar,יֶתֶר,yéter,hypotenuse,hypotenu
 wʔm,,وءم,תאם,noun,n,tawʔam,تَوْأَم,tawʔam,תְּאוֹם,te'óm,"one who was born of a multiple birth, i.e. a twin, triplet, quadruplet, etc.","A (male) twin, a twin brother: one of two or more siblings born after a single pregnancy.",0
 wʕd,,وعد,יעד,noun,n,miʕad,مِيعَاد,mīʕād,מוֹעֵד,mo'éd,"appointment, date","appointed or agreed-upon time, appointment",0
 wʕl,,,יעל,noun,,waʕil,وَعِل,waʕil,יָעֵל,ya'él,"antelope, ibex",ibex,0
-wḥd,,وحد,אחד/חדד,verb,tD,tawaxxada,تَوَحَّدَ,tawaḥḥada,הִתְאַחֵד,hit'akhéd,"to be unified, to be reduced to one",To unite: to come together as one.,3
+wḥd,,وحد,אחד/חדד,verb,tD,tawaxxada,تَوَحَّدَ,tawaḥḥada,הִתְאַחֵד,hit'akhéd,"to be unified, to be reduced to one",To unite: to come together as one.,4
 wḥd,,وحد,אחד/חדד,adj/noun,n,mutawaxxid,مُتَوَحِّد,mutawaḥḥid,מְאֻחָד,m'ukhád,unique,"united, unified",2
 wḥd,,وحد,אחד/חדד,adj,n,muttaxid,مُتَّحِد,muttaḥid,מְאֻחָד,m'ukhád,united,"united, unified",2
-wḥd,,وحد,אחד/חדד,noun,n,tawxid,تَوْحِيد,tawḥīd,אֻחַד,ukhád,unification,to be united,3
-wḥd,,وحد,אחד/חדד,noun,n,waxad,وَحْدَة,waḥda,אִחֵד,ikhéd,"union, unity; oneness (the state of being united as one)",to unite (to come or bring together as one),3
+wḥd,,وحد,אחד/חדד,noun,n,tawxid,تَوْحِيد,tawḥīd,אִחוּד,ikhúd,unification,Union.,3
 wḥd,,وحد,אחד/חדד,adj,n,waxdan,وَحْدَانِيّ,waḥdāniyy,מְאֻחָד,m'ukhád,"single, isolated","united, unified",2
 wḥd,,وحد,אחד/חדד,adj/noun,n,waxdaniyy,وَحْدَانِيَّة,waḥdāniyya,אֻחַד,ukhád,unity (esp. of God),to be united,1
+wḥd,,وحد,אחד/חדד,noun,n,waxud,وَحْدَة,waḥda,אִחוּד,ikhúd,"union, unity; oneness (the state of being united as one)",Union.,3
 wḥd,,وحد,אחד/חדד,adj/noun,n,xadd,حَدّ,ḥadd,חַד,khad-,"violent, passionate","strong, sharp, piercing, acute",1
 wḥd,,وحد,אחד/חדד,adj/noun,n,xadd,حَدّ,ḥadd,חֹד,khód,"edge, point","tip, apex",0
 wḥd,,وحد,אחד/חדד,adj,n,ʔawxad,أَوْحَد,ʔawḥad,אָחִיד,akhíd,"unique, singular",uniform,2
@@ -1028,8 +1050,8 @@ wṣy,,وصي,צוה,noun,n+fem,waṣiyya,وَصِيَّة,waṣiyya,מִצְו�
 wṯq,,,ותק,adj,qatiːl,wasīq,وَثِيق,waṯīq,וָתִיק,vatík,"trustworthy, reliable","loyal, righteous, trustworthy",0
 y,,,,particle,,ya,يَا,yā,יָא,yá,"O; hey; you; vocative particle preceding a noun used in direct address, only rarely omitted in such contexts","Vocative particle preceding a noun, especially a slur or pejorative.",0
 ybs,,يبس,יבשׁ,verb,tD,tayabbasa,تَيَبَّسَ,tayabbasa,הִתְיַבֵּשׁ,hityabésh,"to dry up, get dry","To dry, to dry out: to become dry.",1
-ybs,,يبس,יבשׁ,adj,n,yabis,يَابِس,yābis,יָבֵשׁ,yavésh,dry,"Dry, boring, dull.",4
-ybs,,يبس,יבשׁ,adj/noun,n,yabisa,يَابِسَة,yābisa,יַבָּשָׁה,yabashá,"earth, land, surface, sand, mud; as opposed to water","dry ground, dry land",1
+ybs,,يبس,יבשׁ,adj,n,yabis,يَابِس,yābis,יָבֵשׁ,yavésh,dry,"Dry, boring, dull.",3
+ybs,,يبس,יבשׁ,adj/noun,n,yabisa,يَابِسَة,yābisa,יַבָּשָׁה,yabashá,"earth, land, surface, sand, mud; as opposed to water","dry ground, dry land",2
 ydy,,يدي,יד,noun,,yad,يَد,yad,יָד,yád,"an appendage of a body (as of an animal), a foreleg",forelimb (anterior limb),1
 yhd,,,,name,,yihuda,يَهُودَا,yahūdā,יְהוּדָה,y'hudá,Judea,"Judah, Judea (the tribal grouping)",1
 yhdy,,,,adj/noun,,yihuda,يَهُودِيّ,yahūdiyy,יְהוּדָה,y'hudá,Jew,"Judah, Judea (the tribal grouping)",1
@@ -1064,9 +1086,9 @@ zmr,,زمر,זמר,noun,n,mazmur,مَزْمُور,mazmūr,מִזְמוֹר,mizm�
 zn,,,זנה,verb,G,zana,زَنَى,zanā,זָנָה,zaná,"to commit adultery, to fornicate","to lust, fornicate, commit adultery",0
 znbr,,,,noun,n,zunbur,زُنْبُور,zunbūr,דְּבוֹרָה,dvorá,bee,bee,0
 znjbl,,,,noun,,zanjabil,زَنْجَبِيل,zanjabīl,זַנְגְּבִיל,zangvíl,ginger,ginger,1
-zny,,زني,זנה,noun,n,zanin,زَانٍ,zānin,זָנָה,zaná,"fornicator, adulterer","to lust, fornicate, commit adultery",3
-zny,,زني,זנה,noun,n,zinan,زِنًى,zinan,זָנָה,zaná,"adultery, fornication, lust","to lust, fornicate, commit adultery",1
-zny,,زني,זנה,noun,n,zinaʔ,زِنَاء,zināʔ,זָנָה,zaná,"adultery, fornication","to lust, fornicate, commit adultery",1
+zny,,زني,זנה,noun,n,zanin,زَانٍ,zānin,זְנוּת,z'nut,"fornicator, adulterer",prostitution; harlotry,3
+zny,,زني,זנה,noun,n,zinan,زِنًى,zinan,זְנוּת,z'nut,"adultery, fornication, lust",prostitution; harlotry,1
+zny,,زني,זנה,noun,n,zinaʔ,زِنَاء,zināʔ,זְנוּת,z'nut,"adultery, fornication",prostitution; harlotry,1
 zrzr,,زرزر,זרזר,noun,n,zurzur,زُرْزُور,zurzūr,זַרְזִיר,zarzír,starling,starling (type of bird),0
 zrʕ,,زرع,,verb,G,zarʕ,زَرَعَ,zaraʕa,זָרַע,zará',to sow,"to seed, to sow",1
 zwg,,زوج,זוג,noun,n,zawg,زَوْجَان,zawjān,זוּג,zúg,husband and wife,"pair, couple, twosome",0
@@ -1075,28 +1097,30 @@ zwl,,زول,זול,noun,n,zawal,زَوْل,zawl,זוּלָת,zulát,person,"fell
 zwy,,,,noun,n,zawiy,زَاوِيَة,zāwiya,זָוִית,zavít,"angle, corner, edge",angle,0
 zʕfrn,,,,noun,,zaʕparan,زَعْفَرَان,zaʕfarān,זְעַפְרָן,ze'afrán,saffron,saffron,0
 zʕq,,زعق,זעק,verb,G,zaʕaqa,زَعَقَ,zaʕaqa,זָעַק,za'ák,"to scream, to shout","to shout, to yell",0
-zʕq,,زعق,זעק,noun,n,zaʕaq,زَعْقَة,zaʕqa,זָעַק,za'ák,"yell, scream","to shout, to yell",1
+zʕq,,زعق,זעק,noun,qatl+fem,zaʕqa,زَعْقَة,zaʕqa,אַזְעָקָה,az'aká,"yell, scream",siren,1
 zʕr,,زعر,,adj,n,ʔazʕar,أَزْعَر,ʔazʕar,זָעִיר,za'ir,thin-haired,"tiny, little, minute (""very small"").",0
 zʕtr,,,,noun,,zaʕtar,زَعْتَر,zaʕtar,זַעְתָּר,zá'tar,"zaatar, wild thyme",zaatar,2
 śbʕ,,,,verb,G,sabiʕa,شَبِعَ,šabiʕa,שָׂבַע,savá',"to be full, to be satiated",to be sated.,3
 śhd,,شهد,,noun,n,sahid,شَهِيد,šahīd,שָׂהֵד,sahéd,witness,witness,0
-śhr,,شهر,סהר/שׂהר,noun,,sahr,شَهْر,šahr,סַהַר,sáhar,month (unit of time),moon,1
-śhr,,شهر,סהר/שׂהר,noun,qutl,suhr,شُهْرَة,šuhra,שַׂהַר,sáhar,verbal noun of شَهَرَ (šahara) (form I),alternative form of סַהַר (sáhar),0
-śhr,,شهر,סהר/שׂהר,noun,n,tašhir,تَشْهِير,tašhīr,שַׂהַר,sáhar,verbal noun of شَهَّرَ (šahhara) (form II),alternative form of סַהַר (sáhar),0
+śhr,,شهر,סהר,noun,,sahr,شَهْر,šahr,סַהַר,sáhar,month (unit of time),moon,1
+śkr,,شكر,שׁכר/שׂכר,verb,G,sakara,شَكَرَ,šakara,שָׂכַר,sakhár,"to praise, to laud, to extol","to hire, rent",1
 śml,,شمل,,noun,,simaʔl,شِمَال,šimāl,שְׂמֹאל,s'mól,left side,left (the left side or direction),0
 śnʔ,,شنء,,verb,G,sanaʔa,شَنَأَ,šanaʔa,שָׂנֵא,sané,to hate intensely,to hate,2
 śph,,,שׂפה,noun,,sapat,شَفَة,šafa,שָׂפָה,safá,lip,lip (fleshy protrusion framing the mouth),0
-śry,,شري,שׁיר,verb,G,saraya,شَرَى,šarā,שָׂרָה,sará,to contend; to wrangle,"to contend, struggle, wrestle, overcome",4
+śry,,شري,שׁיר,verb,G,saraya,شَرَى,šarā,שָׂרָה,sará,to contend; to wrangle,"to contend, struggle, wrestle, overcome",3
 śrṭ,,شرط,סרט,noun,n,sariṭ,شَرِيط,šarīṭ,סֶרֶט,séret,"tape, ribbon, band",ribbon,1
 śrṭ,,شرط,סרט,noun,n,sariṭ,شَرِيطَة,šarīṭa,סֶרֶט,séret,chevron,ribbon,0
+śrṭ,,شرط,סרט,adj/noun,qatl,sarṭ,شَرْط,šarṭ,סֶרֶט,séret,"incision, scarification",ribbon,0
 śtw,,شتو,,noun,n,sitaʔ,شِتَاء,šitāʔ,סְתָו,s'táv,winter,winter,0
 śyṭ,,شيط,,noun,,satan,شَيْطَان,šayṭān,שָׂטָן,śāṭān,devil,devil,0
 śʕr,,شعر,שׂער,adj/noun,n,mašʕar,مَشْعَر,mašʕar,שָׂעִיר,sa'ir,hairy,hairy,1
 śʕr,,شعر,שׂער,noun,n,saʕir,شَعِير,šaʕīr,שְׂעוֹרָה,se'orá,barley,barley,0
 śʕr,,شعر,שׂער,noun,,saʕr,شَعْر,šaʕr,שֵׂעָר,se'ár,hair,hair,0
 šbr,,,שׁפר,noun,n,šabbur,شَبُّور,šabbūr,שׁוֹפָר,shofár,shofar (Jewish ram's horn trumpet),shofar,0
+šbṯ,,شبث,ישׁב,verb,tD,tašabbasa,تَشَبَّثَ,tašabbaṯa,הִתְיַשֵּׁב,hityashév,"to cleave, to cling, to adhere","to settle, inhabit",0
 šd,,,,noun,,šadda,شَدَّة,šadda,שַׁדָּה,shadá,shadda,shadda,0
 šfn,,,שׁוף,noun,n,šufan,شُوفَان,šūfān,שִׁיפוֹן,shifón,oat,rye,0
+škr,,شكر,שׁכר,verb,tD,tašakkara,تَشَكَّرَ,tašakkara,הִשְׁתַּכֵּר,hishtakér,to be thankful (for),to become drunk,0
 škr,,شكر,שׁכר,adj,n,mutašakkir,مُتَشَكِّرْ,mutašakkir,מְשַׁכֵּר,m'shakér,grateful,intoxicating,1
 škr,,شكر,שׁכר,adj/name,n,šakir,شاكِر,šākir,שִׁכּוֹר,shikór,"thankful, grateful","drunk, intoxicated, inebriated",1
 škšk,,شكشك,,noun,,šakšuka,شَكْشُوكَة,šakšūka,שַׁקְשׁוּקָה,shakshúka,shakshuka (dish of eggs simmered in a mixture of vegetables and spices),shakshuka (dish of eggs simmered in a mixture of vegetables and spices),0
@@ -1139,7 +1163,7 @@ zʕtr,,,,noun,,zaʕtar,زَعْتَر,zaʕtar,זַעְתָּר,zá'tar,"zaatar, 
 ʔhln,,,,adv/intj,,ʔahlan,أَهْلًا,ʔahlan,אַהְלָן,áhlan,hi,"hi, hello",0
 ʔjṣ,,,,noun,,ʔagas,إِجَّاص,ʔijjāṣ,אַגָּס,agás,"pears (the fruits as well as the tree, the whole genus Pyrus)",pear (a type of fruit tree (Pyrus communis)),0
 ʔkf,,,אכף,noun,qattaːl,ʔakkāf,أُكَّاف,ʔukkāf,אֻכָּף,ukáf,"a saddle, a packsaddle (typically of an ass)",saddle,0
-ʔkl,,ءكل,אכל,verb,G,ʔakal,أَكَلَ,ʔakala,אָכַל,akhál,"to eat, to consume (food)",to eat,11
+ʔkl,,ءكل,אכל,verb,G,ʔakal,أَكَلَ,ʔakala,אָכַל,akhál,"to eat, to consume (food)",to eat,12
 ʔkl,,ءكل,אכל,noun,n,maʔakal,مَأْكَل,maʔkal,מַאֲכָל,ma'akhál,food,"food, meal, dish (specific type of food)",6
 ʔkl,,ءكل,אכל,noun,,ʔakal,أُكُل,ʔukul,אֹֽכֶל,ókhel,food,food,4
 ʔkl,,ءكل,אכל,noun,n+fem,ʔukla,أُكْلَة,ʔukla,אׇכְלָה,okhlá,"morsel, bit of food","food, nourishment.",0
@@ -1148,12 +1172,11 @@ zʕtr,,,,noun,,zaʕtar,زَعْتَر,zaʕtar,זַעְתָּר,zá'tar,"zaatar, 
 ʔl,,,אל/גבר,article,n,ʔal,اَلْ,al-,הַ־,ha-,the,The.,9
 ʔl,,,אל/גבר,noun,,ʔil,إِلّ,ʔill,אֵל,el,"god, deity, God, El","El, the chief deity in Canaanite religion",8
 ʔl,,,אל/גבר,conj/prep,n,ʔilla,إِلَّا,ʔillā,אֶלָּא,elá,"no more than; nothing more than; nothing but or no one but; only, but","but, except",0
-ʔlf,,ءلف,,noun/num,,ʔalp,أَلْف,ʔalf,אָלֶף,álef,verbal noun of أَلِف (ʔalif) (form I),alternative spelling of אל״ף,0
 ʔlh,,ءله,אל,noun,,ʔil,إِلٰه,ʔilāh,אֱלוֹהַּ,elóah,"a god, a deity, a divinity",a god,7
 ʔlh,,ءله,אל,name,,ʔil,اللّٰه,allāh,אֱלֹהִים,elohím,God,God,7
 ʔlh,,ءله,אל,noun,n+fem,ʔuluhiyya,أُلُوهِيَّة,ʔulūhiyya,אֵלָה,elá,"divinity, godhood; divine power",A goddess.,1
 ʔlm,,ءلم,אלם,adj,qatiːl,ʔalīm,أَلِيم,ʔalīm,אַלִּים,alím,"sad, grievous","violent: of, pertaining to, or committing violence",0
-ʔlp,,ءلف,אלף,noun/num,,ʔalp,أَلْف,ʔalf,אֶלֶף,élef,thousand,"thousand, one thousand",4
+ʔlp,,ءلف,אלף,noun/num,,ʔalp,أَلْف,ʔalf,אֶלֶף,élef,thousand,"thousand, one thousand",5
 ʔlw,,ءلو,,prep,,ʔila,إِلَى,ʔilā,אֶל,el,"to, towards","to, towards, into",0
 ʔly,,ءلو/ءلي,אלה,noun,,ʔalyat,أَلْيَة,ʔalya,אַלְיָה,'alyá,"fat tail, tail fat",tail of a fat-tailed sheep (a type of domestic sheep),0
 ʔlʕrq,,,,name,,ʕiraq,الْعِرَاق,al-ʕirāq,עיראק,'irák,Iraq (a country in Asia),Iraq (a country in West Asia in the Middle East; official name: הרפובליקה העיראקית (harepublika ha'irakit)),0
@@ -1219,11 +1242,11 @@ zʕtr,,,,noun,,zaʕtar,زَعْتَر,zaʕtar,זַעְתָּר,zá'tar,"zaatar, 
 ʔḥd,,ءحد/وحد,אחד/חדד,adj,,ʔaxad,أَحَدّ,ʔaḥadd,חַד,khad-,with sharp teeth,"strong, sharp, piercing, acute",4
 ʔḥd,,ءحد/وحد,אחד/חדד,noun,,ʔaxad,إِحْدَى,ʔiḥdā,אַחַת,akhát,female equivalent of أَحَد (ʔaḥad),feminine of אֶחָד (ekhád),4
 ʔḫ,,,,noun,n,ʔaxi,أَخ,ʔaḵ,אָחִי,akhí,brother,"bro, man, dude",1
+ʔḫr,,ءخر,אחר,verb,D,ʔaxxara,أَخَّرَ,ʔaḵḵara,אִחֵר,ikhér,"to postpone, to set back, to hold back, to put back, to delay",to be late,1
 ʔḫr,,ءخر,אחר,adj/noun,n,mutaʔaxxir,مُتَأَخِّر,mutaʔaḵḵir,מְאֻחָר,m'ukhár,late,"late, belated",1
-ʔḫr,,ءخر,אחר,adj/noun,n,ʔaxiran,آخِر,ʔāḵir,אַחֲרוֹן,akharón,"last, ultimate, utmost, extreme",last (final),2
+ʔḫr,,ءخر,אחר,adj/noun,n,ʔaxiran,آخِر,ʔāḵir,אַחֲרוֹן,akharón,"last, ultimate, utmost, extreme",last (final),1
 ʔḫr,,ءخر,אחר,adj,n,ʔaxiran,أَخِير,ʔaḵīr,אַחֲרוֹן,akharón,"last, final",last (final),1
 ʔḫr,,ءخر,אחר,adj/noun,n,ʔaxirit,آخِر,ʔāḵir,אַחֲרִית,akharít,"end, conclusion","end, close",0
-ʔḫr,,ءخر,אחר,adj/noun,n,ʔaxirit,آخِرَة,ʔāḵira,אַחֶרֶת,akhéret,feminine singular of آخِر (ʔāḵir),feminine singular indefinite form of אחר (akhér).,0
 ʔḫt,,,,noun,,ʔaxwat,أُخْت,ʔuḵt,אָחוֹת,akhót,sister,sister,0
 ʔḫw,,,,noun,n+fem,ʔuxuwwa,أُخُوَّة,ʔuḵuwwa,אַחֲוָה,akhavá,"brotherhood, fraternity","brotherhood, camaraderie, fraternity, guild",0
 ʔḫḏ,,ءخذ,,verb,G,ʔaxaza,أَخَذَ,ʔaḵaḏa,אָחַז,akház,"to seize, to grab, to take hold","to grab, grasp",1
@@ -1259,16 +1282,18 @@ zʕtr,,,,noun,,zaʕtar,زَعْتَر,zaʕtar,זַעְתָּר,zá'tar,"zaatar, 
 ʕly,,علي,עלה,adj/noun/verb,Š,šaʕalaya,أَعْلَى,ʔaʕlā,הֶעֱלָה,he'elá,"to raise, make higher","to raise, lift",4
 ʕly,,علي,עלה,name/noun,n,maʕalaʔ,عَلَاء,ʕalāʔ,מַעֲלָה,ma'alá,"highness, elevation",degree,2
 ʕly,,علي,עלה,noun,n+fem,taʕliya,تَعْلِيَة,taʕliya,עֲלִיָּה,aliyá,"elevating, raising","ascent, ascending, going up",1
+ʕly,,علي,עלה,adj/noun,n,ʕalin,عَالٍ,ʕālin,עֲלִיָּה,aliyá,The upper part of something,"ascent, ascending, going up",0
 ʕly,,علي,עלה,name/noun,n,ʕaliyaʔ,عَلْيَاء,ʕalyāʔ,עֲלִיָּה,aliyá,"elevation, highness","ascent, ascending, going up",2
 ʕly,,علي,עלה,adj,n,ʕaliyyan,عَلِيُّونَ,ʕaliyyūna,עֶלְיוֹן,'elyón,plural of عَلِيّ (ʕaliyy),"topmost, upper, uppermost (the most high)",0
 ʕly,,علي,עלה,adj,n,ʕaliyyan,عِلِّيُّونَ,ʕilliyyūna,עֶלְיוֹן,'elyón,plural of عِلِّيّ (ʕilliyy),"topmost, upper, uppermost (the most high)",0
 ʕly,,علي,עלה,adj/noun,n,ʕalyin,عَالٍ,ʕālin,עֶלְיוֹן,'elyón,"exalted, lofty, excellent","topmost, upper, uppermost (the most high)",2
 ʕly,,علي,עלה,adj,n,ʕulwan,عُلْوِيّ,ʕulwiyy,עֶלְיוֹן,'elyón,"high, lofty","topmost, upper, uppermost (the most high)",2
-ʕly,,علي,עלה,adj/noun,n,ʕāliy,عَالٍ,ʕālin,עֲלִיָּה,aliyá,The upper part of something,"ascent, ascending, going up",0
 ʕmd,,عمد,עמד,verb,G,ʕamada,عَمَدَ,ʕamada,עָמַד,amád,"to prop up, to support",to stand (to support oneself on the feet in an erect position),0
+ʕmd,,عمد,עמד,verb,Š,šaʕimada,أَعْمَدَ,ʔaʕmada,הֶעֱמִיד,he'emíd,"to propose, to lead, to aim",to help (someone) to their feet,0
 ʕmd,,عمد,עמד,noun,n,ʕamud,عَمُود,ʕamūd,עַמּוּד,amúd,"column, shaft, pillar, pole","pillar, column, post",1
 ʕmd,,عمد,עמד,name/noun,n,ʕimad,عِمَاد,ʕimād,עַמּוּד,amúd,"column, pillar","pillar, column, post",0
-ʕml,,عمل,,verb,G,ʕamila,عَمِلَ,ʕamila,עָמַל,amál,"to work, perform",to work,1
+ʕml,,عمل,עמל,verb,G,ʕamila,عَمِلَ,ʕamila,עָמַל,amál,"to work, perform",to work,1
+ʕml,,عمل,עמל,verb,tD,taʕammala,تَعَمَّلَ,taʕammala,הִתְעַמֵּל,hitamél,to be tired,"to work out, exercise",0
 ʕmm,,عمم,עמם,adj,n,ʔaʕamm,عَامّ,ʕāmm,עֲמָמִי,amamí,"common, ordinary","popular, common, folk, people's",2
 ʕmm,,عمم,עמם,adj,n+nisba,ʔaʕammi,عَامِّيّ,ʕāmmiyy,עֲמָמִי,amamí,"common, vulgar","popular, common, folk, people's",0
 ʕmm,,عمم,עמם,adj,n,ʕamim,عَمِيم,ʕamīm,עֲמָמִי,amamí,"general, comprehensive","popular, common, folk, people's",0
@@ -1291,8 +1316,8 @@ zʕtr,,,,noun,,zaʕtar,زَعْتَر,zaʕtar,זַעְתָּר,zá'tar,"zaatar, 
 ʕrq,,عرق/عقر,,noun,,ʕaraq,عَرَق,ʕaraq,עַרַק,ʿaráq,arrack (a clear raisin liquor that turns cloudy when water is added),"arak (a clear, unsweetened aniseed-flavoured alcoholic drink, produced and consumed primarily in the Levant)",1
 ʕrr,,عرر,,name/noun,n,ʕarʕar,عَرْعَر,ʕarʕar,עַרְעָר,ar'ár,juniper (Juniperus gen.),juniper,0
 ʕry,,عري/عير,ערם,noun,n,ʕaraʔ,عَرَاء,ʕarāʔ,עֵירֹם,eróm,"bareness, nakedness",nudity,0
+ʕry,,عري/عير,ערם,adj,n,ʕarin,عَارٍ,ʕārin,עָרֹם,aróm,"bare, naked, nude","naked, nude, unclothed",0
 ʕry,,عري/عير,ערם,noun,n,ʕuray,عُرْي,ʕury,עֵירֹם,eróm,"bareness, nakedness, nudity",nudity,0
-ʕry,,عري/عير,ערם,adj,n,ʕāriy,عَارٍ,ʕārin,עָרֹם,aróm,"bare, naked, nude","naked, nude, unclothed",0
 ʕryn,,,ערם,adj,n,ʕuryan,عُرْيَان,ʕuryān,עָרֹם,aróm,"naked, nude","naked, nude, unclothed",1
 ʕs,,,ישׁע/ישע,name,n,ʕisua,عِيسَى,ʕīsā,יֵשׁוּעַ,yeshúa,"Jesus (Isa), son of Mary, revered as a major prophet in Islam.",Isa the rasul of Islam,1
 ʕtq,,عتق,עתק,adj,,ʕatiyq,عَتِيق,ʕatīq,עַתִּיק,atík,"antique, ancient, archaic, old","antique, old",0
@@ -1307,6 +1332,7 @@ zʕtr,,,,noun,,zaʕtar,زَعْتَر,zaʕtar,זַעְתָּר,zá'tar,"zaatar, 
 ʕzb,,عزب,עזב,adj/noun,n,ʔaʕzab,أَعْزَب,ʔaʕzab,עָזוּב,azúv,"single, unmarried","abandoned, neglected",0
 ʕzr,,,,verb,G,ʕazara,عَزَرَ,ʕazara,עָזַר,'azár,"to aid, to assist, to strengthen","to help, to assist",1
 ʕzz,,عزز,עזז/ענז,verb,G,ʕazzaz,عَزَّ,ʕazza,עָזַז,azáz,"to be powerful, to overpower","to become strong, to prevail",2
+ʕzz,,عزز,עזז/ענז,verb,Š,šaʕazaza,أَعَزَّ,ʔaʕazza,הֵעֵז,he'ez,to respect,to dare,0
 ʕzz,,عزز,עזז/ענז,noun,n,ʔiʕzaʔaz,إِعْزَاْز,ʔiʕzāz,מָעֹז,ma'óz,"strengthening, fortification","fortress, stronghold, refuge",1
 ʕzz,,عزز,עזז/ענז,adj/name/noun,n,ʕaziz,عَزِيز,ʕazīz,עַז,áz,"powerful, mighty","mighty, strong",0
 ʕzz,,عزز,עזז/ענז,adj/name/noun,,ʕaziz,عَزِيز,ʕazīz,עָזִיז,,"a male given name, Aziz","a male given name, Aziz, from Arabic",0
@@ -1322,7 +1348,6 @@ zʕtr,,,,noun,,zaʕtar,زَعْتَر,zaʕtar,זַעְתָּר,zá'tar,"zaatar, 
 ʕšr,,ثني/عشر,עשׁר/עשׂר/שׁנה,num,G,ʔisnaʕašara,اِثْنَا عَشَرَ,iṯnā ʕašara,שְׁנַייִם,sh'náyim,twelve,two,0
 ʕšr,,ثني/عشر,עשׁר/עשׂר/שׁנה,num,,ʕasar,عَشْر,ʕašr,עֶשֶׂר,éser,"masculine of عَشَرَة (ʕašara, “ten”)","feminine of עֲשָׂרָה (asará, “ten”)",3
 ʕʔgl,,,,noun,n,ʕaʔagal,عَجَلَة,ʕajala,מַעְגָּל,ma'agál,wheel,a circle,1
-ʕʔll,,علل/علي,עלה,adj,n,muʕtalli,مُعْتَلّ,muʕtall,נַעֲלֶה,na'alé,weak,"superior, lofty",1
 ʕʔly,,علي,עלה,adj,n,muʕtalin,مُعْتَلٍ,muʕtalin,נַעֲלֶה,na'alé,"mounting, riding","superior, lofty",2
 ʕḍ,,,,noun,,ʕiṣ,عُضّ,ʕuḍḍ,עֵץ,ʿēṣ,thick coarse trees or shrubs,tree,0
 ʕṣf,,عصف,סוף,noun,n+fem,ʕaṣifa,عَاصِفَة,ʕāṣifa,סוּפָה,sufá,storm,A storm: an extreme weather event.,0
@@ -1369,11 +1394,12 @@ zʕtr,,,,noun,,zaʕtar,زَعْتَر,zaʕtar,זַעְתָּר,zá'tar,"zaatar, 
 ḥbb,,حبب,חבב,noun,n,xibab,حِبَاب,ḥibāb,חִבָּה,khibá,amity,affection,0
 ḥbl,,,,noun,,xabl,حَبْل,ḥabl,חֶבֶל,khével,"a rope, a cable; a hawser; a cord; a string; a thread",rope,0
 ḥbqq,,,,name,,xawakuk,حَبَقُّوق,ḥabaqqūq,חֲבַקּוּק,khavakúk,Habakkuk (a Jewish prophet of the Old Testament; author of the book that bears his name),Habakkuk (a Jewish prophet of the Old Testament; author of the book that bears his name),0
-ḥdd,,حدد/حدو/وحد,חדד,verb,D,xaddada,حَدَّدَ,ḥaddada,חִדֵּד,khidéd,to sharpen,to sharpen,2
+ḥdd,,حدد/حدو/وحد,חדד,verb,D,xaddada,حَدَّدَ,ḥaddada,חִדֵּד,khidéd,to sharpen,to sharpen,3
 ḥdd,,حدد/حدو/وحد,חדד,adj,n,muxaddad,مُحَدَّد,muḥaddad,חַד,khad-,sharpened,sharp,2
 ḥdd,,حدد/حدو/وحد,חדד,adj,n,xadd,حَادّ,ḥādd,חַד,khad-,"sharp, pointed",sharp,3
 ḥdd,,حدد/حدو/وحد,חדד,noun,n,xiddut,حِدَّة,ḥidda,חַדּוּת,khadút,sharpness,"sharpness, acuity",4
 ḥdn,,,חדד,adj,n,xadin,حَادٍ,ḥādin,חַד,khad-,first (only in composed numbers),sharp,1
+ḥdṯ,,حدث,חדשׁ,verb,tD,taxaddasa,تَحَدَّثَ,taḥaddaṯa,הִתְחַדֵּשׁ,hitkhadésh,"to speak, to talk","to regenerate, to renew",0
 ḥdṯ,,حدث,חדשׁ,adj/noun,n,xadis,حَدِيث,ḥadīṯ,חֲדָשׁוֹת,khadashót,"recent event, fresh news",news,2
 ḥdṯ,,حدث,חדשׁ,adj/noun,qatiːl,xadīs,حَدِيث,ḥadīṯ,חָדִישׁ,khadísh,modern,modern,2
 ḥff,,حفف/حوف,חוף,noun,n,xaf,حَافَة,ḥāfa,חוֹף,khof,"edge, border","beach, shore, coast",0
@@ -1389,12 +1415,13 @@ zʕtr,,,,noun,,zaʕtar,زَعْتَر,zaʕtar,זַעְתָּר,zá'tar,"zaatar, 
 ḥlb,,حلب,,verb,G,xalaba,حَلَبَ,ḥalaba,חָלַב,khaláv,to milk,to milk,4
 ḥlb,,حلب,,name/noun,n,xalab,حَلَب,ḥalab,חָלַב,khaláv,fresh milk,to milk,3
 ḥlb,,حلب,,name/noun,,xalab,حَلَب,ḥalab,חַאלַבּ,khálab,"Aleppo (the capital city of Aleppo governorate, Syria)","Aleppo (the capital city of Aleppo Governorate, Syria)",0
-ḥlb,,حلب,,noun,n,xalib,حَلِيب,ḥalīb,חָלַב,khaláv,milk,to milk,1
+ḥlb,,حلب,,noun,,xalib,حَلِيب,ḥalīb,חָלָב,khaláv,milk,milk (a white liquid produced by the mammary glands of female mammals to nourish their young),1
 ḥlb,,حلب,,noun,qutl+fem,xulba,حُلْبَة,ḥulba,חִלְבָּה,khilbá,fenugreek,fenugreek,0
+ḥll,,حلل,חלל/חלן,verb,D,xallala,حَلَّلَ,ḥallala,חִלֵּל,khilél,"to solve, to dissolve","to desecrate, violate",1
 ḥll,,حلل,חלל/חלן,noun,n,maxallan,مَحَلّ,maḥall,חַלּוֹן,khalón,time and opportunity,a free period,0
 ḥll,,حلل,חלל/חלן,adj/noun,n,xalal,حَلَال,ḥalāl,חִלּוֹנִי,khiloní,"lawful, legal, licit, legitimate.","secular, irreligious",0
 ḥlm,,حلم,חלם,noun,n,xalim,حَالِم,ḥālim,חֲלוֹם,khalóm,dreamer,dream,1
-ḥlm,,حلم,חלם,noun,n,xulam,حُلْم,ḥulm,חָלַם,khalám,a dream (something experienced during sleep); vision,to dream,1
+ḥlm,,حلم,חלם,noun,n,xulam,حُلْم,ḥulm,חֲלוֹם,khalóm,a dream (something experienced during sleep); vision,dream,1
 ḥlw,,حلو,,adj,,ʔaxla,أَحْلَى,ʔaḥlā,אַחְלָה,ákhla,better; best,"awesome, the best",0
 ḥm,,,,noun,,xamw,حَم,ḥam,חָם,khám,father-in-law,"father-in-law, in relation to the bride",0
 ḥmd,,حمد,,adj/name,,muxammad,مُحَمَّد,muḥammad,מֻחַמַּד,mukhamad,The 47th sura (chapter) of the Qur'an.,47th sura (chapter) of Quran,0
@@ -1415,6 +1442,8 @@ zʕtr,,,,noun,,zaʕtar,زَعْتَر,zaʕtar,זַעְתָּר,zá'tar,"zaatar, 
 ḥnt,,,חנה,noun,,xanusa,حَانُوت,ḥānūt,חֲנוּת,khanút,"shop, store","shop, store",0
 ḥnʔ,,,,noun,,xinnaʔ,حِنَّاء,ḥinnāʔ,חִינָה,khína,henna; dye prepared from (Lawsonia inermis),henna (the dye),0
 ḥnṭ,,,,noun,n+fem,xinṭa,حِنْطَة,ḥinṭa,חִטָּה,khitá,wheat,wheat,0
+ḥqq,,حقق,חקק,verb,D,xaqqaqa,حَقَّقَ,ḥaqqaqa,חוֹקֵק,khokék,"to attain, to achieve","to engrave, etch",0
+ḥqq,,حقق,חקק,verb,G,xaqak,حَاقَ,ḥāqa,חָקַק,khakák,to befall,"to ingrain, imprint",0
 ḥqq,,حقق,חקק,adj/noun,n,mxakaqq,حَقّ,ḥaqq,מְחוֹקֵק,m'khokék,"right, fair and reasonable",legislative,0
 ḥqq,,حقق,חקק,adj,n,mxaqiq,حَقِيق,ḥaqīq,מְחוֹקֵק,m'khokék,entitled,legislative,0
 ḥqq,,حقق,חקק,adj/noun,n,xaqq,حَقّ,ḥaqq,חֹק,khók,right,rule,1
@@ -1428,12 +1457,14 @@ zʕtr,,,,noun,,zaʕtar,زَعْتَر,zaʕtar,זַעְתָּר,zá'tar,"zaatar, 
 ḥrf,,حرف,חרף,adj/noun,n,xarif,حَرْف,ḥarf,חָרִיף,kharíf,"hardy, strong and/or lean and/or swift","sharp, harsh, sharply critical (of criticism, or of text)",0
 ḥrf,,حرف,חרף,adj/noun,n,xirrif,حِرِّيف,ḥirrīf,חָרִיף,kharíf,"pungent, acrid (taste)",spicy (of food),0
 ḥrm,,,,noun,qitl,xirm,حِرْم,ḥirm,חֵרֶם,khérem,excommunication,"excommunication (act of excommunicating or ejecting), anathema, taboo, dedication, consecration",0
+ḥrr,,حرر/حور,חרף,verb,D,xarrara,حَرَّرَ,ḥarrara,חֵרֵף,kheréf,to mercerize,"to scorn, despise",0
 ḥrr,,حرر/حور,חרף,noun,n,xarar,حَرَارَة,ḥarāra,חֹרֶף,khóref,temperature,winter,0
 ḥrr,,حرر/حور,חרף,adj,n,xarrif,حَارّ,ḥārr,חָרִיף,kharíf,"hot, burning",spicy (of food),0
 ḥrr,,حرر/حور,חרף,noun,n,xurrif,حَرّ,ḥarr,חֹרֶף,khóref,heat,winter,0
 ḥrṣr,,حرص/حصر,,noun,n,xiṣrim,حِصْرِم,ḥiṣrim,חַרְצָן,ḥarṣā́n,"unripe grapes, sour grapes, grapes green and acid due to lacking maturity","sour grape, vine fruit green and acid due to lacking maturity",1
 ḥrṯ,,,חרשׁ,verb,G,xaras,حَرَثَ,ḥaraṯa,חָרַשׁ,kharásh,"to plow, to till, to cultivate","To plow, plough",5
 ḥrṯ,,,חרשׁ,noun,n,xaras,حَرْث,ḥarṯ,חָרַשׁ,kharásh,"plowing, tilling, cultivation, plantation, culture","To plow, plough",5
+ḥsb,,حسب,חשׁב,verb,tD,taxassaba,تَحَسَّبَ,taḥassaba,הִתְחַשֵּׁב,hitkhashév,to take precautions,"to consider, to take into account",0
 ḥsb,,حسب,חשׁב,noun,n,muxasab,مُحَاسَبَة,muḥāsaba,חַשָּׁב,khasháv,accounting,an accountant,4
 ḥsb,,حسب,חשׁב,noun,n,muxasib,مُحَاسِب,muḥāsib,חַשָּׁב,khasháv,"accountant, bookkeeper",an accountant,2
 ḥsb,,حسب,חשׁב,noun,n,xasub,حَاسُوب,ḥāsūb,חִשּׁוּב,khishúv,computer,calculation,0
@@ -1450,21 +1481,16 @@ zʕtr,,,,noun,,zaʕtar,زَعْتَر,zaʕtar,זַעְתָּר,zá'tar,"zaatar, 
 ḥvr,,,חור,adj,n,xuwirr,حُرّ,ḥurr,חִוֵּר,khivér,free,pale,2
 ḥwl,,,,noun,n,xawil,حَوْل,ḥawl,חַיִל,kháyil,strength,army,2
 ḥwr,,حور,חרף,adj,n,ʔaxwar,أَحْوَر,ʔaḥwar,חָרִיף,kharíf,having large round limpid dark eyes; doe-eyed,"sharp, harsh, sharply critical (of criticism, or of text)",0
-ḥwy,,حوي,חיה,adj/noun,n+fem,xayya,حَيَّة,ḥayya,חַיָּה,khayá,feminine singular of حَيّ (ḥayy),feminine singular indefinite form of חַי (kháy),0
 ḥwʔ,,,,name,,xawa,حَوَّاء,ḥawwāʔ,חַוָּה,khavá,"Eve, the first woman in Abrahamic religions",Eve (the first woman and mother of the human race; Adam's wife),2
 ḥy,,,חיה,adj/noun,n,xayy,حَيّ,ḥayy,חַי,kháy,alive,alive,0
 ḥy,,,חיה,adj/noun,n,xayy,حَيّ,ḥayy,חַיָּה,khayá,"organism, living being",animal (organism other than man),0
 ḥyh,,,,noun,n,xayah,حَيَاة,ḥayāh,חַיִּים,khayím,life,life (state of being alive),1
 ḥyl,,,,noun,n,xayil,حَيْل,ḥayl,חַיִל,kháyil,"strength, force",army,2
 ḥyw,,حيو,חיה,verb,G,xayawa,حَيِيَ,ḥayiya,חַי,kháy,to live,"to live (to be alive, to have life)",5
-ḥyw,,حيو,חיה,adj/verb,Š,šaxayawa,أَحْيَا,ʔaḥyā,הֶחֱיָה,hekheyá,"to restore to life, to revive; to restore, to reinstitute","To revive, to resuscitate, to revitalize, to quicken",3
+ḥyw,,حيو,חיה,adj/verb,Š,šaxayawa,أَحْيَا,ʔaḥyā,הֶחֱיָה,hekheyá,"to restore to life, to revive; to restore, to reinstitute","To revive, to resuscitate, to revitalize, to quicken",0
 ḥyw,,حيو,חיה,noun,n,maxiyan,مَحْيًا,maḥyan,חִיּוּת,khiyút,life,"life, lifespan",1
-ḥyw,,حيو,חיה,adj/name,n,muxay,المُحْيِي,al-muḥyī,חַיָּה,khayá,definite masculine singular of مُحْيٍ (muḥyin),feminine singular indefinite form of חַי (kháy),0
 ḥyw,,حيو,חיה,noun,n,taxiyyut,تَحِيَّة,taḥiyya,חִיּוּת,khiyút,a greeting,pleasure,0
 ḥyw,,حيو,חיה,noun,n,xayawan,حَيَوَان,ḥayawān,חַיָּה,khayá,"animals, living creatures",animal (organism other than man),2
-ḥyw,,حيو,חיה,adj/noun,n,xayūw,مُحَيًّا,muḥayyan,חַיָּה,khayá,passive participle of حَيَّا (ḥayyā),feminine singular indefinite form of חַי (kháy),1
-ḥyw,,حيو,חיה,adj,n,xayūw,مُحْيًا,muḥyan,חַיָּה,khayá,passive participle of أَحْيَا (ʔaḥyā),feminine singular indefinite form of חַי (kháy),0
-ḥyw,,حيو,חיה,adj,n,xāyiw,مُحْيٍ,muḥyin,חַיָּה,khayá,active participle of أَحْيَا (ʔaḥyā),feminine singular indefinite form of חַי (kháy),0
 ḥzm,,حزم,,noun,n,xiziam,حِزَام,ḥizām,מְזִיחַ,mezíakh,girdle,"girdle, belt",1
 ḥzqyl,,,,name,,yixiskil,حِزْقِيَال,ḥizqiyāl,יְחֶזְקֵאל,Y'khezkél,Ezekiel (a prophet mentioned in the Bible and in the Quran),Ezekiel (a prophet mentioned in the Bible and in the Quran),0
 ḥšš,,حشش,,noun,,xašiš,حَشِيش,ḥašīš,חֲשִׁישׁ,khashísh,"hemp, cannabis, hashish",hashish (dried leaves of the Indian hemp plant),0
@@ -1475,7 +1501,9 @@ zʕtr,,,,noun,,zaʕtar,زَعْتَر,zaʕtar,זַעְתָּר,zá'tar,"zaatar, 
 ḫdjl,,,,name,,ʔidiqlat,دِجْلَة,dijla,חִדֶּקֶל,khidékel,"the Tigris (so called because it covers or floods the land with water, like a lake)","Tigris (a river in West Asia flowing 1,150 miles east-southeast from the Armenian Highland in Turkey through Iraq)",0
 ḫfr,,خفر,,verb,G,xapar,خَفِرَ,ḵafira,חָפֵר,khafér,to be shy,to be ashamed,0
 ḫkn,,,כלל,noun,n+fem,xakanna,كَنَّة,kanna,כַּלָּה,kalá,female relative through marriage; sister-in-law or daughter-in-law,daughter-in-law,0
-ḫld,,,חלד,noun,qutl,xuld,خُلْد,ḵuld,חֹלֶד,khóled,"blind mole-rat., mole-rat",mole-rat,2
+ḫld,,خلد,חלד,verb,Š,šaxlada,أَخْلَدَ,ʔaḵlada,הֶחְלִיד,hekhlíd,to age late,to rust,0
+ḫld,,خلد,חלד,noun,qutl,xuld,خُلْد,ḵuld,חֹלֶד,khóled,"blind mole-rat., mole-rat",mole-rat,2
+ḫll,,خلل/خلو,חלל,verb,Š,šaxalala,أَخَلَّ,ʔaḵalla,הֵחֵל,hekhél,to disturb,"to begin, to start",1
 ḫll,,خلل/خلو,חלל,adj,n,muxillan,مُخِلّ,muḵill,חִלּוֹנִי,khiloní,"transgressive, in violation (of), improper","secular, irreligious",0
 ḫll,,خلل/خلو,חלל,adj,n,xalin,خَالٍ,ḵālin,חִלּוֹנִי,khiloní,celibate,"secular, irreligious",2
 ḫlṣ,,,,intj/noun,,xalaṣ,خَلَاص,ḵalāṣ,חָלָס,ḥálas,cut it out! stop it!,stop it! enough!,0
@@ -1517,10 +1545,12 @@ zʕtr,,,,noun,,zaʕtar,زَعْتَر,zaʕtar,זַעְתָּר,zá'tar,"zaatar, 
 ḫṭmy,,,חלם,noun,n,xiṭmiyy,خِطْمِيّ,ḵiṭmiyy,חֶלְמִית,khelmít,a confectionery marshmallow,mallow,0
 ḫṭʔ,,خطء,חטא,verb,G,xaṭiʔa,خَطِئَ,ḵaṭiʔa,חָטָא,khatá,to sin,to sin,3
 ḫṭʔ,,خطء,חטא,verb,Š,šaxṭaʔa,أَخْطَأَ,ʔaḵṭaʔa,הֶחְטִיא,hekhtí',to miss (to fail to hit),"to miss, be off target",3
+ḫṭʔ,,خطء,חטא,adj/noun,n,xaṭaʔ,خَطَأ,ḵaṭaʔ,חֵטְא,khet,"mistake, error","an unintentional sin, done unknowingly",3
 ḫṭʔ,,خطء,חטא,adj/noun,n,xaṭiʔ,خَاطِئَة,ḵāṭiʔa,חַטָּאת,khatát,"sin, sinfulness",A sin.,2
 ḫṭʔ,,خطء,חטא,noun,n,xaṭiʔ,خَطِيئَة,ḵaṭīʔa,חַטָּאת,khatát,sin as a continuing state,A sin.,2
 ḫṭʔ,,خطء,חטא,adj,n,xaṭṭaʔ,خَطَّاء,ḵaṭṭāʔ,חוֹטֵא,khoté,sinner,sinner,0
 ḫṭʔ,,خطء,חטא,noun,n,xiṭʔ,خِطْء,ḵiṭʔ,חֵטְא,khet,sin,sin,2
+ṣbr,,صبر/صنبر,צבר,verb,tD,taṣabbara,تَصَبَّرَ,taṣabbara,הִצְטַבֵּר,hitstabér,"to persevere, to endure",to accumulate,0
 ṣbr,,صبر/صنبر,צבר,adj/noun,,ṣabbar,صَبَّار,ṣabbār,צַבָּר,tsabár,cactus,prickly pear cactus,0
 ṣbr,,صبر/صنبر,צבר,adj/noun,qattaːl,ṣabbār,صَبَّار,ṣabbār,צוֹבֵר,tsovér,frequently patient,cumulative,0
 ṣbr,,صبر/صنبر,צבר,adj/name,n,ṣabir,صَابِر,ṣābir,צוֹבֵר,tsovér,"suffering, enduring, forbearing",cumulative,0
@@ -1540,8 +1570,7 @@ zʕtr,,,,noun,,zaʕtar,زَعْتَر,zaʕtar,זַעְתָּר,zá'tar,"zaatar, 
 ṣdq,,صدق,צדק,adj,n,ṣaduq,صَدُوق,ṣadūq,צַדִּיק,tsadík,"always truthful, veracious","just, moral",1
 ṣdq,,صدق,צדק,adj,n,ṣiddiq,صِدِّيق,ṣiddīq,צַדִּיק,tsadík,"always truthful, veracious","just, moral",0
 ṣff,,صفف,צפצף,noun,n,ṣafṣaf,صَفْصَاف,ṣafṣāf,צַפְצָפָה,tsaftsafá,willow (Salix gen. et spp.),willow,0
-ṣfr,,صفر,ספר,verb,G,ṣafara,صَفَرَ,ṣafara,צָפַר,tsafár,to whistle,to honk,1
-ṣfr,,صفر,ספר,name/noun,n,ṣafara,صَفَر,ṣafar,סְפָרוֹת,s'farót,verbal noun of صَفِرَ (ṣafira) (form I),plural indefinite form of סִפְרָה (sifrá),1
+ṣfr,,,,verb,G,ṣafara,صَفَرَ,ṣafara,צָפַר,tsafár,to whistle,to honk,1
 ṣhb,,,,adj,n,ʔaṣhab,أَصْهَب,ʔaṣhab,צָהֹב,tsahóv,of a color that is a mix of yellow and red; yellow-red or brownish-red; rufous,yellow (color),0
 ṣlb,,صلب,צלב,verb,G,ṣalaba,صَلَبَ,ṣalaba,צָלַב,tzaláv,to crucify,to crucify,1
 ṣlb,,صلب,צלב,adj/noun,n,ṣalib,صَلِيب,ṣalīb,צְלָב,tzlav,cross (geometrical figure),cross,1
@@ -1552,6 +1581,7 @@ zʕtr,,,,noun,,zaʕtar,زَعْتَر,zaʕtar,זַעְתָּר,zá'tar,"zaatar, 
 ṣnʕʔ,,,,name,,ṣanʕaʔ,صَنْعَاء,ṣanʕāʔ,צַנְעָא,tsan'a,Sanaa (the capital and largest city of Yemen),Sanaa (the capital and largest city of Yemen),0
 ṣpp,,,ספף,noun,,ṣuppa,صُفَّة,ṣuffa,סַפָּה,sapá,"sofa, sill, shelf, console",a sofa,1
 ṣpr,,صفر,ספר,adj,n,ʔaṣpar,أَصْفَر,ʔaṣfar,מִסְפָּרִי,misparí,yellow (“having yellow as its color”),"Numeric: of, pertaining to, or being a number.",1
+ṣpr,,صفر,ספר,name/noun,qatiːl,ṣapīr,صَفِير,ṣafīr,סַפִּיר,sapír,a surname,"a male or female given name, Sapir",0
 ṣpr,,صفر,ספר,adj,n+nisba,ṣifpari,صِفْرِيّ,ṣifriyy,מִסְפָּרִי,misparí,zeroth,"Numeric: of, pertaining to, or being a number.",0
 ṣry,,صري/صور/صير,צור,verb,G,ṣaraya,صَارَ,ṣāra,צָר,tsar,"to make, to incline or bend towards a shape",to shape,0
 ṣrḥ,,صرح,צרח,noun,n,ṣariax,صَرْح,ṣarḥ,צְרִיחַ,ts'ríakh,skyscraper,"spire, tower",0
@@ -1563,35 +1593,36 @@ zʕtr,,,,noun,,zaʕtar,زَعْتَر,zaʕtar,זַעְתָּר,zá'tar,"zaatar, 
 ṣyd,,صيد,ציד,noun,n,ṣayid,صَيْد,ṣayd,צַיִד,tsáyid,"hunt, hunting, fishing","a hunt (the act of hunting, shooting)",2
 ṣyd,,صيد,ציד,noun,qattaːl,ṣayyād,صَيَّاد,ṣayyād,צַיָּד,tsayád,hunter,hunter,2
 ṣyr,,,,noun,n,ṣayyara,صِير,ṣīr,צִיר,tsír,brine,"broth, sauce",0
-ṣɣr,,صغر,צער,adj,n,ʔaṣgar,أَصْغَر,ʔaṣḡar,צָעִיר,tsa'ír,"junior (age, rank, etc.)",Young (in the early part of life or growth).,1
+ṣɣr,,صغر,צער,adj,n,ʔaṣgar,أَصْغَر,ʔaṣḡar,צָעִיר,tsa'ír,"junior (age, rank, etc.)",Young (in the early part of life or growth).,0
 ṣɣr,,صغر,צער,adj,n,ṣagir,صَاغِر,ṣāḡir,צָעִיר,tsa'ír,recessive,Young (in the early part of life or growth).,0
 ṣɣr,,صغر,צער,adj,,ṣagir,صَغِير,ṣaḡīr,צָעִיר,tsa'ír,young (for a person),Young (in the early part of life or growth).,0
-ṣɣr,,صغر,צער,adj/noun,qatiːl+fem,ṣagīra,صَغِيرَة,ṣaḡīra,צְעִירָה,ts'irá,feminine singular of صَغِير (ṣaḡīr),feminine singular indefinite form of צָעִיר (tza'ír),0
 ṣʕd,,صعد,צעד,noun,n,miṣʕad,مِصْعَد,miṣʕad,צַעַד,tsá'ad,"step, stairs, ladder","step, pace",0
 ṣḥp,,صحف,צחף,noun,,muṣxap,مُصْحَف,muṣḥaf,מִצְחָף,mitskháf,"manuscript, codex, text",A codex of the Bible (as a book rather than a scroll).,0
 ṣḥḥ,,صحح,צחח,adj,n,ṣaxiax,صَحِيح,ṣaḥīḥ,צָחִיחַ,tsakhíakh,"complete, perfect, whole","dry, arid",1
 ṣḥḥ,,صحح,צחח,adj,n,ṣaxiaxx,صِحِّيّ,ṣiḥḥiyy,צָחִיחַ,tsakhíakh,sanitary,"dry, arid",1
 ṭbʕ,,,,noun,n,ṭabaʕ,طَبْع,ṭabʕ,טֶבַע,téva,nature,nature (essential characteristics),0
+ṭbḫ,,طبخ,טבח,verb,G,ṭabaxa,طَبَخَ,ṭabaḵa,טָבַח,tavákh,to cook,to butcher,3
 ṭbḫ,,طبخ,טבח,noun,maqtal,maṭbax,مَطْبَخ,maṭbaḵ,מִטְבָּח,mitbákh,kitchen,kitchen,1
 ṭbḫ,,طبخ,טבח,noun,qattaːl,ṭabbāx,طَبَّاخ,ṭabbāḵ,טַבָּח,tabákh,cook,"cook, chef",1
 ṭfw,,طفو,צוף,verb,G,ṭafawa,طَفَا,ṭafā,צָף,tsaf,to float,to float,2
 ṭhr,,طهر,טהר,verb,D,ṭahhara,طَهَّرَ,ṭahhara,טִהֵר,tihér,to purify,to purify,2
 ṭhr,,طهر,טהר,verb,tD,taṭahhara,تَطَهَّرَ,taṭahhara,הִטַּהֵר,hitahér,"to cause oneself to be clean, to make oneself purified, to remove impurities from oneself",to purify oneself,1
-ṭhr,,طهر,טהר,noun,n,maṭihar,مَطْهَر,maṭhar,טִהֵר,tihér,Purgatory,to purify,2
-ṭhr,,طهر,טהר,noun,n,taṭhir,تَطْهِير,taṭhīr,טִהֵר,tihér,"purification, purgation, sanctification",to purify,2
+ṭhr,,طهر,טהר,noun,n,maṭhar,مَطْهَر,maṭhar,טׇהֳרָה,tahorá,Purgatory,purity,2
+ṭhr,,طهر,טהר,noun,n,taṭhir,تَطْهِير,taṭhīr,טׇהֳרָה,tahorá,"purification, purgation, sanctification",purity,2
 ṭhr,,طهر,טהר,adj/name,n,ṭahir,طَاهِر,ṭāhir,טָהוֹר,tahór,pure; clean,pure; clean; innocent,0
 ṭll,,طلل,טלל,noun,n,ṭalla,طَلّ,ṭall,טַל,tal,dew; drizzle,dew,0
 ṭnṭ,,,טוט,noun,,ṭin,طِين,ṭīn,טִיט,tít,"wet or sticky soil, clay, loam; mud","mud, silt, mire",1
 ṭpyl,,,,noun,,ṭupayl,طُفَيْل,ṭufayl,טַפִּיל,tapil,parasite,parasite,0
 ṭqs,,,טקס,noun,,ṭaqs,طَقْس,ṭaqs,טֶקֶס,tékes,"ritual, rite, any ceremonized practice","ritual, ceremony",0
 ṭr,,,,adj,n+nisba,ṭari,طَرِيّ,ṭariyy,טָרִי,tarí,fresh,fresh,0
-ṭrq,,طرق,,noun,n,ṭariq,طَرِيق,ṭarīq,דֶּרֶךְ,dérekh,"way, road, path, track, street","a road, a path, a way",3
+ṭrq,,طرق,דרך,verb,G,ṭaraqa,طَرَقَ,ṭaraqa,דָּרַךְ,darákh,"to beat, to knock, to ring (a bell), to hammer","to step on, to walk on (something or someone)",0
+ṭrq,,طرق,דרך,noun,n,ṭariq,طَرِيق,ṭarīq,דֶּרֶךְ,dérekh,"way, road, path, track, street","a road, a path, a way",3
 ṭwr,,,צור,noun,,ṣurr,طُور,ṭūr,צוּר,tsúr,mountain,"cliff, rock",4
 ṭyb,,,טוב,adj/name,,ṭab,طَيِّب,ṭayyib,טוֹב,tov,"charming, pleasant, agreeable","good, fair, fine",0
 ṭʕm,,طعم,טעם,verb,G,ṭaʕima,طَعِمَ,ṭaʕima,טָעַם,ta'ám,"to degust, to taste",to taste,1
 ṭʕm,,طعم,טעם,adj,n,miṭaʕam,مِطْعَام,miṭʕām,טָעִים,ta'ím,having the tendency to feed,tasty (having a pleasant taste),0
 ṭʕm,,طعم,טעם,noun,n,ṭaʕam,طَعَام,ṭaʕām,טַעַם,tá'am,food,taste (sense),0
-ṭʕm,,طعم,טעם,noun,n,ṭaʕam,طَعْم,ṭaʕm,טָעַם,ta'ám,"taste, flavor",to taste,1
+ṭʕm,,طعم,טעם,noun,qatl,ṭaʕm,طَعْم,ṭaʕm,טַעַם,tá'am,"taste, flavor",taste (sense),1
 ṭḥl,,,,noun,,ṭixal,طِحَال,ṭiḥāl,טְחוֹל,təḥṓl,"spleen, milt",spleen,0
 ṭḥn,,طحن,טחן,verb,G,ṭaxan,طَحَنَ,ṭaḥana,טָחַן,takhán,"to grind, to mill","to grind, to crush",0
 ṭḥn,,طحن,טחן,noun,n+fem,miṭaxana,مِطْحَنَة,miṭḥana,טַחֲנָה,takhaná,"mill, grinder (the contrivance whereby milling is accomplished)",mill,1
@@ -1612,10 +1643,11 @@ zʕtr,,,,noun,,zaʕtar,زَعْتَر,zaʕtar,זַעְתָּר,zá'tar,"zaatar, 
 ṯmn,,ثمن/عشر,עשׂר/שׁמן,adj,G,saminaʕasara,ثَامِنَ عَشَرَ,ṯāmina ʕašara,עֲשִׂירִי,asirí,eighteenth,tenth,0
 ṯn,,,שׁנה,verb,G,sana,ثَنَى,ṯanā,שָׁנָה,shaná,"to repeat, do a second time",to repeat (to do something an additional time),0
 ṯnn,,,שׁנה,num,,sin,اِثْنَان,iṯnān,שְׁנַייִם,sh'náyim,two,two,3
+ṯny,,ثني/عشر,עשׂר/שׁנה,verb,D,sannaya,ثَنَّى,ṯannā,שִׁנָּה,shiná,"to bend, turn","to change, to alter",0
+ṯny,,ثني/عشر,עשׂר/שׁנה,verb,G,sanaya,اِثْنَوْنَى,iṯnawnā,שָׁנָה,shaná,to be doubled up,to repeat (to do something an additional time),0
 ṯny,,ثني/عشر,עשׂר/שׁנה,noun,,mišni,اَلْمِشْنَاه,al-mišnāh,מִשְׁנָה,mishná,"Mishna, Mishnah",Mishnah (part of the Talmud),0
-ṯny,,ثني/عشر,עשׂר/שׁנה,adj/noun,n,musannan,مُثَنَّاة,muṯannāh,מְשֻׁנֶּה,m'shuné,feminine singular of مُثَنًّى (muṯannan),feminine singular indefinite form of משונה.,0
 ṯny,,ثني/عشر,עשׂר/שׁנה,adj,n,sanin,ثَانٍ,ṯānin,שֵׁנִי,shení,second,second,6
-ṯny,,ثني/عشر,עשׂר/שׁנה,adj/noun,n+fem,sanina,ثَانِيَة,ṯāniya,שְׁנִיָּה,sh'niyá,feminine singular of ثَانٍ (ṯānin),feminine singular indefinite form of שֵׁנִי (shení),3
+ṯny,,ثني/عشر,עשׂר/שׁנה,adj/noun,n+fem,sanina,ثَانِيَة,ṯāniya,שְׁנִיָּה,sh'niyá,second (unit of time),A second: one sixtieth of a minute of time.,4
 ṯny,,ثني/عشر,עשׂר/שׁנה,adj,G,saniyaʕasara,ثَانِيَ عَشَرَ,ṯāniya ʕašara,עֲשִׂירִי,asirí,twelfth,tenth,0
 ṯql,,ثقل,שׁקל,verb,G,saqala,ثَقَلَ,ṯaqala,שָׁקַל,shakál,to weigh; to determine the weight of an object,"to weigh, weigh in",1
 ṯql,,ثقل,שׁקל,verb,G,saqala,ثَقُلَ,ṯaqula,שָׁקַל,shakál,to be heavy,"to weigh, weigh in",1
